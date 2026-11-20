@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tendon Reflexes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=block" rel="stylesheet">
+<style>
+  :root { --bg: #0d3a3d; --panel: #f8eedb; --ink: #26336b; --muted: #5b6488; --accent: #12808a; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #071f21; --panel: #1d2a2c; --ink: #f3e6cd; --muted: #a9b8b9; --accent: #3fb6c0; } }
+  :root[data-theme="dark"] { --bg: #071f21; --panel: #1d2a2c; --ink: #f3e6cd; --muted: #a9b8b9; --accent: #3fb6c0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); font-family: "Fredoka", system-ui, sans-serif; }
+  body { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 12px 16px; }
+  #stage { width: min(100%, calc((100vh - 90px) * 16 / 9)); aspect-ratio: 16 / 9; background: #000; border-radius: 10px; overflow: hidden; }
+  #c { width: 100%; height: 100%; display: block; }
+  #bar { width: min(100%, calc((100vh - 90px) * 16 / 9)); display: flex; align-items: center; gap: 10px; background: var(--panel); border-radius: 10px; padding: 8px 12px; }
+  #bar button { font: inherit; font-weight: 600; color: var(--ink); background: transparent; border: 2px solid var(--muted); border-radius: 8px; padding: 4px 10px; cursor: pointer; min-width: 44px; }
+  #bar button[aria-pressed="true"] { border-color: var(--accent); }
+  #scrub { flex: 1; min-width: 60px; accent-color: var(--accent); }
+  #time { font-variant-numeric: tabular-nums; min-width: 92px; text-align: right; color: var(--muted); }
+  #msg { color: var(--muted); font-size: 14px; }
+  body.render #bar, body.render #msg { display: none; }
+  body.render { padding: 0; }
+  body.render #stage { width: auto; border-radius: 0; }
+</style>
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js" } }</script>
+</head>
+<body>
+<div id="stage"><canvas id="c" width="1920" height="1080"></canvas></div>
+<div id="bar">
+  <button id="play" aria-label="Play">Play</button>
+  <input id="scrub" type="range" min="0" max="1000" value="0" aria-label="Time">
+  <span id="time">0.0 s</span>
+  <button id="snd" aria-pressed="true" aria-label="Sound">Sound</button>
+  <button id="cap" aria-pressed="true" aria-label="Captions">CC</button>
+  <button id="loop" aria-pressed="true" aria-label="Loop">Loop</button>
+</div>
+<div id="msg">Loading the clay…</div>
+<script type="module">
+import * as THREE from 'three';
+window.THREE = THREE;
+const Q = new URLSearchParams(location.search);
+const RENDER = Q.has('render');
+if (RENDER) document.body.classList.add('render');
+// the CAPTIONS switch: ?captions=0 renders the clean version
+window.CAPTIONS = Q.get('captions') !== '0';
+const SCRIPTS = ['lib/stage.js', 'lib/sound.js', 'lib/text3d.js',
+  'shared/clay.js', 'shared/set.js', 'shared/bed.js', 'shared/props.js', 'shared/hands.js', 'shared/patient.js', 'shared/sheet.js',
+  'shared/caption.js', 'shared/abdo.js', 'shared/home.js', 'shared/patient-neuro.js', 'shared/neuro.js', 'shared/neuro-props.js',
+  'src/contact.js', 'src/cns7-style.js'];
+const load = (src) => new Promise((ok, no) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = () => no(new Error('could not load ' + src)); document.head.appendChild(s); });
+try {
+  if (!window.CNS7) for (const s of SCRIPTS) await load(s);   // (the single-file build has everything inline already)
+  const style = window.CNS7;
+  if (Q.get('solve') === '1') window.SOLVE_MODE = true;
+  const W = +(Q.get('w') || 1920), H = +(Q.get('h') || 1080);
+  const canvas = document.getElementById('c'); canvas.width = W; canvas.height = H;
+  if (RENDER) { document.getElementById('stage').style.width = W + 'px'; document.getElementById('stage').style.height = H + 'px'; }
+  const full = +(Q.get('samples') || style.render.samples), live = 3;
+  const S = await K.run(canvas, style, { samples: RENDER ? full : live, width: W, height: H });
+  window.S = S;
+  window.DURATION = style.duration;
+  window.seek = (t, n) => S.seek(t, n);
+  window.STYLE = style;
+  S.seek(+(Q.get('t') || 0));
+  window.READY = true;
+  if (!RENDER) player(S, style);
+} catch (e) { console.error(e); window.FAILED = String(e && e.stack || e); document.getElementById('msg').textContent = 'Could not start: ' + e.message; }
+
+function player(S, style) {
+  const D = style.duration, $ = (id) => document.getElementById(id);
+  let t = 0, playing = false, last = 0, stopSound = null, soundOn = true, loop = true;
+  $('msg').textContent = '';
+  const show = () => { $('scrub').value = Math.round(t / D * 1000); $('time').textContent = t.toFixed(1) + ' / ' + D.toFixed(0) + ' s'; };
+  const stop = () => { if (stopSound) { stopSound(); stopSound = null; } };
+  const start = () => { stop(); if (soundOn) stopSound = SOUND.live((k) => style.sound(k), t, { voiceover: false }); };
+  const frame = (now) => {
+    if (!playing) return;
+    t += Math.min(0.1, (now - last) / 1000); last = now;
+    if (t >= D) { if (loop) { t = 0; start(); } else { t = D; playing = false; $('play').textContent = 'Play'; stop(); } }
+    S.seek(t); show(); requestAnimationFrame(frame);
+  };
+  $('play').onclick = () => { playing = !playing; $('play').textContent = playing ? 'Pause' : 'Play'; if (playing) { if (t >= D) t = 0; last = performance.now(); start(); requestAnimationFrame(frame); } else stop(); };
+  $('scrub').oninput = (e) => { t = e.target.value / 1000 * D; stop(); S.seek(t); show(); if (playing) start(); };
+  $('snd').onclick = () => { soundOn = !soundOn; $('snd').setAttribute('aria-pressed', soundOn); if (!soundOn) stop(); else if (playing) start(); };
+  $('cap').onclick = () => { window.CAPTIONS = !window.CAPTIONS; $('cap').setAttribute('aria-pressed', window.CAPTIONS); S.seek(t); };
+  $('loop').onclick = () => { loop = !loop; $('loop').setAttribute('aria-pressed', loop); };
+  show();
+}
+</script>
+</body>
+</html>

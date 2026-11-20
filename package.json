@@ -1,0 +1,20 @@
+{
+  "name": "clay-cns-7",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Soft Clay - neurological examination part 7 of 11: deep tendon reflexes, reinforcement, clonus, Hoffmann's sign",
+  "type": "module",
+  "scripts": {
+    "preview": "node tools/render.mjs --preview",
+    "start": "node tools/render.mjs --final",
+    "solve": "node tools/solve.mjs",
+    "storyboard": "node tools/storyboard.mjs"
+  },
+  "dependencies": {
+    "three": "0.187.0",
+    "playwright-core": "1.63.0"
+  },
+  "optionalDependencies": {
+    "ffmpeg-static": "5.2.0"
+  }
+}
