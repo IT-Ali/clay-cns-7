@@ -43,6 +43,32 @@ biceps2, sup, tri, reinf, knee, ankle, clonus, kneeClonus, hoff. `--saveSolved` 
 finish with a full `npm run solve`. Testing a camera without re-solving: overwrite `W.SOL.cams.<name>.pos/target`
 in place in a lab script and seek (CAMS shares those objects).
 
+## STATUS AT HAND-OFF (round 2 NOT yet finished; the storyboard render was interrupted)
+
+Done and committed: every round-2 fix above, full `npm run solve` (solved.json current), home-check.json
+(identical), hammer waypoints `up:<state>` (exState) on exR into the biceps strike, out of reinforcement,
+knee -> ankle. Quick frames (1 sample) of every close shot checked and reading correctly.
+
+Still open, exact fixes:
+1. HAMMER after the ankle strikes (checks/hammer-clearance.json): it still goes through him at 62.2-62.3 s (R) and
+   65.2-66.5+ s (L) (-10 mm). Cause: after the strike the swing lifts the hammer head about the hand's z axis
+   (swingAt, SWING.up 0.62 rad) INTO the leg/other shin, and on the left the hand stays at S:ankL until 69.0.
+   Fix: in src/cns7-style.js KEYS, the existing waypoints [62.05,'S:ankR'],[62.6,'up:S:ankR'] and
+   [65.05,'S:ankL'],[65.6,'up:S:ankL'] are not enough. Either (a) start the lift right at the bounce end
+   (strike + 0.22 s: 62.02 / 65.02) and lift further (up: adds +3.0 y and +-1.0 z; try +4.5 y and move AWAY from
+   the leg along the strike direction: wrist - STRIKE_DIR.ank), or (b) for ankle strikes clamp the post-bounce
+   swing (swingAt returns SWING.bounceUp after the bounce for ids ankR/ankL). Then re-run
+   `node tools/hammercheck.mjs` (~27 min) until closerThan10mm has no negative values (5.5 mm at 9.6/12.6/37.8 s
+   is the hammer resting on the examiner's thumbnail just after the biceps strikes: clear of his skin, OK).
+2. Re-render the storyboard and ALL review panels (the last render was interrupted part way; some img/p*.jpg are new,
+   the rest are from round 1):
+   `node tools/storyboard.mjs --samples 16 --rsamples 6` (~1 h), then `node tools/round2.mjs`,
+   `node tools/storyboard-html.mjs`.
+3. Republish the artifact (same file storyboard/storyboard.html, files map of storyboard/img/*; omit icon):
+   https://claude.ai/artifact/AEhzvbqbyTRxTQ73pURdzX . Regenerate the director zip if wanted
+   (cns7-part7-storyboard.zip: storyboard.html + img/).
+4. Commit, push, stop for the user's review.
+
 ## Left (after the user's round-2 review)
 1. Apply the storyboard feedback.
 2. The in-between travel of the hands (no in-between pose held, nothing upright mid-travel).
