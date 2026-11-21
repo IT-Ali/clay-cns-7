@@ -16,4 +16,5 @@ try {
   const body = fs.readFileSync(file, 'utf8');
   const res = await page.evaluate(`(async () => { const save = (n) => window.saveGrab(n); const log = (...a) => console.log('[cns7]', ...a.map((x) => typeof x === 'string' ? x : JSON.stringify(x))); ${body}\n })()`);
   if (res !== undefined) console.log(JSON.stringify(res, null, 1));
+  if (arg('saveSolved')) { const o = await page.evaluate(() => ({ version: window.STYLE.SOLVE_VERSION, data: window.SOLVED_OUT, inputs: 'dev (partial lab solve: run npm run solve)', made: new Date().toISOString() })); if (o.data) { fs.writeFileSync(path.join(ROOT, 'solved.json'), JSON.stringify(o)); console.log('solved.json written (dev)'); } }
 } finally { await browser.close(); srv.close(); console.log('total', ((Date.now() - t0) / 1000).toFixed(1), 's'); }
