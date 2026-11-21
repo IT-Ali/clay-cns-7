@@ -66,27 +66,28 @@
   const HOME_HOLD = 1.0;
   // ---------------------------------------------------------------- the timeline keys (one schedule for picture and sound)
   // [time, state, 'cut'?]: between two keys the state moves (eased); a 'cut' key jumps. Names: see the states in build().
+  // Every cut lies on the 1/15 s pose grid (452 / 15 = 30.133 s, 914 / 15 = 60.933 s), so camera, patient and examiner change on the same frame.
   const KEYS = {
     cam: [[0, 'home'], [HOME_HOLD, 'home'], [4.6, 'upper'], [6.5, 'upper'], [8.2, 'bicR'], [10.8, 'bicR'], [10.8, 'bicL', 'cut'],
-      [15.0, 'supR', 'cut'], [18.4, 'supL', 'cut'], [24.0, 'triR', 'cut'], [30.1, 'triL', 'cut'],
-      [34.0, 'reinf', 'cut'], [35.6, 'reinfFace', 'cut'], [36.6, 'reinf', 'cut'], [41.0, 'knees', 'cut'], [51.0, 'jend', 'cut'], [59.0, 'legsWide', 'cut'], [60.9, 'legsWide'], [60.9, 'ankR', 'cut'], [63.4, 'ankL', 'cut'],
+      [15.0, 'supR', 'cut'], [18.4, 'supL', 'cut'], [24.0, 'triR', 'cut'], [452 / 15, 'triL', 'cut'],
+      [34.0, 'reinf', 'cut'], [35.6, 'reinfFace', 'cut'], [36.6, 'reinf', 'cut'], [41.0, 'knees', 'cut'], [51.0, 'jend', 'cut'], [59.0, 'legsWide', 'cut'], [914 / 15, 'legsWide'], [914 / 15, 'ankR', 'cut'], [63.4, 'ankL', 'cut'],
       [69.0, 'clonR', 'cut'], [74.2, 'clonL', 'cut'], [78.0, 'kneeClonR', 'cut'], [81.6, 'kneeClonL', 'cut'], [85.0, 'hoffR', 'cut'], [89.2, 'hoffL', 'cut'],
       [94.0, 'upper', 'cut'], [96.0, 'home'], [D, 'home']],
     armR: [[0, 'home'], [6.5, 'home'], [7.6, 'abdR'], [24.9, 'abdR'], [26.2, 'chestR'], [28.3, 'chestR'], [29.3, 'abdR'], [42.5, 'abdR'], [43.4, 'home'], [52.5, 'home'], [53.6, 'jend0R'], [54.25, 'jend0R'], [54.4, 'jend1R'], [55.6, 'jend1R'], [56.1, 'jend0R'], [57.1, 'home'],
       [85.6, 'home'], [86.6, 'hoffR'], [89.2, 'home', 'cut'], [D, 'home']],
-    armL: [[0, 'home'], [6.5, 'home'], [7.6, 'abdL'], [30.1, 'chestL', 'cut'], [34.0, 'abdL', 'cut'], [42.5, 'abdL'], [43.4, 'home'], [52.5, 'home'], [53.6, 'jend0L'], [54.25, 'jend0L'], [54.4, 'jend1L'], [55.6, 'jend1L'], [56.1, 'jend0L'], [57.1, 'home'],
+    armL: [[0, 'home'], [6.5, 'home'], [7.6, 'abdL'], [452 / 15, 'chestL', 'cut'], [34.0, 'abdL', 'cut'], [42.5, 'abdL'], [43.4, 'home'], [52.5, 'home'], [53.6, 'jend0L'], [54.25, 'jend0L'], [54.4, 'jend1L'], [55.6, 'jend1L'], [56.1, 'jend0L'], [57.1, 'home'],
       [89.2, 'hoffL', 'cut'], [94.0, 'home', 'cut'], [D, 'home']],
     legR: [[0, 'rest'], [43.5, 'rest'], [44.4, 'kneeJerk'], [57.3, 'kneeJerk'], [58.4, 'rest'], [59.4, 'rest'], [60.8, 'ankleJerkR'], [63.4, 'rest', 'cut'],
       [69.3, 'rest'], [70.5, 'clonusR0'], [71.2, 'clonusR0'], [71.33, 'clonusR1'], [73.4, 'clonusR1'], [73.8, 'clonusR0'], [74.2, 'rest', 'cut'], [D, 'rest']],
     legL: [[0, 'rest'], [43.5, 'rest'], [44.4, 'kneeJerk'], [57.3, 'kneeJerk'], [58.4, 'rest'], [63.4, 'ankleJerkR', 'cut'], [69.0, 'rest', 'cut'],
       [74.2, 'clonusR0', 'cut'], [74.9, 'clonusR0'], [75.03, 'clonusR1'], [77.1, 'clonusR1'], [77.5, 'clonusR0'], [78.0, 'rest', 'cut'], [D, 'rest']],
     exL: [[0, 'home'], [7.4, 'home'], [8.3, 'thumbR'], [10.8, 'S:bicL', 'cut'], [15.0, 'supFingR', 'cut'], [18.4, 'S:supL', 'cut'], [24.0, 'home', 'cut'],
-      [24.1, 'home'], [24.9, 'rel:wristRel:handR'], [29.3, 'rel:wristRel:handR'], [29.9, 'home'], [30.1, 'S:triL', 'cut'],
+      [24.1, 'home'], [24.9, 'rel:wristRel:handR'], [29.3, 'rel:wristRel:handR'], [29.9, 'home'], [452 / 15, 'S:triL', 'cut'],
       [34.0, 'home', 'cut'], [35.7, 'home'], [36.5, 'thumbRreinf'], [38.2, 'thumbRreinf'], [39.0, 'home'], [42.5, 'home'], [43.6, 'kneeSupport'], [57.2, 'kneeSupport'], [58.6, 'home'],
-      [59.4, 'relFoot:footRelR:R'], [60.8, 'relFoot:footRelR:R'], [60.9, 'footR'], [63.4, 'S:ankL', 'cut'], [65.02, 'S:ankL'], [65.6, 'up:S:ankL'], [69.0, 'home', 'cut'], [69.3, 'home'], [70.5, 'calfR'], [74.2, 'clonusFootL0', 'cut'], [74.9, 'clonusFootL0'], [75.03, 'clonusFootL1'], [77.1, 'clonusFootL1'], [77.5, 'clonusFootL0'],
-      [78.0, 'kneeClonusR', 'cut'], [81.6, 'parkFar', 'cut'], [85.0, 'home', 'cut'], [85.2, 'home'], [85.6, 'rel:hoffSupRel:handR'], [89.2, 'hoffPinL', 'cut'], [94.0, 'home', 'cut'], [D, 'home']],
+      [59.4, 'relFoot:footRelR:R'], [60.8, 'relFoot:footRelR:R'], [914 / 15, 'footR'], [63.4, 'S:ankL', 'cut'], [65.02, 'S:ankL'], [65.6, 'up:S:ankL'], [69.0, 'home', 'cut'], [69.3, 'home'], [70.5, 'calfR'], [74.2, 'clonusFootL0', 'cut'], [74.9, 'clonusFootL0'], [75.03, 'clonusFootL1'], [77.1, 'clonusFootL1'], [77.5, 'clonusFootL0'],
+      [78.0, 'kneeClonusR', 'cut'], [81.6, 'parkFar', 'cut'], [85.0, 'home', 'cut'], [85.6, 'rel:hoffSupRel:handR'], [89.2, 'hoffPinL', 'cut'], [94.0, 'home', 'cut'], [D, 'home']],
     exR: [[0, 'home'], [1.4, 'home'], [2.3, 'park'], [7.6, 'park'], [8.1, 'up:S:bicR'], [8.6, 'S:bicR'], [10.8, 'thumbL', 'cut'], [15.0, 'S:supR', 'cut'], [18.4, 'supFingL', 'cut'], [24.0, 'park', 'cut'],
-      [25.4, 'park'], [26.6, 'S:triR'], [30.1, 'wristL', 'cut'], [34.0, 'S:reinfR@reinfR', 'cut'], [38.4, 'S:reinfR@reinfR'], [38.9, 'up:S:reinfR@reinfR'], [39.4, 'park'], [43.4, 'park'], [44.8, 'S:kneeR'], [46.3, 'S:kneeR'], [47.1, 'S:kneeL'], [48.6, 'S:kneeL'], [49.6, 'S:kneeR@jendR'],
+      [25.4, 'park'], [26.6, 'S:triR'], [452 / 15, 'wristL', 'cut'], [34.0, 'S:reinfR@reinfR', 'cut'], [38.4, 'S:reinfR@reinfR'], [38.9, 'up:S:reinfR@reinfR'], [39.4, 'park'], [43.4, 'park'], [44.8, 'S:kneeR'], [46.1, 'S:kneeR'], [47.2, 'S:kneeL'], [48.6, 'S:kneeL'], [49.6, 'S:kneeR@jendR'],
       [59.4, 'S:kneeR@jendR'], [59.9, 'up:S:kneeR@jendR'], [60.6, 'up:S:ankR'], [61.0, 'S:ankR'], [62.02, 'S:ankR'], [62.6, 'up:S:ankR'], [63.4, 'footL', 'cut'], [69.0, 'park', 'cut'], [69.6, 'park'], [70.6, 'clonusFootR0'], [71.2, 'clonusFootR0'], [71.33, 'clonusFootR1'], [73.4, 'clonusFootR1'], [73.8, 'clonusFootR0'],
       [74.2, 'calfL', 'cut'], [78.0, 'park', 'cut'], [81.6, 'kneeClonusL', 'cut'], [85.0, 'park', 'cut'], [86.0, 'park'], [86.8, 'rel:hoffPinRel:handR'], [89.2, 'hoffSupL', 'cut'], [94.0, 'park', 'cut'], [94.6, 'park'], [95.6, 'home'], [D, 'home']],
   };
@@ -516,10 +517,12 @@
           const k = NEURO.points(P), E = a.fore.getWorldPosition(V(0, 0, 0)), Wr = a.hand.group.getWorldPosition(V(0, 0, 0)), f = Wr.clone().sub(E).normalize();
           let T = k.brachioradialisTendon_R.clone();
           for (let it = 0; it < 4; it++) { const d = T.distanceTo(Wr); const q = afld.query(T.clone().addScaledVector(f, d - 0.5), 0.3); if (q.q) T = q.q.clone(); }   // 5.0 cm above the wrist joint, on the radial border
-          const n = afld.query(T, 0.1).n.clone();
+          const T0 = T.clone(), n0 = afld.query(T, 0.1).n.clone(); let n = n0.clone();
           const want = V(0.15, 0.75, 0.65).normalize();                   // his forearm toward him, from above
           let best = null;
-          for (const psi of [-30, -15, 0, 15, 30, 150, 165, 180, 195, 210]) for (const roll of [-0.5, -0.25, 0, 0.25, 0.5]) {   // the two fingers lie ALONG the radial border; rolled so both rest on it
+          for (const around of [0, -0.25, 0.25, -0.5, 0.5]) {            // the line of the two fingers a little round the forearm from the border (its flatter back or front)
+          { const nr = n0.clone().applyAxisAngle(f, around); let Tc = T0.clone(); for (let it = 0; it < 4; it++) { const q = afld.query(Tc.clone().addScaledVector(nr, 0.2), 0.4); if (q.q) Tc = q.q.clone(); Tc.addScaledVector(f, Tc.distanceTo(Wr) - 0.5); } { const q = afld.query(Tc, 0.4); if (q.q) Tc = q.q.clone(); } T = Tc; n = afld.query(T, 0.1).n.clone(); }   // still 5.0 cm above the wrist joint
+          for (const psi of [150, 165, 180, 195, 210]) for (const roll of [-0.5, -0.25, 0, 0.25, 0.5]) {   // the two fingers lie ALONG the radial border; rolled so both rest on it
             const g0 = f.clone().addScaledVector(n, -f.dot(n)).normalize().applyAxisAngle(n, psi * Math.PI / 180);
             const quat = new THREE.Quaternion().setFromAxisAngle(g0, roll).multiply(HANDS.quat(g0, n));
             hand.pose(FING_POSE); HANDS.place(hand, 'middleMidBack', T.clone().addScaledVector(n, 0.2), quat); hand.group.updateMatrixWorld(true);
@@ -529,11 +532,29 @@
             applyEx('L', e); liftClear('L', e, n, all, 0.0004);
             const pr = CONTACT.handParts(hand), gi = CONTACT.minGap(pr.index, afld, null, 0, 0.15).gap, gm = CONTACT.minGap(pr.middle, afld, null, 0, 0.15).gap;
             const fore = V(-1, 0, 0).applyQuaternion(quat), bed = bedGap(handMeshes(hand)).gap;
-            const sc = 2 * Math.max(Math.abs((isFinite(gi) ? gi : 0.03) - 0.0005), Math.abs((isFinite(gm) ? gm : 0.03) - 0.0005)) + 0.004 * (1 - fore.dot(want)) + 2 * Math.max(0, 0.002 - bed);
-            if (!best || sc < best.sc) best = { sc, e, psi, gi, gm, roll };
+            const ti = CONTACT.minGap(pr.indexTip, afld, null, 0, 0.15).gap, tm = CONTACT.minGap(pr.middleTip, afld, null, 0, 0.15).gap;   // both tips over his forearm (a slight curl then brings them down)
+            const sc = 2 * Math.max(Math.abs((isFinite(gi) ? gi : 0.03) - 0.0005), Math.abs((isFinite(gm) ? gm : 0.03) - 0.0005)) + 1.0 * Math.max(0, Math.max(isFinite(ti) ? ti : 0.03, isFinite(tm) ? tm : 0.03) - 0.006) + 0.004 * (1 - fore.dot(want)) + 2 * Math.max(0, 0.002 - bed);
+            if (!best || sc < best.sc) best = { sc, e, psi, gi, gm, roll, around, T: T.clone(), n: n.clone() };
           }
+          }
+          T = best.T; n.copy(best.n);
           const ex = best.e; applyEx('L', ex);
-          ex.pose = CONTACT.curlToTouch(hand, ['index', 'middle'], afld, FING_POSE, { gap: 0.0005, from: 0, to: 0.3 }); applyEx('L', ex);   // each rests on the skin, kept nearly straight
+          ex.pose = JSON.parse(JSON.stringify(FING_POSE)); applyEx('L', ex);
+          {   // a slight curl, joint by joint (searched): the smallest bend of each finger that brings its TIP onto his forearm,
+            // nothing of the finger sinking into him; the fingers stay along the border
+            const pr = CONTACT.handParts(hand);
+            for (const k of ['index', 'middle']) {
+              const base = ex.pose.curl[k].slice(); let bk = null;
+              for (let dm = -0.1; dm <= 0.31; dm += 0.1) for (let dp = 0; dp <= 0.81; dp += 0.1) for (let dd = 0; dd <= 0.91; dd += 0.15) {
+                ex.pose.curl[k] = [base[0] + dm, base[1] + dp, base[2] + dd]; hand.pose(ex.pose); hand.group.updateMatrixWorld(true);
+                const ga = CONTACT.minGap(pr[k], all, null, 0, 0.15).gap, tg = CONTACT.minGap(pr[k + 'Tip'], afld, null, 0, 0.15).gap;
+                const sc = Math.abs((isFinite(tg) ? tg : 0.03) - 0.0006) + 10 * Math.max(0, -(isFinite(ga) ? ga : 0) - 0.0001) + 0.0008 * (Math.abs(dm) + dp + dd);
+                if (!bk || sc < bk.sc) bk = { sc, c: ex.pose.curl[k].slice() };
+              }
+              ex.pose.curl[k] = bk.c;
+            }
+            applyEx('L', ex);
+          }   // a slight curl (middle and end joints) so each TIP rests on the skin, the fingers still lying along the border
           liftClear('L', ex, n, all, 0.0003);
           {   // the thumb relaxed alongside, resting on his forearm if it is close (kept only if nothing sinks)
             const tq0 = afld.query(hand.world('thumbPad'), 0.3);
@@ -543,7 +564,7 @@
           const fx = V(-1, 0, 0).applyQuaternion(ex.quat);
           ex.back = fx.clone().multiplyScalar(0.45).add(V(0.1, 0.8, 0.55)).normalize(); ex.sleeve = SLEEVE_UP.clone(); applyEx('L', ex);
           const pr = CONTACT.handParts(hand);
-          log('supinator fingers: turn', best.psi, 'roll', best.roll, 'index', mm(CONTACT.minGap(pr.index, afld, null, 0, 0.15).gap), 'middle', mm(CONTACT.minGap(pr.middle, afld, null, 0, 0.15).gap), 'mm; lowest of the hand vs his arm + trunk', mm(CONTACT.minGap(handMeshes(hand), all, null, 0, 0.15).gap), 'mm; point', (T.distanceTo(Wr) * 10).toFixed(2), 'cm above the wrist');
+          log('supinator fingers: round the forearm', best.around, 'turn', best.psi, 'roll', best.roll, 'index', mm(CONTACT.minGap(pr.index, afld, null, 0, 0.15).gap), 'middle', mm(CONTACT.minGap(pr.middle, afld, null, 0, 0.15).gap), 'mm; lowest of the hand vs his arm + trunk', mm(CONTACT.minGap(handMeshes(hand), all, null, 0, 0.15).gap), 'mm; point', (T.distanceTo(Wr) * 10).toFixed(2), 'cm above the wrist');
           return { ex, T, n };
         };
         applyArm('R', SOL.arms.abdR); applyArm('L', SOL.arms.abdL);
@@ -558,7 +579,7 @@
           SOL.strikes.supL = mirStrike(SOL.strikes.supR); SOL.strikes.supL.ex.sleeve = mz(SLEEVE_UP);
           applyStrike(SOL.strikes.supR, 0);
           const fg = CONTACT.partGaps(hand, CONTACT.field(armMeshes('R')));
-          SOL.gaps.supFing = { index: mm(fg.index.gap), middle: mm(fg.middle.gap), thumb: mm(fg.thumb.gap), ring: mm(fg.ring.gap), little: mm(fg.little.gap), fingersApart: mm(hand.world('indexMidBack').distanceTo(hand.world('middleMidBack'))), lowest: mm(Math.min(...Object.values(fg).map((v) => v.gap))), aboveWrist: +(fr.T.distanceTo(P.arms.R.hand.group.getWorldPosition(V(0, 0, 0))) * 10).toFixed(2), strikeGap: mm(SOL.strikes.supR.gap) };
+          SOL.gaps.supFing = { index: mm(fg.index.gap), middle: mm(fg.middle.gap), indexTip: mm(fg.indexTip.gap), middleTip: mm(fg.middleTip.gap), thumb: mm(fg.thumb.gap), ring: mm(fg.ring.gap), little: mm(fg.little.gap), fingersApart: mm(hand.world('indexMidBack').distanceTo(hand.world('middleMidBack'))), lowest: mm(Math.min(...Object.values(fg).map((v) => v.gap))), aboveWrist: +(fr.T.distanceTo(P.arms.R.hand.group.getWorldPosition(V(0, 0, 0))) * 10).toFixed(2), strikeGap: mm(SOL.strikes.supR.gap) };
           log('supinator gaps', JSON.stringify(SOL.gaps.supFing), 'hammer on the', fk, 'finger');
           // from his side at arm level, a little footward: his forearm, the two fingers on it, the hammer, his elbow
           const supCam = (sd) => {
@@ -605,18 +626,24 @@
           log('triceps arm', JSON.stringify(SOL.gaps.triArm));
           // the triceps tendon 2-3 cm above the olecranon, on the back of the arm where it faces out to his side and up (the
           // hammer comes from above and outside); the olecranon: the back of the elbow
-          const b = bendInside('R'), olec = elbowPoint('R', 2.95, 3.1, 'back');
-          const tri = (() => {
+          const b = bendInside('R');
+          // the olecranon TIP: the skin of the elbow furthest along the upper arm past the joint (the point of the elbow)
+          const olec = (() => { const a0 = P.arms.R, B = a0.armMesh.userData.base, pa = a0.armMesh.geometry.attributes.position, na = a0.armMesh.geometry.attributes.normal; a0.armMesh.updateMatrixWorld(true);
+            let best = -9, bi = 0; const pv = V(0, 0, 0); for (let i = 0; i < pa.count; i++) { const x = B[3 * i]; if (x < 2.7 || x > 3.5) continue; pv.fromBufferAttribute(pa, i).applyMatrix4(a0.armMesh.matrixWorld); const sc = pv.clone().sub(b.E).dot(b.u.clone().negate()); if (sc > best) { best = sc; bi = i; } }
+            return { point: V(0, 0, 0).fromBufferAttribute(pa, bi).applyMatrix4(a0.armMesh.matrixWorld), normal: V(0, 0, 0).fromBufferAttribute(na, bi).transformDirection(a0.armMesh.matrixWorld).normalize() }; })();
+          // the triceps tendon lo..hi proximal to the tip (toward the shoulder), on the back / outer side where it faces out to
+          // his side and a little up (the hammer comes from above and outside)
+          const pickTri = (lo, hi) => {
             const a0 = P.arms.R, B = a0.armMesh.userData.base, pa = a0.armMesh.geometry.attributes.position, na = a0.armMesh.geometry.attributes.normal; a0.armMesh.updateMatrixWorld(true);
             const outD = b.inside.clone().negate(); outD.addScaledVector(b.u, -outD.dot(b.u)).normalize();
-            const want = V(0, 0.35, 1).normalize(); let best = -2, bi = -1; const nv = V(0, 0, 0);   // facing out to his side (and a little up): the hammer comes from above and outside
-            const pv = V(0, 0, 0);
-            for (let i = 0; i < pa.count; i++) { const x = B[3 * i]; if (x < 2.3 || x > 3.0) continue; pv.fromBufferAttribute(pa, i).applyMatrix4(a0.armMesh.matrixWorld); const dd = pv.distanceTo(olec.point); if (dd < 0.2 || dd > 0.3) continue; nv.fromBufferAttribute(na, i).transformDirection(a0.armMesh.matrixWorld); if (nv.dot(outD) < -0.1) continue; const sc = nv.dot(want); if (sc > best) { best = sc; bi = i; } }   // 2-3 cm from the olecranon, on the back / outer side
+            const want = V(0, 0.35, 1).normalize(); let best = -2, bi = -1; const nv = V(0, 0, 0), pv = V(0, 0, 0);
+            for (let i = 0; i < pa.count; i++) { const x = B[3 * i]; if (x < 2.0 || x > 3.2) continue; pv.fromBufferAttribute(pa, i).applyMatrix4(a0.armMesh.matrixWorld); const dd = pv.clone().sub(olec.point).dot(b.u); if (dd < lo || dd > hi) continue; nv.fromBufferAttribute(na, i).transformDirection(a0.armMesh.matrixWorld); if (nv.dot(outD) < -0.1) continue; const sc = nv.dot(want); if (sc > best) { best = sc; bi = i; } }
             return { point: V(0, 0, 0).fromBufferAttribute(pa, bi).applyMatrix4(a0.armMesh.matrixWorld), normal: V(0, 0, 0).fromBufferAttribute(na, bi).transformDirection(a0.armMesh.matrixWorld).normalize() };
-          })();
+          };
+          let tri = pickTri(0.25, 0.35);
           SOL.lm.tricepsTendon_R = tri; SOL.lm.tricepsTendon_L = { point: mz(tri.point), normal: mz(tri.normal) };
           SOL.lm.olecranonR = { point: olec.point, normal: olec.normal }; SOL.lm.olecranonL = { point: mz(olec.point), normal: mz(olec.normal) };
-          SOL.gaps.triArm.strikeToOlecranon = +(tri.point.distanceTo(olec.point) * 10).toFixed(2);
+          SOL.gaps.triArm.strikeToOlecranon = +(tri.point.clone().sub(olec.point).dot(b.u) * 10).toFixed(2);
           const kt = NEURO.points(P);
           log('triceps tendon measured', r3(tri.point), 'normal', r3(tri.normal), '; kit tricepsTendon is', (kt.normals.tricepsTendon_R.angleTo(tri.normal) * 180 / Math.PI).toFixed(0), 'deg away; elbow', b.angle, 'deg');
           // the wrist hold
@@ -652,8 +679,18 @@
           const g = CONTACT.partGaps(hand, fld);
           SOL.gaps.wristR = Object.fromEntries(Object.entries(g).map(([k2, v]) => [k2, mm(v.gap)]));
           log('wrist hold gaps (mm)', JSON.stringify(SOL.gaps.wristR));
-          SOL.strikes.triR = strikeSearch(tri.point, tri.normal, V(0, -1, -0.6), CONTACT.field([a.armMesh]), 'triceps'); SOL.strikes.triL = mirStrike(SOL.strikes.triR);
-          log('triceps strike point', SOL.gaps.triArm.strikeToOlecranon, 'cm above the olecranon');
+          // the hammer HEAD's centre must land 2.5-3.5 cm proximal to the olecranon tip: strike, measure, move the strike point
+          let band = [0.25, 0.35], headProx = null;
+          for (let it = 0; it < 4; it++) {
+            SOL.strikes.triR = strikeSearch(tri.point, tri.normal, V(0, -1, -0.6), CONTACT.field([a.armMesh]), 'triceps');
+            applyStrike(SOL.strikes.triR, 0); const hc = hammer.group.localToWorld(hammer.pts.centre.clone()); headProx = hc.sub(olec.point).dot(b.u);
+            log('triceps: head centre', +(headProx * 10).toFixed(2), 'cm proximal to the olecranon tip (strike point', +(tri.point.clone().sub(olec.point).dot(b.u) * 10).toFixed(2), 'cm)');
+            if (headProx >= 0.27 && headProx <= 0.33) break;
+            band = [band[0] + 0.3 - headProx, band[1] + 0.3 - headProx]; tri = pickTri(band[0], band[1]);
+            SOL.lm.tricepsTendon_R = tri; SOL.lm.tricepsTendon_L = { point: mz(tri.point), normal: mz(tri.normal) };
+          }
+          SOL.gaps.triArm.strikeToOlecranon = +(tri.point.clone().sub(olec.point).dot(b.u) * 10).toFixed(2); SOL.gaps.triArm.headCentreToOlecranon = +(headProx * 10).toFixed(2);
+          SOL.strikes.triL = mirStrike(SOL.strikes.triR);
           log('triceps strike gap', mm(SOL.strikes.triR.gap), 'mm');
           const Tt = tri.point;
           applyEx('L', ex); applyStrike(SOL.strikes.triR, 0);
@@ -1159,6 +1196,22 @@
         if (a.thumbQ || b.thumbQ) { const hd = EX[h].hand, qa = a.thumbQ || thumbQOf(hd, a.pose), qb = b.thumbQ || thumbQOf(hd, b.pose); o.thumbQ = qa.map((q, i) => q.clone().slerp(qb[i], u)); }
         return o;
       };
+      // A hand leaving a contact slides OUT along its own forearm (8 cm, 0.4 s), travels, and slides IN along the forearm of
+      // the contact it is going to (8 cm, 0.4 s): no hand flies sideways onto him or across the lens, and its fingers are
+      // already in their contact pose while it slides in. Rest / parked / lifted states are not contacts. Small moves (a push
+      // of the foot, a hold carried with his hand) keep the plain blend.
+      const FREE = /^(home|homeFar|park|parkFar|up:)/, SLIDE = 0.8, SLIDE_T = 0.4;
+      const exMove = (h, a, b, u, info) => {
+        if (!info || a.wrist.distanceTo(b.wrist) < 0.6) return lerpEx(h, a, b, u);
+        const dur = info.t1 - info.t0, s = info.t - info.t0;
+        let tOut = FREE.test(info.n0) ? 0 : SLIDE_T, tIn = FREE.test(info.n1) ? 0 : SLIDE_T;
+        if (tOut + tIn > dur - 0.15) { const k = Math.max(0, dur - 0.15) / (tOut + tIn); tOut *= k; tIn *= k; }   // always some travel between the two slides
+        const A1 = tOut ? Object.assign({}, a, { wrist: a.wrist.clone().addScaledVector(a.back, SLIDE) }) : a, B1 = tIn ? Object.assign({}, b, { wrist: b.wrist.clone().addScaledVector(b.back, SLIDE) }) : b;
+        const e = K.ease.inOut;
+        if (tOut && s < tOut) return lerpEx(h, a, Object.assign({}, A1, { strike: a.strike, geo: a.geo }), e(s / tOut));
+        if (tIn && s > dur - tIn) return lerpEx(h, B1, b, e((s - (dur - tIn)) / tIn));
+        const tr = dur - tOut - tIn; return lerpEx(h, A1, B1, tr > 1e-6 ? e(K.clamp((s - tOut) / tr)) : 1);
+      };
       const armState = (side, name) => (name === 'home' ? HOME_ARM[side] : SOL.arms[name]);
       const lerpArm = (a, b, u) => ({ wrist: a.wrist.clone().lerp(b.wrist, u), quat: a.quat.clone().slerp(b.quat, u), pose: blendPose(a.pose, b.pose, u), pole: a.pole.clone().lerp(b.pole, u).normalize() });
       const legState = (name) => (name === 'rest' ? {} : SOL.legs[name]);
@@ -1170,7 +1223,7 @@
         const [t0, n0] = keys[i];
         if (i === keys.length - 1 || keys[i + 1][2] === 'cut' || n0 === keys[i + 1][1]) return get(n0, t);
         const [t1, n1] = keys[i + 1], u = K.ease.inOut(K.clamp((t - t0) / (t1 - t0)));
-        return lerp(get(n0, t), get(n1, t), u);
+        return lerp(get(n0, t), get(n1, t), u, { t, t0, t1, n0, n1 });
       };
       // ================================================ KEYS (seconds). R / L = the patient's sides; ex hands by the examiner's hand.
       const S_ = Object.fromEntries(STRIKES.map((k) => [k.id, k.t]));
@@ -1275,7 +1328,7 @@
         P.breathe(still ? 0 : p * BREATH);
         // the examiner's hands and the hammer
         for (const h of ['R', 'L']) {
-          let st = CH['ex' + h](p, (n) => exState(h, n, p), (a, b, u) => lerpEx(h, a, b, u));
+          let st = CH['ex' + h](p, (n) => exState(h, n, p), (a, b, u, info) => exMove(h, a, b, u, info));
           if (st.strike) { const a = swingAt(st.strike, p) * ((SOL.strikes[st.geo || st.strike] || {}).swingSign || 1); if (a) { const axis = V(0, 0, 1).applyQuaternion(st.quat).normalize(); st = Object.assign({}, st, { quat: new THREE.Quaternion().setFromAxisAngle(axis, a).multiply(st.quat) }); } }
           // knee clonus: the hand moves 8 mm toward his foot with the kneecap
           if (/kneeClonus/.test(KEYS['ex' + h].find((k, i, arr) => k[0] <= p && (!arr[i + 1] || arr[i + 1][0] > p))[1])) {
@@ -1424,9 +1477,9 @@
       k.noise(0, { dur: D, color: 'pink', filter: 'highpass', f: 4500, gain: 0.012, a: 0.5, hold: D - 1.0, bus: 'amb' });
       // the tendon hammer: a soft rubber tap, a short dull thud, the same on both sides, at the frame the head lands
       for (const s of STRIKES) {
-        k.tone(s.t, { f: [[0, 210], [0.045, 95]], dur: 0.085, gain: 0.34, a: 0.002 });
-        k.noise(s.t, { dur: 0.03, color: 'brown', filter: 'lowpass', f: 1300, gain: 0.16, a: 0.001 });
-        k.noise(s.t, { dur: 0.018, color: 'pink', filter: 'bandpass', f: 700, q: 1.2, gain: 0.05, a: 0.001 });
+        k.tone(s.t, { f: [[0, 190], [0.05, 90]], dur: 0.09, gain: 0.32, a: 0.006 });                     // soft attacks and low filters: no click
+        k.noise(s.t, { dur: 0.035, color: 'brown', filter: 'lowpass', f: 800, gain: 0.14, a: 0.005 });
+        k.noise(s.t, { dur: 0.022, color: 'pink', filter: 'bandpass', f: 500, q: 1.0, gain: 0.035, a: 0.005 });
       }
       // a very soft rustle of the sheet when one of his limbs starts to move
       for (const ch of ['armR', 'armL', 'legR', 'legL']) {
