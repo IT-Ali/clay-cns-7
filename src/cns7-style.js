@@ -451,7 +451,10 @@
           };
           SOL.cams.bicR = armCam('R', 'L', SOL.strikes.bicR, 'biceps R');
           applyEx('L', HOME_EX.L); applyEx('R', SOL.ex.thumbL); applyStrike(SOL.strikes.bicL, 0);
-          SOL.cams.bicL = mirCam(SOL.cams.bicR);
+          {   // his left: the wall and the bedside table are close on that side, so the camera comes in closer and higher
+            const a = P.arms.L, E = a.fore.getWorldPosition(V(0, 0, 0)), Wr = a.hand.group.getWorldPosition(V(0, 0, 0)), tb = E.clone().lerp(SOL.lm.bicepsTendon_L.point, 0.6).lerp(Wr, 0.15);
+            SOL.cams.bicL = cam(tb.clone().addScaledVector(V(-0.25, 0.65, -1).normalize(), 5.2), tb, tb, 0.02);
+          }
           applyEx('R', HOME_EX.R); applyEx('L', HOME_EX.L);
         }
         // --------------------------------------------------- supinator jerk: the hammer on the brachioradialis tendon (radial
@@ -689,7 +692,7 @@
           const clonCam = (sd, name) => {
             const sz = sd === 'R' ? 1 : -1, b2 = P.legPoint(sd, 'ball'), c2 = P.legPoint(sd, 'calf');
             const tc = b2.clone().lerp(c2, 0.45);   // from his side, low: the leg, the foot and both palms
-            if (tc) return cam(tc.clone().addScaledVector(V(0.3, 0.3, sz).normalize(), 9.0), tc, tc, 0.025);
+            if (tc) return cam(tc.clone().addScaledVector(V(-0.45, 0.35, sz).normalize(), 9.0), tc, tc, 0.025);
             return pickCam(tc, V(0.75, 0.3, 0.6 * sz), 9.0, [[EX.R.hand.world('palm'), 0.05, EX.R.hand.group], [EX.L.hand.world('palm'), 0.05, EX.L.hand.group], [P.legPoint(sd, 'achilles'), 0.08, P.legs[sd]], [b2, 0.08, P.legs[sd]]], { name, maxCone: 40, aperture: 0.025 });
           };
           SOL.cams.clonR = clonCam('R', 'ankle clonus R');
