@@ -68,7 +68,7 @@
   // [time, state, 'cut'?]: between two keys the state moves (eased); a 'cut' key jumps. Names: see the states in build().
   const KEYS = {
     cam: [[0, 'home'], [HOME_HOLD, 'home'], [4.6, 'upper'], [6.5, 'upper'], [8.2, 'bicR'], [10.8, 'bicR'], [10.8, 'bicL', 'cut'],
-      [15.0, 'supR', 'cut'], [18.4, 'supL', 'cut'], [24.0, 'upper', 'cut'], [25.0, 'upper'], [26.5, 'triR'], [30.1, 'triL', 'cut'],
+      [15.0, 'supR', 'cut'], [18.4, 'supL', 'cut'], [24.0, 'triR', 'cut'], [30.1, 'triL', 'cut'],
       [34.0, 'reinf', 'cut'], [41.0, 'knees', 'cut'], [51.0, 'jend', 'cut'], [59.0, 'legs', 'cut'], [59.4, 'legs'], [60.9, 'ankR'], [63.4, 'ankL', 'cut'],
       [69.0, 'clonR', 'cut'], [74.2, 'clonL', 'cut'], [78.0, 'kneeClonR', 'cut'], [81.6, 'kneeClonL', 'cut'], [85.0, 'hoffR', 'cut'], [89.2, 'hoffL', 'cut'],
       [94.0, 'upper', 'cut'], [96.0, 'home'], [D, 'home']],
@@ -746,6 +746,10 @@
       const CH = Object.fromEntries(Object.entries(KEYS).map(([k, v]) => [k, channel(v)]));
       // ---- cameras: one object per shot (solved), plus the two wide ones
       const CAMS = Object.assign({ home: Object.assign({}, SET.HOME_CNS) }, SOL.cams);
+      {   // the knee jerks: from his right, footward and above, both knees (built from the two solved tendon points)
+        const mid = SOL.strikes.kneeR.target.clone().lerp(SOL.strikes.kneeL.target, 0.5), d = V(0.75, 0.35, 0.55).normalize();
+        CAMS.knees = { pos: mid.clone().addScaledVector(d, 9.5).toArray(), target: mid.clone().add(V(0, -0.2, 0)).toArray(), focus: mid.toArray(), aperture: 0.03, fov: 28 };
+      }
       const camVec = (c) => [...c.pos, ...c.target, ...(Array.isArray(c.focus) ? c.focus : c.target), c.fov || 28, c.aperture == null ? 0.02 : c.aperture];
       const camAt = (t) => CH.cam(t, (n) => camVec(CAMS[n]), (a, b, u) => a.map((v, i) => K.lerp(v, b[i], u)));
       const shoot = (v) => { K.look(S.camera, v.slice(0, 3), v.slice(3, 6), v[9]); K.focus(S.camera, v.slice(6, 9), v[10]); };

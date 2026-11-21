@@ -1,6 +1,7 @@
 // tools/solve.mjs: runs every contact solve ONCE (in the page, SOLVE mode) and saves solved.json. The preview and the
 // final render only LOAD it. Run it again whenever src/contact.js, the SOLVE section of src/cns7-style.js or shared/ change.
 import fs from 'node:fs'; import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { serve, launch, openPage, ROOT, sha } from './common.mjs';
 export const solveInputs = () => {
   const style = fs.readFileSync(path.join(ROOT, 'src/cns7-style.js'), 'utf8');
@@ -8,7 +9,7 @@ export const solveInputs = () => {
   const shared = fs.readdirSync(path.join(ROOT, 'shared')).sort().map((f) => fs.readFileSync(path.join(ROOT, 'shared', f)));
   return sha(Buffer.concat([Buffer.from(sect), fs.readFileSync(path.join(ROOT, 'src/contact.js')), ...shared]).toString('base64'));
 };
-if (import.meta.url === `file://${process.argv[1]}` || process.argv[1].endsWith('solve.mjs')) {
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const t0 = Date.now(), { srv, url } = await serve(), { browser } = await launch();
   try {
     const page = await openPage(browser, url, { w: 320, h: 180, samples: 1, solve: 1 });

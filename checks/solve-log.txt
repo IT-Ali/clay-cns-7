@@ -1,0 +1,36 @@
+abd R elbow 105.8 deg; kit bicepsTendon -4.034, 8.232, 2.716 its normal is 84 deg from the inside of the bend; brachioradialisTendon normal 0.027, 0.972, -0.234
+abd L elbow 105.8 deg; kit bicepsTendon -4.034, 8.232, -2.716 its normal is 84 deg from the inside of the bend; brachioradialisTendon normal 0.031, 0.971, 0.235
+biceps tendon R measured -3.751, 8.804, 2.631 normal 0.801, 0.176, -0.573 facing the inside of the bend 0.997
+biceps tendon L measured -3.751, 8.804, -2.631 normal 0.801, 0.176, 0.573 facing the inside of the bend 0.997
+biceps hand on the front of the arm: 9.7 cm above the tendon, reach 0.60 | thumb pad 0.09 mm, lowest thumb point -1.07 mm, deepest point in the arm capsules -2.13 mm
+biceps thumb gaps (mm) {"thumbPad":-0.16,"palm":0.06,"index":5.52,"middle":2.1,"ring":0.71,"little":2.88,"min":-1.07} parts {"palm":-0.06,"index":5.4,"indexTip":5.52,"middle":0.47,"middleTip":2.1,"ring":0.19,"ringTip":0.71,"little":2.88,"littleTip":2.88,"thumb":-1.07,"thumbTip":-1.07}
+pickCam biceps R clear view at 0 deg from the preferred direction
+pickCam supinator R clear view at 0 deg from the preferred direction
+supinator strike gap 0.06 mm
+triceps tendon measured -3.772, 11.099, 4.052 normal -0.58, -0.383, 0.719 ; kit tricepsTendon is 24 deg away; elbow 53.4 deg
+wrist hold thumb pad 0.08 mm, lowest thumb point 0.06 mm
+wrist hold gaps (mm) {"palm":0.06,"index":8.14,"indexTip":8.14,"middle":null,"middleTip":null,"ring":null,"ringTip":null,"little":0.27,"littleTip":0.27,"thumb":0.08,"thumbTip":0.08}
+triceps strike gap 0.06 mm
+pickCam triceps R clear view at 10 deg from the preferred direction
+pickCam reinforcement clear view at 10 deg from the preferred direction
+knee support: forearm to right knee 0.06 mm, to left knee 0.52 mm; heels above the mattress R 16.11 L 16.11 mm
+strike kneeR gap 0.06 mm
+strike kneeL gap 0.06 mm
+pickCam knees clear view at 50 deg from the preferred direction
+Jendrassik pull 0 right hand moved 60 mm out, across the fingers -12 mm; closest point between the hands -6.37 mm
+Jendrassik pull 1 right hand moved 60 mm out, across the fingers -12 mm; closest point between the hands -7.13 mm
+Jendrassik pull 0 : closest point between his two hands -6.37 mm (negative = fingers through each other)
+Jendrassik pull 1 : closest point between his two hands -7.13 mm (negative = fingers through each other)
+pickCam Jendrassik clear view at 60 deg from the preferred direction
+ankle jerk leg {"hipFlex":47.4,"hipAbd":11.6,"hipRot":43.8,"knee":73.2,"ankle":8,"ankleInv":0,"bigToe":0,"toes":0,"fan":0,"error":0} | outer ankle on the other shin -5.45 mm
+palm on the ball of the foot R gap 0.06 mm
+strike ankR gap 0.06 mm
+pickCam ankle jerk R clear view at 0 deg from the preferred direction
+ankle clonus: palm under the calf 0.05 mm; hand above the mattress 34.01 mm
+palm on the ball of the foot R gap 0.05 mm
+palm on the ball of the foot R gap 0.05 mm
+pickCam ankle clonus R clear view at 20 deg from the preferred direction
+knee clonus gaps (mm) {"indexTip":2.03,"thumbTip":-0.1,"lowest":-3.83}
+pickCam knee clonus R clear view at 0 deg from the preferred direction
+Hoffmann gaps (mm) {"palmOnPalm":0.06,"indexUnderTip":7.85,"thumbOnNail":null,"thumbLowest":0.06}
+pickCam Hoffmann R clear view at 20 deg from the preferred direction
