@@ -417,8 +417,9 @@
           // arm" so that the examiner's forearm can rise from the wrist toward him with a natural wrist (bent back at most
           // 50 degrees, never sideways); the hand slides up the arm until the thumb's base is at 0.6 of its reach from the tendon.
           const D = V(0.55, 0.65, 0.5).normalize(), torF = CONTACT.field(torsoMeshes());                       // the examiner's forearm: up and toward his feet (he stands at the level of his hip)
-          const placeAt = (back, psi) => {
-            const c = T.clone().addScaledVector(b.u, back), hit = new THREE.Raycaster(c.clone().addScaledVector(n, 1.2), n.clone().negate()).intersectObject(rcm, false)[0];
+          const acr = V(0, 0, 0).crossVectors(n, b.u).normalize();
+          const placeAt = (back, psi, ac = 0) => {
+            const c = T.clone().addScaledVector(b.u, back).addScaledVector(acr, ac), hit = new THREE.Raycaster(c.clone().addScaledVector(n, 1.2), n.clone().negate()).intersectObject(rcm, false)[0];
             const nn = fld.query(hit.point, 0.05).n, fingers = b.u.clone().addScaledVector(nn, -b.u.dot(nn)).normalize().applyAxisAngle(nn, psi), quat = HANDS.quat(fingers, nn);
             hand.pose(FRONT_POSE); CONTACT.rest(hand, 'palm', hit.point, nn, quat, fld, 0.0006, 0.3);
             const mx = fingers.clone().negate(), ang = mx.angleTo(D), fa = ang <= 0.87 ? D.clone() : mx.clone().applyAxisAngle(V(0, 0, 0).crossVectors(mx, D).normalize(), 0.87);
@@ -427,19 +428,20 @@
             return hand.thumb.base.getWorldPosition(V(0, 0, 0)).distanceTo(T) / 1.04;
           };
           let bestB = null;
-          for (const psi of [0, -0.8, 0.8, -1.6, 1.6, -2.4, 2.4, 3.14]) {
-            let lo = 0.0, hi = 1.6; for (let it = 0; it < 12; it++) { const m = (lo + hi) / 2; if (placeAt(m, psi) < 0.6) lo = m; else hi = m; }
-            const r = placeAt((lo + hi) / 2, psi); const e0 = ex;
+          for (const psi of [0, -0.8, 0.8, -1.2, -1.6, 1.6]) for (const ac of [0, 0.15, -0.15, 0.3, -0.3]) {
+            let lo = 0.0, hi = 1.6; for (let it = 0; it < 11; it++) { const m = (lo + hi) / 2; if (placeAt(m, psi, ac) < 0.6) lo = m; else hi = m; }
+            const r = placeAt((lo + hi) / 2, psi, ac); const e0 = ex;
             const th = CONTACT.thumbOn(hand, T, n, fld, 0.0009), sink = Math.min(CONTACT.minGap(handMeshes(hand), fld, null, 0, 0.15, 3).gap, CONTACT.minGap(handMeshes(hand), torF, null, 0, 0.15, 3).gap);
-            const up = Math.max(0, 0.5 - e0.back.y);                       // the forearm must rise (never down toward the bed or across his body)
-            const sc = Math.abs((isFinite(th.pad) ? th.pad : 0.03) - 0.0006) + 4 * Math.max(0, -sink) + 0.004 * Math.max(0, e0.ang - 0.87) + 0.01 * up + 0.0003 * Math.abs(psi);
-            log('biceps hand turn', psi, 'thumb pad', mm(th.pad), 'lowest', mm(sink), 'mm, wrist to the forearm line', (e0.ang * 180 / Math.PI).toFixed(0), 'deg');
-            if (!bestB || sc < bestB.sc) bestB = { sc, m: (lo + hi) / 2, psi, r };
+            const up = Math.max(0, 0.35 - e0.back.y);                      // the forearm must rise (never down toward the bed or across his body)
+            const sc = Math.abs((isFinite(th.pad) ? th.pad : 0.03) - 0.0006) + 4 * Math.max(0, -sink) + 0.004 * Math.max(0, e0.ang - 0.87) + 0.05 * up + 0.0003 * Math.abs(psi);
+            log('biceps hand turn', psi, 'across', ac, 'thumb pad', mm(th.pad), 'lowest', mm(sink), 'mm, wrist to the forearm line', (e0.ang * 180 / Math.PI).toFixed(0), 'deg');
+            if (!bestB || sc < bestB.sc) bestB = { sc, m: (lo + hi) / 2, psi, ac, r };
           }
-          const reach = placeAt(bestB.m, bestB.psi), lo = bestB.m, hi = bestB.m; delete ex.psi; delete ex.ang;
+          const reach = placeAt(bestB.m, bestB.psi, bestB.ac), lo = bestB.m, hi = bestB.m; delete ex.psi; delete ex.ang;
           ex.pose = CONTACT.curlToTouch(hand, ['index', 'middle', 'ring', 'little'], fld, FRONT_POSE, { gap: 0.0006, from: -0.2, to: 1.0, together: true }); applyEx('L', ex);
           const th = CONTACT.thumbOn(hand, T, n, fld, 0.0009); ex.thumbQ = th.tq; applyEx('L', ex);
           liftClear('L', ex, n, fld, 0.0003);
+          { const tg = CONTACT.minGap(handMeshes(hand), torF, null, 0, 0.15).gap; if (tg < 0 && tg > -0.0012) { ex.wrist = ex.wrist.clone().addScaledVector(n, 0.0003 - tg); applyEx('L', ex); } }   // a touch clear of his chest (at most 1.2 mm up)
           th.pad = CONTACT.gapNear(hand, 'thumbPad', fld, 0.05).gap; th.all = CONTACT.minGap(CONTACT.handParts(hand).thumb, fld, null, 0, 0.15).gap;
           const deep = CONTACT.minSdf(handMeshes(hand), armCaps(side), 2);
           log('biceps hand on the front of the arm:', ((lo + hi) / 2 * 10).toFixed(1), 'cm above the tendon, reach', reach.toFixed(2), '| thumb pad', mm(th.pad), 'mm, lowest thumb point', mm(th.all), 'mm, deepest point in the arm capsules', mm(deep), 'mm');
