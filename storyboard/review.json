@@ -113,13 +113,6 @@
   "values": {}
  },
  {
-  "id": "b_ankR_hit",
-  "gaps": {
-   "hammer head": 0.06
-  },
-  "values": {}
- },
- {
   "id": "b_ankL_top",
   "gaps": {},
   "values": {}
@@ -390,6 +383,22 @@
   "gaps": {},
   "values": {
    "ankle": -2
+  }
+ },
+ {
+  "id": "b_ankR_hit",
+  "gaps": {
+   "hammer head": 0.06,
+   "ex L palm": 0.03,
+   "ex L thumb": 0.28,
+   "ex L index": null,
+   "ex L middle": null,
+   "ex L ring": null,
+   "ex L little": null,
+   "his outer ankle on the other shin": 0.06
+  },
+  "values": {
+   "hammer contact to achillesTendon_R (cm)": 0.08
   }
  }
 ]

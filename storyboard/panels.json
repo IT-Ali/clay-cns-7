@@ -316,7 +316,7 @@
   "t1": 69,
   "hold": null,
   "caption": "",
-  "cam": "legs",
+  "cam": "legsWide",
   "strikes": [
    "ankR 61.80 s",
    "ankL 64.80 s"
