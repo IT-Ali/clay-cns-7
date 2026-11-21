@@ -776,7 +776,7 @@
           // only (nothing of either hand sinks)
           const hfld = CONTACT.field(handMeshes(ph));
           const sup = EX.L.hand, pdn = V(0, -1, 0).transformDirection(ph.group.matrixWorld).normalize();   // the way his palm faces
-          const SPOSE = { all: [0.1, 0.14, 0.08], spread: 0.12, fan: { index: 0.03, middle: 0, ring: -0.03, little: -0.06 }, thumb: [0.25, 0.05, 0.15, 0.1] };
+          const SPOSE = { all: [0.1, 0.14, 0.08], spread: 0.05, fan: { index: 0.0, middle: 0, ring: -0.01, little: -0.02 }, thumb: [0.25, 0.05, 0.15, 0.1] };   // fingers together
           const f00 = V(-0.45, 0, -1).addScaledVector(pdn, -V(-0.45, 0, -1).dot(pdn)).normalize();
           let bestS = null;
           for (const turn of [-0.45, -0.3, -0.15, 0, 0.15, 0.3]) for (const sl of [-0.35, -0.25, -0.15, -0.05, 0.05]) {
@@ -844,10 +844,10 @@
           const thumbP = ph.world('thumbTip');
           // a close-up from his side, a little below the hand: his whole hand and his thumb (which must be seen to stay still)
           const hoffCam = (sd, pinH, name) => {
-            const sz = sd === 'R' ? 1 : -1, hh = P.arms[sd].hand, tp = hh.world('thumbTip'), c = hh.world('palm').lerp(hh.world('middleTip'), 0.3);
+            const sz = sd === 'R' ? 1 : -1, hh = P.arms[sd].hand, tp = hh.world('thumbTip'), c = hh.world('palm').lerp(hh.world('middleTip'), 0.35).lerp(tp, 0.2);
             const ts = tp.clone().sub(hh.world('palm')); ts.y = 0; ts.normalize();       // the side his thumb is on
             log(name, 'his thumb side', r3(ts));
-            return pickCam(c, ts.clone().add(V(0, -0.3, 0.75 * sz)), 4.2, [[tp, 0.03, P.arms[sd].group], [EX[pinH].hand.world('thumbTip'), 0.04, EX[pinH].group], [hh.world('middleTip'), 0.04, P.arms[sd].group]], { name, aim: c.clone().lerp(tp, 0.25), aperture: 0.012, maxCone: 50 });
+            return pickCam(c, ts.clone().add(V(0, 0, -0.1 * sz)), 6.0, [[tp, 0.03, P.arms[sd].group], [EX[pinH].hand.world('thumbTip'), 0.04, EX[pinH].group], [hh.world('middleTip'), 0.04, P.arms[sd].group]], { name, aim: c, aperture: 0.012, maxCone: 30 });
           };
           SOL.cams.hoffR = hoffCam('R', 'R', 'Hoffmann R');
           applyArm('R', HOME_ARM.R); applyArm('L', SOL.arms.hoffL); applyEx('R', SOL.ex.hoffSupL); applyEx('L', SOL.ex.hoffPinL);
