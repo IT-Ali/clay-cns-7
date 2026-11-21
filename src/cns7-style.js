@@ -1204,6 +1204,13 @@
         const fd = front.clone().multiplyScalar(0.55).addScaledVector(side, 0.85).normalize(), ft = fc.clone().add(V(0, 0.35, 0));
         CAMS.reinfFace = { pos: ft.clone().addScaledVector(fd, 6.0).toArray(), target: ft.toArray(), focus: jaw.toArray(), aperture: 0.015, fov: 28 };
       }
+      {   // triceps: from his side, a little from the head end and above: the elbow resting on the mattress, the hammer from
+        // outside onto the tendon above the olecranon, the forearm across his trunk held at the wrist
+        for (const sd of ['R', 'L']) {
+          const sz = sd === 'R' ? 1 : -1, tt = SOL.lm['tricepsTendon_' + sd].point.clone().lerp(SOL.arms['chest' + sd].wrist, 0.4).add(V(0, 0.3, 0)), d = V(-0.5, 0.4, 0.75 * sz).normalize();
+          CAMS['tri' + sd] = { pos: tt.clone().addScaledVector(d, sd === 'R' ? 10 : 6.6).toArray(), target: tt.toArray(), focus: SOL.lm['tricepsTendon_' + sd].point.toArray(), aperture: 0.02, fov: sd === 'R' ? 28 : 40 };
+        }
+      }
       const camVec = (c) => [...c.pos, ...c.target, ...(Array.isArray(c.focus) ? c.focus : c.target), c.fov || 28, c.aperture == null ? 0.02 : c.aperture];
       const camAt = (t) => CH.cam(t, (n) => camVec(CAMS[n]), (a, b, u) => a.map((v, i) => K.lerp(v, b[i], u)));
       const shoot = (v) => { K.look(S.camera, v.slice(0, 3), v.slice(3, 6), v[9]); K.focus(S.camera, v.slice(6, 9), v[10]); };
