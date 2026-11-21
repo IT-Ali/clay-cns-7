@@ -5,66 +5,6 @@
   "values": {}
  },
  {
-  "id": "b_supR_top",
-  "gaps": {},
-  "values": {}
- },
- {
-  "id": "b_supR_hit",
-  "gaps": {
-   "hammer head": 0.06,
-   "ex L palm": null,
-   "ex L thumb": 8.31,
-   "ex L index": 0.39,
-   "ex L middle": 0.03,
-   "ex L ring": null,
-   "ex L little": null
-  },
-  "values": {}
- },
- {
-  "id": "b_supL_top",
-  "gaps": {},
-  "values": {}
- },
- {
-  "id": "b_supL_hit",
-  "gaps": {
-   "hammer head": 0.06,
-   "ex R palm": null,
-   "ex R thumb": 8.31,
-   "ex R index": 0.39,
-   "ex R middle": 0.03,
-   "ex R ring": null,
-   "ex R little": null
-  },
-  "values": {}
- },
- {
-  "id": "b_triR_top",
-  "gaps": {},
-  "values": {}
- },
- {
-  "id": "b_triR_hit",
-  "gaps": {
-   "hammer head": 0.06
-  },
-  "values": {}
- },
- {
-  "id": "b_triL_top",
-  "gaps": {},
-  "values": {}
- },
- {
-  "id": "b_triL_hit",
-  "gaps": {
-   "hammer head": 0.06
-  },
-  "values": {}
- },
- {
   "id": "b_kneeR_top",
   "gaps": {},
   "values": {}
@@ -110,62 +50,6 @@
   },
   "values": {
    "hammer contact to patellarTendon_R (cm)": 0.08
-  }
- },
- {
-  "id": "c_supR_before",
-  "gaps": {},
-  "values": {
-   "elbow": 105.8
-  }
- },
- {
-  "id": "c_supR_peak",
-  "gaps": {},
-  "values": {
-   "elbow": 97.8
-  }
- },
- {
-  "id": "c_supL_before",
-  "gaps": {},
-  "values": {
-   "elbow": 105.8
-  }
- },
- {
-  "id": "c_supL_peak",
-  "gaps": {},
-  "values": {
-   "elbow": 97.8
-  }
- },
- {
-  "id": "c_triR_before",
-  "gaps": {},
-  "values": {
-   "elbow": 90
-  }
- },
- {
-  "id": "c_triR_peak",
-  "gaps": {},
-  "values": {
-   "elbow": 100
-  }
- },
- {
-  "id": "c_triL_before",
-  "gaps": {},
-  "values": {
-   "elbow": 90
-  }
- },
- {
-  "id": "c_triL_peak",
-  "gaps": {},
-  "values": {
-   "elbow": 100
   }
  },
  {
@@ -275,32 +159,6 @@
     4.749
    ]
   }
- },
- {
-  "id": "x_sup",
-  "gaps": {
-   "ex L palm": null,
-   "ex L thumb": 8.31,
-   "ex L index": 0.39,
-   "ex L middle": 0.03,
-   "ex L ring": null,
-   "ex L little": null
-  },
-  "values": {
-   "supPoint_R to the wrist joint (cm)": 5
-  }
- },
- {
-  "id": "x_wrist",
-  "gaps": {
-   "ex L palm": 0.06,
-   "ex L thumb": 0.06,
-   "ex L index": 0.66,
-   "ex L middle": 0.41,
-   "ex L ring": 1.09,
-   "ex L little": 0.35
-  },
-  "values": {}
  },
  {
   "id": "x_hoffL",
@@ -432,9 +290,9 @@
    "hammer head": 0.06,
    "ex L palm": 0.06,
    "ex L thumb": 0.03,
-   "ex L index": 14.1,
-   "ex L middle": null,
-   "ex L ring": 14.04,
+   "ex L index": 1.13,
+   "ex L middle": 0.1,
+   "ex L ring": 0.27,
    "ex L little": 0.05
   },
   "values": {}
@@ -450,10 +308,44 @@
    "hammer head": 0.06,
    "ex R palm": 0.06,
    "ex R thumb": 0.03,
-   "ex R index": 14.1,
-   "ex R middle": null,
-   "ex R ring": 14.04,
+   "ex R index": 1.13,
+   "ex R middle": 0.09,
+   "ex R ring": 0.27,
    "ex R little": 0.05
+  },
+  "values": {}
+ },
+ {
+  "id": "b_supR_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_supL_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_triR_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_triR_hit",
+  "gaps": {
+   "hammer head": 0.06
+  },
+  "values": {}
+ },
+ {
+  "id": "b_triL_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_triL_hit",
+  "gaps": {
+   "hammer head": 0.06
   },
   "values": {}
  },
@@ -468,9 +360,9 @@
    "hammer head": 0.06,
    "ex L palm": 0.06,
    "ex L thumb": 0.03,
-   "ex L index": 14.1,
-   "ex L middle": null,
-   "ex L ring": 14.04,
+   "ex L index": 1.13,
+   "ex L middle": 0.1,
+   "ex L ring": 0.27,
    "ex L little": 0.05
   },
   "values": {}
@@ -504,20 +396,182 @@
   }
  },
  {
+  "id": "c_supR_before",
+  "gaps": {},
+  "values": {
+   "elbow": 105.8
+  }
+ },
+ {
+  "id": "c_supR_peak",
+  "gaps": {},
+  "values": {
+   "elbow": 97.8
+  }
+ },
+ {
+  "id": "c_supL_before",
+  "gaps": {},
+  "values": {
+   "elbow": 105.8
+  }
+ },
+ {
+  "id": "c_supL_peak",
+  "gaps": {},
+  "values": {
+   "elbow": 97.8
+  }
+ },
+ {
+  "id": "c_triR_before",
+  "gaps": {},
+  "values": {
+   "elbow": 90.1
+  }
+ },
+ {
+  "id": "c_triR_peak",
+  "gaps": {},
+  "values": {
+   "elbow": 100.1
+  }
+ },
+ {
+  "id": "c_triL_before",
+  "gaps": {},
+  "values": {
+   "elbow": 90.1
+  }
+ },
+ {
+  "id": "c_triL_peak",
+  "gaps": {},
+  "values": {
+   "elbow": 100.1
+  }
+ },
+ {
   "id": "x_biceps_thumb",
   "gaps": {
    "ex L palm": 0.06,
    "ex L thumb": 0.03,
-   "ex L index": 14.1,
-   "ex L middle": null,
-   "ex L ring": 14.04,
+   "ex L index": 1.13,
+   "ex L middle": 0.1,
+   "ex L ring": 0.27,
    "ex L little": 0.05
   },
   "values": {}
  },
  {
+  "id": "x_tri",
+  "gaps": {
+   "his upper arm on the mattress": -0.02,
+   "his hand on his chest": 0.94
+  },
+  "values": {
+   "strike point to the olecranon (cm)": 2.96,
+   "elbow": 90.1
+  }
+ },
+ {
+  "id": "x_triL",
+  "gaps": {
+   "his upper arm on the mattress": -0.02,
+   "his hand on his chest": -0.34
+  },
+  "values": {
+   "strike point to the olecranon (cm)": 2.96,
+   "elbow": 90.1
+  }
+ },
+ {
+  "id": "x_wrist",
+  "gaps": {
+   "ex L palm": 0.03,
+   "ex L thumb": 0.06,
+   "ex L index": 0.76,
+   "ex L middle": 0.73,
+   "ex L ring": 0.57,
+   "ex L little": 0.79
+  },
+  "values": {}
+ },
+ {
+  "id": "b_supR_hit",
+  "gaps": {
+   "hammer head": 0.06,
+   "ex L index (whole finger)": 0.02,
+   "ex L index tip": 6.75,
+   "ex L middle (whole finger)": 1.44,
+   "ex L middle tip": 1.95,
+   "ex L thumb": 0.77,
+   "ex L palm": null
+  },
+  "values": {}
+ },
+ {
+  "id": "b_supL_hit",
+  "gaps": {
+   "hammer head": 0.06,
+   "ex R index (whole finger)": 0.02,
+   "ex R index tip": 6.75,
+   "ex R middle (whole finger)": 1.44,
+   "ex R middle tip": 1.95,
+   "ex R thumb": 0.77,
+   "ex R palm": null
+  },
+  "values": {}
+ },
+ {
+  "id": "x_sup",
+  "gaps": {
+   "ex L index (whole finger)": 0.02,
+   "ex L index tip": 6.75,
+   "ex L middle (whole finger)": 1.44,
+   "ex L middle tip": 1.95,
+   "ex L thumb": 0.77,
+   "ex L palm": null
+  },
+  "values": {
+   "supPoint_R to the wrist joint (cm)": 5
+  }
+ },
+ {
+  "id": "x_supfing",
+  "gaps": {
+   "ex L index (whole finger)": 0.02,
+   "ex L index tip": 6.75,
+   "ex L middle (whole finger)": 1.44,
+   "ex L middle tip": 1.95,
+   "ex L thumb": 0.77,
+   "ex L palm": null
+  },
+  "values": {
+   "index": [
+    -1.939,
+    8.744,
+    1.636
+   ],
+   "middle": [
+    -2.064,
+    8.839,
+    1.829
+   ]
+  }
+ },
+ {
+  "id": "d_face",
+  "gaps": {},
+  "values": {
+   "his face, chin to brow (px at 960x540)": 210
+  }
+ },
+ {
   "id": "d_jaw",
   "gaps": {},
-  "values": {}
+  "values": {
+   "his face, chin to brow (px at 960x540)": 85
+  }
  }
 ]

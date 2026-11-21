@@ -2,7 +2,31 @@
 
 Branch: `claude/sleepy-babbage-16xe65` (continues `claude/exciting-goldberg-6r9o3q`). Read this first in a new session.
 
-## Where we are: round 2 storyboard rendered and published, WAITING FOR THE USER'S REVIEW (no build yet)
+## Where we are: ROUND 3 storyboard published (beats 2-5 re-rendered), WAITING FOR THE USER'S REVIEW (no build yet)
+
+Storyboard: https://claude.ai/artifact/9opJSuaBL7tLuyZ52frfsx (version 2); director zip: cns7-part7-storyboard.zip.
+Round 2 review: 7 of 10 approved and KEPT (ankle jerk, Jendrassik, contacts, knee-clonus grip, Hoffmann's, hammer never
+on him, knee jerks, reflex angles). Round 3 fixed the user's four points (beats 2-5 only; `node tools/round3.mjs` ->
+checks/round3.json, shown at the top of the page; round 2's list is folded below it):
+1. Triceps: his upper arm rests on the mattress (abducted 34 deg, gap -0.02 mm), elbow 90.1 deg, forearm across his
+   abdomen, hand palm down (hand on trunk 0.94 mm R, -0.34 mm L), examiner's left hand holds the wrist (0.03-0.79 mm).
+   Built with abdArm(side, up, {z, s, R: 0.3}) searched for elbow 90 / abduction 35 and lowered onto the mattress.
+   Strike point on the back/outer side 2.96 cm above the olecranon (SOL.lm.olecranonR), from above and outside; elbow
+   extends +10 deg. Camera override at runtime (CAMS.triR/L): from his side, a little from the head end and above.
+2. Biceps: thumbBiceps() now also searches the forearm direction D and scores fingers pointing round the outside of the
+   elbow; each finger curls onto the skin, then any sinking finger un-curls: fingers 0.05-1.13, thumb 0.03, palm 0.06 mm.
+3. Supinator: index + middle straight and together ALONG the radial border (turn and roll searched), ring/little curled,
+   thumb alongside (settled): whole fingers 0.02 / 1.44 mm, thumb 0.77 mm; the straight index's TIP lifts 6.75 mm off the
+   curved forearm (offered: a slight curl).
+4. Reinforcement: 1 s face insert 35.6-36.6 s (CAMS.reinfFace, face 210 px chin-to-brow) and a tighter tap shot
+   (CAMS.reinf, face 85 px, elbow, thumb, hammer in frame). Panels renumbered: the insert is p12 (36.1 s), later p13-p30.
+New shared helper in SOLVE: strikeSearch() (swing plane searched so the raised hammer clears him and the mattress), used
+for biceps, supinator, triceps. checks/hammer-clearance.json: nothing within 10 mm. Full `npm run solve` is current.
+Open: his left hand on his trunk -0.34 mm in the triceps mirror (the trunk is not exactly symmetric).
+
+### Round 2 notes (kept for reference)
+
+Round 2:: round 2 storyboard rendered and published, WAITING FOR THE USER'S REVIEW (no build yet)
 
 Storyboard artifact (round 2): https://claude.ai/artifact/9opJSuaBL7tLuyZ52frfsx (republish storyboard/storyboard.html
 with root storyboard/ and the img/* files list). The round-1 artifact link in the old notes (AEhzvbqbyTRxTQ73pURdzX)
@@ -49,7 +73,7 @@ caption); legsWide from his left.
 Known open (in the storyboard): knee clonus during the push, thumb 1.7 mm and index 2.6 mm off the moving skin (the
 skin and the hand move 8 mm but not exactly together): lock the hand to the moving skin in the build.
 
-## Next (after the user's round-2 review)
+## Next (after the user's round-3 review)
 1. Apply the storyboard feedback.
 2. The in-between travel of the hands (no in-between pose held, nothing upright or through him mid-travel), especially
    home -> foot at 58.6-59.4 s and the sleeves turning up / down at the cuts.

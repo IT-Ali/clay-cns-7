@@ -1198,11 +1198,11 @@
         // teeth clenching and the masseter bulging, then a hard cut back for the tap.
         const k = NEURO.points(P), jaw = k.masseter_R, chin = k.chin, fh = k.forehead, Tb = SOL.lm.bicepsTendon_R.point;
         const c = SOL.cams.reinf, t0 = V(...(c.target.isVector3 ? c.target.toArray() : c.target)), p0 = V(...(c.pos.isVector3 ? c.pos.toArray() : c.pos)), d = p0.clone().sub(t0).normalize();
-        const t1 = jaw.clone().lerp(Tb, 0.45).add(V(0.2, 0.55, 0));
-        CAMS.reinf = { pos: t1.clone().addScaledVector(d, 12.0).toArray(), target: t1.toArray(), focus: jaw.clone().lerp(Tb, 0.5).toArray(), aperture: 0.03, fov: 28 };
+        const t1 = jaw.clone().lerp(Tb, 0.45).add(V(0.2, 1.0, 0));
+        CAMS.reinf = { pos: t1.clone().addScaledVector(d, 14.5).toArray(), target: t1.toArray(), focus: jaw.clone().lerp(Tb, 0.5).toArray(), aperture: 0.03, fov: 28 };
         const fc = chin.clone().lerp(fh, 0.45), front = k.noseTip.clone().sub(k.masseter_R.clone().lerp(k.masseter_L, 0.5)).normalize(), side = k.masseter_R.clone().sub(k.masseter_L).normalize();
         const fd = front.clone().multiplyScalar(0.55).addScaledVector(side, 0.85).normalize(), ft = fc.clone().add(V(0, 0.35, 0));
-        CAMS.reinfFace = { pos: ft.clone().addScaledVector(fd, 6.0).toArray(), target: ft.toArray(), focus: jaw.toArray(), aperture: 0.015, fov: 28 };
+        CAMS.reinfFace = { pos: ft.clone().addScaledVector(fd, 9.5).toArray(), target: ft.toArray(), focus: jaw.toArray(), aperture: 0.015, fov: 28 };
       }
       {   // triceps: from his side, a little from the head end and above: the elbow resting on the mattress, the hammer from
         // outside onto the tendon above the olecranon, the forearm across his trunk held at the wrist

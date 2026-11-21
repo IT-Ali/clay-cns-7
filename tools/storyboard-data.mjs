@@ -39,10 +39,13 @@ const PEAK = 0.14;                  // the reflex peak lands on the pose (twos) 
 // every digit and the palm of a working hand, measured to his skin (all of him)
 const DIG = [['palm', 'palm'], ['thumbTip', 'thumb'], ['indexTip', 'index'], ['middleTip', 'middle'], ['ringTip', 'ring'], ['littleTip', 'little']];
 const digits = (hand, who, field = 'patient') => DIG.map(([part, name], i) => ({ hand, part, field, label: `${who} ${name}`, off: [14, -46 + i * 17] }));
+// the supinator's two straight fingers: measured along the whole finger and at the tip
+const supFingers = (hand, who, field) => [['index', 'index (whole finger)', 'index'], ['indexTip', 'index tip', 'index'], ['middle', 'middle (whole finger)', 'middle'], ['middleTip', 'middle tip', 'middle'], ['thumb', 'thumb', 'thumb'], ['palm', 'palm', 'palm']].map(([part, name], i) => ({ hand, part, field, label: `${who} ${name}`, off: [14, -46 + i * 17] }));
 const strikes = [];
 for (const [id, t] of Object.entries(S)) {
   const hand = /L$/.test(id) ? 'L' : 'R', other = hand === 'R' ? 'L' : 'R', contacts = [{ hand, part: 'hammer', field: FIELD[id], label: 'hammer head' }];
-  if (/^bic|^reinf|^sup/.test(id)) contacts.push(...digits(other, 'ex ' + other));
+  if (/^bic|^reinf/.test(id)) contacts.push(...digits(other, 'ex ' + other));
+  if (/^sup/.test(id)) contacts.push(...supFingers(other, 'ex ' + other, 'arm' + hand));   // the two fingers on his forearm (his arm and hand)
   if (/^ank/.test(id)) contacts.push(...digits(other, 'ex ' + other), { hand, part: 'leg' + (id === 'ankR' ? 'R' : 'L'), field: id === 'ankR' ? 'legL' : 'legR', near: 'leg:' + (id === 'ankR' ? 'R' : 'L') + ':lateralMalleolus', r: 0.6, label: 'his outer ankle on the other shin' });
   const extra = /^knee|^jend/.test(id) ? { heels: ['R', 'L'] } : {};
   strikes.push({ id: 'b_' + id + '_top', group: 'b', t: +(t - 0.4).toFixed(3), close: 9, title: id + ': top of the swing' });
@@ -69,10 +72,10 @@ export const REVIEW = [
   { id: 'g_before', group: 'g', t: 87.4, close: 3.2, contacts: [...digits('L', 'ex L (support)'), ...digits('R', 'ex R (pinch)').map((c) => Object.assign(c, { off: [-300, c.off[1]] }))], points: [{ patient: 'R', name: 'thumbTip', label: 'his thumb tip' }], title: "Hoffmann's: before the flick" },
   { id: 'g_after', group: 'g', t: 87.67, close: 3.2, points: [{ patient: 'R', name: 'thumbTip', label: 'his thumb tip' }, { patient: 'R', name: 'middleTip', label: 'middle fingertip' }], title: "Hoffmann's: the flick (his thumb still)" },
   { id: 'x_biceps_thumb', group: 'x', t: 8.9, close: 3.4, contacts: digits('L', 'ex L'), title: 'Biceps: the thumb on the tendon' },
-  { id: 'x_sup', group: 'x', t: 16.4, close: 3.4, contacts: digits('L', 'ex L'), landmark: 'supPoint_R', lmOnly: true, title: 'Supinator: two fingers on the radius 5 cm above the wrist' },
+  { id: 'x_sup', group: 'x', t: 16.4, close: 3.4, contacts: supFingers('L', 'ex L', 'armR'), landmark: 'supPoint_R', lmOnly: true, title: 'Supinator: two fingers on the radius 5 cm above the wrist' },
   { id: 'x_tri', group: 'x', t: 27.6, close: 6.0, tri: 'R', contacts: [{ hand: 'R', part: 'phandR', field: 'torso', label: 'his hand on his chest', off: [14, -30] }], angles: [{ joint: 'elbow', side: 'R', label: 'elbow' }], title: 'Triceps R: upper arm on the mattress, hand on the chest, strike above the olecranon' },
   { id: 'x_triL', group: 'x', t: 30.8, close: 6.0, tri: 'L', contacts: [{ hand: 'L', part: 'phandL', field: 'torso', label: 'his hand on his chest', off: [14, -30] }], angles: [{ joint: 'elbow', side: 'L', label: 'elbow' }], title: 'Triceps L (mirror)' },
-  { id: 'x_supfing', group: 'x', t: 16.4, close: 2.6, contacts: digits('L', 'ex L'), points: [{ hand: 'L', name: 'indexMidBack', label: 'index' }, { hand: 'L', name: 'middleMidBack', label: 'middle' }], title: 'Supinator: index and middle straight and together along the radius' },
+  { id: 'x_supfing', group: 'x', t: 16.4, close: 2.6, contacts: supFingers('L', 'ex L', 'armR'), points: [{ hand: 'L', name: 'indexMidBack', label: 'index' }, { hand: 'L', name: 'middleMidBack', label: 'middle' }], title: 'Supinator: index and middle straight and together along the radius' },
   { id: 'x_wrist', group: 'x', t: 27.2, close: 3.4, contacts: digits('L', 'ex L'), title: 'Triceps: the wrist hold' },
   { id: 'x_foot', group: 'x', t: 61.6, close: 5.0, contacts: [...digits('L', 'ex L'), { hand: 'R', part: 'legR', field: 'legL', near: 'leg:R:lateralMalleolus', r: 0.6, label: 'his outer ankle on the other shin', off: [14, 60] }], title: 'Ankle jerk: palm across the ball of the foot; ankle across the shin' },
   { id: 'x_hoffL', group: 'x', t: 90.6, close: 3.2, contacts: [...digits('R', 'ex R (support)'), ...digits('L', 'ex L (pinch)').map((c) => Object.assign(c, { off: [-300, c.off[1]] }))], title: "Hoffmann's left (mirror)" },
