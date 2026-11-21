@@ -1,0 +1,142 @@
+// tools/storyboard-html.mjs: builds storyboard/storyboard.html from the rendered stills (storyboard/img), the panel facts
+// (storyboard/panels.json), the measured review panels (storyboard/review.json) and the solve log (checks/solve-log.txt).
+import fs from 'node:fs'; import path from 'node:path';
+import { ROOT } from './common.mjs';
+import { PANELS, REVIEW } from './storyboard-data.mjs';
+
+const SB = path.join(ROOT, 'storyboard');
+const meta = JSON.parse(fs.readFileSync(path.join(SB, 'panels.json'), 'utf8'));
+const review = fs.existsSync(path.join(SB, 'review.json')) ? JSON.parse(fs.readFileSync(path.join(SB, 'review.json'), 'utf8')) : [];
+const log = fs.existsSync(path.join(ROOT, 'checks/solve-log.txt')) ? fs.readFileSync(path.join(ROOT, 'checks/solve-log.txt'), 'utf8') : '';
+const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const SOUND = { 1: 'Room ambience fades in over 0.5 s; nothing else.', 12: 'Soft sheet rustles as his limbs go home; the ambience fades out over the last 0.5 s.' };
+const soundFor = (m) => SOUND[m.beat] || [m.strikes.length ? 'Hammer: a soft rubber tap (short dull thud) at ' + m.strikes.join(', ') + '.' : 'No hammer.', 'Very soft sheet rustle when a limb moves. Room ambience under everything.'].join(' ');
+const CAMS = { home: 'CNS home shot (SET.HOME_CNS), still', upper: 'medium shot of his upper body from his right', bicR: 'close, from his right side above the elbow', bicL: 'close, from his LEFT side (mirror)', supR: 'from his right side, forearm and elbow', supL: 'from his LEFT side', triR: 'from his right side, a little from the head end', triL: 'from his LEFT side', reinf: 'wide enough for his jaw and right elbow', knees: 'from his right side, both knees', jend: 'wide, from his right side: hooked hands and right knee', legs: 'medium shot of his legs from his right', ankR: 'low, from his side, behind the heel', ankL: 'from his LEFT side', clonR: 'from his side at foot height', clonL: 'from his LEFT side', kneeClonR: 'close, from his side at knee height', kneeClonL: 'from his LEFT side', hoffR: 'close-up from his side, a little below the hand', hoffL: 'from his LEFT side' };
+
+const panel = (p, i) => {
+  const m = meta[i], img = `img/p${String(i + 1).padStart(2, '0')}.jpg`;
+  return `<figure class="panel">
+  <img src="${img}" alt="Beat ${m.beat} at ${p.t.toFixed(2)} s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat ${m.beat}</span><span class="time">${p.t.toFixed(2)} s</span><span class="span">beat ${m.t0}-${m.t1} s</span></div>
+    <dl>
+      <dt>On screen</dt><dd>${m.caption ? '<q>' + esc(m.caption) + '</q>' : '<em>no caption</em>'}</dd>
+      <dt>What changes</dt><dd>${esc(p.what)}</dd>
+      <dt>Camera</dt><dd>${esc(CAMS[m.cam] || m.cam)}</dd>
+      <dt>Sound</dt><dd>${esc(soundFor(m))}</dd>
+    </dl>
+  </figcaption>
+</figure>`;
+};
+const beats = [];
+PANELS.forEach((p, i) => { const b = meta[i].beat; (beats[b] = beats[b] || []).push(panel(p, i)); });
+const beatName = (b) => meta.find((m) => m.beat === b).name;
+
+const GROUPS = { a: 'a. Plan: his right and left', b: 'b. The hammer: top of the swing and the strike (gap at the strike)', c: 'c. The reflex movement: joint angle before and at its peak', d: "d. Jendrassik: hooked hands, and the clenched jaw", e: 'e. The knee support', f: 'f. Clonus: palm on the ball of the foot; thumb and index on the kneecap', g: "g. Hoffmann's sign: before and after the flick", x: 'Skin-level contact panels (every other contact)' };
+const ok = (v) => v != null && v >= 0 && v < 1.5;
+const rv = (r) => {
+  const d = review.find((x) => x.id === r.id) || {}, gaps = d.gaps || {}, vals = d.values || {};
+  const rows = Object.entries(gaps).map(([k, v]) => `<tr><td>${esc(k)}</td><td class="num ${ok(v) ? 'good' : 'bad'}">${v == null ? '&gt; 15' : v.toFixed(2)} mm</td></tr>`).concat(Object.entries(vals).map(([k, v]) => `<tr><td>${esc(k)}</td><td class="num">${Array.isArray(v) ? v.join(', ') : v + (/elbow|knee|ankle/.test(k) ? '°' : '')}</td></tr>`)).join('');
+  return `<figure class="rv"><img src="img/r_${r.id}.jpg" alt="${esc(r.title)}" loading="lazy" width="960" height="540"><figcaption><b>${esc(r.title)}</b> <span class="time">${r.t} s</span>${rows ? `<table>${rows}</table>` : ''}</figcaption></figure>`;
+};
+// c: angles as one table (before / peak / change), right and left
+const angleTable = () => {
+  const rows = [];
+  for (const id of ['bicR', 'bicL', 'supR', 'supL', 'triR', 'triL', 'kneeR', 'kneeL', 'ankR', 'ankL']) {
+    const a = review.find((x) => x.id === `c_${id}_before`), b = review.find((x) => x.id === `c_${id}_peak`); if (!a || !b) continue;
+    const k = Object.keys(a.values)[0], v0 = a.values[k], v1 = b.values[k];
+    rows.push(`<tr><td>${id}</td><td>${k}</td><td class="num">${v0}°</td><td class="num">${v1}°</td><td class="num">${(v1 - v0 >= 0 ? '+' : '') + (v1 - v0).toFixed(1)}°</td></tr>`);
+  }
+  return `<div class="tablewrap"><table class="angles"><thead><tr><th>Reflex</th><th>Joint</th><th>Before</th><th>Peak</th><th>Change</th></tr></thead><tbody>${rows.join('')}</tbody></table></div>
+  <p class="note">Elbow: the angle between upper arm and forearm (smaller = flexed). Knee: flexion (smaller = extended). Ankle: + = dorsiflexion. Targets: biceps flexes ~10°, supinator ~8°, triceps extends ~10°, knee kicks ~12°, ankle plantar-flexes ~10°; right and left the same.</p>`;
+};
+const reviewHtml = Object.entries(GROUPS).map(([g, title]) => {
+  const items = REVIEW.filter((r) => r.group === g);
+  if (g === 'c') return `<section class="rgroup"><h3>${esc(title)}</h3>${angleTable()}<div class="rgrid">${items.filter((r) => /peak/.test(r.id)).map(rv).join('')}</div></section>`;
+  return `<section class="rgroup"><h3>${esc(title)}</h3><div class="rgrid">${items.map(rv).join('')}</div></section>`;
+}).join('\n');
+
+const ASSUME = [
+  'Every left-side test is the exact mirror of the right one (positions reflected through the bed\'s midline), so right and left are the same size. That means the examiner\'s hands swap roles on his left: the hammer is in the examiner\'s LEFT hand there (it changes hands as he walks round, off camera). The knee jerks are both done from his right, as asked.',
+  "The kit's bicepsTendon and tricepsTendon vertices follow the palm's roll into the elbow. With his forearm pronated across his abdomen they are not on the front or back of the elbow (measured 81° and 24° off). These two tendon points are measured on the posed mesh instead: the skin vertex just above the elbow that faces the inside (biceps) or the outside (triceps) of the bend. Every other landmark is NEURO.points / P.legPoint.",
+  'Arms across the tummy: the kit acrossAbdomen preset, fine-tuned: elbows resting on the mattress 30 cm out from his midline, hands palm down on his lower abdomen, elbows about 106°. The examiner\'s left hand lies flat on the front of his upper arm; its thumb lies along the crease onto the tendon.',
+  'The patient does not speak in this part (he follows the instructions silently), so no visemes are used. The speech holds are still frames with no caption.',
+  'The hammer is put aside off camera after the ankle jerks: clonus and Hoffmann\'s need both hands. It is back in no shot after that.',
+  'Breathing: P.breathe at 14 breaths a minute (its 4.6 s period sped up by 7%), off in the first and last second.',
+  'Ankle clonus: the push dorsiflexes the foot by 18° in 0.13 s and holds it for about 2 s. Knee clonus: the kneecap (the skin over it) moves 8 mm toward the foot and is held for 2 s.',
+  'Reflex timing: the muscle firms from 0.05 s after the strike for 0.15 s (a bulge of up to 3 mm, blended); the joint moves to its peak in 0.08 s and back in 0.22 s.',
+];
+const KNOWN = [
+  'Several close shots are steep (picked automatically for a clear line of sight past the examiner\'s arms). I will soften the angles after your comments.',
+  'The left-side cameras are mirrors of the right-side ones; a few may need their own framing.',
+  'Gap numbers outside 0 to 1.5 mm are shown in red below; those contacts are the first things I will fix.',
+];
+
+const html = `<title>CNS Part 7 Storyboard</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* layout: a review document; beats as numbered sections (the order is the film's order), two panels per row, one on phones */
+:root { --bg: #f4f7f6; --surface: #ffffff; --ink: #1f2a44; --muted: #5a6577; --line: #d6e0de; --teal: #12808a; --plaque: #f8eedb; --navy: #26336b; --good: #1d7a46; --bad: #c0362c;
+  --display: "Fredoka", "Trebuchet MS", sans-serif; --body: "Inter", system-ui, sans-serif; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #0b1c1e; --surface: #12292c; --ink: #e8efee; --muted: #9fb2b1; --line: #24413f; --teal: #3fb6c0; --plaque: #2a3036; --navy: #f3e6cd; --good: #6fd39a; --bad: #ff8a7f; color-scheme: dark } }
+:root[data-theme="dark"] { --bg: #0b1c1e; --surface: #12292c; --ink: #e8efee; --muted: #9fb2b1; --line: #24413f; --teal: #3fb6c0; --plaque: #2a3036; --navy: #f3e6cd; --good: #6fd39a; --bad: #ff8a7f; color-scheme: dark }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-block: 28px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 36px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(26px, 4vw, 38px); color: var(--teal); }
+h2 { font-size: 22px; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+h2 .n { color: var(--teal); }
+h2 .t { font-family: var(--body); font-size: 14px; font-weight: 500; color: var(--muted); }
+h3 { font-size: 18px; }
+header { display: grid; gap: 10px; max-width: 80ch; }
+header p { margin: 0; color: var(--muted); }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); }
+.facts b { color: var(--ink); font-weight: 600; }
+.beat-sec { display: grid; gap: 14px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); gap: 18px; }
+.panel { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: grid; min-width: 0; }
+.panel img, .rv img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: #0d3a3d; max-width: 100%; }
+figcaption { padding: 12px 14px 14px; display: grid; gap: 8px; min-width: 0; }
+.ph { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; font-size: 13px; }
+.beat { font-family: var(--display); font-weight: 600; color: var(--teal); font-size: 15px; }
+.time { font-variant-numeric: tabular-nums; font-weight: 600; }
+.span { color: var(--muted); font-variant-numeric: tabular-nums; }
+dl { margin: 0; display: grid; grid-template-columns: 7.5em 1fr; gap: 4px 10px; font-size: 13.5px; }
+dt { color: var(--muted); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; padding-top: 2px; }
+dd { margin: 0; min-width: 0; }
+q { quotes: none; background: var(--plaque); color: var(--navy); font-family: var(--display); font-weight: 600; padding: 1px 8px; border-radius: 8px; display: inline-block; }
+.rgroup { display: grid; gap: 12px; }
+.rgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)); gap: 14px; }
+.rv { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; min-width: 0; }
+.rv figcaption { font-size: 13px; }
+table { border-collapse: collapse; font-size: 13px; width: 100%; }
+td, th { padding: 3px 8px 3px 0; border-bottom: 1px solid var(--line); text-align: left; }
+.num { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.good { color: var(--good); } .bad { color: var(--bad); font-weight: 600; }
+.tablewrap { overflow-x: auto; max-width: 640px; }
+.note { color: var(--muted); font-size: 13px; margin: 0; max-width: 80ch; }
+ol, ul { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; max-width: 85ch; }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+summary { cursor: pointer; font-weight: 600; }
+pre { overflow-x: auto; font-size: 12px; line-height: 1.45; white-space: pre-wrap; word-break: break-word; }
+a { color: var(--teal); }
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+</style>
+<div class="wrap">
+<header>
+  <h1>CNS part 7: tendon reflexes, reinforcement, clonus, Hoffmann's sign</h1>
+  <p>Storyboard for review. Every still is a frame of the animation itself (the same timeline, poses and cameras), rendered in software at 16 samples, with captions on. Below the panels: the review panels a to g, with every gap measured on the meshes.</p>
+  <div class="facts"><span><b>97 s</b>, 12 beats</span><span><b>Soft Clay</b>, series look from shared/ v5</span><span>starts and ends on the <b>CNS home shot</b></span><span>speech holds at <b>5.0</b>, <b>34.0</b>, <b>41.0</b>, <b>51.0 s</b></span></div>
+</header>
+${beats.map((ps, b) => ps ? `<section class="beat-sec"><h2><span class="n">${b}</span> ${esc(beatName(b))} <span class="t">${meta.find((m) => m.beat === b).t0}-${meta.find((m) => m.beat === b).t1} s</span></h2><div class="grid">${ps.join('\n')}</div></section>` : '').join('\n')}
+<section class="beat-sec"><h2>Review panels</h2><p class="note">Gaps are measured from the meshes (the closest point of each touching part to the skin): green when 0 to 1.5 mm, red otherwise. Arrows in the pictures run from the part to the skin.</p></section>
+${reviewHtml}
+<section class="beat-sec"><h2>Facts and numbers I assumed</h2><ol>${ASSUME.map((a) => `<li>${esc(a)}</li>`).join('')}</ol></section>
+<section class="beat-sec"><h2>Known open points</h2><ul>${KNOWN.map((a) => `<li>${esc(a)}</li>`).join('')}</ul></section>
+<details><summary>Solve log (every measurement, from the solve that made solved.json)</summary><pre>${esc(log)}</pre></details>
+</div>
+`;
+fs.writeFileSync(path.join(SB, 'storyboard.html'), html);
+console.log('storyboard.html written,', (html.length / 1024).toFixed(0), 'KB');

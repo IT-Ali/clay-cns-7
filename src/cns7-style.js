@@ -64,13 +64,39 @@
     triceps: { joint: 'elbow', deg: -10, muscle: 'triceps' }, knee: { joint: 'knee', deg: -12, muscle: 'quadriceps' }, ankle: { joint: 'ankle', deg: -10, muscle: 'calf' },
   };
   const HOME_HOLD = 1.0;
+  // ---------------------------------------------------------------- the timeline keys (one schedule for picture and sound)
+  // [time, state, 'cut'?]: between two keys the state moves (eased); a 'cut' key jumps. Names: see the states in build().
+  const KEYS = {
+    cam: [[0, 'home'], [HOME_HOLD, 'home'], [4.6, 'upper'], [6.5, 'upper'], [8.2, 'bicR'], [10.8, 'bicR'], [10.8, 'bicL', 'cut'],
+      [15.0, 'supR', 'cut'], [18.4, 'supL', 'cut'], [24.0, 'upper', 'cut'], [25.0, 'upper'], [26.5, 'triR'], [30.1, 'triL', 'cut'],
+      [34.0, 'reinf', 'cut'], [41.0, 'knees', 'cut'], [51.0, 'jend', 'cut'], [59.0, 'legs', 'cut'], [59.4, 'legs'], [60.9, 'ankR'], [63.4, 'ankL', 'cut'],
+      [69.0, 'clonR', 'cut'], [74.2, 'clonL', 'cut'], [78.0, 'kneeClonR', 'cut'], [81.6, 'kneeClonL', 'cut'], [85.0, 'hoffR', 'cut'], [89.2, 'hoffL', 'cut'],
+      [94.0, 'upper', 'cut'], [96.0, 'home'], [D, 'home']],
+    armR: [[0, 'home'], [6.5, 'home'], [7.6, 'abdR'], [24.9, 'abdR'], [26.2, 'chestR'], [28.3, 'chestR'], [29.3, 'abdR'], [42.5, 'abdR'], [43.4, 'home'], [52.5, 'home'], [53.6, 'jend0R'], [54.25, 'jend0R'], [54.4, 'jend1R'], [55.6, 'jend1R'], [56.1, 'jend0R'], [57.1, 'home'],
+      [85.6, 'home'], [86.6, 'hoffR'], [89.2, 'home', 'cut'], [D, 'home']],
+    armL: [[0, 'home'], [6.5, 'home'], [7.6, 'abdL'], [30.1, 'chestL', 'cut'], [34.0, 'abdL', 'cut'], [42.5, 'abdL'], [43.4, 'home'], [52.5, 'home'], [53.6, 'jend0L'], [54.25, 'jend0L'], [54.4, 'jend1L'], [55.6, 'jend1L'], [56.1, 'jend0L'], [57.1, 'home'],
+      [89.2, 'hoffL', 'cut'], [94.0, 'home', 'cut'], [D, 'home']],
+    legR: [[0, 'rest'], [43.5, 'rest'], [44.4, 'kneeJerk'], [57.3, 'kneeJerk'], [58.4, 'rest'], [59.4, 'rest'], [60.8, 'ankleJerkR'], [63.4, 'rest', 'cut'],
+      [69.3, 'rest'], [70.5, 'clonusR0'], [71.2, 'clonusR0'], [71.33, 'clonusR1'], [73.4, 'clonusR1'], [73.8, 'clonusR0'], [74.2, 'rest', 'cut'], [D, 'rest']],
+    legL: [[0, 'rest'], [43.5, 'rest'], [44.4, 'kneeJerk'], [57.3, 'kneeJerk'], [58.4, 'rest'], [63.4, 'ankleJerkR', 'cut'], [69.0, 'rest', 'cut'],
+      [74.2, 'clonusR0', 'cut'], [74.9, 'clonusR0'], [75.03, 'clonusR1'], [77.1, 'clonusR1'], [77.5, 'clonusR0'], [78.0, 'rest', 'cut'], [D, 'rest']],
+    exL: [[0, 'home'], [7.4, 'home'], [8.3, 'thumbR'], [10.8, 'S:bicL', 'cut'], [15.0, 'home', 'cut'], [18.4, 'S:supL', 'cut'], [24.0, 'home', 'cut'],
+      [24.1, 'home'], [24.9, 'rel:wristRel:handR'], [29.3, 'rel:wristRel:handR'], [29.9, 'home'], [30.1, 'S:triL', 'cut'],
+      [34.0, 'home', 'cut'], [35.7, 'home'], [36.5, 'thumbR'], [38.2, 'thumbR'], [39.0, 'home'], [42.5, 'home'], [43.6, 'kneeSupport'], [57.2, 'kneeSupport'], [58.6, 'home'],
+      [59.3, 'home'], [60.8, 'footR'], [63.4, 'S:ankL', 'cut'], [69.0, 'home', 'cut'], [69.3, 'home'], [70.5, 'calfR'], [74.2, 'clonusFootL0', 'cut'], [74.9, 'clonusFootL0'], [75.03, 'clonusFootL1'], [77.1, 'clonusFootL1'], [77.5, 'clonusFootL0'],
+      [78.0, 'kneeClonusR', 'cut'], [81.6, 'parkFar', 'cut'], [85.0, 'home', 'cut'], [85.2, 'home'], [85.6, 'rel:hoffSupRel:handR'], [89.2, 'hoffPinL', 'cut'], [94.0, 'home', 'cut'], [D, 'home']],
+    exR: [[0, 'home'], [1.4, 'home'], [2.3, 'park'], [3.2, 'park'], [4.5, 'S:bicR'], [10.8, 'thumbL', 'cut'], [15.0, 'S:supR', 'cut'], [18.4, 'homeFar', 'cut'], [24.0, 'park', 'cut'],
+      [25.4, 'park'], [26.6, 'S:triR'], [30.1, 'wristL', 'cut'], [34.0, 'S:bicR', 'cut'], [43.4, 'S:bicR'], [44.8, 'S:kneeR'], [46.3, 'S:kneeR'], [47.1, 'S:kneeL'], [48.6, 'S:kneeL'], [49.6, 'S:kneeR'],
+      [59.4, 'S:kneeR'], [61.0, 'S:ankR'], [63.4, 'footL', 'cut'], [69.0, 'park', 'cut'], [69.6, 'park'], [70.6, 'clonusFootR0'], [71.2, 'clonusFootR0'], [71.33, 'clonusFootR1'], [73.4, 'clonusFootR1'], [73.8, 'clonusFootR0'],
+      [74.2, 'calfL', 'cut'], [78.0, 'park', 'cut'], [81.6, 'kneeClonusL', 'cut'], [85.0, 'park', 'cut'], [86.0, 'park'], [86.8, 'rel:hoffPinRel:handR'], [89.2, 'hoffSupL', 'cut'], [94.0, 'park', 'cut'], [94.6, 'park'], [95.6, 'home'], [D, 'home']],
+  };
 
   // ================================================================ the style
   const style = {
     id: 'cns7-soft-clay', name: 'Soft Clay - CNS part 7: tendon reflexes, reinforcement, clonus, Hoffmann', duration: D,
     fonts: ['600 56px "Fredoka"'],
     render: Object.assign({}, root.SET.RENDER),                       // the series grade (64 samples for the final)
-    content: { BEATS, CAPTIONS, STRIKES, SWING, REFLEX, HOME_HOLD },
+    content: { BEATS, CAPTIONS, STRIKES, SWING, REFLEX, HOME_HOLD, KEYS },
     captions: true,                                                    // the CAPTIONS switch (window.CAPTIONS = false: the clean version)
     SOLVE_VERSION: 1,
 
@@ -176,7 +202,7 @@
           const hand = EX[handSide].hand, fld = CONTACT.field([P.legMeshes[side]]);
           const B = P.legPoint(side, 'ball'), nB = P.legNormal(side, 'ball'), toe = P.legPoint(side, 'toeTip'), heel = P.legPoint(side, 'heel');
           const along = toe.clone().sub(heel).addScaledVector(nB, -toe.clone().sub(heel).dot(nB)).normalize();
-          const POSE = { all: [0.2, 0.28, 0.15], spread: 0.3, fan: { index: 0.03, middle: 0, ring: -0.03, little: -0.07 }, thumb: [0.25, 0, 0.2, 0.1] };
+          const POSE = { all: [0.2, 0.28, 0.15], spread: 0.3, fan: { index: 0.03, middle: 0, ring: -0.03, little: -0.07 }, thumb: [0.05, 0, 0.08, 0.04] };
           const quat = HANDS.quat(along, nB.clone().negate());           // the palm faces the sole
           hand.pose(POSE); CONTACT.rest(hand, 'palm', B, nB, quat, fld, 0.0006, 0.3);
           const ex = { hand: handSide, wrist: hand.group.position.clone(), quat, pose: POSE, back: V(0.4, -0.35, 0.85).normalize() };
@@ -468,14 +494,17 @@
           // slide up until the forearm just meets the backs of the knees
           let lo = ks.y - 1.0, hi = ks.y + 1.0;
           for (let it = 0; it < 30; it++) { const m = (lo + hi) / 2, g = put(m); if (!isFinite(g) || g > 0.0006) lo = m; else hi = m; }
-          let g = put((lo + hi) / 2);
           const gapOf = (sd) => CONTACT.minGap(a.fore.children.filter((m) => m.isMesh), legField([sd]), null, 0, 0.15).gap;
-          for (let pass = 0; pass < 8; pass++) {        // tilt the forearm until both knees rest on it
-            const dR = gapOf('R'), dL = gapOf('L'); if (Math.abs(dR - dL) < 0.0003) break;
-            tilt -= (dL - dR) * 6; tilt = Math.max(-0.6, Math.min(0.6, tilt));
-            lo = ks.y - 1.0; hi = ks.y + 1.0; for (let it = 0; it < 26; it++) { const m = (lo + hi) / 2, gg = put(m); if (!isFinite(gg) || gg > 0.0006) lo = m; else hi = m; }
-            g = put((lo + hi) / 2);
+          // tilt the forearm (and lift it) until it meets the backs of BOTH knees: for each tilt, lift until the first knee
+          // touches; keep the tilt where the other knee is closest too
+          let bestT = null;
+          for (let tl = -0.5; tl <= 0.501; tl += 0.05) {
+            tilt = tl; lo = ks.y - 1.2; hi = ks.y + 1.2;
+            for (let it = 0; it < 24; it++) { const m = (lo + hi) / 2, gg = put(m); if (!isFinite(gg) || gg > 0.0006) lo = m; else hi = m; }
+            put((lo + hi) / 2); const dR = gapOf('R'), dL = gapOf('L'), e = Math.abs(dR - dL) + 10 * Math.max(0, -Math.min(dR, dL));
+            if (!bestT || e < bestT.e) bestT = { e, tl, y: (lo + hi) / 2 };
           }
+          tilt = bestT.tl; put(bestT.y);
           SOL.ex.kneeSupport = ex;
           const gR = CONTACT.minGap(a.fore.children.filter((m) => m.isMesh), legField(['R']), null, 0, 0.15).gap, gL = CONTACT.minGap(a.fore.children.filter((m) => m.isMesh), legField(['L']), null, 0, 0.15).gap;
           const heel = { R: P.legPoint('R', 'heel').y - Dm.Ym, L: P.legPoint('L', 'heel').y - Dm.Ym };
@@ -485,14 +514,19 @@
           SOL.strikes.kneeL = strikeLeg('kneeL', 'L', 'patellarTendon', STRIKE_DIR.kneeL, ['L', 'R']);
           applyStrike(SOL.strikes.kneeR, 0);
           const k = NEURO.points(P), mid = k.patellarTendon_R.clone().lerp(k.patellarTendon_L, 0.5);
-          SOL.cams.knees = pickCam(mid, V(0.75, 0.35, 0.55), 9.5, [[k.patellarTendon_R.clone().addScaledVector(k.normals.patellarTendon_R, 0.01), 0.03, P.legs.R], [k.patellarTendon_L.clone().addScaledVector(k.normals.patellarTendon_L, 0.01), 0.03, P.legs.L], [hammer.group.localToWorld(hammer.pts.centre.clone()), 0.06, hammer.group]], { name: 'knees', aim: mid.clone().add(V(0, -0.2, 0)), aperture: 0.03 });
+          SOL.cams.knees = pickCam(mid, V(0.75, 0.35, 0.55), 9.5, [[k.patellarTendon_R.clone().addScaledVector(k.normals.patellarTendon_R, 0.01), 0.03, P.legs.R], [hammer.group.localToWorld(hammer.pts.centre.clone()), 0.06, hammer.group]], { name: 'knees', aim: mid.clone().add(V(0, -0.2, 0)), aperture: 0.03 });
           // Jendrassik: hands hooked in front of his chest (kit), pulled apart; the knee jerk again on the right
           const Fj = trunk();
           const jend = (pull) => {                       // the kit preset, the hands moved apart just until the hooked fingers touch
             const r0 = NEURO.arm(P, 'R', 'jendrassik', { pull }), l0 = NEURO.arm(P, 'L', 'jendrassik', { pull });
-            const at = (d) => { const r = Object.assign({}, r0, { wrist: r0.wrist.clone().addScaledVector(Fj.left, -d) }), l = Object.assign({}, l0, { wrist: l0.wrist.clone().addScaledVector(Fj.left, d) }); applyArm('R', r); applyArm('L', l); return { r, l, g: CONTACT.minGap(handMeshes(P.arms.R.hand), CONTACT.field(handMeshes(P.arms.L.hand)), null, 0, 0.3).gap }; };
-            let lo = 0, hi = 0.5; for (let it = 0; it < 18; it++) { const m = (lo + hi) / 2, r = at(m); if (!isFinite(r.g) || r.g > 0.0006) hi = m; else lo = m; }
-            const r = at(hi); log('Jendrassik pull', pull, 'hands moved apart by', mm(hi * 2), 'mm'); return r;
+            // the left hand stays; the right hand slides across its fingers by up to half a finger spacing (so the fingers
+            // interleave) and toward the left hand until the hooked fingers just touch
+            applyArm('L', l0); const lf = CONTACT.field(handMeshes(P.arms.L.hand));
+            const acrossF = V(0, 0, 1).applyQuaternion(r0.quat).normalize();
+            const at = (d, up) => { const r = Object.assign({}, r0, { wrist: r0.wrist.clone().addScaledVector(Fj.left, -d).addScaledVector(acrossF, up) }); applyArm('R', r); return { r, l: l0, g: CONTACT.minGap(handMeshes(P.arms.R.hand), lf, null, 0, 0.2).gap }; };
+            let best = null;
+            for (let up = -0.12; up <= 0.121; up += 0.02) { let lo = -0.2, hi = 0.6; for (let it = 0; it < 12; it++) { const m = (lo + hi) / 2, r = at(m, up); if (!isFinite(r.g) || r.g > 0.0006) hi = m; else lo = m; } if (!best || hi < best.d) best = { d: hi, up }; }
+            const r = at(best.d, best.up); log('Jendrassik pull', pull, 'right hand moved', mm(best.d), 'mm out, across the fingers', mm(best.up), 'mm; closest point between the hands', mm(r.g), 'mm'); return r;
           };
           { const j0 = jend(0); SOL.arms.jend0R = j0.r; SOL.arms.jend0L = j0.l; const j1 = jend(1); SOL.arms.jend1R = j1.r; SOL.arms.jend1L = j1.l; }
           for (const pull of [0, 1]) {
@@ -519,7 +553,9 @@
           const fl = legField(['L']), gapLegs = () => CONTACT.minGap([P.legMeshes.R], fl, null, 0, 0.2).gap;
           let lo = 0.1, hi = 0.9;
           for (let it = 0; it < 16; it++) { const m = (lo + hi) / 2; fitWith(m); const g = gapLegs(); if (!isFinite(g) || g > 0.0006) hi = m; else lo = m; }
-          const st = fitWith(0.45);
+          let st = null, bestA = null;
+          for (let lift = 0.25; lift <= 1.0; lift += 0.05) { const s2 = fitWith(lift); const g = gapLegs(); const e = Math.abs(g - 0.0006) + 10 * Math.max(0, -g); if (!bestA || e < bestA.e) bestA = { e, s2: Object.assign({}, s2), lift }; }
+          st = bestA.s2; P.setLeg('R', st);
           st.ankle = 8;
           { let lo2 = -12, hi2 = 12; const b0 = st.hipFlex;          // raise or lower the hip until the outer ankle just rests on the shin
             for (let it = 0; it < 20; it++) { const m = (lo2 + hi2) / 2; P.setLeg('R', Object.assign({}, st, { hipFlex: b0 + m })); const g = gapLegs(); if (!isFinite(g) || g > 0.0006) hi2 = m; else lo2 = m; }
@@ -577,23 +613,30 @@
           const KC_POSE = { curl: { index: [0.35, 0.55, 0.35], middle: [0.5, 0.75, 0.45], ring: [0.55, 0.8, 0.5], little: [0.6, 0.85, 0.5] }, spread: 0.25, thumb: [0.35, 0.1, 0.2, 0.1] };
           const quat = HANDS.quat(axis.clone().addScaledVector(up, -0.35).normalize(), up.clone().addScaledVector(axis, 0.3));
           hand.pose(KC_POSE);
-          // the index fingertip on the edge, facing toward the foot (it pushes the kneecap down)
-          const pushDir = axis.clone().negate().addScaledVector(nE, 0.6).normalize();
-          CONTACT.rest(hand, 'indexTip', E0, pushDir, quat, fld, 0.0006, 0.035);
+          // the tips of the thumb and the index finger side by side on the top edge, facing toward the foot (they push it down)
+          const pushDir = axis.clone().negate().addScaledVector(nE, 0.6).normalize(), side2 = V(0, 0, 0).crossVectors(axis, up).normalize();
+          const edgeAt = (off) => { const q = E0.clone().addScaledVector(side2, off); return new THREE.Raycaster(q.clone().addScaledVector(up, 1), up.clone().negate()).intersectObject(rcm, false)[0].point; };
+          CONTACT.rest(hand, 'thumbTip', edgeAt(-0.08), pushDir, quat, fld, 0.0006, 0.035);
           const ex = { hand: 'L', wrist: hand.group.position.clone(), quat, pose: KC_POSE, back: V(-0.5, 0.25, 0.83).normalize() };
           applyEx('L', ex);
-          ex.pose = CONTACT.curlToTouch(hand, ['middle', 'ring', 'little'], fld, KC_POSE, { gap: 0.0006, from: -0.6, to: 0.8, together: true }); applyEx('L', ex);
-          const side2 = V(0, 0, 0).crossVectors(axis, up).normalize(), E1 = E0.clone().addScaledVector(side2, 0.16);
-          const hit2 = new THREE.Raycaster(E1.clone().addScaledVector(up, 1), up.clone().negate()).intersectObject(rcm, false)[0];
-          const th = CONTACT.thumbOn(hand, hit2.point, fld.query(hit2.point, 0.05).n.clone().addScaledVector(axis, -0.6).normalize(), fld, 0.0006, axis.clone());
-          ex.thumbQ = th.tq; applyEx('L', ex);
+          ex.pose = CONTACT.curlToTouch(hand, ['index'], fld, KC_POSE, { gap: 0.0006, from: -0.6, to: 1.2 }); applyEx('L', ex);
+          ex.pose = CONTACT.curlToTouch(hand, ['middle', 'ring', 'little'], fld, ex.pose, { gap: 0.0006, from: -0.6, to: 0.8, together: true }); applyEx('L', ex);
+          const th = { pad: CONTACT.gapNear(hand, 'thumbTip', fld, 0.035).gap };
           const parts = CONTACT.partGaps(hand, fld);
           SOL.ex.kneeClonusR = ex; SOL.ex.kneeClonusL = mirEx(ex);
           SOL.lm.patellaTopR = { point: E0, normal: nE };
-          SOL.gaps.kneeClonus = { indexTip: mm(CONTACT.gapNear(hand, 'indexTip', fld, 0.035).gap), thumbTip: mm(th.pad), lowest: mm(Math.min(...Object.values(parts).map((v) => v.gap))) };
+          SOL.gaps.kneeClonus = { indexTip: mm(CONTACT.gapNear(hand, 'indexTip', fld, 0.04).gap), thumbTip: mm(th.pad), lowest: mm(Math.min(...Object.values(parts).map((v) => v.gap))) };
           log('knee clonus gaps (mm)', JSON.stringify(SOL.gaps.kneeClonus));
           SOL.cams.kneeClonR = pickCam(E0, V(0.1, 0.35, 1), 5.5, [[hand.world('indexTip'), 0.03, EX.L.group], [Pt.clone().addScaledVector(up, 0.01), 0.03, P.legs.R]], { name: 'knee clonus R', aim: E0.clone().addScaledVector(axis, 0.25), aperture: 0.015 });
           SOL.cams.kneeClonL = mirCam(SOL.cams.kneeClonR);
+        }
+        // ============================================================ the two medium shots (upper body; legs)
+        {
+          for (const sd of ['R', 'L']) { applyArm(sd, HOME_ARM[sd]); P.setLeg(sd, {}); }
+          const head = P.headBack(), hip = P.legPoint('R', 'hip'), mid = head.clone().lerp(hip, 0.45).add(V(0.6, 0.6, 0.6));
+          SOL.cams.upper = cam(mid.clone().add(V(4.5, 6.5, 14.0)), mid, mid, 0.05);
+          const lm = P.legPoint('R', 'knee').lerp(P.legPoint('R', 'ankle'), 0.4).add(V(0, 0, -0.6));
+          SOL.cams.legs = cam(lm.clone().add(V(1.5, 7.5, 12.5)), lm, lm, 0.05);
         }
         // ============================================================ HOFFMANN'S SIGN (right; the left is the mirror)
         // His forearm out toward the examiner, the hand palm down and resting on the examiner's left palm (palm up), the wrist
@@ -620,16 +663,18 @@
           const pin = EX.R.hand, mid = ph.fingers.middle.dip; mid.updateMatrixWorld(true);
           const mfld = CONTACT.field(mid.children.filter((m) => m.isMesh));
           const under = ph.world('middlePad'), nail = ph.world('middleNail'), mx = V(1, 0, 0).transformDirection(mid.matrixWorld).normalize();
-          const PPOSE = { curl: { index: [0.35, 0.45, 0.3], middle: [1.1, 1.3, 0.8], ring: [1.2, 1.4, 0.85], little: [1.25, 1.45, 0.9] }, spread: 0.3, thumb: [0.5, 0.3, 0.35, 0.25] };
-          const pinQ = HANDS.quat(mx.clone().cross(pdn).normalize().negate(), pdn.clone());     // across his finger, palm up (the index pad faces up)
-          pin.pose(PPOSE); CONTACT.rest(pin, 'indexPad', under, pdn, pinQ, mfld, 0.0006, 0.04);
-          const exP = { hand: 'R', wrist: pin.group.position.clone(), quat: pinQ, pose: PPOSE, back: V(0.55, -0.3, 0.8).normalize() };
+          const PPOSE = { curl: { index: [0.35, 0.45, 0.3], middle: [1.1, 1.3, 0.8], ring: [1.2, 1.4, 0.85], little: [1.25, 1.45, 0.9] }, spread: 0.3, thumb: [0.45, 0.35, 0.2, 0.1] };
+          const nailN = V(0, 1, 0).transformDirection(mid.matrixWorld).normalize(), nailQ = mfld.query(nail, 0.05).q || nail;
+          const want = V(0.55, 0.1, 0.83).normalize();                // the examiner's forearm back toward him (footward, his side)
+          const pinScore = (hd) => { hd.group.updateMatrixWorld(true); const pr = CONTACT.handParts(hd), body = pr.palm.concat(pr.middle, pr.ring, pr.little); const c = CONTACT.minGap(body, pfld, null, 0, 0.08).gap, f = V(-1, 0, 0).transformDirection(hd.group.matrixWorld).normalize(); return 40 * Math.max(0, 0.002 - c) + (1 - f.dot(want)) + 0.5 * Math.abs(hd.world('indexPad').distanceTo(under) - 0.05); };
+          const rp = CONTACT.thumbPress(pin, nailQ, nailN, mx, [PPOSE], mfld, pinScore, 0.0006);
+          const exP = { hand: 'R', wrist: rp.wrist, quat: rp.quat, pose: rp.pose, back: V(-1, 0, 0).applyQuaternion(rp.quat).normalize() };
           applyEx('R', exP);
-          const thN = pdn.clone().negate(), th = CONTACT.thumbOn(pin, mfld.query(nail, 0.05).q || nail, thN, mfld, 0.0006);
-          exP.thumbQ = th.tq; applyEx('R', exP);
+          exP.pose = CONTACT.curlToTouch(pin, ['index'], mfld, rp.pose, { gap: 0.0006, from: -0.5, to: 1.4 }); applyEx('R', exP);
+          const th = { pad: CONTACT.gapNear(pin, 'thumbPad', mfld, 0.04).gap, all: CONTACT.minGap(CONTACT.handParts(pin).thumb, pfld, null, 0, 0.15).gap };
           SOL.ex.hoffSupR = exS; SOL.ex.hoffPinR = exP; SOL.ex.hoffSupL = mirEx(exS); SOL.ex.hoffPinL = mirEx(exP);
           SOL.ex.hoffSupRel = relTo(exS, ph.group); SOL.ex.hoffPinRel = relTo(exP, ph.group);
-          SOL.gaps.hoff = { palmOnPalm: mm(CONTACT.gapNear(sup, 'palm', pfld, 0.35).gap), indexUnderTip: mm(CONTACT.gapNear(pin, 'indexPad', mfld, 0.04).gap), thumbOnNail: mm(th.pad), thumbLowest: mm(th.all) };
+          SOL.gaps.hoff = { palmOnPalm: mm(CONTACT.gapNear(sup, 'palm', pfld, 0.35).gap), indexUnderTip: mm(CONTACT.minGap(CONTACT.handParts(pin).indexTip, mfld, null, 0, 0.08).gap), thumbOnNail: mm(th.pad), thumbLowest: mm(th.all) };
           log("Hoffmann gaps (mm)", JSON.stringify(SOL.gaps.hoff));
           const thumbP = ph.world('thumbTip');
           SOL.cams.hoffR = pickCam(ph.world('palm'), V(0.15, -0.05, 1).normalize().add(V(0, 0.32, 0)).normalize(), 5.2, [[thumbP, 0.03, P.arms.R.group], [pin.world('thumbNail'), 0.03, EX.R.group], [ph.world('middleTip'), 0.03, P.arms.R.group]], { name: 'Hoffmann R', aim: ph.world('palm').lerp(thumbP, 0.3), aperture: 0.012 });
@@ -697,30 +742,6 @@
       };
       // ================================================ KEYS (seconds). R / L = the patient's sides; ex hands by the examiner's hand.
       const S_ = Object.fromEntries(STRIKES.map((k) => [k.id, k.t]));
-      const KEYS = {
-        cam: [[0, 'home'], [HOME_HOLD, 'home'], [4.6, 'upper'], [6.5, 'upper'], [8.2, 'bicR'], [10.8, 'bicR'], [10.8, 'bicL', 'cut'],
-          [15.0, 'supR', 'cut'], [18.4, 'supL', 'cut'], [24.0, 'upper', 'cut'], [25.0, 'upper'], [26.5, 'triR'], [30.1, 'triL', 'cut'],
-          [34.0, 'reinf', 'cut'], [41.0, 'knees', 'cut'], [51.0, 'jend', 'cut'], [59.0, 'legs', 'cut'], [59.4, 'legs'], [60.9, 'ankR'], [63.4, 'ankL', 'cut'],
-          [69.0, 'clonR', 'cut'], [74.2, 'clonL', 'cut'], [78.0, 'kneeClonR', 'cut'], [81.6, 'kneeClonL', 'cut'], [85.0, 'hoffR', 'cut'], [89.2, 'hoffL', 'cut'],
-          [94.0, 'upper', 'cut'], [96.0, 'home'], [D, 'home']],
-        armR: [[0, 'home'], [6.5, 'home'], [7.6, 'abdR'], [24.9, 'abdR'], [26.2, 'chestR'], [28.3, 'chestR'], [29.3, 'abdR'], [42.5, 'abdR'], [43.4, 'home'], [52.5, 'home'], [53.6, 'jend0R'], [54.25, 'jend0R'], [54.4, 'jend1R'], [55.6, 'jend1R'], [56.1, 'jend0R'], [57.1, 'home'],
-          [85.6, 'home'], [86.6, 'hoffR'], [89.2, 'home', 'cut'], [D, 'home']],
-        armL: [[0, 'home'], [6.5, 'home'], [7.6, 'abdL'], [30.1, 'chestL', 'cut'], [34.0, 'abdL', 'cut'], [42.5, 'abdL'], [43.4, 'home'], [52.5, 'home'], [53.6, 'jend0L'], [54.25, 'jend0L'], [54.4, 'jend1L'], [55.6, 'jend1L'], [56.1, 'jend0L'], [57.1, 'home'],
-          [89.2, 'hoffL', 'cut'], [94.0, 'home', 'cut'], [D, 'home']],
-        legR: [[0, 'rest'], [43.5, 'rest'], [44.4, 'kneeJerk'], [57.3, 'kneeJerk'], [58.4, 'rest'], [59.4, 'rest'], [60.8, 'ankleJerkR'], [63.4, 'rest', 'cut'],
-          [69.3, 'rest'], [70.5, 'clonusR0'], [71.2, 'clonusR0'], [71.33, 'clonusR1'], [73.4, 'clonusR1'], [73.8, 'clonusR0'], [74.2, 'rest', 'cut'], [D, 'rest']],
-        legL: [[0, 'rest'], [43.5, 'rest'], [44.4, 'kneeJerk'], [57.3, 'kneeJerk'], [58.4, 'rest'], [63.4, 'ankleJerkR', 'cut'], [69.0, 'rest', 'cut'],
-          [74.2, 'clonusR0', 'cut'], [74.9, 'clonusR0'], [75.03, 'clonusR1'], [77.1, 'clonusR1'], [77.5, 'clonusR0'], [78.0, 'rest', 'cut'], [D, 'rest']],
-        exL: [[0, 'home'], [7.4, 'home'], [8.3, 'thumbR'], [10.8, 'S:bicL', 'cut'], [15.0, 'home', 'cut'], [18.4, 'S:supL', 'cut'], [24.0, 'home', 'cut'],
-          [24.1, 'home'], [24.9, 'rel:wristRel:handR'], [29.3, 'rel:wristRel:handR'], [29.9, 'home'], [30.1, 'S:triL', 'cut'],
-          [34.0, 'home', 'cut'], [35.7, 'home'], [36.5, 'thumbR'], [38.2, 'thumbR'], [39.0, 'home'], [42.5, 'home'], [43.6, 'kneeSupport'], [57.2, 'kneeSupport'], [58.6, 'home'],
-          [59.3, 'home'], [60.8, 'footR'], [63.4, 'S:ankL', 'cut'], [69.0, 'home', 'cut'], [69.3, 'home'], [70.5, 'calfR'], [74.2, 'clonusFootL0', 'cut'], [74.9, 'clonusFootL0'], [75.03, 'clonusFootL1'], [77.1, 'clonusFootL1'], [77.5, 'clonusFootL0'],
-          [78.0, 'kneeClonusR', 'cut'], [81.6, 'parkFar', 'cut'], [85.0, 'home', 'cut'], [85.2, 'home'], [85.6, 'rel:hoffSupRel:handR'], [89.2, 'hoffPinL', 'cut'], [94.0, 'home', 'cut'], [D, 'home']],
-        exR: [[0, 'home'], [1.4, 'home'], [2.3, 'park'], [3.2, 'park'], [4.5, 'S:bicR'], [10.8, 'thumbL', 'cut'], [15.0, 'S:supR', 'cut'], [18.4, 'homeFar', 'cut'], [24.0, 'park', 'cut'],
-          [25.4, 'park'], [26.6, 'S:triR'], [30.1, 'wristL', 'cut'], [34.0, 'S:bicR', 'cut'], [43.4, 'S:bicR'], [44.8, 'S:kneeR'], [46.3, 'S:kneeR'], [47.1, 'S:kneeL'], [48.6, 'S:kneeL'], [49.6, 'S:kneeR'],
-          [59.4, 'S:kneeR'], [61.0, 'S:ankR'], [63.4, 'footL', 'cut'], [69.0, 'park', 'cut'], [69.6, 'park'], [70.6, 'clonusFootR0'], [71.2, 'clonusFootR0'], [71.33, 'clonusFootR1'], [73.4, 'clonusFootR1'], [73.8, 'clonusFootR0'],
-          [74.2, 'calfL', 'cut'], [78.0, 'park', 'cut'], [81.6, 'kneeClonusL', 'cut'], [85.0, 'park', 'cut'], [86.0, 'park'], [86.8, 'rel:hoffPinRel:handR'], [89.2, 'hoffSupL', 'cut'], [94.0, 'park', 'cut'], [94.6, 'park'], [95.6, 'home'], [D, 'home']],
-      };
       const HAMMER = [[1.9, 69.0]];                                        // the hammer in his hand (picked up and put down off camera)
       const CH = Object.fromEntries(Object.entries(KEYS).map(([k, v]) => [k, channel(v)]));
       // ---- cameras: one object per shot (solved), plus the two wide ones
@@ -833,16 +854,94 @@
           pa.needsUpdate = true; mesh.geometry.computeVertexNormals();
         }
         // camera (real time) and lights
-        shoot(window.CAM_OVERRIDE ? camVec(window.CAM_OVERRIDE) : camAt(t));
+        shoot(root.CAM_OVERRIDE ? camVec(root.CAM_OVERRIDE) : camAt(t));
         L.set(still ? 0 : p, {});
         if (still) L.lamp.intensity = SET.LAMP.power;                      // no flicker on the home shot (it must match the other parts)
       };
       root.CNS7_TIMELINE = { KEYS, CAMS, STRIKES, camAt, swingAt };
-      const overlay = (ctx, t, W, H) => { const on = root.CAPTIONS != null ? !!root.CAPTIONS : style.captions; if (on) CAPTION.at(ctx, t, CAPTIONS, W, H); };
+      const overlay = (ctx, t, W, H) => {
+        const on = root.CAPTIONS != null ? !!root.CAPTIONS : style.captions; if (on) CAPTION.at(ctx, t, CAPTIONS, W, H);
+        if (root.REVIEW_MARKS) drawMarks(ctx, W, H, root.REVIEW_MARKS);           // review panels only (never in the video)
+      };
+      // ---------------------------------------------------------------- REVIEW (storyboard panels a-g; tools only)
+      const proj = (p, W, H) => { const v = (p.isVector3 ? p.clone() : V(...p)).project(S.camera); return [(v.x + 1) / 2 * W, (1 - v.y) / 2 * H, v.z]; };
+      const drawMarks = (ctx, W, H, marks) => {
+        ctx.save(); ctx.lineWidth = Math.max(2, W / 480); ctx.font = `600 ${Math.round(W / 48)}px "Fredoka", sans-serif`; ctx.textBaseline = 'middle';
+        for (const m of marks) {
+          const a = proj(m.at, W, H); if (a[2] > 1) continue;
+          const col = m.color || (m.bad ? '#ff3b30' : '#ffe14d');
+          if (m.to) { const b = proj(m.to, W, H); ctx.strokeStyle = col; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); ctx.beginPath(); ctx.arc(b[0], b[1], ctx.lineWidth * 1.6, 0, 7); ctx.fillStyle = col; ctx.fill(); }
+          ctx.beginPath(); ctx.arc(a[0], a[1], ctx.lineWidth * 1.4, 0, 7); ctx.fillStyle = col; ctx.fill();
+          if (m.label) { const off = m.off || [12, -18], x = a[0] + off[0] * W / 960, y = a[1] + off[1] * W / 960; ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(0,0,0,0.75)'; ctx.strokeText(m.label, x, y); ctx.fillStyle = col; ctx.fillText(m.label, x, y); ctx.lineWidth = Math.max(2, W / 480); ctx.strokeStyle = col; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(x, y); ctx.stroke(); }
+        }
+        ctx.restore();
+      };
+      const FIELDS = {
+        armR: () => CONTACT.field(armMeshes('R')), armL: () => CONTACT.field(armMeshes('L')),
+        legR: () => CONTACT.field([P.legMeshes.R]), legL: () => CONTACT.field([P.legMeshes.L]), legs: () => CONTACT.field([P.legMeshes.R, P.legMeshes.L]),
+        handR: () => CONTACT.field(handMeshes(P.arms.R.hand)), handL: () => CONTACT.field(handMeshes(P.arms.L.hand)),
+        midR: () => CONTACT.field(P.arms.R.hand.fingers.middle.dip.children.filter((m) => m.isMesh)), midL: () => CONTACT.field(P.arms.L.hand.fingers.middle.dip.children.filter((m) => m.isMesh)),
+        thumbNailR: () => CONTACT.field(EX.R.hand.thumb.ip.children.filter((m) => m.isMesh)), thumbNailL: () => CONTACT.field(EX.L.hand.thumb.ip.children.filter((m) => m.isMesh)),
+      };
+      const partMeshes = (h, part) => {
+        if (part === 'hammer') return hammer.head.children.filter((m) => m.isMesh);
+        if (part === 'fore') return EX[h].fore.children.filter((m) => m.isMesh);
+        if (part === 'legR' || part === 'legL') return [P.legMeshes[part.slice(3)]];
+        if (part === 'phandR' || part === 'phandL') return handMeshes(P.arms[part.slice(5)].hand);
+        const parts = CONTACT.handParts(EX[h].hand); if (parts[part]) return parts[part];
+        throw new Error('no part ' + part);
+      };
+      root.REVIEW_SHOT = (r, n) => {
+        root.CAPTIONS = false; root.REVIEW_MARKS = null; root.CAM_OVERRIDE = null;
+        update(r.t);
+        const gaps = {}, marks = [];
+        for (const c of r.contacts || []) {
+          const g = CONTACT.minGap(partMeshes(c.hand, c.part), FIELDS[c.field](), null, 0, 0.15), v = +(g.gap * 100).toFixed(2);
+          gaps[c.label || c.part] = isFinite(v) ? v : null;
+          if (g.at) marks.push({ at: g.at, to: g.q, label: (c.label || c.part) + ' ' + (isFinite(v) ? v.toFixed(2) : '>15') + ' mm', bad: !(v >= 0 && v < 1.5), off: c.off });
+        }
+        const values = {};
+        for (const a of r.angles || []) {
+          if (a.joint === 'elbow') { const m = P.arms[a.side]; m.group.updateMatrixWorld(true); const Sh = m.up.getWorldPosition(V(0, 0, 0)), E = m.fore.getWorldPosition(V(0, 0, 0)), Wr = m.hand.group.getWorldPosition(V(0, 0, 0)); values[a.label] = +(Sh.sub(E).angleTo(Wr.sub(E)) * 180 / Math.PI).toFixed(1); }
+          else values[a.label] = +(+P.leg(a.side)[a.joint]).toFixed(1);
+        }
+        for (const l of r.labels || []) marks.push({ at: V(...l.at), label: l.text, color: l.color || '#ffffff', off: l.off || [10, 0] });
+        for (const pt of r.points || []) { const w = pt.hand ? EX[pt.hand].hand.world(pt.name) : pt.patient ? P.arms[pt.patient].hand.world(pt.name) : null; if (w) { marks.push({ at: w, label: pt.label, color: pt.color || '#7cf0ff', off: pt.off }); values[pt.label] = w.toArray().map((x) => +x.toFixed(3)); } }
+        if (r.cam) root.CAM_OVERRIDE = r.cam;
+        else if (r.close) {   // closer along the shot's own view: the contact seen from the same side as in the film
+          const c0 = camAt(r.t), at = marks.length ? marks[0].at : V(...c0.slice(3, 6)), dir = V(...c0.slice(0, 3)).sub(at).normalize();
+          root.CAM_OVERRIDE = { pos: at.clone().addScaledVector(dir, r.close).toArray(), target: at.toArray(), focus: at.toArray(), aperture: 0, fov: 28 };
+        }
+        root.REVIEW_MARKS = marks;
+        S.seek(r.t, n);
+        root.REVIEW_MARKS = null; root.CAM_OVERRIDE = null; root.CAPTIONS = true;
+        return { gaps, values };
+      };
       return { update, overlay };
     },
 
-    sound(k) {},
+    // ================================================================ sound: real events only, from the same schedule
+    sound(k) {
+      // the quiet room under everything: fades in over the first 0.5 s and out over the last 0.5 s (no clicks at the joins)
+      k.noise(0, { dur: D, color: 'brown', filter: 'lowpass', f: 300, gain: 0.11, a: 0.5, hold: D - 1.0, bus: 'amb' });
+      k.noise(0, { dur: D, color: 'pink', filter: 'highpass', f: 4500, gain: 0.012, a: 0.5, hold: D - 1.0, bus: 'amb' });
+      // the tendon hammer: a soft rubber tap, a short dull thud, the same on both sides, at the frame the head lands
+      for (const s of STRIKES) {
+        k.tone(s.t, { f: [[0, 210], [0.045, 95]], dur: 0.085, gain: 0.34, a: 0.002 });
+        k.noise(s.t, { dur: 0.03, color: 'brown', filter: 'lowpass', f: 1300, gain: 0.16, a: 0.001 });
+        k.noise(s.t, { dur: 0.018, color: 'pink', filter: 'bandpass', f: 700, q: 1.2, gain: 0.05, a: 0.001 });
+      }
+      // a very soft rustle of the sheet when one of his limbs starts to move
+      for (const ch of ['armR', 'armL', 'legR', 'legL']) {
+        const ks = KEYS[ch];
+        for (let i = 0; i < ks.length - 1; i++) {
+          const [t0, a] = ks[i], [t1, b, cut] = ks[i + 1];
+          if (cut || a === b || t1 - t0 < 0.1) continue;
+          const d = Math.min(0.9, t1 - t0);
+          k.noise(t0 + 0.05, { dur: d, color: 'pink', filter: 'bandpass', f: [[0, 900], [d, 1600]], q: 0.7, gain: 0.035, a: d * 0.4, hold: d * 0.2 });
+        }
+      }
+    },
   };
   root.CNS7 = style;
 })(typeof window !== 'undefined' ? window : globalThis);
