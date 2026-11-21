@@ -771,6 +771,11 @@
             if (!bestS || sc < bestS.sc) bestS = { sc, e, pg, ag, turn, sl };
           }
           const exS = bestS.e; applyEx('L', exS);
+          for (let it = 0; it < 10; it++) {   // nothing of it under his hand or arm (all vertices)
+            const g = CONTACT.minGap(handMeshes(sup), pfld, null, 0, 0.15).gap; if (!isFinite(g) || g >= 0.0002) break;
+            exS.wrist = exS.wrist.clone().addScaledVector(pdn, 0.0004 - g); applyEx('L', exS);
+          }
+          bestS.pg = CONTACT.minGap(CONTACT.handParts(sup).palm, hfld, null, 0, 0.15).gap; bestS.ag = CONTACT.minGap(handMeshes(sup), pfld, null, 0, 0.15).gap;
           log('Hoffmann support: turn', bestS.turn, 'slide', bestS.sl, 'palm on palm', mm(bestS.pg), 'mm, lowest vs his hand + arm', mm(bestS.ag), 'mm');
           // the pinch: the examiner's right index pad under the tip of his middle finger, the thumb pad on its nail. The pinch
           // pose is turned so the line index pad -> thumb pad runs up through his fingertip; searched: the roll about that line
