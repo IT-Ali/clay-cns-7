@@ -83,7 +83,7 @@
     exL: [[0, 'home'], [7.4, 'home'], [8.3, 'thumbR'], [10.8, 'S:bicL', 'cut'], [15.0, 'home', 'cut'], [18.4, 'S:supL', 'cut'], [24.0, 'home', 'cut'],
       [24.1, 'home'], [24.9, 'rel:wristRel:handR'], [29.3, 'rel:wristRel:handR'], [29.9, 'home'], [30.1, 'S:triL', 'cut'],
       [34.0, 'home', 'cut'], [35.7, 'home'], [36.5, 'thumbRreinf'], [38.2, 'thumbRreinf'], [39.0, 'home'], [42.5, 'home'], [43.6, 'kneeSupport'], [57.2, 'kneeSupport'], [58.6, 'home'],
-      [59.3, 'home'], [60.8, 'footR'], [63.4, 'S:ankL', 'cut'], [69.0, 'home', 'cut'], [69.3, 'home'], [70.5, 'calfR'], [74.2, 'clonusFootL0', 'cut'], [74.9, 'clonusFootL0'], [75.03, 'clonusFootL1'], [77.1, 'clonusFootL1'], [77.5, 'clonusFootL0'],
+      [59.3, 'home'], [60.3, 'home'], [60.8, 'footR'], [63.4, 'S:ankL', 'cut'], [69.0, 'home', 'cut'], [69.3, 'home'], [70.5, 'calfR'], [74.2, 'clonusFootL0', 'cut'], [74.9, 'clonusFootL0'], [75.03, 'clonusFootL1'], [77.1, 'clonusFootL1'], [77.5, 'clonusFootL0'],
       [78.0, 'kneeClonusR', 'cut'], [81.6, 'parkFar', 'cut'], [85.0, 'home', 'cut'], [85.2, 'home'], [85.6, 'rel:hoffSupRel:handR'], [89.2, 'hoffPinL', 'cut'], [94.0, 'home', 'cut'], [D, 'home']],
     exR: [[0, 'home'], [1.4, 'home'], [2.3, 'park'], [7.6, 'park'], [8.6, 'S:bicR'], [10.8, 'thumbL', 'cut'], [15.0, 'S:supR', 'cut'], [18.4, 'homeFar', 'cut'], [24.0, 'park', 'cut'],
       [25.4, 'park'], [26.6, 'S:triR'], [30.1, 'wristL', 'cut'], [34.0, 'S:reinfR@reinfR', 'cut'], [38.4, 'S:reinfR@reinfR'], [39.4, 'park'], [43.4, 'park'], [44.8, 'S:kneeR'], [46.3, 'S:kneeR'], [47.1, 'S:kneeL'], [48.6, 'S:kneeL'], [49.6, 'S:kneeR@jendR'],
@@ -234,17 +234,19 @@
           const toward = V(0, -0.25, 1).normalize(), back = across.clone().negate().multiplyScalar(0.7).add(toward.clone().multiplyScalar(0.7)).normalize();
           const THUMBS = [[0.1, 0, 0.1, 0.05], [-0.15, -0.3, 0, 0], [0.3, 0.4, 0.25, 0.15], [-0.3, 0.2, 0, 0]];
           let ex = null, bestSc = Infinity;
-          for (const o of [0, 0.1, 0.2, 0.3, 0.4]) for (const th of THUMBS) {
+          for (const rot of [0, -0.35, 0.35, -0.7]) for (const o of [0, 0.15, 0.3]) for (const th of [THUMBS[0], THUMBS[3]]) {
+            const q1 = new THREE.Quaternion().setFromAxisAngle(nOut, rot).multiply(quat);      // turned on the sole (the fingers stay across it)
             const P0 = Object.assign({}, POSE, { thumb: th }), at = B.clone().addScaledVector(along, -0.15).addScaledVector(across, -o);
-            hand.pose(P0); CONTACT.rest(hand, 'palm', at, nOut, quat, fld, 0.0006, 0.25);
-            const e = { hand: handSide, wrist: hand.group.position.clone(), quat, pose: P0, back };
+            hand.pose(P0); CONTACT.rest(hand, 'palm', at, nOut, q1, fld, 0.0006, 0.25);
+            const e = { hand: handSide, wrist: hand.group.position.clone(), quat: q1, pose: P0, back };
             applyEx(handSide, e);
             e.pose = CONTACT.curlToTouch(hand, ['index', 'middle', 'ring', 'little'], fld, P0, { gap: 0.0006, from: -0.55, to: 0.6, together: true }); applyEx(handSide, e);
             liftClear(handSide, e, nOut, fld, 0.0003);
             const pr = CONTACT.handParts(hand), pg = CONTACT.minGap(pr.palm, fld, null, 0, 0.15).gap;
             let fs = 0; for (const k of ['index', 'middle', 'ring', 'little']) { const g = CONTACT.minGap(pr[k], fld, null, 0, 0.15).gap; fs += Math.min(isFinite(g) ? g : 0.02, 0.02); }
             const tgp = CONTACT.minGap(pr.thumb, fld, null, 0, 0.15).gap;   // the thumb lying against the foot, not standing up off it
-            const sc = Math.abs((isFinite(pg) ? pg : 0.05) - 0.0005) + 0.15 * fs + 0.08 * Math.min(isFinite(tgp) ? tgp : 0.02, 0.02);
+            const up = (nm) => Math.max(0, hand.world(nm).sub(hand.world('palm')).normalize().y - 0.25);   // nothing pointing up: no upright hand
+            const sc = Math.abs((isFinite(pg) ? pg : 0.05) - 0.0005) + 0.15 * fs + 0.08 * Math.min(isFinite(tgp) ? tgp : 0.02, 0.02) + 0.004 * (up('thumbTip') + up('middleTip'));
             if (sc < bestSc) { bestSc = sc; ex = Object.assign({}, e, { o }); }
           }
           applyEx(handSide, ex); delete ex.o;
@@ -449,7 +451,7 @@
           };
           SOL.cams.bicR = armCam('R', 'L', SOL.strikes.bicR, 'biceps R');
           applyEx('L', HOME_EX.L); applyEx('R', SOL.ex.thumbL); applyStrike(SOL.strikes.bicL, 0);
-          SOL.cams.bicL = armCam('L', 'R', SOL.strikes.bicL, 'biceps L');
+          SOL.cams.bicL = mirCam(SOL.cams.bicR);
           applyEx('R', HOME_EX.R); applyEx('L', HOME_EX.L);
         }
         // --------------------------------------------------- supinator jerk: the hammer on the brachioradialis tendon (radial
