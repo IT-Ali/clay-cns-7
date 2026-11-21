@@ -33,13 +33,19 @@ export const PANELS = [
 ];
 const S = { bicR: 9.2, bicL: 12.2, supR: 16.8, supL: 19.8, triR: 27.6, triL: 30.8, reinfR: 37.4, kneeR: 45.8, kneeL: 47.8, jendR: 54.6, ankR: 61.8, ankL: 64.8 };
 const FIELD = { bicR: 'thumbNailL', bicL: 'thumbNailR', reinfR: 'thumbNailL', supR: 'armR', supL: 'armL', triR: 'armR', triL: 'armL', kneeR: 'legR', kneeL: 'legL', jendR: 'legR', ankR: 'legR', ankL: 'legL' };
+const LMK = { supR: 'brachioradialisTendon_R', supL: 'brachioradialisTendon_L', kneeR: 'patellarTendon_R', kneeL: 'patellarTendon_L', jendR: 'patellarTendon_R', ankR: 'achillesTendon_R', ankL: 'achillesTendon_L' };
 const PEAK = 0.14;                  // the reflex peak lands on the pose (twos) just after strike + 0.05 + 0.08 s
+// every digit and the palm of a working hand, measured to his skin (all of him)
+const DIG = [['palm', 'palm'], ['thumbTip', 'thumb'], ['indexTip', 'index'], ['middleTip', 'middle'], ['ringTip', 'ring'], ['littleTip', 'little']];
+const digits = (hand, who, field = 'patient') => DIG.map(([part, name], i) => ({ hand, part, field, label: `${who} ${name}`, off: [14, -46 + i * 17] }));
 const strikes = [];
 for (const [id, t] of Object.entries(S)) {
-  const hand = /L$/.test(id) ? 'L' : 'R', contacts = [{ hand, part: 'hammer', field: FIELD[id], label: 'hammer head' }];
-  if (/^bic|^reinf/.test(id)) contacts.push({ hand: hand === 'R' ? 'L' : 'R', part: 'thumbTip', field: id === 'bicL' ? 'armL' : 'armR', label: 'thumb pad', off: [14, 26] });
+  const hand = /L$/.test(id) ? 'L' : 'R', other = hand === 'R' ? 'L' : 'R', contacts = [{ hand, part: 'hammer', field: FIELD[id], label: 'hammer head' }];
+  if (/^bic|^reinf/.test(id)) contacts.push(...digits(other, 'ex ' + other));
+  if (/^ank/.test(id)) contacts.push(...digits(other, 'ex ' + other), { hand, part: 'leg' + (id === 'ankR' ? 'R' : 'L'), field: id === 'ankR' ? 'legL' : 'legR', near: 'leg:' + (id === 'ankR' ? 'R' : 'L') + ':lateralMalleolus', r: 0.6, label: 'his outer ankle on the other shin' });
+  const extra = /^knee|^jend/.test(id) ? { heels: ['R', 'L'] } : {};
   strikes.push({ id: 'b_' + id + '_top', group: 'b', t: +(t - 0.4).toFixed(3), close: 9, title: id + ': top of the swing' });
-  strikes.push({ id: 'b_' + id + '_hit', group: 'b', t, close: 5.5, contacts, title: id + ': the strike' });
+  strikes.push(Object.assign({ id: 'b_' + id + '_hit', group: 'b', t, close: 6.5, contacts, landmark: LMK[id], title: id + ': the strike' }, extra));
 }
 const angles = [];
 for (const [id, joint, side, t] of [['bicR', 'elbow', 'R', S.bicR], ['bicL', 'elbow', 'L', S.bicL], ['supR', 'elbow', 'R', S.supR], ['supL', 'elbow', 'L', S.supL], ['triR', 'elbow', 'R', S.triR], ['triL', 'elbow', 'L', S.triL], ['kneeR', 'knee', 'R', S.kneeR], ['kneeL', 'knee', 'L', S.kneeL], ['ankR', 'ankle', 'R', S.ankR], ['ankL', 'ankle', 'L', S.ankL]]) {
@@ -53,15 +59,15 @@ export const REVIEW = [
       { at: [-6.8, 13, 0], text: 'head (screen left)', color: '#ffffff' }, { at: [8.5, 7, 0], text: 'feet (screen right)', color: '#ffffff' }, { at: [-4, 9.5, -7.4], text: 'bedside table (his left)', color: '#ffffff' }] },
   ...strikes,
   ...angles,
-  { id: 'd_hooked', group: 'd', t: 54.4, close: 4.0, contacts: [{ hand: 'R', part: 'phandR', field: 'handL', label: 'his two hands' }], title: 'Jendrassik: hooked hands, pulling' },
-  { id: 'd_jaw', group: 'd', t: 37.0, cam: null, close: 0, title: 'Clenched jaw: masseters bulge' },
-  { id: 'e_support', group: 'e', t: 45.2, close: 7.5, contacts: [{ hand: 'L', part: 'fore', field: 'legR', label: 'forearm-right knee' }, { hand: 'L', part: 'fore', field: 'legL', label: 'forearm-left knee', off: [14, 28] }], title: 'The knee support' },
-  { id: 'f_ankle', group: 'f', t: 72.2, close: 5.0, contacts: [{ hand: 'R', part: 'palm', field: 'legR', label: 'palm-ball of foot' }, { hand: 'L', part: 'palm', field: 'legR', label: 'palm-calf', off: [14, 28] }], title: 'Ankle clonus: palm on the ball of the foot' },
-  { id: 'f_knee', group: 'f', t: 79.8, close: 3.2, contacts: [{ hand: 'L', part: 'thumbTip', field: 'legR', label: 'thumb' }, { hand: 'L', part: 'indexTip', field: 'legR', label: 'index', off: [14, 28] }], title: 'Knee clonus: thumb and index on the top of the kneecap' },
-  { id: 'g_before', group: 'g', t: 87.4, close: 3.0, contacts: [{ hand: 'L', part: 'palm', field: 'handR', label: 'his palm on examiner palm' }, { hand: 'R', part: 'indexTip', field: 'midR', label: 'index under tip', off: [14, 28] }, { hand: 'R', part: 'thumbTip', field: 'midR', label: 'thumb on nail', off: [14, -40] }], points: [{ patient: 'R', name: 'thumbTip', label: 'his thumb tip' }], title: "Hoffmann's: before the flick" },
-  { id: 'g_after', group: 'g', t: 87.67, close: 3.0, points: [{ patient: 'R', name: 'thumbTip', label: 'his thumb tip' }, { patient: 'R', name: 'middleTip', label: 'middle fingertip' }], title: "Hoffmann's: the flick (thumb still)" },
-  { id: 'x_biceps_thumb', group: 'x', t: 8.9, close: 3.0, contacts: [{ hand: 'L', part: 'thumbTip', field: 'armR', label: 'thumb pad' }, { hand: 'L', part: 'palm', field: 'armR', label: 'palm', off: [14, 28] }, { hand: 'L', part: 'index', field: 'armR', label: 'index', off: [14, -40] }], title: 'Biceps: the thumb on the tendon' },
-  { id: 'x_wrist', group: 'x', t: 27.2, close: 3.2, contacts: [{ hand: 'L', part: 'palm', field: 'armR', label: 'palm' }, { hand: 'L', part: 'thumbTip', field: 'armR', label: 'thumb', off: [14, 28] }, { hand: 'L', part: 'middleTip', field: 'armR', label: 'middle', off: [14, -40] }], title: 'Triceps: the wrist hold' },
-  { id: 'x_foot', group: 'x', t: 61.6, close: 4.0, contacts: [{ hand: 'L', part: 'palm', field: 'legR', label: 'palm-ball of foot' }, { hand: 'R', part: 'legR', field: 'legL', label: 'outer ankle-other shin', off: [14, 28] }], title: 'Ankle jerk: palm on the ball of the foot; ankle across the shin' },
-  { id: 'x_hoffL', group: 'x', t: 90.6, close: 3.0, contacts: [{ hand: 'R', part: 'palm', field: 'handL', label: 'his palm on examiner palm' }, { hand: 'L', part: 'thumbTip', field: 'midL', label: 'thumb on nail', off: [14, 28] }], title: "Hoffmann's left (mirror)" },
+  { id: 'd_hooked', group: 'd', t: 54.4, close: 3.2, contacts: DIG.map(([part, name], i) => ({ hand: 'R', part: 'p:R:' + part, field: 'handL', label: 'his right ' + name + ' on his left hand', off: [14, -46 + i * 17] })), title: 'Jendrassik: hooked hands, pulling' },
+  { id: 'd_jaw', group: 'd', t: 37.0, close: 0, title: 'Clenched jaw: masseters bulge' },
+  { id: 'e_support', group: 'e', t: 45.2, close: 7.5, heels: ['R', 'L'], contacts: [{ hand: 'L', part: 'fore', field: 'legR', label: 'forearm-right knee' }, { hand: 'L', part: 'fore', field: 'legL', label: 'forearm-left knee', off: [14, 28] }, ...digits('L', 'ex L').map((c) => Object.assign(c, { off: [14, 50 + c.off[1]] }))], title: 'The knee support' },
+  { id: 'f_ankle', group: 'f', t: 72.2, close: 6.0, contacts: [...digits('R', 'ex R'), ...digits('L', 'ex L').map((c) => Object.assign(c, { off: [-260, c.off[1]] }))], title: 'Ankle clonus: palm across the ball of the foot; the calf on the other palm' },
+  { id: 'f_knee', group: 'f', t: 79.8, close: 3.4, contacts: digits('L', 'ex L'), title: 'Knee clonus: thumb and index together on the top edge of the kneecap' },
+  { id: 'g_before', group: 'g', t: 87.4, close: 3.2, contacts: [...digits('L', 'ex L (support)'), ...digits('R', 'ex R (pinch)').map((c) => Object.assign(c, { off: [-300, c.off[1]] }))], points: [{ patient: 'R', name: 'thumbTip', label: 'his thumb tip' }], title: "Hoffmann's: before the flick" },
+  { id: 'g_after', group: 'g', t: 87.67, close: 3.2, points: [{ patient: 'R', name: 'thumbTip', label: 'his thumb tip' }, { patient: 'R', name: 'middleTip', label: 'middle fingertip' }], title: "Hoffmann's: the flick (his thumb still)" },
+  { id: 'x_biceps_thumb', group: 'x', t: 8.9, close: 3.4, contacts: digits('L', 'ex L'), title: 'Biceps: the thumb on the tendon' },
+  { id: 'x_wrist', group: 'x', t: 27.2, close: 3.4, contacts: digits('L', 'ex L'), title: 'Triceps: the wrist hold' },
+  { id: 'x_foot', group: 'x', t: 61.6, close: 5.0, contacts: [...digits('L', 'ex L'), { hand: 'R', part: 'legR', field: 'legL', near: 'leg:R:lateralMalleolus', r: 0.6, label: 'his outer ankle on the other shin', off: [14, 60] }], title: 'Ankle jerk: palm across the ball of the foot; ankle across the shin' },
+  { id: 'x_hoffL', group: 'x', t: 90.6, close: 3.2, contacts: [...digits('R', 'ex R (support)'), ...digits('L', 'ex L (pinch)').map((c) => Object.assign(c, { off: [-300, c.off[1]] }))], title: "Hoffmann's left (mirror)" },
 ];

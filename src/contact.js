@@ -99,11 +99,11 @@
     return parts;
   };
   // the smallest gap over the vertices of `meshes` (optionally only those within r of a point)
-  CONTACT.minGap = (meshes, field, near, r, R = 0.06) => {
+  CONTACT.minGap = (meshes, field, near, r, R = 0.06, step = 1) => {
     let best = { gap: Infinity, at: null, q: null };
     for (const m of meshes) {
       m.updateMatrixWorld(true); const P = m.geometry.attributes.position;
-      for (let i = 0; i < P.count; i++) {
+      for (let i = 0; i < P.count; i += step) {
         _w.fromBufferAttribute(P, i).applyMatrix4(m.matrixWorld);
         if (near && _w.distanceTo(near) > r) continue;
         const h = field.query(_w, R);

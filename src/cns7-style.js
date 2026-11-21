@@ -69,7 +69,7 @@
   const KEYS = {
     cam: [[0, 'home'], [HOME_HOLD, 'home'], [4.6, 'upper'], [6.5, 'upper'], [8.2, 'bicR'], [10.8, 'bicR'], [10.8, 'bicL', 'cut'],
       [15.0, 'supR', 'cut'], [18.4, 'supL', 'cut'], [24.0, 'triR', 'cut'], [30.1, 'triL', 'cut'],
-      [34.0, 'reinf', 'cut'], [41.0, 'knees', 'cut'], [51.0, 'jend', 'cut'], [59.0, 'legs', 'cut'], [59.4, 'legs'], [60.9, 'ankR'], [63.4, 'ankL', 'cut'],
+      [34.0, 'reinf', 'cut'], [41.0, 'knees', 'cut'], [51.0, 'jend', 'cut'], [59.0, 'legsWide', 'cut'], [60.9, 'legsWide'], [60.9, 'ankR', 'cut'], [63.4, 'ankL', 'cut'],
       [69.0, 'clonR', 'cut'], [74.2, 'clonL', 'cut'], [78.0, 'kneeClonR', 'cut'], [81.6, 'kneeClonL', 'cut'], [85.0, 'hoffR', 'cut'], [89.2, 'hoffL', 'cut'],
       [94.0, 'upper', 'cut'], [96.0, 'home'], [D, 'home']],
     armR: [[0, 'home'], [6.5, 'home'], [7.6, 'abdR'], [24.9, 'abdR'], [26.2, 'chestR'], [28.3, 'chestR'], [29.3, 'abdR'], [42.5, 'abdR'], [43.4, 'home'], [52.5, 'home'], [53.6, 'jend0R'], [54.25, 'jend0R'], [54.4, 'jend1R'], [55.6, 'jend1R'], [56.1, 'jend0R'], [57.1, 'home'],
@@ -86,7 +86,7 @@
       [59.3, 'home'], [60.8, 'footR'], [63.4, 'S:ankL', 'cut'], [69.0, 'home', 'cut'], [69.3, 'home'], [70.5, 'calfR'], [74.2, 'clonusFootL0', 'cut'], [74.9, 'clonusFootL0'], [75.03, 'clonusFootL1'], [77.1, 'clonusFootL1'], [77.5, 'clonusFootL0'],
       [78.0, 'kneeClonusR', 'cut'], [81.6, 'parkFar', 'cut'], [85.0, 'home', 'cut'], [85.2, 'home'], [85.6, 'rel:hoffSupRel:handR'], [89.2, 'hoffPinL', 'cut'], [94.0, 'home', 'cut'], [D, 'home']],
     exR: [[0, 'home'], [1.4, 'home'], [2.3, 'park'], [7.6, 'park'], [8.6, 'S:bicR'], [10.8, 'thumbL', 'cut'], [15.0, 'S:supR', 'cut'], [18.4, 'homeFar', 'cut'], [24.0, 'park', 'cut'],
-      [25.4, 'park'], [26.6, 'S:triR'], [30.1, 'wristL', 'cut'], [34.0, 'S:bicR@reinfR', 'cut'], [43.4, 'S:bicR@reinfR'], [44.8, 'S:kneeR'], [46.3, 'S:kneeR'], [47.1, 'S:kneeL'], [48.6, 'S:kneeL'], [49.6, 'S:kneeR@jendR'],
+      [25.4, 'park'], [26.6, 'S:triR'], [30.1, 'wristL', 'cut'], [34.0, 'S:bicR@reinfR', 'cut'], [38.4, 'S:bicR@reinfR'], [39.4, 'park'], [43.4, 'park'], [44.8, 'S:kneeR'], [46.3, 'S:kneeR'], [47.1, 'S:kneeL'], [48.6, 'S:kneeL'], [49.6, 'S:kneeR@jendR'],
       [59.4, 'S:kneeR@jendR'], [61.0, 'S:ankR'], [63.4, 'footL', 'cut'], [69.0, 'park', 'cut'], [69.6, 'park'], [70.6, 'clonusFootR0'], [71.2, 'clonusFootR0'], [71.33, 'clonusFootR1'], [73.4, 'clonusFootR1'], [73.8, 'clonusFootR0'],
       [74.2, 'calfL', 'cut'], [78.0, 'park', 'cut'], [81.6, 'kneeClonusL', 'cut'], [85.0, 'park', 'cut'], [86.0, 'park'], [86.8, 'rel:hoffPinRel:handR'], [89.2, 'hoffSupL', 'cut'], [94.0, 'park', 'cut'], [94.6, 'park'], [95.6, 'home'], [D, 'home']],
   };
@@ -167,8 +167,10 @@
 
       // ================================================================ SOLVE BEGIN
       // Everything below runs ONCE (tools/solve.mjs) and is saved to solved.json. Contacts are measured on the meshes.
-      const solveAll = () => {
-        const SOL = { arms: {}, legs: {}, ex: {}, strikes: {}, lm: {}, cams: {}, gaps: {}, log: [] };
+      const solveAll = (prev) => {
+        // dev only: ?only=a,b re-solves just those sections on top of the saved solved.json (the real solve runs them all)
+        const want = (k) => !root.SOLVE_ONLY || root.SOLVE_ONLY.includes(k);
+        const SOL = prev ? Object.assign(prev, { log: [] }) : { arms: {}, legs: {}, ex: {}, strikes: {}, lm: {}, cams: {}, gaps: {}, log: [] };
         const log = (...a) => { SOL.log.push(a.join(' ')); console.log('[cns7] ' + a.join(' ')); };
         const r3 = (v) => [v.x, v.y, v.z].map((a) => +a.toFixed(3)).join(', ');
         const cam = (pos, target, focus, aperture, fov = 28) => ({ pos: pos.toArray(), target: target.toArray(), focus: (focus || target).toArray(), aperture: aperture == null ? 0.02 : aperture, fov });
@@ -180,7 +182,7 @@
         const pickCam = (target, prefer, dist, see, o = {}) => {
           const ms = sceneMeshes(), rc3 = new THREE.Raycaster(); let best = null;
           const pf = prefer.clone().normalize(), e1 = V(0, 0, 0).crossVectors(pf, Math.abs(pf.y) < 0.9 ? V(0, 1, 0) : V(1, 0, 0)).normalize(), e2 = V(0, 0, 0).crossVectors(pf, e1);
-          for (const cone of [0, 10, 20, 30, 40, 50, 60]) for (let k = 0; k < (cone ? 12 : 1); k++) {
+          for (const cone of [0, 5, 10, 15, 20, 25, 30, 40, 50, 60].filter((c) => c <= (o.maxCone == null ? 60 : o.maxCone))) for (let k = 0; k < (cone ? 12 : 1); k++) {
             const a = k / 12 * Math.PI * 2, c = Math.cos(cone * Math.PI / 180), sn = Math.sin(cone * Math.PI / 180);
             const dir = pf.clone().multiplyScalar(c).addScaledVector(e1, sn * Math.cos(a)).addScaledVector(e2, sn * Math.sin(a)), pos = target.clone().addScaledVector(dir, dist);
             if (pos.y < Dm.Ym + 1.0 && Math.abs(pos.z) < Dm.half + 0.5 && pos.x > -9.5 && pos.x < Dm.xEnd + 0.5) continue;          // inside the bed
@@ -197,21 +199,45 @@
         };                         // world units -> mm (1 unit = 10 cm = 100 mm)
         // the hammer at the moment of a strike (examiner's RIGHT hand on his right side): the head's rim on the target, the
         // gap measured from the head's meshes to the target's skin; dir = from the grip toward the head
-        // the examiner's palm on the ball of his foot (palm against the sole, fingers toward the toes), `hand` = which hand
+        // NO SINKING: slide a placed hand along `dir` until its LOWEST point (palm, every finger, the thumb) rests `gap` on the
+        // skin field; the hand then touches by its lowest point and nothing of it is under the skin
+        const liftClear = (handSide, ex, dir, fld, gap = 0.0003) => {
+          const hand = EX[handSide].hand;
+          for (let it = 0; it < 6; it++) {
+            applyEx(handSide, ex);
+            const g = CONTACT.minGap(handMeshes(hand), fld, null, 0, 0.15).gap;
+            if (!isFinite(g) || Math.abs(g - gap) < 0.00008) break;
+            ex.wrist = ex.wrist.clone().addScaledVector(dir, gap - g);
+          }
+          applyEx(handSide, ex); return ex;
+        };
+        // all of his skin (and the pyjama), for checks
+        const patientMeshes = () => { const out = []; P.group.traverse((m) => { if (m.isMesh && m.visible && m.geometry && m.geometry.attributes.position.count > 200) out.push(m); }); return out; };
+        // the examiner's palm FLAT across the ball of his foot: palm against the sole, fingers together across the sole, the
+        // thumb on the inner (medial) side; the hand rests by its lowest point (nothing sinks)
         const palmOnBall = (side, handSide) => {
           const hand = EX[handSide].hand, fld = CONTACT.field([P.legMeshes[side]]);
-          const B = P.legPoint(side, 'ball'), nB = P.legNormal(side, 'ball'), toe = P.legPoint(side, 'toeTip'), heel = P.legPoint(side, 'heel');
-          const along = toe.clone().sub(heel).addScaledVector(nB, -toe.clone().sub(heel).dot(nB)).normalize();
-          const POSE = { all: [0.2, 0.28, 0.15], spread: 0.3, fan: { index: 0.03, middle: 0, ring: -0.03, little: -0.07 }, thumb: [0.05, 0, 0.08, 0.04] };
-          const quat = HANDS.quat(along, nB.clone().negate());           // the palm faces the sole
-          hand.pose(POSE); CONTACT.rest(hand, 'palm', B, nB, quat, fld, 0.0006, 0.3);
-          const ex = { hand: handSide, wrist: hand.group.position.clone(), quat, pose: POSE, back: V(0.4, -0.35, 0.85).normalize() };
+          const B = P.legPoint(side, 'ball'), q0 = fld.query(B, 0.1), nOut = q0.n.clone();          // the sole's outward normal (measured)
+          const toe = P.legPoint(side, 'toeTip'), heel = P.legPoint(side, 'heel');
+          const along = toe.clone().sub(heel); along.addScaledVector(nOut, -along.dot(nOut)).normalize();
+          const medial = P.legPoint(side, 'medialMalleolus').sub(P.legPoint(side, 'lateralMalleolus')); medial.addScaledVector(nOut, -medial.dot(nOut)).normalize();
+          let across = V(0, 0, 0).crossVectors(nOut, along).normalize();
+          const POSE = { all: [0.06, 0.08, 0.05], spread: 0.15, fan: { index: 0.03, middle: 0, ring: -0.03, little: -0.07 }, thumb: [0.1, 0, 0.1, 0.05] };
+          const mk = (ac) => HANDS.quat(ac, nOut);                       // the back of the hand faces away from the sole: the palm faces it
+          hand.pose(POSE); let quat = mk(across); HANDS.place(hand, 'palm', B, quat); hand.group.updateMatrixWorld(true);
+          if (hand.world('thumbTip').sub(hand.world('palm')).dot(medial) < 0) { across.negate(); quat = mk(across); }   // the thumb on the inner side
+          hand.pose(POSE); CONTACT.rest(hand, 'palm', B.clone().addScaledVector(along, -0.15), nOut, quat, fld, 0.0006, 0.25);
+          // the forearm continues the hand back toward the examiner (the side of the bed he stands at)
+          const toward = V(0, -0.25, handSide === 'R' || handSide === 'L' ? 1 : 1);
+          const ex = { hand: handSide, wrist: hand.group.position.clone(), quat, pose: POSE, back: across.clone().negate().multiplyScalar(0.7).add(toward.normalize().multiplyScalar(0.7)).normalize() };
           applyEx(handSide, ex);
-          ex.pose = CONTACT.curlToTouch(hand, ['index', 'middle', 'ring', 'little'], fld, POSE, { gap: 0.0006, from: -0.3, to: 0.9, together: true }); applyEx(handSide, ex);
-          log('palm on the ball of the foot', side, 'gap', mm(CONTACT.gapNear(hand, 'palm', fld, 0.3).gap), 'mm');
+          ex.pose = CONTACT.curlToTouch(hand, ['index', 'middle', 'ring', 'little'], fld, POSE, { gap: 0.0006, from: -0.55, to: 0.6, together: true }); applyEx(handSide, ex);
+          CONTACT.rest(hand, 'palm', B.clone().addScaledVector(along, -0.15), nOut, quat, fld, 0.0006, 0.25); ex.wrist = hand.group.position.clone();
+          liftClear(handSide, ex, nOut, fld, 0.0003);
+          log('palm across the ball of the foot', side, '(' + handSide + ' hand): palm', mm(CONTACT.minGap(CONTACT.handParts(hand).palm, fld, null, 0, 0.15).gap), 'mm, lowest point of the hand', mm(CONTACT.minGap(handMeshes(hand), fld, null, 0, 0.15).gap), 'mm');
           return ex;
         };
-        const STRIKE_DIR = { bic: V(-0.2, -1, 0.35), sup: V(-0.25, 0, -1), tri: V(0, -1, 0), knee: V(-0.1, -0.35, -1), kneeL: V(-0.1, -0.55, -1), ank: V(1, -0.2, 0.3) };
+        const STRIKE_DIR = { bic: V(-0.2, -1, 0.35), sup: V(-0.3, -1, -0.3), tri: V(0, -1, 0), knee: V(-0.1, -0.35, -1), kneeL: V(-0.1, -0.55, -1), ank: V(1, -0.2, 0.3) };
         const solveStrike = (target, normal, dirHint, fld) => {
           const d = dirHint.clone().addScaledVector(normal, -dirHint.dot(normal)).normalize();
           let gap = 0.0006, k;
@@ -267,9 +293,9 @@
           return { E, u, f, inside: u.clone().add(f).normalize(), angle: +(u.angleTo(f) * 180 / Math.PI).toFixed(1) };
         };
         root.W_TEST = { abdArmTest: abdArm, frontTest: (side) => { const b = bendInside(side), f = elbowPoint(side, 2.42, 2.62, 'front'); return { angle: b.angle, n: f.normal.toArray(), wrist: P.arms[side].hand.group.position.toArray() }; } };
-        SOL.arms.abdR = abdArm('R', 0); SOL.arms.abdL = mirArm(SOL.arms.abdR);
+        if (want('arms')) { SOL.arms.abdR = abdArm('R', 0); SOL.arms.abdL = mirArm(SOL.arms.abdR); }
         applyArm('R', SOL.arms.abdR); applyArm('L', SOL.arms.abdL);
-        {
+        if (want('arms')) {
           const k = NEURO.points(P);
           for (const s of ['R', 'L']) {
             const b = bendInside(s);
@@ -364,7 +390,7 @@
             const c = T.clone().addScaledVector(b.u, back), hit = new THREE.Raycaster(c.clone().addScaledVector(n, 1.2), n.clone().negate()).intersectObject(rcm, false)[0];
             const nn = fld.query(hit.point, 0.05).n, fingers = b.u.clone().addScaledVector(nn, -b.u.dot(nn)).normalize(), quat = HANDS.quat(fingers, nn);
             hand.pose(FRONT_POSE); CONTACT.rest(hand, 'palm', hit.point, nn, quat, fld, 0.0006, 0.3);
-            ex = { hand: 'L', wrist: hand.group.position.clone(), quat, pose: FRONT_POSE, back: V(0.15, 0.45, 0.88).normalize() };
+            ex = { hand: 'L', wrist: hand.group.position.clone(), quat, pose: FRONT_POSE, back: V(0.6, -0.5, 0.62).normalize() };   // from below and toward his feet, toward the examiner: clear of a side camera
             applyEx('L', ex); hand.group.updateMatrixWorld(true);
             return hand.thumb.base.getWorldPosition(V(0, 0, 0)).distanceTo(T) / 1.04;
           };
@@ -372,16 +398,18 @@
           const reach = placeAt((lo + hi) / 2);
           ex.pose = CONTACT.curlToTouch(hand, ['index', 'middle', 'ring', 'little'], fld, FRONT_POSE, { gap: 0.0006, from: -0.2, to: 1.0, together: true }); applyEx('L', ex);
           const th = CONTACT.thumbOn(hand, T, n, fld, 0.0009); ex.thumbQ = th.tq; applyEx('L', ex);
+          liftClear('L', ex, n, fld, 0.0003);
+          th.pad = CONTACT.gapNear(hand, 'thumbPad', fld, 0.05).gap; th.all = CONTACT.minGap(CONTACT.handParts(hand).thumb, fld, null, 0, 0.15).gap;
           const deep = CONTACT.minSdf(handMeshes(hand), armCaps(side), 2);
           log('biceps hand on the front of the arm:', ((lo + hi) / 2 * 10).toFixed(1), 'cm above the tendon, reach', reach.toFixed(2), '| thumb pad', mm(th.pad), 'mm, lowest thumb point', mm(th.all), 'mm, deepest point in the arm capsules', mm(deep), 'mm');
           return ex;
         };
-        for (const s of ['R', 'L']) {
-          const f = elbowPoint(s, 2.42, 2.62, 'front');
+        if (want('biceps')) for (const s of ['R', 'L']) {
+          const f = elbowPoint(s, 2.35, 2.55, 'front');   // 4.5-6.5 cm above the elbow joint centre, at the top of the fossa where the tendon is felt (the surface is convex there)
           SOL.lm['bicepsTendon_' + s] = Object.assign(f, { kit: SOL.lm['bicepsTendon_' + s].point, kitNormal: SOL.lm['bicepsTendon_' + s].normal });
           log('biceps tendon', s, 'measured', r3(f.point), 'normal', r3(f.normal), 'facing the inside of the bend', f.score);
         }
-        {
+        if (want('biceps2')) {
           const ex = thumbBiceps();
           SOL.ex.thumbR = ex; SOL.ex.thumbL = mirEx(ex);
           applyArm('R', SOL.arms.abdR); applyArm('L', SOL.arms.abdL); applyEx('L', ex);
@@ -398,27 +426,46 @@
           SOL.strikes.bicL = mirStrike(SOL.strikes.bicR);
           const Tb = SOL.lm.bicepsTendon_R.point;
           applyStrike(SOL.strikes.bicR, 0);
-          const nailW = EX.L.hand.world('thumbNail'), bel = NEURO.points(P).biceps_R;
-          SOL.cams.bicR = pickCam(Tb, V(0.6, 0.75, 0.3), 6.2, [[EX.L.hand.world('thumbTip'), 0.02, EX.L.group], [hammer.group.localToWorld(hammer.pts.centre.clone()), 0.06, hammer.group], [bel.clone().addScaledVector(NEURO.points(P).normals.biceps_R, 0.004), 0.02, P.arms.R.group]], { name: 'biceps R', aim: Tb.clone().lerp(bel, 0.35) });
-          SOL.cams.bicL = mirCam(SOL.cams.bicR);
+          // from his side at elbow height: the whole forearm and elbow, the thumb on the tendon, the hammer head, the biceps
+          const armCam = (sd, exThumb, strike, name) => {
+            const sz = sd === 'R' ? 1 : -1, Tq = SOL.lm['bicepsTendon_' + sd].point, bel = elbowPoint(sd, 1.6, 1.9, 'front'), a = P.arms[sd];
+            const E = a.fore.getWorldPosition(V(0, 0, 0)), Wr = a.hand.group.getWorldPosition(V(0, 0, 0)), aim = E.clone().lerp(Wr, 0.35).lerp(Tq, 0.3);
+            return pickCam(aim, V(-0.25, 0.32, sz), 8.0, [[EX[exThumb].hand.world('thumbTip'), 0.02, EX[exThumb].group], [hammer.group.localToWorld(hammer.pts.centre.clone()), 0.06, hammer.group], [bel.point.clone().addScaledVector(bel.normal, 0.004), 0.02, a.group], [Wr.clone().add(V(0, 0.3, 0)), 0.06, a.group]], { name, maxCone: 30, aperture: 0.025 });
+          };
+          SOL.cams.bicR = armCam('R', 'L', SOL.strikes.bicR, 'biceps R');
+          applyEx('L', HOME_EX.L); applyEx('R', SOL.ex.thumbL); applyStrike(SOL.strikes.bicL, 0);
+          SOL.cams.bicL = armCam('L', 'R', SOL.strikes.bicL, 'biceps L');
+          applyEx('R', HOME_EX.R); applyEx('L', HOME_EX.L);
         }
         // --------------------------------------------------- supinator jerk: the hammer on the brachioradialis tendon (radial
         // side of the forearm ~5 cm above the wrist, kit landmark); the examiner's left hand resting at his side
         applyArm('R', SOL.arms.abdR); applyArm('L', SOL.arms.abdL);
-        {
+        if (want('sup')) {
           const k = NEURO.points(P), T = k.brachioradialisTendon_R, n = k.normals.brachioradialisTendon_R;
           const fld = CONTACT.field([P.arms.R.armMesh]);
           SOL.strikes.supR = solveStrike(T, n, STRIKE_DIR.sup, fld); SOL.strikes.supL = mirStrike(SOL.strikes.supR);
           applyStrike(SOL.strikes.supR, 0); applyEx('L', HOME_EX.L);
-          const E = P.arms.R.fore.getWorldPosition(V(0, 0, 0));
-          SOL.cams.supR = pickCam(T, V(-0.2, 0.75, 0.65), 7.2, [[hammer.group.localToWorld(hammer.pts.centre.clone()), 0.06, hammer.group], [E.clone().add(V(0, 0.42, 0)), 0.05, P.arms.R.group]], { name: 'supinator R', aim: T.clone().lerp(E, 0.45) });
-          SOL.cams.supL = mirCam(SOL.cams.supR);
-          log('supinator strike gap', mm(SOL.strikes.supR.gap), 'mm');
+          const supCam = (sd, name) => {
+            const sz = sd === 'R' ? 1 : -1, a = P.arms[sd], kk = NEURO.points(P), Tq = kk['brachioradialisTendon_' + sd], E = a.fore.getWorldPosition(V(0, 0, 0)), Wr = a.hand.group.getWorldPosition(V(0, 0, 0));
+            return pickCam(Tq.clone().lerp(E, 0.45), V(0.1, 0.32, sz), 8.0, [[hammer.group.localToWorld(hammer.pts.centre.clone()), 0.06, hammer.group], [Tq.clone().lerp(E, 0.5).addScaledVector(kk.normals['brachioradialisTendon_' + sd], 0.3), 0.08, a.group], [E.clone().add(V(0, 0.42, 0)), 0.06, a.group], [Wr.clone().add(V(0, 0.2, 0)), 0.06, a.group]], { name, maxCone: 30, aperture: 0.025 });
+          };
+          SOL.cams.supR = supCam('R', 'supinator R');
+          applyEx('L', SOL.ex.homeFarL || HOME_EX.L); applyStrike(SOL.strikes.supL, 0); applyEx('R', mirEx(Object.assign({ hand: 'L' }, HOME_EX.L)));
+          SOL.cams.supL = supCam('L', 'supinator L');
+          applyEx('R', HOME_EX.R); applyEx('L', HOME_EX.L);
+          const Wr = P.arms.R.hand.group.getWorldPosition(V(0, 0, 0));
+          SOL.lm.supDistR = +(T.distanceTo(Wr) * 10).toFixed(2);
+          log('supinator strike gap', mm(SOL.strikes.supR.gap), 'mm; brachioradialisTendon is', (T.distanceTo(Wr) * 10).toFixed(1), 'cm from the wrist joint, on the radial (thumb) side');
         }
         // --------------------------------------------------- triceps jerk: his forearm across his chest (kit acrossChest), the
         // examiner's left hand holding his right wrist from above, fingers round it; the hammer just above the olecranon
-        {
-          const st = NEURO.arm(P, 'R', 'acrossChest'); applyArm('R', st); SOL.arms.chestR = st; SOL.arms.chestL = mirArm(st);
+        if (want('tri')) {
+          // the kit preset bends the elbow to ~53 degrees: open it to 90 (the forearm turned about the elbow, across his chest)
+          let st = NEURO.arm(P, 'R', 'acrossChest'); applyArm('R', st);
+          { const b0 = bendInside('R'), ax = V(0, 0, 0).crossVectors(b0.u, b0.f).normalize(), r = new THREE.Quaternion().setFromAxisAngle(ax, (90 - b0.angle) * Math.PI / 180);
+            st = Object.assign({}, st, { wrist: b0.E.clone().add(st.wrist.clone().sub(b0.E).applyQuaternion(r)), quat: r.clone().multiply(st.quat) }); applyArm('R', st);
+            log('triceps: elbow opened from', b0.angle, 'to', bendInside('R').angle, 'deg; his hand to his chest', mm(CONTACT.minGap(handMeshes(P.arms.R.hand), CONTACT.field(torsoMeshes()), null, 0, 0.15).gap), 'mm'); }
+          SOL.arms.chestR = st; SOL.arms.chestL = mirArm(st);
           const b = bendInside('R'), tri = elbowPoint('R', 2.55, 2.75, 'back');
           SOL.lm.tricepsTendon_R = tri; SOL.lm.tricepsTendon_L = { point: mz(tri.point), normal: mz(tri.normal) };
           const kt = NEURO.points(P);
@@ -435,7 +482,7 @@
           hand.pose(WRIST_POSE); CONTACT.rest(hand, 'palm', hit.point, top, quat, fld, 0.0006, 0.3);
           const ex = { hand: 'L', wrist: hand.group.position.clone(), quat, pose: WRIST_POSE, back: V(0.1, 0.5, 0.86).normalize() };
           applyEx('L', ex);
-          ex.pose = CONTACT.curlToTouch(hand, ['index', 'middle', 'ring', 'little'], fld, WRIST_POSE, { gap: 0.0006, from: -0.3, to: 1.4, together: true }); applyEx('L', ex);
+          ex.pose = CONTACT.curlToTouch(hand, ['index', 'middle', 'ring', 'little'], fld, WRIST_POSE, { gap: 0.0006, from: -0.3, to: 1.4 }); applyEx('L', ex);   // each finger round his wrist
           {   // the thumb pad on the far side of his wrist, facing the thumb's base
             hand.group.updateMatrixWorld(true);
             const tb = hand.thumb.base.getWorldPosition(V(0, 0, 0)), B = a.armMesh.userData.base, pa = a.armMesh.geometry.attributes.position, na = a.armMesh.geometry.attributes.normal;
@@ -454,17 +501,24 @@
           log('triceps strike gap', mm(SOL.strikes.triR.gap), 'mm');
           const Tt = tri.point;
           applyEx('L', ex); applyStrike(SOL.strikes.triR, 0);
-          const trib = NEURO.points(P).triceps_R;
-          SOL.cams.triR = pickCam(Tt, V(-0.35, 0.45, 0.82), 6.0, [[hammer.group.localToWorld(hammer.pts.centre.clone()), 0.06, hammer.group], [trib.clone().addScaledVector(NEURO.points(P).normals.triceps_R, 0.004), 0.02, P.arms.R.group], [EX.L.hand.world('dorsum'), 0.05, EX.L.group]], { name: 'triceps R', aim: Tt.clone().lerp(trib, 0.4) });
-          SOL.cams.triL = mirCam(SOL.cams.triR);
+          // from his side, a little from the head end, the back of the elbow facing the camera; the triceps in frame
+          const triCam = (sd, exH, name) => {
+            const sz = sd === 'R' ? 1 : -1, tq = SOL.lm['tricepsTendon_' + sd], belly = elbowPoint(sd, 1.3, 1.7, 'back'), a = P.arms[sd];
+            const pref = tq.normal.clone().multiplyScalar(0.8).add(V(-0.35, 0.3, 0.5 * sz)).normalize();
+            return pickCam(tq.point.clone().lerp(belly.point, 0.4), pref, 7.5, [[hammer.group.localToWorld(hammer.pts.centre.clone()), 0.06, hammer.group], [belly.point.clone().addScaledVector(belly.normal, 0.004), 0.03, a.group], [tq.point.clone().addScaledVector(tq.normal, 0.3), 0.25, a.group]], { name, maxCone: 35, aperture: 0.025 });
+          };
+          SOL.cams.triR = triCam('R', 'L', 'triceps R');
+          applyArm('R', SOL.arms.abdR); applyArm('L', SOL.arms.chestL); applyEx('R', SOL.ex.wristL); applyStrike(SOL.strikes.triL, 0);
+          SOL.cams.triL = triCam('L', 'R', 'triceps L');
+          applyArm('L', SOL.arms.abdL); applyEx('R', HOME_EX.R); applyEx('L', HOME_EX.L);
         }
         // --------------------------------------------------- reinforcement: the biceps jerk again while he clenches his teeth;
         // wide enough for his jaw and his right elbow
-        {
+        if (want('reinf')) {
           applyArm('R', SOL.arms.abdR); P.setFace({ clench: 1 });
           const k = NEURO.points(P), jaw = k.masseter_R, Tb = SOL.lm.bicepsTendon_R.point, M = jaw.clone().lerp(Tb, 0.5);
           applyEx('L', SOL.ex.thumbR); applyStrike(SOL.strikes.bicR, 0);
-          SOL.cams.reinf = pickCam(M, V(0.55, 0.55, 0.62), 9.5, [[jaw.clone().addScaledVector(k.normals.masseter_R, 0.004), 0.02, P.head], [EX.L.hand.world('thumbTip'), 0.03, EX.L.group], [hammer.group.localToWorld(hammer.pts.centre.clone()), 0.06, hammer.group]], { name: 'reinforcement', aperture: 0.03 });
+          SOL.cams.reinf = pickCam(M.clone().lerp(jaw, 0.25), V(0.42, 0.42, 0.8), 15.0, [[jaw.clone().addScaledVector(k.normals.masseter_R, 0.004), 0.02, P.head], [EX.L.hand.world('thumbTip'), 0.03, EX.L.group], [hammer.group.localToWorld(hammer.pts.centre.clone()), 0.06, hammer.group]], { name: 'reinforcement', aperture: 0.03, maxCone: 35 });
           P.setFace({ pupilR: 3.5, pupilL: 3.5 });
         }
         // ============================================================ THE LEGS
@@ -480,7 +534,7 @@
         // bed), the examiner's left forearm under both knees (kit kneeSupport), lifted until it just meets the backs of the knees
         for (const sd of ['R', 'L']) applyArm(sd, HOME_ARM[sd]);
         SOL.legs.kneeJerk = NEURO.leg(P, 'R', 'kneeJerk'); NEURO.leg(P, 'L', 'kneeJerk');
-        {
+        if (want('knee')) {
           const ks = NEURO.kneeSupport(P), a = EX.L, fld = legField(['R', 'L']);
           const SUP_POSE = { all: [0.35, 0.5, 0.3], spread: 0.3, thumb: [0.3, 0, 0.2, 0.1] };
           let y = ks.y, ex = null;
@@ -519,14 +573,18 @@
           const Fj = trunk();
           const jend = (pull) => {                       // the kit preset, the hands moved apart just until the hooked fingers touch
             const r0 = NEURO.arm(P, 'R', 'jendrassik', { pull }), l0 = NEURO.arm(P, 'L', 'jendrassik', { pull });
-            // the left hand stays; the right hand slides across its fingers by up to half a finger spacing (so the fingers
-            // interleave) and toward the left hand until the hooked fingers just touch
+            // Two hooks nest: the right hand (back up, fingers curled down) above, the left (back down, fingers curled up)
+            // below. The left hand stays; the right hand moves along the hands' back-to-palm axis and toward the left hand
+            // until the curled fingers rest on each other: the deepest hook in which no finger passes through another.
             applyArm('L', l0); const lf = CONTACT.field(handMeshes(P.arms.L.hand));
-            const acrossF = V(0, 0, 1).applyQuaternion(r0.quat).normalize();
-            const at = (d, up) => { const r = Object.assign({}, r0, { wrist: r0.wrist.clone().addScaledVector(Fj.left, -d).addScaledVector(acrossF, up) }); applyArm('R', r); return { r, l: l0, g: CONTACT.minGap(handMeshes(P.arms.R.hand), lf, null, 0, 0.2).gap }; };
+            const dors = V(0, 1, 0).applyQuaternion(r0.quat).normalize();
+            const at = (d, up) => { const r = Object.assign({}, r0, { wrist: r0.wrist.clone().addScaledVector(Fj.left, -d).addScaledVector(dors, up) }); applyArm('R', r); return { r, l: l0, g: CONTACT.minGap(handMeshes(P.arms.R.hand), lf, null, 0, 0.15, 3).gap }; };
             let best = null;
-            for (let up = -0.12; up <= 0.121; up += 0.02) { let lo = -0.2, hi = 0.6; for (let it = 0; it < 12; it++) { const m = (lo + hi) / 2, r = at(m, up); if (!isFinite(r.g) || r.g > 0.0006) hi = m; else lo = m; } if (!best || hi < best.d) best = { d: hi, up }; }
-            const r = at(best.d, best.up); log('Jendrassik pull', pull, 'right hand moved', mm(best.d), 'mm out, across the fingers', mm(best.up), 'mm; closest point between the hands', mm(r.g), 'mm'); return r;
+            // (an offset counts only if the hands really touch there: the closest point 0 to 1.5 mm)
+            for (let up = -0.32; up <= 0.321; up += 0.04) { let lo = -0.3, hi = 1.6; for (let it = 0; it < 13; it++) { const m = (lo + hi) / 2, r = at(m, up); if (!isFinite(r.g) || r.g > 0.0006) hi = m; else lo = m; } const g = at(hi, up).g; if (g >= 0 && g < 0.0015 && (!best || hi < best.d)) best = { d: hi, up }; }
+            if (best) { let d2 = best.d; for (let it = 0; it < 30; it++) { applyArm('R', Object.assign({}, r0, { wrist: r0.wrist.clone().addScaledVector(Fj.left, -d2).addScaledVector(dors, best.up) })); if (CONTACT.minGap(handMeshes(P.arms.R.hand), lf, null, 0, 0.15).gap >= 0) break; d2 += 0.003; } best.d = d2; }   // verified on every vertex
+            if (!best) best = { d: 0.6, up: 0 };
+            const r = at(best.d, best.up); log('Jendrassik pull', pull, 'right hand moved', mm(best.d), 'mm toward his right, along the back of the hand', mm(best.up), 'mm; closest point between the hands', mm(r.g), 'mm'); return r;
           };
           { const j0 = jend(0); SOL.arms.jend0R = j0.r; SOL.arms.jend0L = j0.l; const j1 = jend(1); SOL.arms.jend1R = j1.r; SOL.arms.jend1L = j1.l; }
           for (const pull of [0, 1]) {
@@ -537,44 +595,52 @@
           }
           applyStrike(SOL.strikes.kneeR, 0);
           const hookC = P.arms.R.hand.world('middleTip').lerp(P.arms.L.hand.world('middleTip'), 0.5);
-          SOL.cams.jend = pickCam(hookC.clone().lerp(k.patellarTendon_R, 0.5), V(0.45, 0.45, 0.8), 13.5, [[hookC, 0.05, P.group], [k.patellarTendon_R.clone().addScaledVector(k.normals.patellarTendon_R, 0.01), 0.03, P.legs.R], [hammer.group.localToWorld(hammer.pts.centre.clone()), 0.06, hammer.group]], { name: 'Jendrassik', aperture: 0.04 });
+          SOL.cams.jend = pickCam(hookC.clone().lerp(k.patellarTendon_R, 0.5), V(0.22, 0.12, 1), 15.5, [[hookC, 0.05, P.group], [k.patellarTendon_R.clone().addScaledVector(k.normals.patellarTendon_R, 0.01), 0.03, P.legs.R], [hammer.group.localToWorld(hammer.pts.centre.clone()), 0.06, hammer.group]], { name: 'Jendrassik', aperture: 0.04, maxCone: 25 });
           for (const sd of ['R', 'L']) applyArm(sd, HOME_ARM[sd]);
         }
         // --------------------------------------------------- ankle jerk (right): the kit ankleJerk preset, fine-tuned so the
         // outer ankle RESTS on the other shin (measured), the foot held slightly up; the examiner's left palm on the ball of
         // the foot; the hammer on the Achilles tendon
         NEURO.leg(P, 'L', 'rest');
-        {
+        if (want('ankle')) {
           const base = NEURO.leg(P, 'R', 'ankleJerk');
           const fitWith = (lift) => {
             const on = P.legPoint('L', 'shinMid').clone().lerp(P.legPoint('L', 'medialMalleolus'), 0.25).addScaledVector(P.legNormal('L', 'shinMid'), lift);
             return P.legFit('R', [{ point: 'lateralMalleolus', at: on, w: 4 }], { free: ['hipFlex', 'hipAbd', 'hipRot', 'knee'], start: base, reg: 0.0004, iters: 600 });
           };
-          const fl = legField(['L']), gapLegs = () => CONTACT.minGap([P.legMeshes.R], fl, null, 0, 0.2).gap;
-          let lo = 0.1, hi = 0.9;
-          for (let it = 0; it < 16; it++) { const m = (lo + hi) / 2; fitWith(m); const g = gapLegs(); if (!isFinite(g) || g > 0.0006) hi = m; else lo = m; }
-          let st = null, bestA = null;
-          for (let lift = 0.25; lift <= 1.0; lift += 0.05) { const s2 = fitWith(lift); const g = gapLegs(); const e = Math.abs(g - 0.0006) + 10 * Math.max(0, -g); if (!bestA || e < bestA.e) bestA = { e, s2: Object.assign({}, s2), lift }; }
-          st = bestA.s2; P.setLeg('R', st);
-          st.ankle = 8;
-          { let lo2 = -12, hi2 = 12; const b0 = st.hipFlex;          // raise or lower the hip until the outer ankle just rests on the shin
-            for (let it = 0; it < 20; it++) { const m = (lo2 + hi2) / 2; P.setLeg('R', Object.assign({}, st, { hipFlex: b0 + m })); const g = gapLegs(); if (!isFinite(g) || g > 0.0006) hi2 = m; else lo2 = m; }
-            st.hipFlex = b0 + hi2; }
+          // the contact is where the outer ankle meets the other shin: measured in the 6 cm round the lateral malleolus
+          const fl = legField(['L']), gapLegs = () => CONTACT.minGap([P.legMeshes.R], fl, P.legPoint('R', 'lateralMalleolus'), 0.6, 0.2).gap;
+          let bestA = null;
+          for (let lift = 0.2; lift <= 1.0; lift += 0.05) { const s2 = Object.assign({}, fitWith(lift)); const g = gapLegs(); const e = Math.abs(g - 0.0006) + 10 * Math.max(0, -g); if (!bestA || e < bestA.e) bestA = { e, s2, lift }; }
+          const st = bestA.s2; st.ankle = 8; P.setLeg('R', st);
+          for (const key of ['hipFlex', 'knee']) {                       // then raise or lower it until the outer ankle just rests on the shin
+            let lo2 = -10, hi2 = 10; const b0 = st[key];
+            for (let it = 0; it < 18; it++) { const m = (lo2 + hi2) / 2; P.setLeg('R', Object.assign({}, st, { [key]: b0 + m })); const g = gapLegs(); if (!isFinite(g) || g > 0.0006) hi2 = m; else lo2 = m; }
+            P.setLeg('R', Object.assign({}, st, { [key]: b0 + hi2 })); if (Math.abs(gapLegs() - 0.0006) < 0.0004) { st[key] = b0 + hi2; break; }
+          }
           P.setLeg('R', st);
           SOL.legs.ankleJerkR = P.leg('R');
-          log('ankle jerk leg', JSON.stringify(Object.fromEntries(Object.entries(SOL.legs.ankleJerkR).map(([k2, v]) => [k2, +(+v).toFixed(1)]))), '| outer ankle on the other shin', mm(gapLegs()), 'mm');
+          const thigh = CONTACT.minGap([P.legMeshes.R], fl, P.legPoint('R', 'hip'), 2.5, 0.2).gap;
+          log('ankle jerk leg', JSON.stringify(Object.fromEntries(Object.entries(SOL.legs.ankleJerkR).map(([k2, v]) => [k2, +(+v).toFixed(1)]))), '| outer ankle on the other shin', mm(gapLegs()), 'mm (the inner thighs near the groin, inside the trousers:', mm(thigh), 'mm)');
           SOL.gaps.ankleLegOnShin = mm(gapLegs());
           SOL.ex.footR = palmOnBall('R', 'L');
           SOL.ex.footL = mirEx(SOL.ex.footR);
           SOL.strikes.ankR = strikeLeg('ankR', 'R', 'achillesTendon', STRIKE_DIR.ank); SOL.strikes.ankL = mirStrike(SOL.strikes.ankR);
           applyEx('L', SOL.ex.footR); applyStrike(SOL.strikes.ankR, 0);
-          const k = NEURO.points(P), A0 = k.achillesTendon_R;
-          SOL.cams.ankR = pickCam(A0, V(0.15, 0.55, -0.8), 7.0, [[hammer.group.localToWorld(hammer.pts.centre.clone()), 0.06, hammer.group], [k.calf_R.clone().addScaledVector(k.normals.calf_R, 0.01), 0.03, P.legs.R], [EX.L.hand.world('dorsum'), 0.05, EX.L.group]], { name: 'ankle jerk R', aim: A0.clone().lerp(P.legPoint('R', 'ball'), 0.3), aperture: 0.025 });
-          SOL.cams.ankL = mirCam(SOL.cams.ankR);
+          // low, from his side, a little behind the heel: the Achilles tendon, the calf, the palm on the foot, the hammer head
+          const ankCam = (sd, exPalm, name) => {
+            const sz = sd === 'R' ? 1 : -1, k = NEURO.points(P), A0 = k['achillesTendon_' + sd], nA = k.normals['achillesTendon_' + sd], heel = P.legPoint(sd, 'heel');
+            const pref = V(0.15, 0.2, sz).normalize().addScaledVector(nA, 0.55).normalize();
+            return pickCam(A0.clone().lerp(P.legPoint(sd, 'ball'), 0.3).lerp(k['calf_' + sd], 0.2), pref, 8.5, [[hammer.group.localToWorld(hammer.pts.centre.clone()), 0.06, hammer.group], [k['calf_' + sd].clone().addScaledVector(k.normals['calf_' + sd], 0.01), 0.04, P.legs[sd]], [EX[exPalm].hand.world('dorsum'), 0.06, EX[exPalm].group], [heel, 0.08, P.legs[sd]]], { name, maxCone: 40, aperture: 0.025 });
+          };
+          SOL.cams.ankR = ankCam('R', 'L', 'ankle jerk R');
+          P.setLeg('R', {}); P.setLeg('L', SOL.legs.ankleJerkR); applyEx('R', SOL.ex.footL); applyStrike(SOL.strikes.ankL, 0);
+          SOL.cams.ankL = ankCam('L', 'R', 'ankle jerk L');
+          P.setLeg('L', {}); applyEx('R', HOME_EX.R); applyEx('L', HOME_EX.L);
         }
         // --------------------------------------------------- ankle clonus (right): knee slightly bent, leg turned a little out,
         // the calf resting on the examiner's left palm; his right palm on the ball of the foot, pushing up and holding
-        {
+        if (want('clonus')) {
           NEURO.leg(P, 'L', 'rest');
           const st0 = { hipFlex: 16, hipAbd: 4, hipRot: 14, knee: 24, ankle: 0 };
           P.setLeg('R', st0);
@@ -585,6 +651,7 @@
           hand.pose(CAL_POSE); CONTACT.rest(hand, 'palm', C0, nC, quat, fld, 0.0006, 0.3);
           const ex = { hand: 'L', wrist: hand.group.position.clone(), quat, pose: CAL_POSE, back: V(0.15, -0.3, 1).normalize() };
           applyEx('L', ex); ex.pose = CONTACT.curlToTouch(hand, ['index', 'middle', 'ring', 'little'], fld, CAL_POSE, { gap: 0.0006, from: -0.2, to: 1.2, together: true }); applyEx('L', ex);
+          liftClear('L', ex, nC, fld, 0.0003);
           const bg = bedGap(handMeshes(hand)).gap;
           SOL.legs.clonusR0 = P.leg('R'); SOL.ex.calfR = ex; SOL.ex.calfL = mirEx(ex);
           log('ankle clonus: palm under the calf', mm(CONTACT.gapNear(hand, 'palm', fld, 0.3).gap), 'mm; hand above the mattress', mm(bg), 'mm');
@@ -594,13 +661,20 @@
           SOL.ex.clonusFootL0 = mirEx(SOL.ex.clonusFootR0); SOL.ex.clonusFootL1 = mirEx(SOL.ex.clonusFootR1);
           applyEx('L', ex); applyEx('R', SOL.ex.clonusFootR1);
           const ball = P.legPoint('R', 'ball');
-          SOL.cams.clonR = pickCam(ball.clone().lerp(C0, 0.4), V(0.2, 0.3, 1), 8.5, [[EX.R.hand.world('dorsum'), 0.05, EX.R.group], [EX.L.hand.world('dorsum'), 0.05, EX.L.group], [P.legPoint('R', 'achilles'), 0.05, P.legs.R]], { name: 'ankle clonus R', aperture: 0.025 });
-          SOL.cams.clonL = mirCam(SOL.cams.clonR);
+          // from his side at foot height: the foot, the palm on it, the calf on the other palm (never behind a sleeve)
+          const clonCam = (sd, name) => {
+            const sz = sd === 'R' ? 1 : -1, b2 = P.legPoint(sd, 'ball'), c2 = P.legPoint(sd, 'calf');
+            return pickCam(b2.clone().lerp(c2, 0.45), V(0.75, 0.3, 0.6 * sz), 9.0, [[EX.R.hand.world('palm'), 0.05, EX.R.group], [EX.L.hand.world('palm'), 0.05, EX.L.group], [P.legPoint(sd, 'achilles'), 0.08, P.legs[sd]], [b2, 0.08, P.legs[sd]]], { name, maxCone: 40, aperture: 0.025 });
+          };
+          SOL.cams.clonR = clonCam('R', 'ankle clonus R');
+          P.setLeg('R', {}); P.setLeg('L', SOL.legs.clonusR1); applyEx('R', SOL.ex.calfL); applyEx('L', SOL.ex.clonusFootL1);
+          SOL.cams.clonL = clonCam('L', 'ankle clonus L');
+          P.setLeg('L', {}); applyEx('R', HOME_EX.R); applyEx('L', HOME_EX.L);
           NEURO.leg(P, 'R', 'rest');
         }
         // --------------------------------------------------- knee clonus (right): leg straight; the examiner's left hand on his
         // thigh, the tips of the thumb and the index finger together on the top edge of the kneecap, pushing it toward the foot
-        {
+        if (want('kneeClonus')) {
           NEURO.leg(P, 'R', 'rest'); NEURO.leg(P, 'L', 'rest');
           const hand = EX.L.hand, fld = legField(['R']);
           const Pt = P.legPoint('R', 'patella'), kn = P.legPoint('R', 'knee'), ank = P.legPoint('R', 'ankle'), hip = P.legPoint('R', 'hip');
@@ -610,24 +684,46 @@
           const rcm = new THREE.Mesh(P.legMeshes.R.geometry, new THREE.MeshBasicMaterial({ side: THREE.DoubleSide })); rcm.matrixWorld.copy(P.legMeshes.R.matrixWorld); rcm.matrixAutoUpdate = false;
           const c = Pt.clone().addScaledVector(axis, -0.26), hit = new THREE.Raycaster(c.clone().addScaledVector(up, 1), up.clone().negate()).intersectObject(rcm, false)[0];
           const E0 = hit.point, nE = fld.query(E0, 0.05).n;
-          const KC_POSE = { curl: { index: [0.35, 0.55, 0.35], middle: [0.5, 0.75, 0.45], ring: [0.55, 0.8, 0.5], little: [0.6, 0.85, 0.5] }, spread: 0.25, thumb: [0.35, 0.1, 0.2, 0.1] };
-          const quat = HANDS.quat(axis.clone().addScaledVector(up, -0.35).normalize(), up.clone().addScaledVector(axis, 0.3));
-          hand.pose(KC_POSE);
-          // the tips of the thumb and the index finger side by side on the top edge, facing toward the foot (they push it down)
-          const pushDir = axis.clone().negate().addScaledVector(nE, 0.6).normalize(), side2 = V(0, 0, 0).crossVectors(axis, up).normalize();
-          const edgeAt = (off) => { const q = E0.clone().addScaledVector(side2, off); return new THREE.Raycaster(q.clone().addScaledVector(up, 1), up.clone().negate()).intersectObject(rcm, false)[0].point; };
-          CONTACT.rest(hand, 'thumbTip', edgeAt(-0.08), pushDir, quat, fld, 0.0006, 0.035);
-          const ex = { hand: 'L', wrist: hand.group.position.clone(), quat, pose: KC_POSE, back: V(-0.5, 0.25, 0.83).normalize() };
-          applyEx('L', ex);
-          ex.pose = CONTACT.curlToTouch(hand, ['index'], fld, KC_POSE, { gap: 0.0006, from: -0.6, to: 1.2 }); applyEx('L', ex);
-          ex.pose = CONTACT.curlToTouch(hand, ['middle', 'ring', 'little'], fld, ex.pose, { gap: 0.0006, from: -0.6, to: 0.8, together: true }); applyEx('L', ex);
-          const th = { pad: CONTACT.gapNear(hand, 'thumbTip', fld, 0.035).gap };
+          // the tips of the thumb and the index finger TOGETHER (a pinch) on the top edge, the pads facing toward the foot;
+          // the other fingers tucked into the palm, clear of the thigh
+          // The hand over the thigh, palm down, fingers toward his foot; the index finger bent down so its tip rests on the top
+          // edge, the thumb tip beside it on the same edge (the two tips together, ~1.5 cm apart, pads toward the foot: no V);
+          // the middle, ring and little fingers tucked into the palm, clear of the thigh.
+          const KC_POSE = { curl: { index: [0.6, 1.2, 0.72], middle: [1.25, 1.45, 0.95], ring: [1.3, 1.5, 0.95], little: [1.35, 1.5, 0.95] }, spread: 0.15, thumb: [1.0, -0.4, 0.3, 0] };   // the index and thumb tips side by side, 15 mm apart
+          const pushDir = axis.clone().negate().addScaledVector(nE, 0.6).normalize();
+          const side = V(0, 0, 0).crossVectors(axis, up).normalize();                      // across the thigh
+          hand.group.position.set(0, 0, 0); hand.group.quaternion.identity(); hand.pose(KC_POSE); hand.group.updateMatrixWorld(true);
+          const iL = hand.world('indexTip'), tL = hand.world('thumbTip'), mL = iL.clone().lerp(tL, 0.5), uL = tL.clone().sub(iL).normalize();
+          // searched: which way across the edge the thumb lies, and the roll of the hand about that line; the two tips rest on
+          // the edge (slid along the push), scored on both tip gaps, nothing sinking, the hand above the thigh pointing footward
+          let best = null; const tK = performance.now();
+          for (const sg of [1, -1]) for (let r = 0; r < 24; r++) {
+            const q = new THREE.Quaternion().setFromAxisAngle(side, r * Math.PI / 12).multiply(new THREE.Quaternion().setFromUnitVectors(uL, side.clone().multiplyScalar(sg)));
+            const dir = mL.clone().applyQuaternion(q).normalize(), dors = V(0, 1, 0).applyQuaternion(q);
+            if (dir.dot(axis) < 0.15 || dir.dot(up) > -0.1 || dors.dot(up) < 0.2) continue;
+            const ex = { hand: 'L', wrist: E0.clone().sub(mL.clone().applyQuaternion(q)).addScaledVector(pushDir, 0.05), quat: q, pose: KC_POSE, back: axis.clone().multiplyScalar(-0.5).addScaledVector(up, 0.5).add(V(0, 0, 0.6)).normalize() };
+            let gi, gt, all;
+            for (let it = 0; it < 8; it++) {
+              applyEx('L', ex); const pr = CONTACT.handParts(hand);
+              gi = CONTACT.minGap(pr.indexTip, fld, null, 0, 0.15).gap; gt = CONTACT.minGap(pr.thumbTip, fld, null, 0, 0.15).gap; all = CONTACT.minGap(handMeshes(hand), fld, null, 0, 0.15, 4).gap;
+              const g = Math.min(isFinite(gi) ? gi : 0.05, isFinite(gt) ? gt : 0.05), step = Math.max(g - 0.0006, isFinite(all) ? all - 0.0003 : g) ;
+              if (Math.abs(step) < 0.00008) break;
+              ex.wrist = ex.wrist.clone().addScaledVector(pushDir, -Math.max(-0.02, Math.min(step, 0.05)));
+            }
+            const sc = Math.abs((isFinite(gi) ? gi : 0.05) - 0.0006) + Math.abs((isFinite(gt) ? gt : 0.05) - 0.0006) + 4 * Math.max(0, -all) + 0.0005 * (1 - dors.dot(up));
+            if (!best || sc < best.sc) best = { sc, ex, gi, gt, all, r, sg };
+          }
+          const ex = best.ex; applyEx('L', ex);
+          if (CONTACT.minGap(handMeshes(hand), fld, null, 0, 0.15).gap < 0) liftClear('L', ex, nE, fld, 0.0003);      // nothing under the skin
+          log('knee clonus search', ((performance.now() - tK) / 1000).toFixed(1), 's');
+          log('knee clonus pinch: roll', best.r * 15, 'thumb side', best.sg, 'tips apart', mm(hand.world('indexTip').distanceTo(hand.world('thumbTip'))), 'mm');
+          const th = { pad: CONTACT.minGap(CONTACT.handParts(hand).thumbTip, fld, null, 0, 0.15).gap };
           const parts = CONTACT.partGaps(hand, fld);
           SOL.ex.kneeClonusR = ex; SOL.ex.kneeClonusL = mirEx(ex);
           SOL.lm.patellaTopR = { point: E0, normal: nE };
-          SOL.gaps.kneeClonus = { indexTip: mm(CONTACT.gapNear(hand, 'indexTip', fld, 0.04).gap), thumbTip: mm(th.pad), lowest: mm(Math.min(...Object.values(parts).map((v) => v.gap))) };
+          SOL.gaps.kneeClonus = { indexTip: mm(CONTACT.minGap(CONTACT.handParts(hand).indexTip, fld, null, 0, 0.15).gap), thumbTip: mm(th.pad), lowest: mm(Math.min(...Object.values(parts).map((v) => v.gap))) };
           log('knee clonus gaps (mm)', JSON.stringify(SOL.gaps.kneeClonus));
-          SOL.cams.kneeClonR = pickCam(E0, V(0.1, 0.35, 1), 5.5, [[hand.world('indexTip'), 0.03, EX.L.group], [Pt.clone().addScaledVector(up, 0.01), 0.03, P.legs.R]], { name: 'knee clonus R', aim: E0.clone().addScaledVector(axis, 0.25), aperture: 0.015 });
+          SOL.cams.kneeClonR = pickCam(E0, V(0.2, 0.55, 1), 6.5, [[hand.world('indexTip'), 0.03, EX.L.group], [hand.world('thumbTip'), 0.03, EX.L.group], [Pt.clone().addScaledVector(up, 0.01), 0.03, P.legs.R]], { name: 'knee clonus R', aim: E0.clone().addScaledVector(up, 0.35), aperture: 0.015, maxCone: 35 });
           SOL.cams.kneeClonL = mirCam(SOL.cams.kneeClonR);
         }
         // ============================================================ the two medium shots (upper body; legs)
@@ -641,44 +737,87 @@
         // ============================================================ HOFFMANN'S SIGN (right; the left is the mirror)
         // His forearm out toward the examiner, the hand palm down and resting on the examiner's left palm (palm up), the wrist
         // a little flexed; the examiner's right index finger under the tip of his middle finger, the right thumb on its nail.
-        {
+        if (want('hoff')) {
           for (const sd of ['R', 'L']) { applyArm(sd, HOME_ARM[sd]); P.setLeg(sd, {}); }
           const F = trunk(), Sh = P.shoulder('R');
           const wrist = V(-0.6, Dm.Ym + 3.15, 3.25);                                  // his wrist held out over the edge of the bed at his right
           const fingersDir = V(0.25, -0.22, 1).normalize();                           // toward the examiner, the wrist flexed a little (hand tilted down)
-          const HPOSE = { curl: { index: [0.2, 0.3, 0.2], middle: [0.08, 0.12, 0.08], ring: [0.25, 0.35, 0.2], little: [0.3, 0.4, 0.25] }, spread: 0.45, thumb: [0.15, 0, 0.15, 0.1] };
+          const HPOSE = { curl: { index: [0.3, 0.42, 0.25], middle: [0.14, 0.2, 0.1], ring: [0.32, 0.45, 0.27], little: [0.36, 0.5, 0.3] }, spread: 0.12, fan: { index: 0.04, middle: 0, ring: -0.04, little: -0.09 }, thumb: [0.18, 0, 0.15, 0.1] };   // relaxed: fingers together, slightly curled
           const pq = HANDS.quat(fingersDir, V(0, 1, 0).addScaledVector(fingersDir, -fingersDir.y).normalize());
           const arm = { wrist, quat: pq, pose: HPOSE, pole: V(-0.2, -1, 0.3).normalize() };
           applyArm('R', arm); SOL.arms.hoffR = arm; SOL.arms.hoffL = mirArm(arm);
           const ph = P.arms.R.hand; ph.group.updateMatrixWorld(true);
           const pfld = CONTACT.field(handMeshes(ph).concat([P.arms.R.armMesh]));
-          // the examiner's left palm under his palm
+          // the examiner's left palm up under his palm, the examiner's fingers across under it toward his wrist (headward and
+          // in), the heel of the hand under his knuckles; searched: slide and turn; it rests by its lowest point on HIS HAND
+          // only (nothing of either hand sinks)
+          const hfld = CONTACT.field(handMeshes(ph));
           const sup = EX.L.hand, pdn = V(0, -1, 0).transformDirection(ph.group.matrixWorld).normalize();   // the way his palm faces
-          const SPOSE = { all: [0.12, 0.18, 0.1], spread: 0.3, fan: { index: 0.03, middle: 0, ring: -0.03, little: -0.07 }, thumb: [0.2, 0, 0.15, 0.1] };
-          const sq = HANDS.quat(fingersDir.clone().negate().addScaledVector(pdn, -fingersDir.clone().negate().dot(pdn)).normalize().applyAxisAngle(pdn, 0.35), pdn);   // palm up, fingers back under his hand
-          sup.pose(SPOSE); CONTACT.rest(sup, 'palm', ph.world('palm'), pdn, sq, pfld, 0.0006, 0.35);
-          const exS = { hand: 'L', wrist: sup.group.position.clone(), quat: sq, pose: SPOSE, back: V(0.2, -0.35, 1).normalize() };
-          applyEx('L', exS);
-          // the pinch: index pad under his middle fingertip, thumb pad on its nail
+          const SPOSE = { all: [0.1, 0.14, 0.08], spread: 0.12, fan: { index: 0.03, middle: 0, ring: -0.03, little: -0.06 }, thumb: [0.25, 0.05, 0.15, 0.1] };
+          const f00 = V(-0.45, 0, -1).addScaledVector(pdn, -V(-0.45, 0, -1).dot(pdn)).normalize();
+          let bestS = null;
+          for (const turn of [-0.45, -0.3, -0.15, 0, 0.15, 0.3]) for (const sl of [-0.35, -0.25, -0.15, -0.05, 0.05]) {
+            const fd = f00.clone().applyAxisAngle(pdn, turn), sq = HANDS.quat(fd, pdn);
+            sup.pose(SPOSE); CONTACT.rest(sup, 'palm', ph.world('palm').addScaledVector(fd, sl), pdn, sq, hfld, 0.0006, 0.35);
+            const e = { hand: 'L', wrist: sup.group.position.clone(), quat: sq, pose: SPOSE, back: fd.clone().negate().add(V(0, -0.35, 0)).normalize() };
+            liftClear('L', e, pdn, hfld, 0.0003);
+            const pg = CONTACT.minGap(CONTACT.handParts(sup).palm, hfld, null, 0, 0.15).gap, ag = CONTACT.minGap(handMeshes(sup), pfld, null, 0, 0.15).gap;
+            const sc = Math.abs((isFinite(pg) ? pg : 0.05) - 0.0005) + 4 * Math.max(0, -ag) + 0.0004 * Math.abs(turn);
+            if (!bestS || sc < bestS.sc) bestS = { sc, e, pg, ag, turn, sl };
+          }
+          const exS = bestS.e; applyEx('L', exS);
+          log('Hoffmann support: turn', bestS.turn, 'slide', bestS.sl, 'palm on palm', mm(bestS.pg), 'mm, lowest vs his hand + arm', mm(bestS.ag), 'mm');
+          // the pinch: the examiner's right index pad under the tip of his middle finger, the thumb pad on its nail. The pinch
+          // pose is turned so the line index pad -> thumb pad runs up through his fingertip; searched: the roll about that line
+          // (the forearm back toward the examiner, clear of both hands), then the index rests and the thumb settles on the nail.
           const pin = EX.R.hand, mid = ph.fingers.middle.dip; mid.updateMatrixWorld(true);
-          const mfld = CONTACT.field(mid.children.filter((m) => m.isMesh));
-          const under = ph.world('middlePad'), nail = ph.world('middleNail'), mx = V(1, 0, 0).transformDirection(mid.matrixWorld).normalize();
-          const PPOSE = { curl: { index: [0.35, 0.45, 0.3], middle: [1.1, 1.3, 0.8], ring: [1.2, 1.4, 0.85], little: [1.25, 1.45, 0.9] }, spread: 0.3, thumb: [0.45, 0.35, 0.2, 0.1] };
-          const nailN = V(0, 1, 0).transformDirection(mid.matrixWorld).normalize(), nailQ = mfld.query(nail, 0.05).q || nail;
-          const want = V(0.55, 0.1, 0.83).normalize();                // the examiner's forearm back toward him (footward, his side)
-          const pinScore = (hd) => { hd.group.updateMatrixWorld(true); const pr = CONTACT.handParts(hd), body = pr.palm.concat(pr.middle, pr.ring, pr.little); const c = CONTACT.minGap(body, pfld, null, 0, 0.08).gap, f = V(-1, 0, 0).transformDirection(hd.group.matrixWorld).normalize(); return 40 * Math.max(0, 0.002 - c) + (1 - f.dot(want)) + 0.5 * Math.abs(hd.world('indexPad').distanceTo(under) - 0.05); };
-          const rp = CONTACT.thumbPress(pin, nailQ, nailN, mx, [PPOSE], mfld, pinScore, 0.0006);
-          const exP = { hand: 'R', wrist: rp.wrist, quat: rp.quat, pose: rp.pose, back: V(-1, 0, 0).applyQuaternion(rp.quat).normalize() };
-          applyEx('R', exP);
-          exP.pose = CONTACT.curlToTouch(pin, ['index'], mfld, rp.pose, { gap: 0.0006, from: -0.5, to: 1.4 }); applyEx('R', exP);
-          const th = { pad: CONTACT.gapNear(pin, 'thumbPad', mfld, 0.04).gap, all: CONTACT.minGap(CONTACT.handParts(pin).thumb, pfld, null, 0, 0.15).gap };
+          const mfld = CONTACT.field(handMeshes(ph).concat(handMeshes(sup)));
+          const tipM = CONTACT.field(mid.children.filter((m) => m.isMesh));
+          const under = ph.world('middlePad'), nail = ph.world('middleNail');
+          const nailN = V(0, 1, 0).transformDirection(mid.matrixWorld).normalize(), nailQ = tipM.query(nail, 0.05).q || nail, padQ = tipM.query(under, 0.05).q || under;
+          const ax = nailQ.clone().sub(padQ).normalize();                 // up through his fingertip
+          const PPOSE = { curl: { index: [1.0, 0.9, 0.54], middle: [1.15, 1.35, 0.85], ring: [1.25, 1.45, 0.9], little: [1.3, 1.5, 0.9] }, spread: 0.2, thumb: [1.0, 0.4, 0, 0.3] };   // the pads 14 mm apart, facing (his fingertip between)
+          pin.group.position.set(0, 0, 0); pin.group.quaternion.identity(); pin.pose(PPOSE); pin.group.updateMatrixWorld(true);
+          const vloc = pin.world('thumbPad').sub(pin.world('indexPad')).normalize();
+          const q0 = new THREE.Quaternion().setFromUnitVectors(vloc, ax);
+          const want = V(0.55, -0.1, 0.83).normalize();                  // the examiner's forearm back toward him (footward, his side)
+          let bestP = null;
+          for (let k2 = 0; k2 < 24; k2++) {
+            const q2 = new THREE.Quaternion().setFromAxisAngle(ax, k2 * Math.PI / 12).multiply(q0);
+            pin.pose(PPOSE); CONTACT.rest(pin, 'indexPad', padQ, ax.clone().negate(), q2, tipM, 0.0006, 0.025);
+            const e2 = { hand: 'R', wrist: pin.group.position.clone(), quat: q2, pose: PPOSE, back: V(0, 0, 0) };
+            pin.group.updateMatrixWorld(true); const fwd = pin.world('middleTip').sub(pin.group.position).normalize();
+            e2.back = fwd.clone().negate().add(V(0, -0.2, 0)).normalize(); applyEx('R', e2);
+            e2.fwd = fwd;
+            const pr = CONTACT.handParts(pin), tg = CONTACT.minGap(pr.thumbTip, tipM, null, 0, 0.15).gap, ig = CONTACT.minGap(pr.indexTip, tipM, null, 0, 0.15).gap;
+            const sink = CONTACT.minGap(handMeshes(pin), mfld, null, 0, 0.15, 3).gap, sinkArm = CONTACT.minGap(handMeshes(pin), pfld, null, 0, 0.15, 3).gap;
+            const sc = Math.abs((isFinite(tg) ? tg : 0.05) - 0.0006) + Math.abs((isFinite(ig) ? ig : 0.05) - 0.0006) + 4 * Math.max(0, -Math.min(sink, sinkArm)) + 0.003 * (1 - e2.back.dot(want));
+            if (!bestP || sc < bestP.sc) bestP = { sc, e2, tg, ig, sink: Math.min(sink, sinkArm), k2 };
+          }
+          const exP = bestP.e2; applyEx('R', exP);
+          {   // the thumb pad settles on the nail (kept only if it is closer than the pose's own thumb)
+            const tg0 = CONTACT.minGap(CONTACT.handParts(pin).thumbTip, tipM, null, 0, 0.15).gap;
+            const to = CONTACT.thumbOn(pin, nailQ, nailN, tipM, 0.0006, exP.fwd); exP.thumbQ = to.tq.map((q) => q.clone()); applyEx('R', exP);
+            const tg1 = CONTACT.minGap(CONTACT.handParts(pin).thumbTip, tipM, null, 0, 0.15).gap, s1 = CONTACT.minGap(handMeshes(pin), mfld, null, 0, 0.15).gap;
+            if (!(isFinite(tg1) && s1 >= 0 && Math.abs(tg1 - 0.0006) < Math.abs((isFinite(tg0) ? tg0 : 0.05) - 0.0006))) { delete exP.thumbQ; applyEx('R', exP); }
+            bestP.tg = CONTACT.minGap(CONTACT.handParts(pin).thumbTip, tipM, null, 0, 0.15).gap; delete exP.fwd;
+          }
+          log('Hoffmann pinch: roll', bestP.k2 * 15, 'deg, index', mm(bestP.ig), 'thumb', mm(bestP.tg), 'lowest', mm(bestP.sink), 'mm');
+          const th = { pad: bestP.tg, all: CONTACT.minGap(CONTACT.handParts(pin).thumb, mfld, null, 0, 0.15).gap };
           SOL.ex.hoffSupR = exS; SOL.ex.hoffPinR = exP; SOL.ex.hoffSupL = mirEx(exS); SOL.ex.hoffPinL = mirEx(exP);
           SOL.ex.hoffSupRel = relTo(exS, ph.group); SOL.ex.hoffPinRel = relTo(exP, ph.group);
-          SOL.gaps.hoff = { palmOnPalm: mm(CONTACT.gapNear(sup, 'palm', pfld, 0.35).gap), indexUnderTip: mm(CONTACT.minGap(CONTACT.handParts(pin).indexTip, mfld, null, 0, 0.08).gap), thumbOnNail: mm(th.pad), thumbLowest: mm(th.all) };
+          SOL.gaps.hoff = { palmOnPalm: mm(CONTACT.minGap(CONTACT.handParts(sup).palm, hfld, null, 0, 0.15).gap), indexUnderTip: mm(CONTACT.minGap(CONTACT.handParts(pin).indexTip, tipM, null, 0, 0.15).gap), thumbOnNail: mm(th.pad), thumbLowest: mm(th.all) };
           log("Hoffmann gaps (mm)", JSON.stringify(SOL.gaps.hoff));
           const thumbP = ph.world('thumbTip');
-          SOL.cams.hoffR = pickCam(ph.world('palm'), V(0.15, -0.05, 1).normalize().add(V(0, 0.32, 0)).normalize(), 5.2, [[thumbP, 0.03, P.arms.R.group], [pin.world('thumbNail'), 0.03, EX.R.group], [ph.world('middleTip'), 0.03, P.arms.R.group]], { name: 'Hoffmann R', aim: ph.world('palm').lerp(thumbP, 0.3), aperture: 0.012 });
-          SOL.cams.hoffL = mirCam(SOL.cams.hoffR);
+          // a close-up from his side, a little below the hand: his whole hand and his thumb (which must be seen to stay still)
+          const hoffCam = (sd, pinH, name) => {
+            const sz = sd === 'R' ? 1 : -1, hh = P.arms[sd].hand, tp = hh.world('thumbTip'), c = hh.world('palm').lerp(hh.world('middleTip'), 0.3);
+            return pickCam(c, V(1, -0.28, 0.3 * sz), 5.0, [[tp, 0.03, P.arms[sd].group], [EX[pinH].hand.world('thumbTip'), 0.04, EX[pinH].group], [hh.world('middleTip'), 0.04, P.arms[sd].group]], { name, aim: c.clone().lerp(tp, 0.25), aperture: 0.012, maxCone: 40 });
+          };
+          SOL.cams.hoffR = hoffCam('R', 'R', 'Hoffmann R');
+          applyArm('R', HOME_ARM.R); applyArm('L', SOL.arms.hoffL); applyEx('R', SOL.ex.hoffSupL); applyEx('L', SOL.ex.hoffPinL);
+          SOL.cams.hoffL = hoffCam('L', 'L', 'Hoffmann L');
+          applyEx('R', HOME_EX.R); applyEx('L', HOME_EX.L);
           for (const sd of ['R', 'L']) applyArm(sd, HOME_ARM[sd]);
         }
         return SOL;
@@ -686,7 +825,11 @@
       // ================================================================ SOLVE END
 
       let SOL;
-      if (root.SOLVE_MODE) { SOL = solveAll(); root.SOLVED_OUT = enc(SOL); }
+      if (root.SOLVE_MODE) {
+        let prev = null;
+        if (root.SOLVE_ONLY) { const r = await fetch('solved.json', { cache: 'no-store' }); prev = dec((await r.json()).data); }
+        SOL = solveAll(prev); root.SOLVED_OUT = enc(SOL);
+      }
       else {
         let raw = root.SOLVED;
         if (!raw) { const r = await fetch('solved.json', { cache: 'no-store' }).catch(() => null); if (!r || !r.ok) throw new Error('solved.json is missing: run "npm run solve" (it is made once, then loaded)'); raw = await r.json(); }
@@ -746,6 +889,10 @@
       const CH = Object.fromEntries(Object.entries(KEYS).map(([k, v]) => [k, channel(v)]));
       // ---- cameras: one object per shot (solved), plus the two wide ones
       const CAMS = Object.assign({ home: Object.assign({}, SET.HOME_CNS) }, SOL.cams);
+      {   // the leg being turned out (59.0-60.9 s): a wide shot of both legs from his right and above, nothing close to the lens
+        const tt = SOL.cams.legs.target, lt = tt.isVector3 ? tt.clone() : V(...tt);
+        CAMS.legsWide = { pos: lt.clone().add(V(2, 11, 15)).toArray(), target: lt.toArray(), focus: lt.toArray(), aperture: 0.03, fov: 28 };
+      }
       {   // the knee jerks: from his right, footward and above, both knees (built from the two solved tendon points)
         const mid = SOL.strikes.kneeR.target.clone().lerp(SOL.strikes.kneeL.target, 0.5), d = V(0.75, 0.35, 0.55).normalize();
         CAMS.knees = { pos: mid.clone().addScaledVector(d, 9.5).toArray(), target: mid.clone().add(V(0, -0.2, 0)).toArray(), focus: mid.toArray(), aperture: 0.03, fov: 28 };
@@ -879,7 +1026,7 @@
         ctx.save(); ctx.lineWidth = Math.max(2, W / 480); ctx.font = `600 ${Math.round(W / 48)}px "Fredoka", sans-serif`; ctx.textBaseline = 'middle';
         for (const m of marks) {
           const a = proj(m.at, W, H); if (a[2] > 1) continue;
-          const col = m.color || (m.bad ? '#ff3b30' : '#ffe14d');
+          const col = m.color || (m.v == null ? '#ffe14d' : m.v < 0 ? '#ff3b30' : m.v < 1.5 ? '#5ef08a' : m.v < 3 ? '#ffb340' : '#c9d3d6');
           if (m.to) { const b = proj(m.to, W, H); ctx.strokeStyle = col; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); ctx.beginPath(); ctx.arc(b[0], b[1], ctx.lineWidth * 1.6, 0, 7); ctx.fillStyle = col; ctx.fill(); }
           ctx.beginPath(); ctx.arc(a[0], a[1], ctx.lineWidth * 1.4, 0, 7); ctx.fillStyle = col; ctx.fill();
           if (m.label) { const off = m.off || [12, -18], x = a[0] + off[0] * W / 960, y = a[1] + off[1] * W / 960; ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(0,0,0,0.75)'; ctx.strokeText(m.label, x, y); ctx.fillStyle = col; ctx.fillText(m.label, x, y); ctx.lineWidth = Math.max(2, W / 480); ctx.strokeStyle = col; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(x, y); ctx.stroke(); }
@@ -891,12 +1038,14 @@
         legR: () => CONTACT.field([P.legMeshes.R]), legL: () => CONTACT.field([P.legMeshes.L]), legs: () => CONTACT.field([P.legMeshes.R, P.legMeshes.L]),
         handR: () => CONTACT.field(handMeshes(P.arms.R.hand)), handL: () => CONTACT.field(handMeshes(P.arms.L.hand)),
         midR: () => CONTACT.field(P.arms.R.hand.fingers.middle.dip.children.filter((m) => m.isMesh)), midL: () => CONTACT.field(P.arms.L.hand.fingers.middle.dip.children.filter((m) => m.isMesh)),
+        patient: () => { const ms = []; P.group.traverse((m) => { if (m.isMesh && m.visible && m.geometry && m.geometry.attributes.position.count > 200) ms.push(m); }); return CONTACT.field(ms); },
         thumbNailR: () => CONTACT.field(EX.R.hand.thumb.ip.children.filter((m) => m.isMesh)), thumbNailL: () => CONTACT.field(EX.L.hand.thumb.ip.children.filter((m) => m.isMesh)),
       };
       const partMeshes = (h, part) => {
         if (part === 'hammer') return hammer.head.children.filter((m) => m.isMesh);
         if (part === 'fore') return EX[h].fore.children.filter((m) => m.isMesh);
         if (part === 'legR' || part === 'legL') return [P.legMeshes[part.slice(3)]];
+        if (part.startsWith('p:')) { const [, sd, k] = part.split(':'); return CONTACT.handParts(P.arms[sd].hand)[k]; }   // his own hand's parts
         if (part === 'phandR' || part === 'phandL') return handMeshes(P.arms[part.slice(5)].hand);
         const parts = CONTACT.handParts(EX[h].hand); if (parts[part]) return parts[part];
         throw new Error('no part ' + part);
@@ -904,13 +1053,27 @@
       root.REVIEW_SHOT = (r, n) => {
         root.CAPTIONS = false; root.REVIEW_MARKS = null; root.CAM_OVERRIDE = null;
         update(r.t);
-        const gaps = {}, marks = [];
+        const gaps = {}, marks = [], values = {};
+        const fcache = {};
         for (const c of r.contacts || []) {
-          const g = CONTACT.minGap(partMeshes(c.hand, c.part), FIELDS[c.field](), null, 0, 0.15), v = +(g.gap * 100).toFixed(2);
+          const fld = fcache[c.field] || (fcache[c.field] = FIELDS[c.field]());
+          const near = c.near ? (c.near.startsWith('leg:') ? P.legPoint(c.near.split(':')[1], c.near.split(':')[2]) : null) : null;
+          const g = CONTACT.minGap(partMeshes(c.hand, c.part), fld, near, c.r || 0, 0.15), v = +(g.gap * 100).toFixed(2);
           gaps[c.label || c.part] = isFinite(v) ? v : null;
-          if (g.at) marks.push({ at: g.at, to: g.q, label: (c.label || c.part) + ' ' + (isFinite(v) ? v.toFixed(2) : '>15') + ' mm', bad: !(v >= 0 && v < 1.5), off: c.off });
+          if (g.at) marks.push({ at: g.at, to: g.q, label: (c.label || c.part) + ' ' + (isFinite(v) ? v.toFixed(2) : '>15') + ' mm', v: isFinite(v) ? v : 99, off: c.off });
         }
-        const values = {};
+        for (const hb of r.heels || []) {   // his heel on the mattress (the lowest point of the heel above the mattress)
+          const m = P.legMeshes[hb], pa = m.geometry.attributes.position, w = V(0, 0, 0), hp = P.legPoint(hb, 'heel'); let best = Infinity, at = null; m.updateMatrixWorld(true);
+          for (let i = 0; i < pa.count; i++) { w.fromBufferAttribute(pa, i).applyMatrix4(m.matrixWorld); if (w.distanceTo(hp) > 0.6) continue; const d = w.y - hs(w.x, w.z); if (d < best) { best = d; at = w.clone(); } }
+          const v = +(best * 100).toFixed(2); gaps['heel ' + hb + ' on the mattress'] = v;
+          if (at) marks.push({ at, to: V(at.x, hs(at.x, at.z), at.z), label: 'heel ' + hb + ' ' + v.toFixed(2) + ' mm', v });
+        }
+        if (r.landmark) {   // where the hammer's contact point is, against the kit landmark, measured now
+          const hp = hammer.strikeWorld(), lm = NEURO.points(P)[r.landmark], d = +(hp.distanceTo(lm) * 10).toFixed(2);
+          values['hammer contact to ' + r.landmark + ' (cm)'] = d;
+          if (r.landmark.startsWith('brachioradialis')) values[r.landmark + ' to the wrist joint (cm)'] = +(lm.distanceTo(P.arms[r.landmark.slice(-1)].hand.group.getWorldPosition(V(0, 0, 0))) * 10).toFixed(2);
+          marks.push({ at: lm, label: r.landmark, color: '#7cf0ff', off: [16, 30] });
+        }
         for (const a of r.angles || []) {
           if (a.joint === 'elbow') { const m = P.arms[a.side]; m.group.updateMatrixWorld(true); const Sh = m.up.getWorldPosition(V(0, 0, 0)), E = m.fore.getWorldPosition(V(0, 0, 0)), Wr = m.hand.group.getWorldPosition(V(0, 0, 0)); values[a.label] = +(Sh.sub(E).angleTo(Wr.sub(E)) * 180 / Math.PI).toFixed(1); }
           else values[a.label] = +(+P.leg(a.side)[a.joint]).toFixed(1);

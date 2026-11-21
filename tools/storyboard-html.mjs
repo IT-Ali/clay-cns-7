@@ -33,10 +33,10 @@ PANELS.forEach((p, i) => { const b = meta[i].beat; (beats[b] = beats[b] || []).p
 const beatName = (b) => meta.find((m) => m.beat === b).name;
 
 const GROUPS = { a: 'a. Plan: his right and left', b: 'b. The hammer: top of the swing and the strike (gap at the strike)', c: 'c. The reflex movement: joint angle before and at its peak', d: "d. Jendrassik: hooked hands, and the clenched jaw", e: 'e. The knee support', f: 'f. Clonus: palm on the ball of the foot; thumb and index on the kneecap', g: "g. Hoffmann's sign: before and after the flick", x: 'Skin-level contact panels (every other contact)' };
-const ok = (v) => v != null && v >= 0 && v < 1.5;
+const cls = (v) => (v == null ? 'clear' : v < 0 ? 'bad' : v < 1.5 ? 'good' : v < 3 ? 'warn' : 'clear');
 const rv = (r) => {
   const d = review.find((x) => x.id === r.id) || {}, gaps = d.gaps || {}, vals = d.values || {};
-  const rows = Object.entries(gaps).map(([k, v]) => `<tr><td>${esc(k)}</td><td class="num ${ok(v) ? 'good' : 'bad'}">${v == null ? '&gt; 15' : v.toFixed(2)} mm</td></tr>`).concat(Object.entries(vals).map(([k, v]) => `<tr><td>${esc(k)}</td><td class="num">${Array.isArray(v) ? v.join(', ') : v + (/elbow|knee|ankle/.test(k) ? '°' : '')}</td></tr>`)).join('');
+  const rows = Object.entries(gaps).map(([k, v]) => `<tr><td>${esc(k)}</td><td class="num ${cls(v)}">${v == null ? '&gt; 15' : v.toFixed(2)} mm</td></tr>`).concat(Object.entries(vals).map(([k, v]) => `<tr><td>${esc(k)}</td><td class="num">${Array.isArray(v) ? v.join(', ') : v + (/elbow|knee|ankle/.test(k) ? '°' : '')}</td></tr>`)).join('');
   return `<figure class="rv"><img src="img/r_${r.id}.jpg" alt="${esc(r.title)}" loading="lazy" width="960" height="540"><figcaption><b>${esc(r.title)}</b> <span class="time">${r.t} s</span>${rows ? `<table>${rows}</table>` : ''}</figcaption></figure>`;
 };
 // c: angles as one table (before / peak / change), right and left
@@ -116,7 +116,7 @@ q { quotes: none; background: var(--plaque); color: var(--navy); font-family: va
 table { border-collapse: collapse; font-size: 13px; width: 100%; }
 td, th { padding: 3px 8px 3px 0; border-bottom: 1px solid var(--line); text-align: left; }
 .num { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
-.good { color: var(--good); } .bad { color: var(--bad); font-weight: 600; }
+.good { color: var(--good); } .bad { color: var(--bad); font-weight: 600; } .warn { color: #c77a00; font-weight: 600; } .clear { color: var(--muted); }
 .tablewrap { overflow-x: auto; max-width: 640px; }
 .note { color: var(--muted); font-size: 13px; margin: 0; max-width: 80ch; }
 ol, ul { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; max-width: 85ch; }
@@ -132,8 +132,9 @@ a { color: var(--teal); }
   <p>Storyboard for review. Every still is a frame of the animation itself (the same timeline, poses and cameras), rendered in software at 16 samples, with captions on. Below the panels: the review panels a to g, with every gap measured on the meshes.</p>
   <div class="facts"><span><b>97 s</b>, 12 beats</span><span><b>Soft Clay</b>, series look from shared/ v5</span><span>starts and ends on the <b>CNS home shot</b></span><span>speech holds at <b>5.0</b>, <b>34.0</b>, <b>41.0</b>, <b>51.0 s</b></span></div>
 </header>
+${fs.existsSync(path.join(ROOT, 'checks/round2.json')) ? `<section class="beat-sec"><h2>Round 2: your eight points</h2><ol>${JSON.parse(fs.readFileSync(path.join(ROOT, 'checks/round2.json'), 'utf8')).map((x) => `<li><b>${esc(x.point)}</b> ${esc(x.done)}</li>`).join('')}</ol></section>` : ''}
 ${beats.map((ps, b) => ps ? `<section class="beat-sec"><h2><span class="n">${b}</span> ${esc(beatName(b))} <span class="t">${meta.find((m) => m.beat === b).t0}-${meta.find((m) => m.beat === b).t1} s</span></h2><div class="grid">${ps.join('\n')}</div></section>` : '').join('\n')}
-<section class="beat-sec"><h2>Review panels</h2><p class="note">Gaps are measured from the meshes (the closest point of each touching part to the skin): green when 0 to 1.5 mm, red otherwise. Arrows in the pictures run from the part to the skin.</p></section>
+<section class="beat-sec"><h2>Review panels</h2><p class="note">Gaps are measured from the meshes: the closest point of each part (the palm and all five digits of every working hand, the hammer head, his heels and ankle) to his skin. Green: touching (0 to 1.5 mm). Amber: 1.5 to 3 mm (close but not touching). Grey: clear of the skin (a part that is not in contact). Red: under the skin. Arrows in the pictures run from the part to the skin.</p></section>
 ${reviewHtml}
 <section class="beat-sec"><h2>Facts and numbers I assumed</h2><ol>${ASSUME.map((a) => `<li>${esc(a)}</li>`).join('')}</ol></section>
 <section class="beat-sec"><h2>Known open points</h2><ul>${KNOWN.map((a) => `<li>${esc(a)}</li>`).join('')}</ul></section>

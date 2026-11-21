@@ -56,6 +56,7 @@ try {
   if (!window.CNS7) for (const s of SCRIPTS) await load(s);   // (the single-file build has everything inline already)
   const style = window.CNS7;
   if (Q.get('solve') === '1') window.SOLVE_MODE = true;
+  if (Q.get('only')) window.SOLVE_ONLY = Q.get('only').split(',');
   const W = +(Q.get('w') || 1920), H = +(Q.get('h') || 1080);
   const canvas = document.getElementById('c'); canvas.width = W; canvas.height = H;
   if (RENDER) { document.getElementById('stage').style.width = W + 'px'; document.getElementById('stage').style.height = H + 'px'; }

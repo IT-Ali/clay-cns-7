@@ -8,7 +8,7 @@ const { srv, url } = await serve();
 const { browser } = await launch();
 const t0 = Date.now();
 try {
-  const q = { w: arg('w', 960), h: arg('h', 540), samples: arg('samples', 4) }; if (arg('solve')) q.solve = 1;
+  const q = { w: arg('w', 960), h: arg('h', 540), samples: arg('samples', 4) }; if (arg('solve')) q.solve = 1; if (arg('only')) q.only = arg('only');
   const page = await openPage(browser, url, q);
   console.log('built in', ((Date.now() - t0) / 1000).toFixed(1), 's');
   const out = path.join(ROOT, arg('out', 'checks/lab')); fs.mkdirSync(out, { recursive: true });
