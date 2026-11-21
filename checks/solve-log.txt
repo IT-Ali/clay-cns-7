@@ -2,18 +2,23 @@ abd R elbow 105.8 deg; kit bicepsTendon -4.034, 8.232, 2.716 its normal is 84 de
 abd L elbow 105.8 deg; kit bicepsTendon -4.034, 8.232, -2.716 its normal is 84 deg from the inside of the bend; brachioradialisTendon normal 0.031, 0.971, 0.235
 biceps tendon R measured -3.793, 8.874, 2.594 normal 0.804, 0.17, -0.57 facing the inside of the bend 0.997
 biceps tendon L measured -3.793, 8.874, -2.594 normal 0.804, 0.171, 0.57 facing the inside of the bend 0.997
-biceps hand on the front of the arm: 9.7 cm above the tendon, reach 0.60 | thumb pad 0.36 mm, lowest thumb point 0.18 mm, deepest point in the arm capsules -1.36 mm
-biceps thumb gaps (mm) {"thumbPad":0.36,"palm":0.31,"index":6.9,"middle":4.45,"ring":2.51,"little":3.65,"min":0.03} parts {"palm":0.03,"index":6.01,"indexTip":6.9,"middle":1.42,"middleTip":4.45,"ring":0.95,"ringTip":2.51,"little":3.65,"littleTip":3.65,"thumb":0.18,"thumbTip":0.18}
-pickCam supinator R clear view at 15 deg from the preferred direction
-pickCam supinator L clear view at 15 deg from the preferred direction
-supinator strike gap 0.06 mm; brachioradialisTendon is 6.0 cm from the wrist joint, on the radial (thumb) side
+biceps hand turn 0 thumb pad 0.09 lowest -12.5 mm, wrist to the forearm line 93 deg
+biceps hand turn -0.8 thumb pad 0.09 lowest -0.63 mm, wrist to the forearm line 49 deg
+biceps hand turn 0.8 thumb pad 0.09 lowest 0.04 mm, wrist to the forearm line 136 deg
+biceps hand turn -1.6 thumb pad 0.09 lowest 0.03 mm, wrist to the forearm line 16 deg
+biceps hand turn 1.6 thumb pad 0.09 lowest -6.22 mm, wrist to the forearm line 164 deg
+biceps hand turn -2.4 thumb pad 0.09 lowest -14.9 mm, wrist to the forearm line 46 deg
+biceps hand turn 2.4 thumb pad 0.09 lowest -15 mm, wrist to the forearm line 128 deg
+biceps hand turn 3.14 thumb pad 0.09 lowest -15 mm, wrist to the forearm line 87 deg
+biceps hand on the front of the arm: 7.0 cm above the tendon, reach 0.60 | thumb pad 0.11 mm, lowest thumb point 0.03 mm, deepest point in the arm capsules -1.65 mm
+biceps thumb gaps (mm) {"thumbPad":0.03,"palm":0.07,"index":null,"middle":null,"ring":null,"little":0.55,"min":0.03} parts {"palm":0.07,"index":null,"indexTip":null,"middle":null,"middleTip":null,"ring":null,"ringTip":null,"little":0.55,"littleTip":0.55,"thumb":0.03,"thumbTip":0.03}
+supinator fingers: turn 140 index 0.39 middle 0.03 mm; lowest of the hand vs his arm + trunk 0.03 mm; point 5.00 cm above the wrist
+supinator gaps {"index":0.39,"middle":0.03,"lowest":0.03,"aboveWrist":5,"strikeGap":0.06} hammer on the middle finger
 triceps: elbow opened from 53.4 to 90 deg; his hand to his chest Infinity mm
 triceps tendon measured -3.772, 11.099, 4.052 normal -0.57, -0.38, 0.728 ; kit tricepsTendon is 24 deg away; elbow 90 deg
 wrist hold thumb pad 0.08 mm, lowest thumb point 0.06 mm
 wrist hold gaps (mm) {"palm":0.06,"index":0.66,"indexTip":0.66,"middle":0.41,"middleTip":0.41,"ring":1.09,"ringTip":1.09,"little":0.35,"littleTip":0.35,"thumb":0.06,"thumbTip":0.06}
 triceps strike gap 0.06 mm
-pickCam triceps R clear view at 15 deg from the preferred direction
-pickCam triceps L clear view at 15 deg from the preferred direction
 knee support: forearm to right knee 0.06 mm, to left knee 0.52 mm; heels above the mattress R 16.11 L 16.11 mm
 strike kneeR gap 0.06 mm
 strike kneeL gap 0.06 mm
@@ -25,19 +30,16 @@ Jendrassik pull 1 : closest point between his two hands 0.05 mm (negative = fing
 pickCam: no fully clear view for Jendrassik - best sees 2 of 3 at 0 deg
 ankle jerk leg {"hipFlex":33.7,"hipAbd":11.5,"hipRot":43.6,"knee":73.4,"ankle":8,"ankleInv":0,"bigToe":0,"toes":0,"fan":0,"error":0} | outer ankle on the other shin 0.06 mm (the inner thighs near the groin, inside the trousers: -5.45 mm)
 palm across the ball of the foot R (L hand): palm 0.03 mm, lowest point of the hand 0.03 mm
-strike ankR gap 0.06 mm
+ankle strike: Achilles point 1.7 cm above the ankle bones (kit point 4.89 cm), gap 0.06 mm; swing plane turned 30 deg; face turned 45 deg round the leg from straight behind; hammer to the other leg 14.74 mm, handle to this leg 24.49 mm, hammer hand to his legs Infinity mm
 ankle clonus: palm under the calf 0.88 mm; hand above the mattress 33.19 mm
 palm across the ball of the foot R (R hand): palm 0.03 mm, lowest point of the hand 0.03 mm
 palm across the ball of the foot R (R hand): palm 0.03 mm, lowest point of the hand 0.03 mm
 knee clonus tilt -0.3 index 0.8 thumb -0.14
-knee clonus search 26.2 s
+knee clonus search 29.5 s
 knee clonus pinch: roll 345 thumb side -1 tips apart 15.02 mm
 knee clonus gaps (mm) {"indexTip":0.97,"thumbTip":0.02,"lowest":0.02}
-pickCam knee clonus R clear view at 0 deg from the preferred direction
-Hoffmann support: turn 0.15 slide -0.25 palm on palm 0.03 mm, lowest vs his hand + arm 0.03 mm
-Hoffmann pinch: roll 240 deg, index -2.22 thumb 0.26 lowest -1.73 mm
-Hoffmann gaps (mm) {"palmOnPalm":0.03,"indexUnderTip":0.06,"thumbOnNail":0.26,"thumbLowest":0.26}
-Hoffmann R his thumb side 0.931, 0, 0.366
-pickCam Hoffmann R clear view at 0 deg from the preferred direction
-Hoffmann L his thumb side 0.931, 0, -0.366
-pickCam Hoffmann L clear view at 0 deg from the preferred direction
+Hoffmann support: turn 0.15 slide 0.05 palm on palm 0.03 mm, lowest vs his hand + arm 0.03 mm
+Hoffmann pinch: roll 225 deg, index -2.47 thumb 0.12 lowest -1.67 mm
+Hoffmann gaps (mm) {"palmOnPalm":0.03,"indexUnderTip":0.06,"thumbOnNail":0.12,"thumbLowest":0.12}
+Hoffmann R his thumb side 0.961, 0, 0.278
+Hoffmann L his thumb side 0.961, 0, -0.278
