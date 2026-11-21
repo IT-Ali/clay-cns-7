@@ -711,7 +711,25 @@
               ex.wrist = ex.wrist.clone().addScaledVector(pushDir, -Math.max(-0.02, Math.min(step, 0.05)));
             }
             const sc = Math.abs((isFinite(gi) ? gi : 0.05) - 0.0006) + Math.abs((isFinite(gt) ? gt : 0.05) - 0.0006) + 4 * Math.max(0, -all) + 0.003 * (1 - dors.dot(up));
-            if (!best || sc < best.sc) best = { sc, ex, gi, gt, all, r, sg };
+            if (!best || sc < best.sc) best = { sc, ex, gi, gt, all, r, sg, q };
+          }
+          {   // the edge curves down at its sides: tilt the line of the two tips (about the thigh's axis) so both tips meet it
+            const q0 = best.q;
+            for (let tl = -0.6; tl <= 0.61; tl += 0.1) {
+              const q = new THREE.Quaternion().setFromAxisAngle(axis, tl).multiply(q0), dors = V(0, 1, 0).applyQuaternion(q);
+              const ex = { hand: 'L', wrist: E0.clone().sub(mL.clone().applyQuaternion(q)).addScaledVector(pushDir, 0.05), quat: q, pose: KC_POSE, back: best.ex.back };
+              let gi, gt, all;
+              for (let it = 0; it < 8; it++) {
+                applyEx('L', ex); const pr = CONTACT.handParts(hand);
+                gi = CONTACT.minGap(pr.indexTip, fld, null, 0, 0.15).gap; gt = CONTACT.minGap(pr.thumbTip, fld, null, 0, 0.15).gap; all = CONTACT.minGap(handMeshes(hand), fld, null, 0, 0.15, 4).gap;
+                const g = Math.min(isFinite(gi) ? gi : 0.05, isFinite(gt) ? gt : 0.05), step = Math.max(g - 0.0006, isFinite(all) ? all - 0.0003 : g);
+                if (Math.abs(step) < 0.00008) break;
+                ex.wrist = ex.wrist.clone().addScaledVector(pushDir, -Math.max(-0.02, Math.min(step, 0.05)));
+              }
+              const sc = Math.abs((isFinite(gi) ? gi : 0.05) - 0.0006) + Math.abs((isFinite(gt) ? gt : 0.05) - 0.0006) + 4 * Math.max(0, -all) + 0.003 * (1 - dors.dot(up));
+              if (sc < best.sc) best = Object.assign({}, best, { sc, ex, gi, gt, all, tl });
+            }
+            log('knee clonus tilt', best.tl == null ? 0 : +best.tl.toFixed(2), 'index', mm(best.gi), 'thumb', mm(best.gt));
           }
           const ex = best.ex; applyEx('L', ex);
           if (CONTACT.minGap(handMeshes(hand), fld, null, 0, 0.15).gap < 0) liftClear('L', ex, nE, fld, 0.0003);      // nothing under the skin
