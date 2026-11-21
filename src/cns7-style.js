@@ -700,7 +700,7 @@
           for (const sg of [1, -1]) for (let r = 0; r < 24; r++) {
             const q = new THREE.Quaternion().setFromAxisAngle(side, r * Math.PI / 12).multiply(new THREE.Quaternion().setFromUnitVectors(uL, side.clone().multiplyScalar(sg)));
             const dir = mL.clone().applyQuaternion(q).normalize(), dors = V(0, 1, 0).applyQuaternion(q);
-            if (dir.dot(axis) < 0.15 || dir.dot(up) > -0.1 || dors.dot(up) < 0.2) continue;
+            if (dir.dot(axis) < 0.15 || dir.dot(up) > -0.1 || dors.dot(up) < 0.55) continue;   // the back of the hand up: never upright
             const ex = { hand: 'L', wrist: E0.clone().sub(mL.clone().applyQuaternion(q)).addScaledVector(pushDir, 0.05), quat: q, pose: KC_POSE, back: axis.clone().multiplyScalar(-0.5).addScaledVector(up, 0.5).add(V(0, 0, 0.6)).normalize() };
             let gi, gt, all;
             for (let it = 0; it < 8; it++) {
@@ -710,7 +710,7 @@
               if (Math.abs(step) < 0.00008) break;
               ex.wrist = ex.wrist.clone().addScaledVector(pushDir, -Math.max(-0.02, Math.min(step, 0.05)));
             }
-            const sc = Math.abs((isFinite(gi) ? gi : 0.05) - 0.0006) + Math.abs((isFinite(gt) ? gt : 0.05) - 0.0006) + 4 * Math.max(0, -all) + 0.0005 * (1 - dors.dot(up));
+            const sc = Math.abs((isFinite(gi) ? gi : 0.05) - 0.0006) + Math.abs((isFinite(gt) ? gt : 0.05) - 0.0006) + 4 * Math.max(0, -all) + 0.003 * (1 - dors.dot(up));
             if (!best || sc < best.sc) best = { sc, ex, gi, gt, all, r, sg };
           }
           const ex = best.ex; applyEx('L', ex);
@@ -786,11 +786,11 @@
           const under = ph.world('middlePad'), nail = ph.world('middleNail');
           const nailN = V(0, 1, 0).transformDirection(mid.matrixWorld).normalize(), nailQ = tipM.query(nail, 0.05).q || nail, padQ = tipM.query(under, 0.05).q || under;
           const ax = nailQ.clone().sub(padQ).normalize();                 // up through his fingertip
-          const PPOSE = { curl: { index: [1.0, 0.9, 0.54], middle: [1.15, 1.35, 0.85], ring: [1.25, 1.45, 0.9], little: [1.3, 1.5, 0.9] }, spread: 0.2, thumb: [1.0, 0.4, 0, 0.3] };   // the pads 14 mm apart, facing (his fingertip between)
+          const PPOSE = { curl: { index: [0.8, 0.9, 0.54], middle: [1.15, 1.35, 0.85], ring: [1.25, 1.45, 0.9], little: [1.3, 1.5, 0.9] }, spread: 0.2, thumb: [1.0, 0.8, 0, 0] };   // the pads 21.5 mm apart, facing (his fingertip, ~2 cm thick, between)
           pin.group.position.set(0, 0, 0); pin.group.quaternion.identity(); pin.pose(PPOSE); pin.group.updateMatrixWorld(true);
           const vloc = pin.world('thumbPad').sub(pin.world('indexPad')).normalize();
           const q0 = new THREE.Quaternion().setFromUnitVectors(vloc, ax);
-          const want = V(0.55, -0.1, 0.83).normalize();                  // the examiner's forearm back toward him (footward, his side)
+          const want = V(0.2, -0.3, 1).normalize();                      // the examiner's forearm straight back toward him (his side), clear of a side camera
           let bestP = null;
           for (let k2 = 0; k2 < 24; k2++) {
             const q2 = new THREE.Quaternion().setFromAxisAngle(ax, k2 * Math.PI / 12).multiply(q0);
@@ -822,7 +822,9 @@
           // a close-up from his side, a little below the hand: his whole hand and his thumb (which must be seen to stay still)
           const hoffCam = (sd, pinH, name) => {
             const sz = sd === 'R' ? 1 : -1, hh = P.arms[sd].hand, tp = hh.world('thumbTip'), c = hh.world('palm').lerp(hh.world('middleTip'), 0.3);
-            return pickCam(c, V(1, -0.28, 0.3 * sz), 5.0, [[tp, 0.03, P.arms[sd].group], [EX[pinH].hand.world('thumbTip'), 0.04, EX[pinH].group], [hh.world('middleTip'), 0.04, P.arms[sd].group]], { name, aim: c.clone().lerp(tp, 0.25), aperture: 0.012, maxCone: 40 });
+            const ts = tp.clone().sub(hh.world('palm')); ts.y = 0; ts.normalize();       // the side his thumb is on
+            log(name, 'his thumb side', r3(ts));
+            return pickCam(c, ts.clone().add(V(0, -0.3, 0.2 * sz)), 5.5, [[tp, 0.03, P.arms[sd].group], [EX[pinH].hand.world('thumbTip'), 0.04, EX[pinH].group], [hh.world('middleTip'), 0.04, P.arms[sd].group]], { name, aim: c.clone().lerp(tp, 0.25), aperture: 0.012, maxCone: 50 });
           };
           SOL.cams.hoffR = hoffCam('R', 'R', 'Hoffmann R');
           applyArm('R', HOME_ARM.R); applyArm('L', SOL.arms.hoffL); applyEx('R', SOL.ex.hoffSupL); applyEx('L', SOL.ex.hoffPinL);
