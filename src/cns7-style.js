@@ -823,11 +823,16 @@
             if (!bestP || sc < bestP.sc) bestP = { sc, e2, tg, ig, sink: Math.min(sink, sinkArm), k2 };
           }
           const exP = bestP.e2; applyEx('R', exP);
-          {   // the thumb pad settles on the nail (kept only if it is closer than the pose's own thumb)
+          for (let it = 0; it < 10; it++) {   // the index tip rests under his fingertip: pushed out along the skin normal at its deepest point
+            const r = CONTACT.minGap(CONTACT.handParts(pin).index, mfld, null, 0, 0.15); if (!isFinite(r.gap) || (r.gap >= 0.0003 && r.gap <= 0.001)) break;
+            const n = mfld.query(r.at, 0.15).n; if (!n) break;
+            exP.wrist = exP.wrist.clone().addScaledVector(n, 0.0006 - r.gap); applyEx('R', exP);
+          }
+          {   // the thumb pad settles on the nail (kept only if nothing sinks and it is closer than the pose's own thumb)
             const tg0 = CONTACT.minGap(CONTACT.handParts(pin).thumbTip, tipM, null, 0, 0.15).gap;
             const to = CONTACT.thumbOn(pin, nailQ, nailN, tipM, 0.0006, exP.fwd); exP.thumbQ = to.tq.map((q) => q.clone()); applyEx('R', exP);
             const tg1 = CONTACT.minGap(CONTACT.handParts(pin).thumbTip, tipM, null, 0, 0.15).gap, s1 = CONTACT.minGap(handMeshes(pin), mfld, null, 0, 0.15).gap;
-            if (!(isFinite(tg1) && s1 >= 0 && Math.abs(tg1 - 0.0006) < Math.abs((isFinite(tg0) ? tg0 : 0.05) - 0.0006))) { delete exP.thumbQ; applyEx('R', exP); }
+            if (!(isFinite(tg1) && s1 >= 0 && (tg0 < 0 || Math.abs(tg1 - 0.0006) < Math.abs((isFinite(tg0) ? tg0 : 0.05) - 0.0006)))) { delete exP.thumbQ; applyEx('R', exP); }
             bestP.tg = CONTACT.minGap(CONTACT.handParts(pin).thumbTip, tipM, null, 0, 0.15).gap; delete exP.fwd;
           }
           log('Hoffmann pinch: roll', bestP.k2 * 15, 'deg, index', mm(bestP.ig), 'thumb', mm(bestP.tg), 'lowest', mm(bestP.sink), 'mm');
