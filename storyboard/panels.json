@@ -192,6 +192,25 @@
   ]
  },
  {
+  "t": 36.1,
+  "beat": 5,
+  "name": "Reinforcement (arms)",
+  "t0": 34,
+  "t1": 41,
+  "hold": [
+   34,
+   35.5
+  ],
+  "caption": "Reinforcement: clench the teeth, then tap - before calling a reflex absent",
+  "cam": "reinfFace",
+  "strikes": [
+   "reinfR 37.40 s"
+  ],
+  "captionsInBeat": [
+   "Reinforcement: clench the teeth, then tap - before calling a reflex absent"
+  ]
+ },
+ {
   "t": 37.4,
   "beat": 5,
   "name": "Reinforcement (arms)",
