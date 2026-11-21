@@ -1,0 +1,457 @@
+<title>CNS Part 7 Storyboard</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* layout: a review document; beats as numbered sections (the order is the film's order), two panels per row, one on phones */
+:root { --bg: #f4f7f6; --surface: #ffffff; --ink: #1f2a44; --muted: #5a6577; --line: #d6e0de; --teal: #12808a; --plaque: #f8eedb; --navy: #26336b; --good: #1d7a46; --bad: #c0362c;
+  --display: "Fredoka", "Trebuchet MS", sans-serif; --body: "Inter", system-ui, sans-serif; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #0b1c1e; --surface: #12292c; --ink: #e8efee; --muted: #9fb2b1; --line: #24413f; --teal: #3fb6c0; --plaque: #2a3036; --navy: #f3e6cd; --good: #6fd39a; --bad: #ff8a7f; color-scheme: dark } }
+:root[data-theme="dark"] { --bg: #0b1c1e; --surface: #12292c; --ink: #e8efee; --muted: #9fb2b1; --line: #24413f; --teal: #3fb6c0; --plaque: #2a3036; --navy: #f3e6cd; --good: #6fd39a; --bad: #ff8a7f; color-scheme: dark }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-block: 28px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 36px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(26px, 4vw, 38px); color: var(--teal); }
+h2 { font-size: 22px; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+h2 .n { color: var(--teal); }
+h2 .t { font-family: var(--body); font-size: 14px; font-weight: 500; color: var(--muted); }
+h3 { font-size: 18px; }
+header { display: grid; gap: 10px; max-width: 80ch; }
+header p { margin: 0; color: var(--muted); }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); }
+.facts b { color: var(--ink); font-weight: 600; }
+.beat-sec { display: grid; gap: 14px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); gap: 18px; }
+.panel { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: grid; min-width: 0; }
+.panel img, .rv img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: #0d3a3d; max-width: 100%; }
+figcaption { padding: 12px 14px 14px; display: grid; gap: 8px; min-width: 0; }
+.ph { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; font-size: 13px; }
+.beat { font-family: var(--display); font-weight: 600; color: var(--teal); font-size: 15px; }
+.time { font-variant-numeric: tabular-nums; font-weight: 600; }
+.span { color: var(--muted); font-variant-numeric: tabular-nums; }
+dl { margin: 0; display: grid; grid-template-columns: 7.5em 1fr; gap: 4px 10px; font-size: 13.5px; }
+dt { color: var(--muted); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; padding-top: 2px; }
+dd { margin: 0; min-width: 0; }
+q { quotes: none; background: var(--plaque); color: var(--navy); font-family: var(--display); font-weight: 600; padding: 1px 8px; border-radius: 8px; display: inline-block; }
+.rgroup { display: grid; gap: 12px; }
+.rgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)); gap: 14px; }
+.rv { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; min-width: 0; }
+.rv figcaption { font-size: 13px; }
+table { border-collapse: collapse; font-size: 13px; width: 100%; }
+td, th { padding: 3px 8px 3px 0; border-bottom: 1px solid var(--line); text-align: left; }
+.num { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.good { color: var(--good); } .bad { color: var(--bad); font-weight: 600; }
+.tablewrap { overflow-x: auto; max-width: 640px; }
+.note { color: var(--muted); font-size: 13px; margin: 0; max-width: 80ch; }
+ol, ul { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; max-width: 85ch; }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+summary { cursor: pointer; font-weight: 600; }
+pre { overflow-x: auto; font-size: 12px; line-height: 1.45; white-space: pre-wrap; word-break: break-word; }
+a { color: var(--teal); }
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+</style>
+<div class="wrap">
+<header>
+  <h1>CNS part 7: tendon reflexes, reinforcement, clonus, Hoffmann's sign</h1>
+  <p>Storyboard for review. Every still is a frame of the animation itself (the same timeline, poses and cameras), rendered in software at 16 samples, with captions on. Below the panels: the review panels a to g, with every gap measured on the meshes.</p>
+  <div class="facts"><span><b>97 s</b>, 12 beats</span><span><b>Soft Clay</b>, series look from shared/ v5</span><span>starts and ends on the <b>CNS home shot</b></span><span>speech holds at <b>5.0</b>, <b>34.0</b>, <b>41.0</b>, <b>51.0 s</b></span></div>
+</header>
+
+<section class="beat-sec"><h2><span class="n">1</span> Position <span class="t">0-5 s</span></h2><div class="grid"><figure class="panel">
+  <img src="img/p01.jpg" alt="Beat 1 at 0.00 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 1</span><span class="time">0.00 s</span><span class="span">beat 0-5 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><em>no caption</em></dd>
+      <dt>What changes</dt><dd>The CNS home shot (identical first frame of every part), held still 1 s.</dd>
+      <dt>Camera</dt><dd>CNS home shot (SET.HOME_CNS), still</dd>
+      <dt>Sound</dt><dd>Room ambience fades in over 0.5 s; nothing else.</dd>
+    </dl>
+  </figcaption>
+</figure>
+<figure class="panel">
+  <img src="img/p02.jpg" alt="Beat 1 at 3.90 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 1</span><span class="time">3.90 s</span><span class="span">beat 0-5 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Reflexes</q></dd>
+      <dt>What changes</dt><dd>Slow push-in to his upper body. The examiner picks up the tendon hammer off camera (his right hand stays out of frame until 7.6 s, so the hold below is clear).</dd>
+      <dt>Camera</dt><dd>CNS home shot (SET.HOME_CNS), still</dd>
+      <dt>Sound</dt><dd>Room ambience fades in over 0.5 s; nothing else.</dd>
+    </dl>
+  </figcaption>
+</figure></div></section>
+<section class="beat-sec"><h2><span class="n">2</span> Biceps jerk (C5) <span class="t">5-15 s</span></h2><div class="grid"><figure class="panel">
+  <img src="img/p03.jpg" alt="Beat 2 at 5.80 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 2</span><span class="time">5.80 s</span><span class="span">beat 5-15 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><em>no caption</em></dd>
+      <dt>What changes</dt><dd>HOLD 5.0-6.5 s, no caption (the examiner asks him to rest his arms on his tummy).</dd>
+      <dt>Camera</dt><dd>medium shot of his upper body from his right</dd>
+      <dt>Sound</dt><dd>Hammer: a soft rubber tap (short dull thud) at bicR 9.20 s, bicL 12.20 s. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure>
+<figure class="panel">
+  <img src="img/p04.jpg" alt="Beat 2 at 9.20 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 2</span><span class="time">9.20 s</span><span class="span">beat 5-15 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Biceps jerk (C5): tap my thumb on the tendon - present, equal</q></dd>
+      <dt>What changes</dt><dd>Biceps R: his forearms across his abdomen; the pad of the examiner's left thumb on the right biceps tendon; the hammer lands on the thumbnail.</dd>
+      <dt>Camera</dt><dd>close, from his right side above the elbow</dd>
+      <dt>Sound</dt><dd>Hammer: a soft rubber tap (short dull thud) at bicR 9.20 s, bicL 12.20 s. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure>
+<figure class="panel">
+  <img src="img/p05.jpg" alt="Beat 2 at 12.20 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 2</span><span class="time">12.20 s</span><span class="span">beat 5-15 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Biceps jerk (C5): tap my thumb on the tendon - present, equal</q></dd>
+      <dt>What changes</dt><dd>HARD CUT to his left (examiner on his left): the same, mirrored.</dd>
+      <dt>Camera</dt><dd>close, from his LEFT side (mirror)</dd>
+      <dt>Sound</dt><dd>Hammer: a soft rubber tap (short dull thud) at bicR 9.20 s, bicL 12.20 s. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure></div></section>
+<section class="beat-sec"><h2><span class="n">3</span> Supinator jerk (C6) <span class="t">15-24 s</span></h2><div class="grid"><figure class="panel">
+  <img src="img/p06.jpg" alt="Beat 3 at 16.80 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 3</span><span class="time">16.80 s</span><span class="span">beat 15-24 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Supinator jerk (C6): just above the wrist - present, equal</q></dd>
+      <dt>What changes</dt><dd>HARD CUT back to his right. Supinator R: the hammer on the brachioradialis tendon, radial side ~5 cm above the wrist.</dd>
+      <dt>Camera</dt><dd>from his right side, forearm and elbow</dd>
+      <dt>Sound</dt><dd>Hammer: a soft rubber tap (short dull thud) at supR 16.80 s, supL 19.80 s. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure>
+<figure class="panel">
+  <img src="img/p07.jpg" alt="Beat 3 at 19.80 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 3</span><span class="time">19.80 s</span><span class="span">beat 15-24 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Supinator jerk (C6): just above the wrist - present, equal</q></dd>
+      <dt>What changes</dt><dd>HARD CUT to his left: the same.</dd>
+      <dt>Camera</dt><dd>from his LEFT side</dd>
+      <dt>Sound</dt><dd>Hammer: a soft rubber tap (short dull thud) at supR 16.80 s, supL 19.80 s. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure></div></section>
+<section class="beat-sec"><h2><span class="n">4</span> Triceps jerk (C7) <span class="t">24-34 s</span></h2><div class="grid"><figure class="panel">
+  <img src="img/p08.jpg" alt="Beat 4 at 25.70 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 4</span><span class="time">25.70 s</span><span class="span">beat 24-34 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><em>no caption</em></dd>
+      <dt>What changes</dt><dd>HARD CUT back to his right: the examiner's left hand holds his right wrist and brings the forearm across his chest.</dd>
+      <dt>Camera</dt><dd>from his right side, a little from the head end</dd>
+      <dt>Sound</dt><dd>Hammer: a soft rubber tap (short dull thud) at triR 27.60 s, triL 30.80 s. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure>
+<figure class="panel">
+  <img src="img/p09.jpg" alt="Beat 4 at 27.60 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 4</span><span class="time">27.60 s</span><span class="span">beat 24-34 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Triceps jerk (C7): just above the elbow - present, equal</q></dd>
+      <dt>What changes</dt><dd>Triceps R: the hammer just above the olecranon.</dd>
+      <dt>Camera</dt><dd>from his right side, a little from the head end</dd>
+      <dt>Sound</dt><dd>Hammer: a soft rubber tap (short dull thud) at triR 27.60 s, triL 30.80 s. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure>
+<figure class="panel">
+  <img src="img/p10.jpg" alt="Beat 4 at 30.80 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 4</span><span class="time">30.80 s</span><span class="span">beat 24-34 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Triceps jerk (C7): just above the elbow - present, equal</q></dd>
+      <dt>What changes</dt><dd>HARD CUT to his left: the same.</dd>
+      <dt>Camera</dt><dd>from his LEFT side</dd>
+      <dt>Sound</dt><dd>Hammer: a soft rubber tap (short dull thud) at triR 27.60 s, triL 30.80 s. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure></div></section>
+<section class="beat-sec"><h2><span class="n">5</span> Reinforcement (arms) <span class="t">34-41 s</span></h2><div class="grid"><figure class="panel">
+  <img src="img/p11.jpg" alt="Beat 5 at 34.80 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 5</span><span class="time">34.80 s</span><span class="span">beat 34-41 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><em>no caption</em></dd>
+      <dt>What changes</dt><dd>HOLD 34.0-35.5 s, no caption (asks him to clench his teeth).</dd>
+      <dt>Camera</dt><dd>wide enough for his jaw and right elbow</dd>
+      <dt>Sound</dt><dd>Hammer: a soft rubber tap (short dull thud) at reinfR 37.40 s. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure>
+<figure class="panel">
+  <img src="img/p12.jpg" alt="Beat 5 at 37.40 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 5</span><span class="time">37.40 s</span><span class="span">beat 34-41 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Reinforcement: clench the teeth, then tap - before calling a reflex absent</q></dd>
+      <dt>What changes</dt><dd>Teeth clenched (masseters bulge); the biceps jerk again on his right: present.</dd>
+      <dt>Camera</dt><dd>wide enough for his jaw and right elbow</dd>
+      <dt>Sound</dt><dd>Hammer: a soft rubber tap (short dull thud) at reinfR 37.40 s. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure></div></section>
+<section class="beat-sec"><h2><span class="n">6</span> Knee jerks (L3, L4) <span class="t">41-51 s</span></h2><div class="grid"><figure class="panel">
+  <img src="img/p13.jpg" alt="Beat 6 at 41.80 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 6</span><span class="time">41.80 s</span><span class="span">beat 41-51 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><em>no caption</em></dd>
+      <dt>What changes</dt><dd>HOLD 41.0-42.5 s, no caption.</dd>
+      <dt>Camera</dt><dd>from his right side, both knees</dd>
+      <dt>Sound</dt><dd>Hammer: a soft rubber tap (short dull thud) at kneeR 45.80 s, kneeL 47.80 s. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure>
+<figure class="panel">
+  <img src="img/p14.jpg" alt="Beat 6 at 45.80 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 6</span><span class="time">45.80 s</span><span class="span">beat 41-51 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Knee jerks (L3, L4): both knees supported - present, equal</q></dd>
+      <dt>What changes</dt><dd>The examiner's left forearm under both knees (~30 degrees), heels on the bed; the hammer on the right patellar tendon.</dd>
+      <dt>Camera</dt><dd>from his right side, both knees</dd>
+      <dt>Sound</dt><dd>Hammer: a soft rubber tap (short dull thud) at kneeR 45.80 s, kneeL 47.80 s. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure>
+<figure class="panel">
+  <img src="img/p15.jpg" alt="Beat 6 at 47.80 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 6</span><span class="time">47.80 s</span><span class="span">beat 41-51 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Knee jerks (L3, L4): both knees supported - present, equal</q></dd>
+      <dt>What changes</dt><dd>Then the left patellar tendon, from his right side, the hammer over his right shin.</dd>
+      <dt>Camera</dt><dd>from his right side, both knees</dd>
+      <dt>Sound</dt><dd>Hammer: a soft rubber tap (short dull thud) at kneeR 45.80 s, kneeL 47.80 s. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure></div></section>
+<section class="beat-sec"><h2><span class="n">7</span> Jendrassik <span class="t">51-59 s</span></h2><div class="grid"><figure class="panel">
+  <img src="img/p16.jpg" alt="Beat 7 at 51.80 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 7</span><span class="time">51.80 s</span><span class="span">beat 51-59 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><em>no caption</em></dd>
+      <dt>What changes</dt><dd>HOLD 51.0-52.5 s, no caption (hook your fingers together... pull).</dd>
+      <dt>Camera</dt><dd>wide, from his right side: hooked hands and right knee</dd>
+      <dt>Sound</dt><dd>Hammer: a soft rubber tap (short dull thud) at jendR 54.60 s. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure>
+<figure class="panel">
+  <img src="img/p17.jpg" alt="Beat 7 at 54.60 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 7</span><span class="time">54.60 s</span><span class="span">beat 51-59 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Jendrassik for the legs: hook, pull, then tap</q></dd>
+      <dt>What changes</dt><dd>Fingers hooked in front of his chest, pulling apart; just after the pull the hammer strikes the right patellar tendon.</dd>
+      <dt>Camera</dt><dd>wide, from his right side: hooked hands and right knee</dd>
+      <dt>Sound</dt><dd>Hammer: a soft rubber tap (short dull thud) at jendR 54.60 s. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure></div></section>
+<section class="beat-sec"><h2><span class="n">8</span> Ankle jerks (S1) <span class="t">59-69 s</span></h2><div class="grid"><figure class="panel">
+  <img src="img/p18.jpg" alt="Beat 8 at 60.20 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 8</span><span class="time">60.20 s</span><span class="span">beat 59-69 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><em>no caption</em></dd>
+      <dt>What changes</dt><dd>The examiner turns his right leg out, knee bent, the outer ankle across the other shin.</dd>
+      <dt>Camera</dt><dd>medium shot of his legs from his right</dd>
+      <dt>Sound</dt><dd>Hammer: a soft rubber tap (short dull thud) at ankR 61.80 s, ankL 64.80 s. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure>
+<figure class="panel">
+  <img src="img/p19.jpg" alt="Beat 8 at 61.80 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 8</span><span class="time">61.80 s</span><span class="span">beat 59-69 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Ankle jerks (S1): foot held slightly up - present, equal</q></dd>
+      <dt>What changes</dt><dd>Ankle R: left palm on the ball of the foot, foot held slightly up; the hammer on the Achilles tendon.</dd>
+      <dt>Camera</dt><dd>low, from his side, behind the heel</dd>
+      <dt>Sound</dt><dd>Hammer: a soft rubber tap (short dull thud) at ankR 61.80 s, ankL 64.80 s. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure>
+<figure class="panel">
+  <img src="img/p20.jpg" alt="Beat 8 at 64.80 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 8</span><span class="time">64.80 s</span><span class="span">beat 59-69 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Ankle jerks (S1): foot held slightly up - present, equal</q></dd>
+      <dt>What changes</dt><dd>HARD CUT to his left: the same.</dd>
+      <dt>Camera</dt><dd>from his LEFT side</dd>
+      <dt>Sound</dt><dd>Hammer: a soft rubber tap (short dull thud) at ankR 61.80 s, ankL 64.80 s. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure></div></section>
+<section class="beat-sec"><h2><span class="n">9</span> Ankle clonus <span class="t">69-78 s</span></h2><div class="grid"><figure class="panel">
+  <img src="img/p21.jpg" alt="Beat 9 at 72.20 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 9</span><span class="time">72.20 s</span><span class="span">beat 69-78 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Ankle clonus: sharp push up and hold - no clonus</q></dd>
+      <dt>What changes</dt><dd>Ankle clonus R: calf on the examiner's left palm, right palm pushes the foot sharply up and HOLDS it: no beats.</dd>
+      <dt>Camera</dt><dd>from his side at foot height</dd>
+      <dt>Sound</dt><dd>No hammer. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure>
+<figure class="panel">
+  <img src="img/p22.jpg" alt="Beat 9 at 75.80 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 9</span><span class="time">75.80 s</span><span class="span">beat 69-78 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Ankle clonus: sharp push up and hold - no clonus</q></dd>
+      <dt>What changes</dt><dd>HARD CUT to his left: the same.</dd>
+      <dt>Camera</dt><dd>from his LEFT side</dd>
+      <dt>Sound</dt><dd>No hammer. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure></div></section>
+<section class="beat-sec"><h2><span class="n">10</span> Knee clonus <span class="t">78-85 s</span></h2><div class="grid"><figure class="panel">
+  <img src="img/p23.jpg" alt="Beat 10 at 79.80 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 10</span><span class="time">79.80 s</span><span class="span">beat 78-85 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Knee clonus: kneecap pushed down sharply and held - none</q></dd>
+      <dt>What changes</dt><dd>Knee clonus R: leg straight, thumb and index on the top edge of the kneecap, pushed toward the foot and held: none.</dd>
+      <dt>Camera</dt><dd>close, from his side at knee height</dd>
+      <dt>Sound</dt><dd>No hammer. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure>
+<figure class="panel">
+  <img src="img/p24.jpg" alt="Beat 10 at 83.20 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 10</span><span class="time">83.20 s</span><span class="span">beat 78-85 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Knee clonus: kneecap pushed down sharply and held - none</q></dd>
+      <dt>What changes</dt><dd>HARD CUT to his left: the same.</dd>
+      <dt>Camera</dt><dd>from his LEFT side</dd>
+      <dt>Sound</dt><dd>No hammer. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure></div></section>
+<section class="beat-sec"><h2><span class="n">11</span> Hoffmann's sign <span class="t">85-94 s</span></h2><div class="grid"><figure class="panel">
+  <img src="img/p25.jpg" alt="Beat 11 at 87.40 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 11</span><span class="time">87.40 s</span><span class="span">beat 85-94 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Hoffmann's: flick the middle-finger nail - the thumb stays still: negative</q></dd>
+      <dt>What changes</dt><dd>Hoffmann R: his hand palm down on the examiner's left palm; the examiner's thumb and index hold the tip of his middle finger.</dd>
+      <dt>Camera</dt><dd>close-up from his side, a little below the hand</dd>
+      <dt>Sound</dt><dd>No hammer. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure>
+<figure class="panel">
+  <img src="img/p26.jpg" alt="Beat 11 at 87.67 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 11</span><span class="time">87.67 s</span><span class="span">beat 85-94 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Hoffmann's: flick the middle-finger nail - the thumb stays still: negative</q></dd>
+      <dt>What changes</dt><dd>The flick of the nail: the fingertip dips and springs back; his thumb and index do not move (negative).</dd>
+      <dt>Camera</dt><dd>close-up from his side, a little below the hand</dd>
+      <dt>Sound</dt><dd>No hammer. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure>
+<figure class="panel">
+  <img src="img/p27.jpg" alt="Beat 11 at 90.87 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 11</span><span class="time">90.87 s</span><span class="span">beat 85-94 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><q>Hoffmann's: flick the middle-finger nail - the thumb stays still: negative</q></dd>
+      <dt>What changes</dt><dd>HARD CUT to his left: the same.</dd>
+      <dt>Camera</dt><dd>from his LEFT side</dd>
+      <dt>Sound</dt><dd>No hammer. Very soft sheet rustle when a limb moves. Room ambience under everything.</dd>
+    </dl>
+  </figcaption>
+</figure></div></section>
+<section class="beat-sec"><h2><span class="n">12</span> End <span class="t">94-97 s</span></h2><div class="grid"><figure class="panel">
+  <img src="img/p28.jpg" alt="Beat 12 at 95.00 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 12</span><span class="time">95.00 s</span><span class="span">beat 94-97 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><em>no caption</em></dd>
+      <dt>What changes</dt><dd>HARD CUT back to his right; hands back to rest, limbs home, the camera pulls back.</dd>
+      <dt>Camera</dt><dd>medium shot of his upper body from his right</dd>
+      <dt>Sound</dt><dd>Soft sheet rustles as his limbs go home; the ambience fades out over the last 0.5 s.</dd>
+    </dl>
+  </figcaption>
+</figure>
+<figure class="panel">
+  <img src="img/p29.jpg" alt="Beat 12 at 97.00 s" loading="lazy" width="960" height="540">
+  <figcaption>
+    <div class="ph"><span class="beat">Beat 12</span><span class="time">97.00 s</span><span class="span">beat 94-97 s</span></div>
+    <dl>
+      <dt>On screen</dt><dd><em>no caption</em></dd>
+      <dt>What changes</dt><dd>The CNS home shot, held still 1 s (pixel-identical to the first frame).</dd>
+      <dt>Camera</dt><dd>CNS home shot (SET.HOME_CNS), still</dd>
+      <dt>Sound</dt><dd>Soft sheet rustles as his limbs go home; the ambience fades out over the last 0.5 s.</dd>
+    </dl>
+  </figcaption>
+</figure></div></section>
+<section class="beat-sec"><h2>Review panels</h2><p class="note">Gaps are measured from the meshes (the closest point of each touching part to the skin): green when 0 to 1.5 mm, red otherwise. Arrows in the pictures run from the part to the skin.</p></section>
+<section class="rgroup"><h3>a. Plan: his right and left</h3><div class="rgrid"><figure class="rv"><img src="img/r_a_plan.jpg" alt="Plan: his right and left" loading="lazy" width="960" height="540"><figcaption><b>Plan: his right and left</b> <span class="time">45.8 s</span></figcaption></figure></div></section>
+<section class="rgroup"><h3>b. The hammer: top of the swing and the strike (gap at the strike)</h3><div class="rgrid"><figure class="rv"><img src="img/r_b_bicR_top.jpg" alt="bicR: top of the swing" loading="lazy" width="960" height="540"><figcaption><b>bicR: top of the swing</b> <span class="time">8.8 s</span></figcaption></figure><figure class="rv"><img src="img/r_b_bicR_hit.jpg" alt="bicR: the strike" loading="lazy" width="960" height="540"><figcaption><b>bicR: the strike</b> <span class="time">9.2 s</span><table><tr><td>hammer head</td><td class="num good">0.06 mm</td></tr><tr><td>thumb pad</td><td class="num bad">-1.07 mm</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_b_bicL_top.jpg" alt="bicL: top of the swing" loading="lazy" width="960" height="540"><figcaption><b>bicL: top of the swing</b> <span class="time">11.8 s</span></figcaption></figure><figure class="rv"><img src="img/r_b_bicL_hit.jpg" alt="bicL: the strike" loading="lazy" width="960" height="540"><figcaption><b>bicL: the strike</b> <span class="time">12.2 s</span><table><tr><td>hammer head</td><td class="num good">0.06 mm</td></tr><tr><td>thumb pad</td><td class="num bad">-1.07 mm</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_b_supR_top.jpg" alt="supR: top of the swing" loading="lazy" width="960" height="540"><figcaption><b>supR: top of the swing</b> <span class="time">16.4 s</span></figcaption></figure><figure class="rv"><img src="img/r_b_supR_hit.jpg" alt="supR: the strike" loading="lazy" width="960" height="540"><figcaption><b>supR: the strike</b> <span class="time">16.8 s</span><table><tr><td>hammer head</td><td class="num good">0.06 mm</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_b_supL_top.jpg" alt="supL: top of the swing" loading="lazy" width="960" height="540"><figcaption><b>supL: top of the swing</b> <span class="time">19.4 s</span></figcaption></figure><figure class="rv"><img src="img/r_b_supL_hit.jpg" alt="supL: the strike" loading="lazy" width="960" height="540"><figcaption><b>supL: the strike</b> <span class="time">19.8 s</span><table><tr><td>hammer head</td><td class="num good">0.06 mm</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_b_triR_top.jpg" alt="triR: top of the swing" loading="lazy" width="960" height="540"><figcaption><b>triR: top of the swing</b> <span class="time">27.2 s</span></figcaption></figure><figure class="rv"><img src="img/r_b_triR_hit.jpg" alt="triR: the strike" loading="lazy" width="960" height="540"><figcaption><b>triR: the strike</b> <span class="time">27.6 s</span><table><tr><td>hammer head</td><td class="num good">0.06 mm</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_b_triL_top.jpg" alt="triL: top of the swing" loading="lazy" width="960" height="540"><figcaption><b>triL: top of the swing</b> <span class="time">30.4 s</span></figcaption></figure><figure class="rv"><img src="img/r_b_triL_hit.jpg" alt="triL: the strike" loading="lazy" width="960" height="540"><figcaption><b>triL: the strike</b> <span class="time">30.8 s</span><table><tr><td>hammer head</td><td class="num good">0.06 mm</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_b_reinfR_top.jpg" alt="reinfR: top of the swing" loading="lazy" width="960" height="540"><figcaption><b>reinfR: top of the swing</b> <span class="time">37 s</span></figcaption></figure><figure class="rv"><img src="img/r_b_reinfR_hit.jpg" alt="reinfR: the strike" loading="lazy" width="960" height="540"><figcaption><b>reinfR: the strike</b> <span class="time">37.4 s</span><table><tr><td>hammer head</td><td class="num good">0.06 mm</td></tr><tr><td>thumb pad</td><td class="num bad">-1.07 mm</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_b_kneeR_top.jpg" alt="kneeR: top of the swing" loading="lazy" width="960" height="540"><figcaption><b>kneeR: top of the swing</b> <span class="time">45.4 s</span></figcaption></figure><figure class="rv"><img src="img/r_b_kneeR_hit.jpg" alt="kneeR: the strike" loading="lazy" width="960" height="540"><figcaption><b>kneeR: the strike</b> <span class="time">45.8 s</span><table><tr><td>hammer head</td><td class="num good">0.06 mm</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_b_kneeL_top.jpg" alt="kneeL: top of the swing" loading="lazy" width="960" height="540"><figcaption><b>kneeL: top of the swing</b> <span class="time">47.4 s</span></figcaption></figure><figure class="rv"><img src="img/r_b_kneeL_hit.jpg" alt="kneeL: the strike" loading="lazy" width="960" height="540"><figcaption><b>kneeL: the strike</b> <span class="time">47.8 s</span><table><tr><td>hammer head</td><td class="num good">0.06 mm</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_b_jendR_top.jpg" alt="jendR: top of the swing" loading="lazy" width="960" height="540"><figcaption><b>jendR: top of the swing</b> <span class="time">54.2 s</span></figcaption></figure><figure class="rv"><img src="img/r_b_jendR_hit.jpg" alt="jendR: the strike" loading="lazy" width="960" height="540"><figcaption><b>jendR: the strike</b> <span class="time">54.6 s</span><table><tr><td>hammer head</td><td class="num good">0.06 mm</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_b_ankR_top.jpg" alt="ankR: top of the swing" loading="lazy" width="960" height="540"><figcaption><b>ankR: top of the swing</b> <span class="time">61.4 s</span></figcaption></figure><figure class="rv"><img src="img/r_b_ankR_hit.jpg" alt="ankR: the strike" loading="lazy" width="960" height="540"><figcaption><b>ankR: the strike</b> <span class="time">61.8 s</span><table><tr><td>hammer head</td><td class="num good">0.06 mm</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_b_ankL_top.jpg" alt="ankL: top of the swing" loading="lazy" width="960" height="540"><figcaption><b>ankL: top of the swing</b> <span class="time">64.4 s</span></figcaption></figure><figure class="rv"><img src="img/r_b_ankL_hit.jpg" alt="ankL: the strike" loading="lazy" width="960" height="540"><figcaption><b>ankL: the strike</b> <span class="time">64.8 s</span><table><tr><td>hammer head</td><td class="num good">0.06 mm</td></tr></table></figcaption></figure></div></section>
+<section class="rgroup"><h3>c. The reflex movement: joint angle before and at its peak</h3><div class="tablewrap"><table class="angles"><thead><tr><th>Reflex</th><th>Joint</th><th>Before</th><th>Peak</th><th>Change</th></tr></thead><tbody><tr><td>bicR</td><td>elbow</td><td class="num">105.8°</td><td class="num">95.8°</td><td class="num">-10.0°</td></tr><tr><td>bicL</td><td>elbow</td><td class="num">105.8°</td><td class="num">95.8°</td><td class="num">-10.0°</td></tr><tr><td>supR</td><td>elbow</td><td class="num">105.8°</td><td class="num">97.8°</td><td class="num">-8.0°</td></tr><tr><td>supL</td><td>elbow</td><td class="num">105.8°</td><td class="num">97.8°</td><td class="num">-8.0°</td></tr><tr><td>triR</td><td>elbow</td><td class="num">53.4°</td><td class="num">63.4°</td><td class="num">+10.0°</td></tr><tr><td>triL</td><td>elbow</td><td class="num">53.4°</td><td class="num">63.4°</td><td class="num">+10.0°</td></tr><tr><td>kneeR</td><td>knee</td><td class="num">30°</td><td class="num">18°</td><td class="num">-12.0°</td></tr><tr><td>kneeL</td><td>knee</td><td class="num">30°</td><td class="num">18°</td><td class="num">-12.0°</td></tr><tr><td>ankR</td><td>ankle</td><td class="num">8°</td><td class="num">-2°</td><td class="num">-10.0°</td></tr><tr><td>ankL</td><td>ankle</td><td class="num">8°</td><td class="num">-2°</td><td class="num">-10.0°</td></tr></tbody></table></div>
+  <p class="note">Elbow: the angle between upper arm and forearm (smaller = flexed). Knee: flexion (smaller = extended). Ankle: + = dorsiflexion. Targets: biceps flexes ~10°, supinator ~8°, triceps extends ~10°, knee kicks ~12°, ankle plantar-flexes ~10°; right and left the same.</p><div class="rgrid"><figure class="rv"><img src="img/r_c_bicR_peak.jpg" alt="bicR at its peak" loading="lazy" width="960" height="540"><figcaption><b>bicR at its peak</b> <span class="time">9.34 s</span><table><tr><td>elbow</td><td class="num">95.8°</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_c_bicL_peak.jpg" alt="bicL at its peak" loading="lazy" width="960" height="540"><figcaption><b>bicL at its peak</b> <span class="time">12.34 s</span><table><tr><td>elbow</td><td class="num">95.8°</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_c_supR_peak.jpg" alt="supR at its peak" loading="lazy" width="960" height="540"><figcaption><b>supR at its peak</b> <span class="time">16.94 s</span><table><tr><td>elbow</td><td class="num">97.8°</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_c_supL_peak.jpg" alt="supL at its peak" loading="lazy" width="960" height="540"><figcaption><b>supL at its peak</b> <span class="time">19.94 s</span><table><tr><td>elbow</td><td class="num">97.8°</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_c_triR_peak.jpg" alt="triR at its peak" loading="lazy" width="960" height="540"><figcaption><b>triR at its peak</b> <span class="time">27.74 s</span><table><tr><td>elbow</td><td class="num">63.4°</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_c_triL_peak.jpg" alt="triL at its peak" loading="lazy" width="960" height="540"><figcaption><b>triL at its peak</b> <span class="time">30.94 s</span><table><tr><td>elbow</td><td class="num">63.4°</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_c_kneeR_peak.jpg" alt="kneeR at its peak" loading="lazy" width="960" height="540"><figcaption><b>kneeR at its peak</b> <span class="time">45.94 s</span><table><tr><td>knee</td><td class="num">18°</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_c_kneeL_peak.jpg" alt="kneeL at its peak" loading="lazy" width="960" height="540"><figcaption><b>kneeL at its peak</b> <span class="time">47.94 s</span><table><tr><td>knee</td><td class="num">18°</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_c_ankR_peak.jpg" alt="ankR at its peak" loading="lazy" width="960" height="540"><figcaption><b>ankR at its peak</b> <span class="time">61.94 s</span><table><tr><td>ankle</td><td class="num">-2°</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_c_ankL_peak.jpg" alt="ankL at its peak" loading="lazy" width="960" height="540"><figcaption><b>ankL at its peak</b> <span class="time">64.94 s</span><table><tr><td>ankle</td><td class="num">-2°</td></tr></table></figcaption></figure></div></section>
+<section class="rgroup"><h3>d. Jendrassik: hooked hands, and the clenched jaw</h3><div class="rgrid"><figure class="rv"><img src="img/r_d_hooked.jpg" alt="Jendrassik: hooked hands, pulling" loading="lazy" width="960" height="540"><figcaption><b>Jendrassik: hooked hands, pulling</b> <span class="time">54.4 s</span><table><tr><td>his two hands</td><td class="num bad">-7.13 mm</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_d_jaw.jpg" alt="Clenched jaw: masseters bulge" loading="lazy" width="960" height="540"><figcaption><b>Clenched jaw: masseters bulge</b> <span class="time">37 s</span></figcaption></figure></div></section>
+<section class="rgroup"><h3>e. The knee support</h3><div class="rgrid"><figure class="rv"><img src="img/r_e_support.jpg" alt="The knee support" loading="lazy" width="960" height="540"><figcaption><b>The knee support</b> <span class="time">45.2 s</span><table><tr><td>forearm-right knee</td><td class="num good">0.06 mm</td></tr><tr><td>forearm-left knee</td><td class="num good">0.52 mm</td></tr></table></figcaption></figure></div></section>
+<section class="rgroup"><h3>f. Clonus: palm on the ball of the foot; thumb and index on the kneecap</h3><div class="rgrid"><figure class="rv"><img src="img/r_f_ankle.jpg" alt="Ankle clonus: palm on the ball of the foot" loading="lazy" width="960" height="540"><figcaption><b>Ankle clonus: palm on the ball of the foot</b> <span class="time">72.2 s</span><table><tr><td>palm-ball of foot</td><td class="num bad">-6.12 mm</td></tr><tr><td>palm-calf</td><td class="num bad">-0.81 mm</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_f_knee.jpg" alt="Knee clonus: thumb and index on the top of the kneecap" loading="lazy" width="960" height="540"><figcaption><b>Knee clonus: thumb and index on the top of the kneecap</b> <span class="time">79.8 s</span><table><tr><td>thumb</td><td class="num bad">-2.27 mm</td></tr><tr><td>index</td><td class="num good">1.12 mm</td></tr></table></figcaption></figure></div></section>
+<section class="rgroup"><h3>g. Hoffmann's sign: before and after the flick</h3><div class="rgrid"><figure class="rv"><img src="img/r_g_before.jpg" alt="Hoffmann's: before the flick" loading="lazy" width="960" height="540"><figcaption><b>Hoffmann's: before the flick</b> <span class="time">87.4 s</span><table><tr><td>his palm on examiner palm</td><td class="num bad">-2.06 mm</td></tr><tr><td>index under tip</td><td class="num bad">7.85 mm</td></tr><tr><td>thumb on nail</td><td class="num good">0.06 mm</td></tr><tr><td>his thumb tip</td><td class="num">0.316, 8.655, 4.029</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_g_after.jpg" alt="Hoffmann's: the flick (thumb still)" loading="lazy" width="960" height="540"><figcaption><b>Hoffmann's: the flick (thumb still)</b> <span class="time">87.67 s</span><table><tr><td>his thumb tip</td><td class="num">0.316, 8.655, 4.029</td></tr><tr><td>middle fingertip</td><td class="num">-0.054, 8.529, 5.065</td></tr></table></figcaption></figure></div></section>
+<section class="rgroup"><h3>Skin-level contact panels (every other contact)</h3><div class="rgrid"><figure class="rv"><img src="img/r_x_biceps_thumb.jpg" alt="Biceps: the thumb on the tendon" loading="lazy" width="960" height="540"><figcaption><b>Biceps: the thumb on the tendon</b> <span class="time">8.9 s</span><table><tr><td>thumb pad</td><td class="num bad">-1.07 mm</td></tr><tr><td>palm</td><td class="num bad">-0.06 mm</td></tr><tr><td>index</td><td class="num bad">5.40 mm</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_x_wrist.jpg" alt="Triceps: the wrist hold" loading="lazy" width="960" height="540"><figcaption><b>Triceps: the wrist hold</b> <span class="time">27.2 s</span><table><tr><td>palm</td><td class="num good">0.06 mm</td></tr><tr><td>thumb</td><td class="num good">0.08 mm</td></tr><tr><td>middle</td><td class="num bad">&gt; 15 mm</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_x_foot.jpg" alt="Ankle jerk: palm on the ball of the foot; ankle across the shin" loading="lazy" width="960" height="540"><figcaption><b>Ankle jerk: palm on the ball of the foot; ankle across the shin</b> <span class="time">61.6 s</span><table><tr><td>palm-ball of foot</td><td class="num bad">-6.05 mm</td></tr><tr><td>outer ankle-other shin</td><td class="num bad">-5.45 mm</td></tr></table></figcaption></figure><figure class="rv"><img src="img/r_x_hoffL.jpg" alt="Hoffmann's left (mirror)" loading="lazy" width="960" height="540"><figcaption><b>Hoffmann's left (mirror)</b> <span class="time">90.6 s</span><table><tr><td>his palm on examiner palm</td><td class="num bad">-2.06 mm</td></tr><tr><td>thumb on nail</td><td class="num good">0.06 mm</td></tr></table></figcaption></figure></div></section>
+<section class="beat-sec"><h2>Facts and numbers I assumed</h2><ol><li>Every left-side test is the exact mirror of the right one (positions reflected through the bed's midline), so right and left are the same size. That means the examiner's hands swap roles on his left: the hammer is in the examiner's LEFT hand there (it changes hands as he walks round, off camera). The knee jerks are both done from his right, as asked.</li><li>The kit's bicepsTendon and tricepsTendon vertices follow the palm's roll into the elbow. With his forearm pronated across his abdomen they are not on the front or back of the elbow (measured 81° and 24° off). These two tendon points are measured on the posed mesh instead: the skin vertex just above the elbow that faces the inside (biceps) or the outside (triceps) of the bend. Every other landmark is NEURO.points / P.legPoint.</li><li>Arms across the tummy: the kit acrossAbdomen preset, fine-tuned: elbows resting on the mattress 30 cm out from his midline, hands palm down on his lower abdomen, elbows about 106°. The examiner's left hand lies flat on the front of his upper arm; its thumb lies along the crease onto the tendon.</li><li>The patient does not speak in this part (he follows the instructions silently), so no visemes are used. The speech holds are still frames with no caption.</li><li>The hammer is picked up off camera during the push-in; the examiner's right hand brings it into frame at 7.6 s, just after the first hold, so the still hold picture is not crossed by his sleeve.</li><li>The hammer is put aside off camera after the ankle jerks: clonus and Hoffmann's need both hands. It is back in no shot after that.</li><li>Breathing: P.breathe at 14 breaths a minute (its 4.6 s period sped up by 7%), off in the first and last second.</li><li>Ankle clonus: the push dorsiflexes the foot by 18° in 0.13 s and holds it for about 2 s. Knee clonus: the kneecap (the skin over it) moves 8 mm toward the foot and is held for 2 s.</li><li>Reflex timing: the muscle firms from 0.05 s after the strike for 0.15 s (a bulge of up to 3 mm, blended); the joint moves to its peak in 0.08 s and back in 0.22 s.</li></ol></section>
+<section class="beat-sec"><h2>Known open points</h2><ul><li>Contacts that do not yet meet the rule (0 to 1.5 mm, never sinking), measured below and shown in red. Fix list for the next round: palm on the ball of the foot (the heel of the hand sinks ~6 mm where the sole curves: the hand must rest by its lowest point, not its centre); the outer ankle on the other shin (-5.5 mm: refit the hip and knee, not only the hip); the hooked Jendrassik fingers (-7 mm: the kit hook pose interpenetrates at every offset, the fingers need their own curls so they interleave); the knee-clonus thumb (-2.3 mm); Hoffmann (his palm on the examiner's palm -2 mm, the examiner's index 7.9 mm under the fingertip instead of touching); the biceps thumb (-1.1 mm into the crease).</li><li>Framing to improve: panel 18 (the examiner's hand on its way to his foot fills the leg shot), the clonus panels (the palm against the sole stands the hand upright, as the technique needs, but the shot should come from lower and more from the side), and the Hoffmann panels (seen from above, the pinch on the fingertip and his still thumb do not read; this needs the close-up from his side, a little below the hand, that you asked for).</li><li>Several close shots are steep (picked automatically for a clear line of sight past the examiner's arms); the biceps and supinator shots in particular read better from lower. I will soften the angles after your comments.</li><li>The left-side cameras are mirrors of the right-side ones; a few may need their own framing.</li></ul></section>
+<details><summary>Solve log (every measurement, from the solve that made solved.json)</summary><pre>abd R elbow 105.8 deg; kit bicepsTendon -4.034, 8.232, 2.716 its normal is 84 deg from the inside of the bend; brachioradialisTendon normal 0.027, 0.972, -0.234
+abd L elbow 105.8 deg; kit bicepsTendon -4.034, 8.232, -2.716 its normal is 84 deg from the inside of the bend; brachioradialisTendon normal 0.031, 0.971, 0.235
+biceps tendon R measured -3.751, 8.804, 2.631 normal 0.801, 0.176, -0.573 facing the inside of the bend 0.997
+biceps tendon L measured -3.751, 8.804, -2.631 normal 0.801, 0.176, 0.573 facing the inside of the bend 0.997
+biceps hand on the front of the arm: 9.7 cm above the tendon, reach 0.60 | thumb pad 0.09 mm, lowest thumb point -1.07 mm, deepest point in the arm capsules -2.13 mm
+biceps thumb gaps (mm) {&quot;thumbPad&quot;:-0.16,&quot;palm&quot;:0.06,&quot;index&quot;:5.52,&quot;middle&quot;:2.1,&quot;ring&quot;:0.71,&quot;little&quot;:2.88,&quot;min&quot;:-1.07} parts {&quot;palm&quot;:-0.06,&quot;index&quot;:5.4,&quot;indexTip&quot;:5.52,&quot;middle&quot;:0.47,&quot;middleTip&quot;:2.1,&quot;ring&quot;:0.19,&quot;ringTip&quot;:0.71,&quot;little&quot;:2.88,&quot;littleTip&quot;:2.88,&quot;thumb&quot;:-1.07,&quot;thumbTip&quot;:-1.07}
+pickCam biceps R clear view at 0 deg from the preferred direction
+pickCam supinator R clear view at 0 deg from the preferred direction
+supinator strike gap 0.06 mm
+triceps tendon measured -3.772, 11.099, 4.052 normal -0.58, -0.383, 0.719 ; kit tricepsTendon is 24 deg away; elbow 53.4 deg
+wrist hold thumb pad 0.08 mm, lowest thumb point 0.06 mm
+wrist hold gaps (mm) {&quot;palm&quot;:0.06,&quot;index&quot;:8.14,&quot;indexTip&quot;:8.14,&quot;middle&quot;:null,&quot;middleTip&quot;:null,&quot;ring&quot;:null,&quot;ringTip&quot;:null,&quot;little&quot;:0.27,&quot;littleTip&quot;:0.27,&quot;thumb&quot;:0.08,&quot;thumbTip&quot;:0.08}
+triceps strike gap 0.06 mm
+pickCam triceps R clear view at 10 deg from the preferred direction
+pickCam reinforcement clear view at 10 deg from the preferred direction
+knee support: forearm to right knee 0.06 mm, to left knee 0.52 mm; heels above the mattress R 16.11 L 16.11 mm
+strike kneeR gap 0.06 mm
+strike kneeL gap 0.06 mm
+pickCam knees clear view at 50 deg from the preferred direction
+Jendrassik pull 0 right hand moved 60 mm out, across the fingers -12 mm; closest point between the hands -6.37 mm
+Jendrassik pull 1 right hand moved 60 mm out, across the fingers -12 mm; closest point between the hands -7.13 mm
+Jendrassik pull 0 : closest point between his two hands -6.37 mm (negative = fingers through each other)
+Jendrassik pull 1 : closest point between his two hands -7.13 mm (negative = fingers through each other)
+pickCam Jendrassik clear view at 60 deg from the preferred direction
+ankle jerk leg {&quot;hipFlex&quot;:47.4,&quot;hipAbd&quot;:11.6,&quot;hipRot&quot;:43.8,&quot;knee&quot;:73.2,&quot;ankle&quot;:8,&quot;ankleInv&quot;:0,&quot;bigToe&quot;:0,&quot;toes&quot;:0,&quot;fan&quot;:0,&quot;error&quot;:0} | outer ankle on the other shin -5.45 mm
+palm on the ball of the foot R gap 0.06 mm
+strike ankR gap 0.06 mm
+pickCam ankle jerk R clear view at 0 deg from the preferred direction
+ankle clonus: palm under the calf 0.05 mm; hand above the mattress 34.01 mm
+palm on the ball of the foot R gap 0.05 mm
+palm on the ball of the foot R gap 0.05 mm
+pickCam ankle clonus R clear view at 20 deg from the preferred direction
+knee clonus gaps (mm) {&quot;indexTip&quot;:2.03,&quot;thumbTip&quot;:-0.1,&quot;lowest&quot;:-3.83}
+pickCam knee clonus R clear view at 0 deg from the preferred direction
+Hoffmann gaps (mm) {&quot;palmOnPalm&quot;:0.06,&quot;indexUnderTip&quot;:7.85,&quot;thumbOnNail&quot;:null,&quot;thumbLowest&quot;:0.06}
+pickCam Hoffmann R clear view at 20 deg from the preferred direction
+</pre></details>
+</div>

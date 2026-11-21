@@ -2,7 +2,7 @@
 // Every time below is a time on the real timeline (src/cns7-style.js): the stills ARE frames of the animation.
 export const PANELS = [
   { beat: 1, t: 0.0, what: 'The CNS home shot (identical first frame of every part), held still 1 s.' },
-  { beat: 1, t: 3.9, what: 'Slow push-in to his upper body; the examiner\'s right hand comes back into frame holding the tendon hammer (picked up off camera).' },
+  { beat: 1, t: 3.9, what: 'Slow push-in to his upper body. The examiner picks up the tendon hammer off camera (his right hand stays out of frame until 7.6 s, so the hold below is clear).' },
   { beat: 2, t: 5.8, what: 'HOLD 5.0-6.5 s, no caption (the examiner asks him to rest his arms on his tummy).' },
   { beat: 2, t: 9.2, what: 'Biceps R: his forearms across his abdomen; the pad of the examiner\'s left thumb on the right biceps tendon; the hammer lands on the thumbnail.' },
   { beat: 2, t: 12.2, what: 'HARD CUT to his left (examiner on his left): the same, mirrored.' },
@@ -33,7 +33,7 @@ export const PANELS = [
 ];
 const S = { bicR: 9.2, bicL: 12.2, supR: 16.8, supL: 19.8, triR: 27.6, triL: 30.8, reinfR: 37.4, kneeR: 45.8, kneeL: 47.8, jendR: 54.6, ankR: 61.8, ankL: 64.8 };
 const FIELD = { bicR: 'thumbNailL', bicL: 'thumbNailR', reinfR: 'thumbNailL', supR: 'armR', supL: 'armL', triR: 'armR', triL: 'armL', kneeR: 'legR', kneeL: 'legL', jendR: 'legR', ankR: 'legR', ankL: 'legL' };
-const PEAK = 0.05 + 0.08;
+const PEAK = 0.14;                  // the reflex peak lands on the pose (twos) just after strike + 0.05 + 0.08 s
 const strikes = [];
 for (const [id, t] of Object.entries(S)) {
   const hand = /L$/.test(id) ? 'L' : 'R', contacts = [{ hand, part: 'hammer', field: FIELD[id], label: 'hammer head' }];
@@ -49,7 +49,7 @@ for (const [id, joint, side, t] of [['bicR', 'elbow', 'R', S.bicR], ['bicL', 'el
 export const REVIEW = [
   { id: 'a_plan', group: 'a', t: 45.8, title: 'Plan: his right and left', cam: { pos: [1.2, 30, 7.5], target: [1.2, 6, 0.6], focus: [1.2, 6, 0], aperture: 0, fov: 30 },
     labels: [{ at: [0.5, 6.4, 3.9], text: 'his RIGHT side (+Z, nearest the camera)', color: '#ffe14d' }, { at: [0.5, 6.4, -3.9], text: 'his LEFT side (far side)', color: '#7cf0ff' },
-      { at: [4.5, 6.2, 6.4], text: 'examiner: every right-side test + BOTH knee jerks', color: '#ffe14d' }, { at: [4.5, 6.2, -6.6], text: 'examiner walks round here for each left-side test', color: '#7cf0ff' },
+      { at: [4.5, 6.2, 6.4], text: 'examiner: right-side tests + BOTH knee jerks', color: '#ffe14d', off: [-330, -16] }, { at: [4.5, 6.2, -6.6], text: 'examiner walks round here (left-side tests)', color: '#7cf0ff', off: [-330, 18] },
       { at: [-6.8, 13, 0], text: 'head (screen left)', color: '#ffffff' }, { at: [8.5, 7, 0], text: 'feet (screen right)', color: '#ffffff' }, { at: [-4, 9.5, -7.4], text: 'bedside table (his left)', color: '#ffffff' }] },
   ...strikes,
   ...angles,

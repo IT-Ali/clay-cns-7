@@ -1,0 +1,484 @@
+[
+ {
+  "t": 0,
+  "beat": 1,
+  "name": "Position",
+  "t0": 0,
+  "t1": 5,
+  "hold": null,
+  "caption": "",
+  "cam": "home",
+  "strikes": [],
+  "captionsInBeat": [
+   "Reflexes"
+  ]
+ },
+ {
+  "t": 3.9,
+  "beat": 1,
+  "name": "Position",
+  "t0": 0,
+  "t1": 5,
+  "hold": null,
+  "caption": "Reflexes",
+  "cam": "home",
+  "strikes": [],
+  "captionsInBeat": [
+   "Reflexes"
+  ]
+ },
+ {
+  "t": 5.8,
+  "beat": 2,
+  "name": "Biceps jerk (C5)",
+  "t0": 5,
+  "t1": 15,
+  "hold": [
+   5,
+   6.5
+  ],
+  "caption": "",
+  "cam": "upper",
+  "strikes": [
+   "bicR 9.20 s",
+   "bicL 12.20 s"
+  ],
+  "captionsInBeat": [
+   "Biceps jerk (C5): tap my thumb on the tendon - present, equal"
+  ]
+ },
+ {
+  "t": 9.2,
+  "beat": 2,
+  "name": "Biceps jerk (C5)",
+  "t0": 5,
+  "t1": 15,
+  "hold": [
+   5,
+   6.5
+  ],
+  "caption": "Biceps jerk (C5): tap my thumb on the tendon - present, equal",
+  "cam": "bicR",
+  "strikes": [
+   "bicR 9.20 s",
+   "bicL 12.20 s"
+  ],
+  "captionsInBeat": [
+   "Biceps jerk (C5): tap my thumb on the tendon - present, equal"
+  ]
+ },
+ {
+  "t": 12.2,
+  "beat": 2,
+  "name": "Biceps jerk (C5)",
+  "t0": 5,
+  "t1": 15,
+  "hold": [
+   5,
+   6.5
+  ],
+  "caption": "Biceps jerk (C5): tap my thumb on the tendon - present, equal",
+  "cam": "bicL",
+  "strikes": [
+   "bicR 9.20 s",
+   "bicL 12.20 s"
+  ],
+  "captionsInBeat": [
+   "Biceps jerk (C5): tap my thumb on the tendon - present, equal"
+  ]
+ },
+ {
+  "t": 16.8,
+  "beat": 3,
+  "name": "Supinator jerk (C6)",
+  "t0": 15,
+  "t1": 24,
+  "hold": null,
+  "caption": "Supinator jerk (C6): just above the wrist - present, equal",
+  "cam": "supR",
+  "strikes": [
+   "supR 16.80 s",
+   "supL 19.80 s"
+  ],
+  "captionsInBeat": [
+   "Supinator jerk (C6): just above the wrist - present, equal"
+  ]
+ },
+ {
+  "t": 19.8,
+  "beat": 3,
+  "name": "Supinator jerk (C6)",
+  "t0": 15,
+  "t1": 24,
+  "hold": null,
+  "caption": "Supinator jerk (C6): just above the wrist - present, equal",
+  "cam": "supL",
+  "strikes": [
+   "supR 16.80 s",
+   "supL 19.80 s"
+  ],
+  "captionsInBeat": [
+   "Supinator jerk (C6): just above the wrist - present, equal"
+  ]
+ },
+ {
+  "t": 25.7,
+  "beat": 4,
+  "name": "Triceps jerk (C7)",
+  "t0": 24,
+  "t1": 34,
+  "hold": null,
+  "caption": "",
+  "cam": "triR",
+  "strikes": [
+   "triR 27.60 s",
+   "triL 30.80 s"
+  ],
+  "captionsInBeat": [
+   "Triceps jerk (C7): just above the elbow - present, equal"
+  ]
+ },
+ {
+  "t": 27.6,
+  "beat": 4,
+  "name": "Triceps jerk (C7)",
+  "t0": 24,
+  "t1": 34,
+  "hold": null,
+  "caption": "Triceps jerk (C7): just above the elbow - present, equal",
+  "cam": "triR",
+  "strikes": [
+   "triR 27.60 s",
+   "triL 30.80 s"
+  ],
+  "captionsInBeat": [
+   "Triceps jerk (C7): just above the elbow - present, equal"
+  ]
+ },
+ {
+  "t": 30.8,
+  "beat": 4,
+  "name": "Triceps jerk (C7)",
+  "t0": 24,
+  "t1": 34,
+  "hold": null,
+  "caption": "Triceps jerk (C7): just above the elbow - present, equal",
+  "cam": "triL",
+  "strikes": [
+   "triR 27.60 s",
+   "triL 30.80 s"
+  ],
+  "captionsInBeat": [
+   "Triceps jerk (C7): just above the elbow - present, equal"
+  ]
+ },
+ {
+  "t": 34.8,
+  "beat": 5,
+  "name": "Reinforcement (arms)",
+  "t0": 34,
+  "t1": 41,
+  "hold": [
+   34,
+   35.5
+  ],
+  "caption": "",
+  "cam": "reinf",
+  "strikes": [
+   "reinfR 37.40 s"
+  ],
+  "captionsInBeat": [
+   "Reinforcement: clench the teeth, then tap - before calling a reflex absent"
+  ]
+ },
+ {
+  "t": 37.4,
+  "beat": 5,
+  "name": "Reinforcement (arms)",
+  "t0": 34,
+  "t1": 41,
+  "hold": [
+   34,
+   35.5
+  ],
+  "caption": "Reinforcement: clench the teeth, then tap - before calling a reflex absent",
+  "cam": "reinf",
+  "strikes": [
+   "reinfR 37.40 s"
+  ],
+  "captionsInBeat": [
+   "Reinforcement: clench the teeth, then tap - before calling a reflex absent"
+  ]
+ },
+ {
+  "t": 41.8,
+  "beat": 6,
+  "name": "Knee jerks (L3, L4)",
+  "t0": 41,
+  "t1": 51,
+  "hold": [
+   41,
+   42.5
+  ],
+  "caption": "",
+  "cam": "knees",
+  "strikes": [
+   "kneeR 45.80 s",
+   "kneeL 47.80 s"
+  ],
+  "captionsInBeat": [
+   "Knee jerks (L3, L4): both knees supported - present, equal"
+  ]
+ },
+ {
+  "t": 45.8,
+  "beat": 6,
+  "name": "Knee jerks (L3, L4)",
+  "t0": 41,
+  "t1": 51,
+  "hold": [
+   41,
+   42.5
+  ],
+  "caption": "Knee jerks (L3, L4): both knees supported - present, equal",
+  "cam": "knees",
+  "strikes": [
+   "kneeR 45.80 s",
+   "kneeL 47.80 s"
+  ],
+  "captionsInBeat": [
+   "Knee jerks (L3, L4): both knees supported - present, equal"
+  ]
+ },
+ {
+  "t": 47.8,
+  "beat": 6,
+  "name": "Knee jerks (L3, L4)",
+  "t0": 41,
+  "t1": 51,
+  "hold": [
+   41,
+   42.5
+  ],
+  "caption": "Knee jerks (L3, L4): both knees supported - present, equal",
+  "cam": "knees",
+  "strikes": [
+   "kneeR 45.80 s",
+   "kneeL 47.80 s"
+  ],
+  "captionsInBeat": [
+   "Knee jerks (L3, L4): both knees supported - present, equal"
+  ]
+ },
+ {
+  "t": 51.8,
+  "beat": 7,
+  "name": "Jendrassik",
+  "t0": 51,
+  "t1": 59,
+  "hold": [
+   51,
+   52.5
+  ],
+  "caption": "",
+  "cam": "jend",
+  "strikes": [
+   "jendR 54.60 s"
+  ],
+  "captionsInBeat": [
+   "Jendrassik for the legs: hook, pull, then tap"
+  ]
+ },
+ {
+  "t": 54.6,
+  "beat": 7,
+  "name": "Jendrassik",
+  "t0": 51,
+  "t1": 59,
+  "hold": [
+   51,
+   52.5
+  ],
+  "caption": "Jendrassik for the legs: hook, pull, then tap",
+  "cam": "jend",
+  "strikes": [
+   "jendR 54.60 s"
+  ],
+  "captionsInBeat": [
+   "Jendrassik for the legs: hook, pull, then tap"
+  ]
+ },
+ {
+  "t": 60.2,
+  "beat": 8,
+  "name": "Ankle jerks (S1)",
+  "t0": 59,
+  "t1": 69,
+  "hold": null,
+  "caption": "",
+  "cam": "legs",
+  "strikes": [
+   "ankR 61.80 s",
+   "ankL 64.80 s"
+  ],
+  "captionsInBeat": [
+   "Ankle jerks (S1): foot held slightly up - present, equal"
+  ]
+ },
+ {
+  "t": 61.8,
+  "beat": 8,
+  "name": "Ankle jerks (S1)",
+  "t0": 59,
+  "t1": 69,
+  "hold": null,
+  "caption": "Ankle jerks (S1): foot held slightly up - present, equal",
+  "cam": "ankR",
+  "strikes": [
+   "ankR 61.80 s",
+   "ankL 64.80 s"
+  ],
+  "captionsInBeat": [
+   "Ankle jerks (S1): foot held slightly up - present, equal"
+  ]
+ },
+ {
+  "t": 64.8,
+  "beat": 8,
+  "name": "Ankle jerks (S1)",
+  "t0": 59,
+  "t1": 69,
+  "hold": null,
+  "caption": "Ankle jerks (S1): foot held slightly up - present, equal",
+  "cam": "ankL",
+  "strikes": [
+   "ankR 61.80 s",
+   "ankL 64.80 s"
+  ],
+  "captionsInBeat": [
+   "Ankle jerks (S1): foot held slightly up - present, equal"
+  ]
+ },
+ {
+  "t": 72.2,
+  "beat": 9,
+  "name": "Ankle clonus",
+  "t0": 69,
+  "t1": 78,
+  "hold": null,
+  "caption": "Ankle clonus: sharp push up and hold - no clonus",
+  "cam": "clonR",
+  "strikes": [],
+  "captionsInBeat": [
+   "Ankle clonus: sharp push up and hold - no clonus"
+  ]
+ },
+ {
+  "t": 75.8,
+  "beat": 9,
+  "name": "Ankle clonus",
+  "t0": 69,
+  "t1": 78,
+  "hold": null,
+  "caption": "Ankle clonus: sharp push up and hold - no clonus",
+  "cam": "clonL",
+  "strikes": [],
+  "captionsInBeat": [
+   "Ankle clonus: sharp push up and hold - no clonus"
+  ]
+ },
+ {
+  "t": 79.8,
+  "beat": 10,
+  "name": "Knee clonus",
+  "t0": 78,
+  "t1": 85,
+  "hold": null,
+  "caption": "Knee clonus: kneecap pushed down sharply and held - none",
+  "cam": "kneeClonR",
+  "strikes": [],
+  "captionsInBeat": [
+   "Knee clonus: kneecap pushed down sharply and held - none"
+  ]
+ },
+ {
+  "t": 83.2,
+  "beat": 10,
+  "name": "Knee clonus",
+  "t0": 78,
+  "t1": 85,
+  "hold": null,
+  "caption": "Knee clonus: kneecap pushed down sharply and held - none",
+  "cam": "kneeClonL",
+  "strikes": [],
+  "captionsInBeat": [
+   "Knee clonus: kneecap pushed down sharply and held - none"
+  ]
+ },
+ {
+  "t": 87.4,
+  "beat": 11,
+  "name": "Hoffmann's sign",
+  "t0": 85,
+  "t1": 94,
+  "hold": null,
+  "caption": "Hoffmann's: flick the middle-finger nail - the thumb stays still: negative",
+  "cam": "hoffR",
+  "strikes": [],
+  "captionsInBeat": [
+   "Hoffmann's: flick the middle-finger nail - the thumb stays still: negative"
+  ]
+ },
+ {
+  "t": 87.67,
+  "beat": 11,
+  "name": "Hoffmann's sign",
+  "t0": 85,
+  "t1": 94,
+  "hold": null,
+  "caption": "Hoffmann's: flick the middle-finger nail - the thumb stays still: negative",
+  "cam": "hoffR",
+  "strikes": [],
+  "captionsInBeat": [
+   "Hoffmann's: flick the middle-finger nail - the thumb stays still: negative"
+  ]
+ },
+ {
+  "t": 90.87,
+  "beat": 11,
+  "name": "Hoffmann's sign",
+  "t0": 85,
+  "t1": 94,
+  "hold": null,
+  "caption": "Hoffmann's: flick the middle-finger nail - the thumb stays still: negative",
+  "cam": "hoffL",
+  "strikes": [],
+  "captionsInBeat": [
+   "Hoffmann's: flick the middle-finger nail - the thumb stays still: negative"
+  ]
+ },
+ {
+  "t": 95,
+  "beat": 12,
+  "name": "End",
+  "t0": 94,
+  "t1": 97,
+  "hold": null,
+  "caption": "",
+  "cam": "upper",
+  "strikes": [],
+  "captionsInBeat": []
+ },
+ {
+  "t": 97,
+  "beat": 12,
+  "name": "End",
+  "t0": 94,
+  "t1": 97,
+  "hold": null,
+  "caption": "",
+  "cam": "home",
+  "strikes": [],
+  "captionsInBeat": []
+ }
+]

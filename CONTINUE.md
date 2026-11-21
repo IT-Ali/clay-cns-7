@@ -16,7 +16,18 @@ Done
   animation itself), `tools/render.mjs` (npm run preview / npm start, for the user's PC), `tools/lab.mjs` (dev).
 - `storyboard/storyboard.html`: the storyboard (+ review panels a-g, measured gaps).
 
+Storyboard (round 1): https://claude.ai/artifact/AEhzvbqbyTRxTQ73pURdzX (storyboard/storyboard.html; review numbers in
+storyboard/review.json; solve log in checks/solve-log.txt). home-check.json: first and last frames pixel-identical to the
+README's CNS home shot (0 pixels differ). Series rule found: the stage seeds its grain by frame number, so the still
+home seconds render with grain 0 (otherwise no two parts could share an end frame).
+
+Open contacts (measured, red in the storyboard): palm on the ball of the foot -6 mm (rest by the hand's lowest point),
+outer ankle on the other shin -5.5 mm, Jendrassik hooked fingers -7 mm (needs own finger curls), knee-clonus thumb
+-2.3 mm, Hoffmann his palm -2 mm / examiner index 7.9 mm off the fingertip, biceps thumb -1.1 mm. Reflex sizes and
+directions verified: biceps -10, supinator -8, triceps +10 (elbow angle), knee -12, ankle -10, R = L.
+
 Left (after the user approves / comments on the storyboard)
+0. Fix the open contacts above (then npm run solve, then re-render every panel: node tools/storyboard.mjs).
 1. Apply the storyboard feedback (poses, cameras).
 2. Refine compositions (several close shots are steep), the in-between travel of the hands (no in-between pose held).
 3. story_vs_anim.png (beats 2, 4, 6, 8, 11), the transitions scan (checks/transitions/, a strip every 1/8 s at every

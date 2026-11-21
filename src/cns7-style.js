@@ -85,9 +85,9 @@
       [34.0, 'home', 'cut'], [35.7, 'home'], [36.5, 'thumbR'], [38.2, 'thumbR'], [39.0, 'home'], [42.5, 'home'], [43.6, 'kneeSupport'], [57.2, 'kneeSupport'], [58.6, 'home'],
       [59.3, 'home'], [60.8, 'footR'], [63.4, 'S:ankL', 'cut'], [69.0, 'home', 'cut'], [69.3, 'home'], [70.5, 'calfR'], [74.2, 'clonusFootL0', 'cut'], [74.9, 'clonusFootL0'], [75.03, 'clonusFootL1'], [77.1, 'clonusFootL1'], [77.5, 'clonusFootL0'],
       [78.0, 'kneeClonusR', 'cut'], [81.6, 'parkFar', 'cut'], [85.0, 'home', 'cut'], [85.2, 'home'], [85.6, 'rel:hoffSupRel:handR'], [89.2, 'hoffPinL', 'cut'], [94.0, 'home', 'cut'], [D, 'home']],
-    exR: [[0, 'home'], [1.4, 'home'], [2.3, 'park'], [3.2, 'park'], [4.5, 'S:bicR'], [10.8, 'thumbL', 'cut'], [15.0, 'S:supR', 'cut'], [18.4, 'homeFar', 'cut'], [24.0, 'park', 'cut'],
-      [25.4, 'park'], [26.6, 'S:triR'], [30.1, 'wristL', 'cut'], [34.0, 'S:bicR', 'cut'], [43.4, 'S:bicR'], [44.8, 'S:kneeR'], [46.3, 'S:kneeR'], [47.1, 'S:kneeL'], [48.6, 'S:kneeL'], [49.6, 'S:kneeR'],
-      [59.4, 'S:kneeR'], [61.0, 'S:ankR'], [63.4, 'footL', 'cut'], [69.0, 'park', 'cut'], [69.6, 'park'], [70.6, 'clonusFootR0'], [71.2, 'clonusFootR0'], [71.33, 'clonusFootR1'], [73.4, 'clonusFootR1'], [73.8, 'clonusFootR0'],
+    exR: [[0, 'home'], [1.4, 'home'], [2.3, 'park'], [7.6, 'park'], [8.6, 'S:bicR'], [10.8, 'thumbL', 'cut'], [15.0, 'S:supR', 'cut'], [18.4, 'homeFar', 'cut'], [24.0, 'park', 'cut'],
+      [25.4, 'park'], [26.6, 'S:triR'], [30.1, 'wristL', 'cut'], [34.0, 'S:bicR@reinfR', 'cut'], [43.4, 'S:bicR@reinfR'], [44.8, 'S:kneeR'], [46.3, 'S:kneeR'], [47.1, 'S:kneeL'], [48.6, 'S:kneeL'], [49.6, 'S:kneeR@jendR'],
+      [59.4, 'S:kneeR@jendR'], [61.0, 'S:ankR'], [63.4, 'footL', 'cut'], [69.0, 'park', 'cut'], [69.6, 'park'], [70.6, 'clonusFootR0'], [71.2, 'clonusFootR0'], [71.33, 'clonusFootR1'], [73.4, 'clonusFootR1'], [73.8, 'clonusFootR0'],
       [74.2, 'calfL', 'cut'], [78.0, 'park', 'cut'], [81.6, 'kneeClonusL', 'cut'], [85.0, 'park', 'cut'], [86.0, 'park'], [86.8, 'rel:hoffPinRel:handR'], [89.2, 'hoffSupL', 'cut'], [94.0, 'park', 'cut'], [94.6, 'park'], [95.6, 'home'], [D, 'home']],
   };
 
@@ -718,7 +718,7 @@
         if (name === 'homeFar') return mirEx(Object.assign({ hand: other(h) }, HOME_EX[other(h)]));
         if (name === 'park') return park(Object.assign({ hand: h }, HOME_EX[h]), false);
         if (name === 'parkFar') return park(mirEx(Object.assign({ hand: other(h) }, HOME_EX[other(h)])), true);
-        if (name.startsWith('S:')) { const k = SOL.strikes[name.slice(2)]; return Object.assign({}, k.ex, { strike: name.slice(2) }); }
+        if (name.startsWith('S:')) { const [geo, when] = name.slice(2).split('@'); const k = SOL.strikes[geo]; return Object.assign({}, k.ex, { strike: when || geo, geo }); }   // 'S:bicR@reinfR' = the bicR pose, struck at the reinfR time
         if (name.startsWith('rel:')) { const [, nm, obj] = name.split(':'); const o = obj === 'handR' ? P.arms.R.hand.group : P.arms.L.hand.group; return fromRel(SOL.ex[nm], o); }
         const st = SOL.ex[name]; if (!st) throw new Error('no examiner state ' + name); return st;
       };
@@ -769,7 +769,7 @@
         if (!deg) return st;
         applyArm(side, st); const a = P.arms[side]; a.group.updateMatrixWorld(true);
         const Sh = a.up.getWorldPosition(V(0, 0, 0)), E = a.fore.getWorldPosition(V(0, 0, 0)), u = Sh.clone().sub(E).normalize(), f = st.wrist.clone().sub(E).normalize();
-        const ax = V(0, 0, 0).crossVectors(u, f).normalize(), r = new THREE.Quaternion().setFromAxisAngle(ax, deg * Math.PI / 180);   // + = toward the upper arm (flexion)
+        const ax = V(0, 0, 0).crossVectors(u, f).normalize(), r = new THREE.Quaternion().setFromAxisAngle(ax, -deg * Math.PI / 180);   // + = toward the upper arm (flexion: the elbow angle gets smaller)
         return Object.assign({}, st, { wrist: E.clone().add(st.wrist.clone().sub(E).applyQuaternion(r)), quat: r.clone().multiply(st.quat) });
       };
       const firmed = [];                                                   // [attribute, index, original x, y, z] to undo next frame
@@ -827,7 +827,7 @@
           }
           applyEx(h, st);
           if (st.strike) {                                                  // the hammer, rigid in this hand
-            const k = SOL.strikes[st.strike], hg = EX[h].hand.group, qa = st.quat.clone().multiply(k.ex.quat.clone().invert());
+            const k = SOL.strikes[st.geo || st.strike], hg = EX[h].hand.group, qa = st.quat.clone().multiply(k.ex.quat.clone().invert());
             hammer.group.visible = true; hammer.group.position.copy(st.wrist).add(k.hammerPos.clone().sub(k.ex.wrist).applyQuaternion(qa)); hammer.group.quaternion.copy(qa.clone().multiply(k.hammerQuat)); hammer.setSwing(0);
           }
         }
@@ -861,8 +861,14 @@
         shoot(root.CAM_OVERRIDE ? camVec(root.CAM_OVERRIDE) : camAt(t));
         L.set(still ? 0 : p, {});
         if (still) L.lamp.intensity = SET.LAMP.power;                      // no flicker on the home shot (it must match the other parts)
+        S.R.grain = still ? 0 : SET.RENDER.grain;                         // the grain is seeded by the frame number: off on the still home frames so the first and last frames are identical
       };
       root.CNS7_TIMELINE = { KEYS, CAMS, STRIKES, camAt, swingAt };
+      // the CNS home shot exactly as shared/README.md builds it (for home-check.json)
+      root.HOME_REFERENCE = () => {
+        HOME.apply(P, EX, SH, 'cns'); P.setFace({ pupilR: 3.5, pupilL: 3.5 }); P.breathe(0); hammer.group.visible = false;
+        SET.shoot(S, SET.HOME_CNS); L.set(0, {}); L.lamp.intensity = SET.LAMP.power; S.R.grain = 0;
+      };
       const overlay = (ctx, t, W, H) => {
         const on = root.CAPTIONS != null ? !!root.CAPTIONS : style.captions; if (on) CAPTION.at(ctx, t, CAPTIONS, W, H);
         if (root.REVIEW_MARKS) drawMarks(ctx, W, H, root.REVIEW_MARKS);           // review panels only (never in the video)

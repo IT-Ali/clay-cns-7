@@ -1,0 +1,22 @@
+{
+ "size": [
+  640,
+  360
+ ],
+ "samples": 2,
+ "browser": "soft",
+ "made": "2026-11-21T02:16:57.977Z",
+ "firstVsHome": {
+  "pixelsDifferent": 0,
+  "maxDifference": 0
+ },
+ "lastVsHome": {
+  "pixelsDifferent": 0,
+  "maxDifference": 0
+ },
+ "firstVsLast": {
+  "pixelsDifferent": 0,
+  "maxDifference": 0
+ },
+ "identical": true
+}

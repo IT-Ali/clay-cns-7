@@ -61,15 +61,17 @@ const ASSUME = [
   "The kit's bicepsTendon and tricepsTendon vertices follow the palm's roll into the elbow. With his forearm pronated across his abdomen they are not on the front or back of the elbow (measured 81° and 24° off). These two tendon points are measured on the posed mesh instead: the skin vertex just above the elbow that faces the inside (biceps) or the outside (triceps) of the bend. Every other landmark is NEURO.points / P.legPoint.",
   'Arms across the tummy: the kit acrossAbdomen preset, fine-tuned: elbows resting on the mattress 30 cm out from his midline, hands palm down on his lower abdomen, elbows about 106°. The examiner\'s left hand lies flat on the front of his upper arm; its thumb lies along the crease onto the tendon.',
   'The patient does not speak in this part (he follows the instructions silently), so no visemes are used. The speech holds are still frames with no caption.',
+  'The hammer is picked up off camera during the push-in; the examiner\'s right hand brings it into frame at 7.6 s, just after the first hold, so the still hold picture is not crossed by his sleeve.',
   'The hammer is put aside off camera after the ankle jerks: clonus and Hoffmann\'s need both hands. It is back in no shot after that.',
   'Breathing: P.breathe at 14 breaths a minute (its 4.6 s period sped up by 7%), off in the first and last second.',
   'Ankle clonus: the push dorsiflexes the foot by 18° in 0.13 s and holds it for about 2 s. Knee clonus: the kneecap (the skin over it) moves 8 mm toward the foot and is held for 2 s.',
   'Reflex timing: the muscle firms from 0.05 s after the strike for 0.15 s (a bulge of up to 3 mm, blended); the joint moves to its peak in 0.08 s and back in 0.22 s.',
 ];
 const KNOWN = [
-  'Several close shots are steep (picked automatically for a clear line of sight past the examiner\'s arms). I will soften the angles after your comments.',
+  'Contacts that do not yet meet the rule (0 to 1.5 mm, never sinking), measured below and shown in red. Fix list for the next round: palm on the ball of the foot (the heel of the hand sinks ~6 mm where the sole curves: the hand must rest by its lowest point, not its centre); the outer ankle on the other shin (-5.5 mm: refit the hip and knee, not only the hip); the hooked Jendrassik fingers (-7 mm: the kit hook pose interpenetrates at every offset, the fingers need their own curls so they interleave); the knee-clonus thumb (-2.3 mm); Hoffmann (his palm on the examiner\'s palm -2 mm, the examiner\'s index 7.9 mm under the fingertip instead of touching); the biceps thumb (-1.1 mm into the crease).',
+  'Framing to improve: panel 18 (the examiner\'s hand on its way to his foot fills the leg shot), the clonus panels (the palm against the sole stands the hand upright, as the technique needs, but the shot should come from lower and more from the side), and the Hoffmann panels (seen from above, the pinch on the fingertip and his still thumb do not read; this needs the close-up from his side, a little below the hand, that you asked for).',
+  'Several close shots are steep (picked automatically for a clear line of sight past the examiner\'s arms); the biceps and supinator shots in particular read better from lower. I will soften the angles after your comments.',
   'The left-side cameras are mirrors of the right-side ones; a few may need their own framing.',
-  'Gap numbers outside 0 to 1.5 mm are shown in red below; those contacts are the first things I will fix.',
 ];
 
 const html = `<title>CNS Part 7 Storyboard</title>

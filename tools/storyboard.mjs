@@ -21,7 +21,9 @@ try {
   }, PANELS.map((p) => p.t));
   fs.writeFileSync(path.join(OUT, 'panels.json'), JSON.stringify(meta, null, 1));
   if (only === 'all' || only === 'panels') {
+    const pick = arg('pick', null) ? String(arg('pick')).split(',').map(Number) : null;
     for (let i = from; i < PANELS.length; i++) {
+      if (pick && !pick.includes(i + 1)) continue;
       const p = PANELS[i], f = path.join(OUT, 'img', `p${String(i + 1).padStart(2, '0')}.jpg`);
       await page.evaluate(([t, n]) => { window.CAPTIONS = true; window.seek(t, n); }, [p.t, samples]);
       fs.writeFileSync(f, await grab(page, 'jpeg', 88));
@@ -29,9 +31,10 @@ try {
     }
   }
   if (only === 'all' || only === 'review') {
-    const res = [];
+    const ids = arg('ids', null) ? String(arg('ids')).split(',') : null, RJ = path.join(OUT, 'review.json');
+    const res = ids && fs.existsSync(RJ) ? JSON.parse(fs.readFileSync(RJ, 'utf8')).filter((x) => !ids.includes(x.id)) : [];
     for (let i = 0; i < REVIEW.length; i++) {
-      const r = REVIEW[i];
+      const r = REVIEW[i]; if (ids && !ids.includes(r.id)) continue;
       // put the frame at time t, then (optionally) a close review camera; measure every listed contact on the meshes
       const info = await page.evaluate(([r, n]) => window.REVIEW_SHOT(r, n), [r, r.n || +arg('rsamples', 6)]);
       const f = path.join(OUT, 'img', `r_${r.id}.jpg`);

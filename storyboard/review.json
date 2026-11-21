@@ -1,0 +1,395 @@
+[
+ {
+  "id": "b_bicR_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_bicR_hit",
+  "gaps": {
+   "hammer head": 0.06,
+   "thumb pad": -1.07
+  },
+  "values": {}
+ },
+ {
+  "id": "b_bicL_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_bicL_hit",
+  "gaps": {
+   "hammer head": 0.06,
+   "thumb pad": -1.07
+  },
+  "values": {}
+ },
+ {
+  "id": "b_supR_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_supR_hit",
+  "gaps": {
+   "hammer head": 0.06
+  },
+  "values": {}
+ },
+ {
+  "id": "b_supL_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_supL_hit",
+  "gaps": {
+   "hammer head": 0.06
+  },
+  "values": {}
+ },
+ {
+  "id": "b_triR_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_triR_hit",
+  "gaps": {
+   "hammer head": 0.06
+  },
+  "values": {}
+ },
+ {
+  "id": "b_triL_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_triL_hit",
+  "gaps": {
+   "hammer head": 0.06
+  },
+  "values": {}
+ },
+ {
+  "id": "b_reinfR_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_kneeR_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_kneeR_hit",
+  "gaps": {
+   "hammer head": 0.06
+  },
+  "values": {}
+ },
+ {
+  "id": "b_kneeL_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_kneeL_hit",
+  "gaps": {
+   "hammer head": 0.06
+  },
+  "values": {}
+ },
+ {
+  "id": "b_jendR_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_ankR_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_ankR_hit",
+  "gaps": {
+   "hammer head": 0.06
+  },
+  "values": {}
+ },
+ {
+  "id": "b_ankL_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_ankL_hit",
+  "gaps": {
+   "hammer head": 0.06
+  },
+  "values": {}
+ },
+ {
+  "id": "c_bicR_before",
+  "gaps": {},
+  "values": {
+   "elbow": 105.8
+  }
+ },
+ {
+  "id": "c_bicL_before",
+  "gaps": {},
+  "values": {
+   "elbow": 105.8
+  }
+ },
+ {
+  "id": "c_supR_before",
+  "gaps": {},
+  "values": {
+   "elbow": 105.8
+  }
+ },
+ {
+  "id": "c_supL_before",
+  "gaps": {},
+  "values": {
+   "elbow": 105.8
+  }
+ },
+ {
+  "id": "c_triR_before",
+  "gaps": {},
+  "values": {
+   "elbow": 53.4
+  }
+ },
+ {
+  "id": "c_triL_before",
+  "gaps": {},
+  "values": {
+   "elbow": 53.4
+  }
+ },
+ {
+  "id": "c_kneeR_before",
+  "gaps": {},
+  "values": {
+   "knee": 30
+  }
+ },
+ {
+  "id": "c_kneeL_before",
+  "gaps": {},
+  "values": {
+   "knee": 30
+  }
+ },
+ {
+  "id": "c_ankR_before",
+  "gaps": {},
+  "values": {
+   "ankle": 8
+  }
+ },
+ {
+  "id": "c_ankL_before",
+  "gaps": {},
+  "values": {
+   "ankle": 8
+  }
+ },
+ {
+  "id": "d_hooked",
+  "gaps": {
+   "his two hands": -7.13
+  },
+  "values": {}
+ },
+ {
+  "id": "d_jaw",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "e_support",
+  "gaps": {
+   "forearm-right knee": 0.06,
+   "forearm-left knee": 0.52
+  },
+  "values": {}
+ },
+ {
+  "id": "f_ankle",
+  "gaps": {
+   "palm-ball of foot": -6.12,
+   "palm-calf": -0.81
+  },
+  "values": {}
+ },
+ {
+  "id": "f_knee",
+  "gaps": {
+   "thumb": -2.27,
+   "index": 1.12
+  },
+  "values": {}
+ },
+ {
+  "id": "g_before",
+  "gaps": {
+   "his palm on examiner palm": -2.06,
+   "index under tip": 7.85,
+   "thumb on nail": 0.06
+  },
+  "values": {
+   "his thumb tip": [
+    0.316,
+    8.655,
+    4.029
+   ]
+  }
+ },
+ {
+  "id": "g_after",
+  "gaps": {},
+  "values": {
+   "his thumb tip": [
+    0.316,
+    8.655,
+    4.029
+   ],
+   "middle fingertip": [
+    -0.054,
+    8.529,
+    5.065
+   ]
+  }
+ },
+ {
+  "id": "x_biceps_thumb",
+  "gaps": {
+   "thumb pad": -1.07,
+   "palm": -0.06,
+   "index": 5.4
+  },
+  "values": {}
+ },
+ {
+  "id": "x_wrist",
+  "gaps": {
+   "palm": 0.06,
+   "thumb": 0.08,
+   "middle": null
+  },
+  "values": {}
+ },
+ {
+  "id": "x_foot",
+  "gaps": {
+   "palm-ball of foot": -6.05,
+   "outer ankle-other shin": -5.45
+  },
+  "values": {}
+ },
+ {
+  "id": "x_hoffL",
+  "gaps": {
+   "his palm on examiner palm": -2.06,
+   "thumb on nail": 0.06
+  },
+  "values": {}
+ },
+ {
+  "id": "a_plan",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_reinfR_hit",
+  "gaps": {
+   "hammer head": 0.06,
+   "thumb pad": -1.07
+  },
+  "values": {}
+ },
+ {
+  "id": "b_jendR_hit",
+  "gaps": {
+   "hammer head": 0.06
+  },
+  "values": {}
+ },
+ {
+  "id": "c_bicR_peak",
+  "gaps": {},
+  "values": {
+   "elbow": 95.8
+  }
+ },
+ {
+  "id": "c_bicL_peak",
+  "gaps": {},
+  "values": {
+   "elbow": 95.8
+  }
+ },
+ {
+  "id": "c_supR_peak",
+  "gaps": {},
+  "values": {
+   "elbow": 97.8
+  }
+ },
+ {
+  "id": "c_supL_peak",
+  "gaps": {},
+  "values": {
+   "elbow": 97.8
+  }
+ },
+ {
+  "id": "c_triR_peak",
+  "gaps": {},
+  "values": {
+   "elbow": 63.4
+  }
+ },
+ {
+  "id": "c_triL_peak",
+  "gaps": {},
+  "values": {
+   "elbow": 63.4
+  }
+ },
+ {
+  "id": "c_kneeR_peak",
+  "gaps": {},
+  "values": {
+   "knee": 18
+  }
+ },
+ {
+  "id": "c_kneeL_peak",
+  "gaps": {},
+  "values": {
+   "knee": 18
+  }
+ },
+ {
+  "id": "c_ankR_peak",
+  "gaps": {},
+  "values": {
+   "ankle": -2
+  }
+ },
+ {
+  "id": "c_ankL_peak",
+  "gaps": {},
+  "values": {
+   "ankle": -2
+  }
+ }
+]
