@@ -84,10 +84,10 @@ const html = `<title>CNS Part 7 Storyboard</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* layout: a review document; beats as numbered sections (the order is the film's order), two panels per row, one on phones */
-:root { --bg: #f4f7f6; --surface: #ffffff; --ink: #1f2a44; --muted: #5a6577; --line: #d6e0de; --teal: #12808a; --plaque: #f8eedb; --navy: #26336b; --good: #1d7a46; --bad: #c0362c;
+:root { --bg: #f4f7f6; --surface: #ffffff; --ink: #1f2a44; --muted: #5a6577; --line: #d6e0de; --teal: #12808a; --plaque: #f8eedb; --navy: #26336b; --good: #1d7a46; --bad: #c0362c; --warn: #a86400;
   --display: "Fredoka", "Trebuchet MS", sans-serif; --body: "Inter", system-ui, sans-serif; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #0b1c1e; --surface: #12292c; --ink: #e8efee; --muted: #9fb2b1; --line: #24413f; --teal: #3fb6c0; --plaque: #2a3036; --navy: #f3e6cd; --good: #6fd39a; --bad: #ff8a7f; color-scheme: dark } }
-:root[data-theme="dark"] { --bg: #0b1c1e; --surface: #12292c; --ink: #e8efee; --muted: #9fb2b1; --line: #24413f; --teal: #3fb6c0; --plaque: #2a3036; --navy: #f3e6cd; --good: #6fd39a; --bad: #ff8a7f; color-scheme: dark }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #0b1c1e; --surface: #12292c; --ink: #e8efee; --muted: #9fb2b1; --line: #24413f; --teal: #3fb6c0; --plaque: #2a3036; --navy: #f3e6cd; --good: #6fd39a; --bad: #ff8a7f; --warn: #f0b24a; color-scheme: dark } }
+:root[data-theme="dark"] { --bg: #0b1c1e; --surface: #12292c; --ink: #e8efee; --muted: #9fb2b1; --line: #24413f; --teal: #3fb6c0; --plaque: #2a3036; --navy: #f3e6cd; --good: #6fd39a; --bad: #ff8a7f; --warn: #f0b24a; color-scheme: dark }
 body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
 .wrap { max-width: 1240px; margin: 0 auto; padding-block: 28px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 36px; }
 h1, h2, h3 { font-family: var(--display); font-weight: 600; text-wrap: balance; margin: 0; }
@@ -120,7 +120,7 @@ q { quotes: none; background: var(--plaque); color: var(--navy); font-family: va
 table { border-collapse: collapse; font-size: 13px; width: 100%; }
 td, th { padding: 3px 8px 3px 0; border-bottom: 1px solid var(--line); text-align: left; }
 .num { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
-.good { color: var(--good); } .bad { color: var(--bad); font-weight: 600; } .warn { color: #c77a00; font-weight: 600; } .clear { color: var(--muted); }
+.good { color: var(--good); } .bad { color: var(--bad); font-weight: 600; } .warn { color: var(--warn); font-weight: 600; } .clear { color: var(--muted); }
 .tablewrap { overflow-x: auto; max-width: 640px; }
 .note { color: var(--muted); font-size: 13px; margin: 0; max-width: 80ch; }
 ol, ul { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; max-width: 85ch; }
