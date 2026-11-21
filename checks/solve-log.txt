@@ -36,7 +36,7 @@ ankle clonus: palm under the calf 0.88 mm; hand above the mattress 33.19 mm
 palm across the ball of the foot R (R hand): palm 0.03 mm, lowest point of the hand 0.03 mm
 palm across the ball of the foot R (R hand): palm 0.04 mm, lowest point of the hand 0.04 mm
 knee clonus tilt -0.3 index 0.8 thumb -0.14
-knee clonus search 29.3 s
+knee clonus search 30.8 s
 knee clonus pinch: roll 345 thumb side -1 tips apart 15.02 mm
 knee clonus gaps (mm) {"indexTip":0.97,"thumbTip":0.02,"lowest":0.02}
 Hoffmann support: turn 0.15 slide 0.05 palm on palm 0.03 mm, lowest vs his hand + arm 0.03 mm
