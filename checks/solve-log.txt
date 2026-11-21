@@ -2,16 +2,17 @@ abd R elbow 105.8 deg; kit bicepsTendon -4.034, 8.232, 2.716 its normal is 84 de
 abd L elbow 105.8 deg; kit bicepsTendon -4.034, 8.232, -2.716 its normal is 84 deg from the inside of the bend; brachioradialisTendon normal 0.031, 0.971, 0.235
 biceps tendon R measured -3.793, 8.874, 2.594 normal 0.804, 0.17, -0.57 facing the inside of the bend 0.997
 biceps tendon L measured -3.793, 8.874, -2.594 normal 0.804, 0.171, 0.57 facing the inside of the bend 0.997
-biceps hand turn 0 thumb pad 0.09 lowest -12.5 mm, wrist to the forearm line 93 deg
-biceps hand turn -0.8 thumb pad 0.09 lowest -0.63 mm, wrist to the forearm line 49 deg
+biceps hand turn 0 thumb pad 0.09 lowest -14.92 mm, wrist to the forearm line 93 deg
+biceps hand turn -0.8 thumb pad 0.09 lowest -15 mm, wrist to the forearm line 49 deg
 biceps hand turn 0.8 thumb pad 0.09 lowest 0.04 mm, wrist to the forearm line 136 deg
-biceps hand turn -1.6 thumb pad 0.09 lowest 0.03 mm, wrist to the forearm line 16 deg
+biceps hand turn -1.6 thumb pad 0.09 lowest -5 mm, wrist to the forearm line 16 deg
 biceps hand turn 1.6 thumb pad 0.09 lowest -6.22 mm, wrist to the forearm line 164 deg
 biceps hand turn -2.4 thumb pad 0.09 lowest -14.9 mm, wrist to the forearm line 46 deg
 biceps hand turn 2.4 thumb pad 0.09 lowest -15 mm, wrist to the forearm line 128 deg
 biceps hand turn 3.14 thumb pad 0.09 lowest -15 mm, wrist to the forearm line 87 deg
-biceps hand on the front of the arm: 7.0 cm above the tendon, reach 0.60 | thumb pad 0.11 mm, lowest thumb point 0.03 mm, deepest point in the arm capsules -1.65 mm
-biceps thumb gaps (mm) {"thumbPad":0.03,"palm":0.07,"index":null,"middle":null,"ring":null,"little":0.55,"min":0.03} parts {"palm":0.07,"index":null,"indexTip":null,"middle":null,"middleTip":null,"ring":null,"ringTip":null,"little":0.55,"littleTip":0.55,"thumb":0.03,"thumbTip":0.03}
+biceps hand on the front of the arm: 4.8 cm above the tendon, reach 0.60 | thumb pad 0.09 mm, lowest thumb point 0.02 mm, deepest point in the arm capsules -1.58 mm
+biceps thumb gaps (mm) {"thumbPad":0.02,"palm":0.06,"index":0.13,"middle":null,"ring":null,"little":null,"min":0.02} parts {"palm":0.06,"index":0.13,"indexTip":0.13,"middle":11.05,"middleTip":null,"ring":null,"ringTip":null,"little":null,"littleTip":null,"thumb":0.02,"thumbTip":0.02}
+biceps strike: swing plane turned 60 deg; raised hammer to his skin 3 mm
 supinator fingers: turn 140 index 0.39 middle 0.03 mm; lowest of the hand vs his arm + trunk 0.03 mm; point 5.00 cm above the wrist
 supinator gaps {"index":0.39,"middle":0.03,"lowest":0.03,"aboveWrist":5,"strikeGap":0.06} hammer on the middle finger
 triceps: elbow opened from 53.4 to 90 deg; his hand to his chest Infinity mm
@@ -33,9 +34,9 @@ palm across the ball of the foot R (L hand): palm 0.03 mm, lowest point of the h
 ankle strike: Achilles point 1.7 cm above the ankle bones (kit point 4.89 cm), gap 0.06 mm; swing plane turned 30 deg; face turned 45 deg round the leg from straight behind; hammer to the other leg 14.74 mm, handle to this leg 24.49 mm, hammer hand to his legs Infinity mm
 ankle clonus: palm under the calf 0.88 mm; hand above the mattress 33.19 mm
 palm across the ball of the foot R (R hand): palm 0.03 mm, lowest point of the hand 0.03 mm
-palm across the ball of the foot R (R hand): palm 0.03 mm, lowest point of the hand 0.03 mm
+palm across the ball of the foot R (R hand): palm 0.04 mm, lowest point of the hand 0.04 mm
 knee clonus tilt -0.3 index 0.8 thumb -0.14
-knee clonus search 29.5 s
+knee clonus search 29.3 s
 knee clonus pinch: roll 345 thumb side -1 tips apart 15.02 mm
 knee clonus gaps (mm) {"indexTip":0.97,"thumbTip":0.02,"lowest":0.02}
 Hoffmann support: turn 0.15 slide 0.05 palm on palm 0.03 mm, lowest vs his hand + arm 0.03 mm
@@ -43,3 +44,4 @@ Hoffmann pinch: roll 225 deg, index -2.47 thumb 0.12 lowest -1.67 mm
 Hoffmann gaps (mm) {"palmOnPalm":0.03,"indexUnderTip":0.06,"thumbOnNail":0.12,"thumbLowest":0.12}
 Hoffmann R his thumb side 0.961, 0, 0.278
 Hoffmann L his thumb side 0.961, 0, -0.278
+hammer swing direction per strike [sign, closest raised +, closest raised -] (mm): {"bicR":[1,3,-29.81],"bicL":[1,3,-29.81],"supR":[1,3,-15.05],"supL":[1,3,-15.05],"triR":[1,3,-29.86],"triL":[1,3,-29.89],"reinfR":[1,3,-29.81],"kneeR":[1,3,-29.99],"kneeL":[1,3,-30],"ankR":[1,3,-28.78],"ankL":[1,3,-28.78]}
