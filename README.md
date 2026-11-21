@@ -22,29 +22,61 @@ ending on the CNS home shot so it joins parts 6 and 8 end to end. Built with thr
 `?captions=0` on the page, or `window.CAPTIONS = false`, gives the clean version. The render tools write both versions
 from one pass (the caption is drawn over the clean frame).
 
-## Rendering on the PC (Windows, Node, Chrome, GPU)
+## Rendering on the PC (Windows, Node 20+, Chrome, GPU)
+
+Open a terminal (PowerShell) in this folder and run, one after another:
 
 ```bash
 npm install
 ```
 
 ```bash
+npm approve-scripts ffmpeg-static
+```
+
+```bash
+npm rebuild ffmpeg-static
+```
+
+(the last two let ffmpeg-static download its ffmpeg; if `approve-scripts` is not known to your npm, skip it: `npm rebuild ffmpeg-static` alone does the same. If ffmpeg is installed on the PC already, set `FFMPEG=C:\path\to\ffmpeg.exe` instead.)
+
+```bash
 npm run preview
 ```
 
-960x540, 30 fps, 8 samples, captions on, the whole part as `out\preview\preview.mp4`, with `out\preview\check.json`
-(first vs last frame difference, loudness, duration) and `out\preview\sheet.jpg` (a frame every 2 s). Only some beats:
+960x540, 30 fps, 8 samples, captions on, beats 4 and 8 by default, as `out\preview\preview.mp4` (each beat also as
+`beatNN.mp4`), with `out\preview\check.json` (first vs last frame, true peak and loudness of every file, duration) and
+`out\preview\sheet.jpg` (a frame every 2 s). Frames are kept in `out\preview\frames*`: run it again after a stop and it
+carries on. Other beats, or all of them:
 
 ```bash
 npm run preview -- --beats 2,6
 ```
 
+```bash
+npm run preview -- --beats all
+```
+
 The final: 1920x1080, 30 fps, 64 samples, the full part and every beat, `_captions` and `_clean`, with sound, in
-`out\final\`:
+`out\final\` (resumable the same way):
 
 ```bash
 npm start
 ```
 
-Both commands keep their frames (`out\<mode>\frames*`): run the same command again after a stop and it carries on.
-Both stop with a clear message if `solved.json` is missing or out of date; they never re-solve.
+Sound: the style's score rendered offline, normalised to about -15 LUFS (loudnorm), written as 16-bit stereo; every
+encoded MP4 is measured (ebur128, true peak) and, if it peaks above -1.0 dBTP, its audio alone is re-encoded with the gain
+lowered. The numbers for every file are in check.json.
+
+Both commands stop with a clear message if `solved.json` is missing or out of date; they never re-solve (the poses are
+solved once, here, with `npm run solve`, and only loaded on the PC).
+
+## Checks made here (software)
+
+| File | What |
+|---|---|
+| `checks/report.json` | per-frame scan of the whole part (penetrations, lens distance, examiner share, hammer clearance, jump list) |
+| `checks/transitions/cuts.json` | every hard cut on the 1/15 s pose grid, camera / patient / examiner on the same frame (strips beside it) |
+| `story_vs_anim.png` | the animation frame next to its storyboard panel, beats 2, 3, 4, 5, 8, 10, 11 |
+| `home-check.json` | first frame = last frame = the CNS home shot built as shared/README.md describes |
+| `checks/hammer-clearance.json` | the hammer against his skin every 0.1 s away from the strikes |

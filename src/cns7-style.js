@@ -1380,6 +1380,7 @@
         S.R.grain = still ? 0 : SET.RENDER.grain;                         // the grain is seeded by the frame number: off on the still home frames so the first and last frames are identical
       };
       root.CNS7_TIMELINE = { KEYS, CAMS, STRIKES, camAt, swingAt };
+      root.CNS7_UPDATE = update;                                           // the frame's scene without rendering it (tools/scan.mjs, tools/cuts.mjs)
       // the CNS home shot exactly as shared/README.md builds it (for home-check.json)
       root.HOME_REFERENCE = () => {
         HOME.apply(P, EX, SH, 'cns'); P.setFace({ pupilR: 3.5, pupilL: 3.5 }); P.breathe(0); hammer.group.visible = false;
@@ -1426,11 +1427,15 @@
         update(r.t);
         const gaps = {}, marks = [], values = {};
         if (r.facePx) { const k = NEURO.points(P), a = proj(k.chin, 960, 540), b = proj(k.forehead, 960, 540); values['his face, chin to brow (px at 960x540)'] = Math.round(Math.hypot(a[0] - b[0], a[1] - b[1])); }
-        if (r.tri) { const sd = r.tri; values['strike point to the olecranon (cm)'] = +(SOL.lm['tricepsTendon_' + sd].point.distanceTo(SOL.lm['olecranon' + sd].point) * 10).toFixed(2);
+        if (r.tri) { const sd = r.tri, am = P.arms[sd]; am.group.updateMatrixWorld(true);
+          const u = am.up.getWorldPosition(V(0, 0, 0)).sub(am.fore.getWorldPosition(V(0, 0, 0))).normalize(), tip = SOL.lm['olecranon' + sd].point, sp = SOL.lm['tricepsTendon_' + sd].point, hc = hammer.group.localToWorld(hammer.pts.centre.clone());
+          values['hammer head centre to the olecranon tip, along the upper arm toward the shoulder (cm)'] = +(hc.clone().sub(tip).dot(u) * 10).toFixed(2);
+          values['strike point (head on the skin) to the olecranon tip, along the upper arm (cm)'] = +(sp.clone().sub(tip).dot(u) * 10).toFixed(2);
+          marks.push({ at: hc, label: 'head centre', color: '#ffe14d', off: [16, -40] }, { at: sp, label: 'strike point', color: '#ff9f43', off: [16, -16] });
           const m = P.arms[sd].armMesh, pa = m.geometry.attributes.position, w = V(0, 0, 0); let best = Infinity, at = null; m.updateMatrixWorld(true);
           for (let i = 0; i < pa.count; i += 2) { w.fromBufferAttribute(pa, i).applyMatrix4(m.matrixWorld); const dd = w.y - hs(w.x, w.z); if (dd < best) { best = dd; at = w.clone(); } }
           gaps['his upper arm on the mattress'] = +(best * 100).toFixed(2); if (at) marks.push({ at, to: V(at.x, hs(at.x, at.z), at.z), label: 'upper arm on the mattress ' + (best * 100).toFixed(2) + ' mm', v: best * 100, off: [14, 40] });
-          marks.push({ at: SOL.lm['olecranon' + sd].point, label: 'olecranon', color: '#7cf0ff', off: [16, 24] }); }
+          marks.push({ at: SOL.lm['olecranon' + sd].point, label: 'olecranon TIP', color: '#7cf0ff', off: [16, 24] }); }
         const fcache = {};
         for (const c of r.contacts || []) {
           const fld = fcache[c.field] || (fcache[c.field] = FIELDS[c.field]());

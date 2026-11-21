@@ -1,0 +1,677 @@
+{
+ "allOk": true,
+ "cuts": [
+  {
+   "t": 10.8,
+   "frame": 324,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      24.39,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exL": {
+     "jumps": [
+      0,
+      7.53,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exR": {
+     "jumps": [
+      0,
+      7.53,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_10.800.jpg"
+  },
+  {
+   "t": 15,
+   "frame": 450,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      25.026,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exL": {
+     "jumps": [
+      0,
+      7.666,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exR": {
+     "jumps": [
+      0,
+      7.847,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_15.000.jpg"
+  },
+  {
+   "t": 18.4,
+   "frame": 552,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      24.862,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exL": {
+     "jumps": [
+      0,
+      6.764,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exR": {
+     "jumps": [
+      0,
+      6.764,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_18.400.jpg"
+  },
+  {
+   "t": 24,
+   "frame": 720,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      25.52,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exL": {
+     "jumps": [
+      0,
+      9.546,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exR": {
+     "jumps": [
+      0,
+      11.964,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_24.000.jpg"
+  },
+  {
+   "t": 30.1333,
+   "frame": 904,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      24.621,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "armL": {
+     "jumps": [
+      0,
+      1.124,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exL": {
+     "jumps": [
+      0,
+      10.815,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exR": {
+     "jumps": [
+      0,
+      7.256,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_30.133.jpg"
+  },
+  {
+   "t": 34,
+   "frame": 1020,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      27.091,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "armL": {
+     "jumps": [
+      0,
+      1.124,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exL": {
+     "jumps": [
+      0,
+      10.815,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exR": {
+     "jumps": [
+      0,
+      8.459,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_34.000.jpg"
+  },
+  {
+   "t": 35.6,
+   "frame": 1068,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      10.945,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_35.600.jpg"
+  },
+  {
+   "t": 36.6,
+   "frame": 1098,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      10.945,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_36.600.jpg"
+  },
+  {
+   "t": 41,
+   "frame": 1230,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      25.572,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_41.000.jpg"
+  },
+  {
+   "t": 51,
+   "frame": 1530,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      13.131,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_51.000.jpg"
+  },
+  {
+   "t": 59,
+   "frame": 1770,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      25.925,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_59.000.jpg"
+  },
+  {
+   "t": 60.9333,
+   "frame": 1828,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      7.459,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_60.933.jpg"
+  },
+  {
+   "t": 63.4,
+   "frame": 1902,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      14.71,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "legR": {
+     "jumps": [
+      0,
+      92.888,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "legL": {
+     "jumps": [
+      0,
+      92.888,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exL": {
+     "jumps": [
+      0,
+      5.349,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exR": {
+     "jumps": [
+      0,
+      7.344,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_63.400.jpg"
+  },
+  {
+   "t": 69,
+   "frame": 2070,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      2.713,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "legL": {
+     "jumps": [
+      0,
+      92.888,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exL": {
+     "jumps": [
+      0,
+      9.008,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exR": {
+     "jumps": [
+      0,
+      8.519,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_69.000.jpg"
+  },
+  {
+   "t": 74.2,
+   "frame": 2226,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      18.491,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "legR": {
+     "jumps": [
+      0,
+      32.311,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "legL": {
+     "jumps": [
+      0,
+      32.311,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exL": {
+     "jumps": [
+      0,
+      5.326,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exR": {
+     "jumps": [
+      0,
+      5.326,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_74.200.jpg"
+  },
+  {
+   "t": 78,
+   "frame": 2340,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      18.23,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "legL": {
+     "jumps": [
+      0,
+      32.311,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exL": {
+     "jumps": [
+      0,
+      6.177,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exR": {
+     "jumps": [
+      0,
+      9.568,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_78.000.jpg"
+  },
+  {
+   "t": 81.6,
+   "frame": 2448,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      16.702,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exL": {
+     "jumps": [
+      0,
+      9.98,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exR": {
+     "jumps": [
+      0,
+      9.98,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_81.600.jpg"
+  },
+  {
+   "t": 85,
+   "frame": 2550,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      17.526,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exL": {
+     "jumps": [
+      0,
+      12.49,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exR": {
+     "jumps": [
+      0,
+      9.98,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_85.000.jpg"
+  },
+  {
+   "t": 89.2,
+   "frame": 2676,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      18.177,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "armR": {
+     "jumps": [
+      0,
+      2.176,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "armL": {
+     "jumps": [
+      0,
+      2.168,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exL": {
+     "jumps": [
+      0,
+      9.596,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exR": {
+     "jumps": [
+      0,
+      9.596,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_89.200.jpg"
+  },
+  {
+   "t": 94,
+   "frame": 2820,
+   "onPoseGrid": true,
+   "evenFrame": true,
+   "channels": {
+    "cam": {
+     "jumps": [
+      0,
+      25.575,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "armL": {
+     "jumps": [
+      0,
+      2.168,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exL": {
+     "jumps": [
+      0,
+      10.267,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
+    "exR": {
+     "jumps": [
+      0,
+      13.071,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    }
+   },
+   "ok": true,
+   "strip": "cut_94.000.jpg"
+  }
+ ]
+}
