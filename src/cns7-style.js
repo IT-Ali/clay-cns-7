@@ -438,7 +438,7 @@
           const reach = placeAt(bestB.m, bestB.psi), lo = bestB.m, hi = bestB.m; delete ex.psi; delete ex.ang;
           ex.pose = CONTACT.curlToTouch(hand, ['index', 'middle', 'ring', 'little'], fld, FRONT_POSE, { gap: 0.0006, from: -0.2, to: 1.0, together: true }); applyEx('L', ex);
           const th = CONTACT.thumbOn(hand, T, n, fld, 0.0009); ex.thumbQ = th.tq; applyEx('L', ex);
-          liftClear('L', ex, n, fld, 0.0003);
+          liftClear('L', ex, n, CONTACT.field([P.arms[side].armMesh].concat(torsoMeshes())), 0.0003);   // nothing of the hand in his arm or his chest
           th.pad = CONTACT.gapNear(hand, 'thumbPad', fld, 0.05).gap; th.all = CONTACT.minGap(CONTACT.handParts(hand).thumb, fld, null, 0, 0.15).gap;
           const deep = CONTACT.minSdf(handMeshes(hand), armCaps(side), 2);
           log('biceps hand on the front of the arm:', ((lo + hi) / 2 * 10).toFixed(1), 'cm above the tendon, reach', reach.toFixed(2), '| thumb pad', mm(th.pad), 'mm, lowest thumb point', mm(th.all), 'mm, deepest point in the arm capsules', mm(deep), 'mm');
@@ -1011,6 +1011,30 @@
           applyEx('R', HOME_EX.R); applyEx('L', HOME_EX.L);
           for (const sd of ['R', 'L']) applyArm(sd, HOME_ARM[sd]);
         }
+        // --------------------------------------------------- which way each strike's hammer rises: the swing turns the hand
+        // about its own z axis; the head must rise AWAY from him (tested at the bounce and at the top, against all of his
+        // skin, with his limbs as at that strike; the left strikes tested on their own mirrored pose)
+        {
+          const hmAll = []; hammer.group.traverse((m) => { if (m.isMesh) hmAll.push(m); });
+          const pose = (id) => {
+            for (const sd of ['R', 'L']) { applyArm(sd, HOME_ARM[sd]); P.setLeg(sd, {}); }
+            if (/^bic|^reinf|^sup/.test(id)) { applyArm('R', SOL.arms.abdR); applyArm('L', SOL.arms.abdL); }
+            if (id === 'triR') { applyArm('R', SOL.arms.chestR); applyArm('L', SOL.arms.abdL); }
+            if (id === 'triL') { applyArm('L', SOL.arms.chestL); applyArm('R', SOL.arms.abdR); }
+            if (/^knee|^jend/.test(id)) { P.setLeg('R', SOL.legs.kneeJerk); P.setLeg('L', SOL.legs.kneeJerk); }
+            if (id === 'ankR') P.setLeg('R', SOL.legs.ankleJerkR);
+            if (id === 'ankL') P.setLeg('L', SOL.legs.ankleJerkR);
+          };
+          const res = {};
+          for (const id of Object.keys(SOL.strikes)) {
+            const k = SOL.strikes[id]; pose(id); const f = CONTACT.field(patientMeshes());
+            const clear = (sg) => { let g = Infinity; for (const a of [0.12, 0.3, 0.62]) { applyStrike(k, sg * a); const x = CONTACT.minGap(hmAll, f, null, 0, 0.3, 2).gap; g = Math.min(g, isFinite(x) ? x : 0.03); } return g; };
+            const gp = clear(1), gm = clear(-1);
+            k.swingSign = gp >= 0.01 || gp >= gm ? 1 : -1; res[id] = [k.swingSign, mm(gp), mm(gm)];
+          }
+          for (const sd of ['R', 'L']) { applyArm(sd, HOME_ARM[sd]); P.setLeg(sd, {}); } applyEx('R', HOME_EX.R); applyEx('L', HOME_EX.L); hammer.group.visible = false;
+          log('hammer swing direction per strike [sign, closest raised +, closest raised -] (mm):', JSON.stringify(res));
+        }
         return SOL;
       };
       // ================================================================ SOLVE END
@@ -1157,7 +1181,7 @@
         // the examiner's hands and the hammer
         for (const h of ['R', 'L']) {
           let st = CH['ex' + h](p, (n) => exState(h, n, p), (a, b, u) => lerpEx(h, a, b, u));
-          if (st.strike) { const a = swingAt(st.strike, p); if (a) { const axis = V(0, 0, 1).applyQuaternion(st.quat).normalize(); st = Object.assign({}, st, { quat: new THREE.Quaternion().setFromAxisAngle(axis, a).multiply(st.quat) }); } }
+          if (st.strike) { const a = swingAt(st.strike, p) * ((SOL.strikes[st.geo || st.strike] || {}).swingSign || 1); if (a) { const axis = V(0, 0, 1).applyQuaternion(st.quat).normalize(); st = Object.assign({}, st, { quat: new THREE.Quaternion().setFromAxisAngle(axis, a).multiply(st.quat) }); } }
           // knee clonus: the hand moves 8 mm toward his foot with the kneecap
           if (/kneeClonus/.test(KEYS['ex' + h].find((k, i, arr) => k[0] <= p && (!arr[i + 1] || arr[i + 1][0] > p))[1])) {
             const sd = st.far ? 'L' : 'R', u = pushKneeAt(p, KNEE_PUSH[sd][0], KNEE_PUSH[sd][1]);
