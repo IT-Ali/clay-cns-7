@@ -4,6 +4,12 @@ Branch: `claude/sleepy-babbage-16xe65` (continues `claude/exciting-goldberg-6r9o
 
 ## Where we are: round 2 storyboard rendered and published, WAITING FOR THE USER'S REVIEW (no build yet)
 
+Storyboard artifact (round 2): https://claude.ai/artifact/9opJSuaBL7tLuyZ52frfsx (republish storyboard/storyboard.html
+with root storyboard/ and the img/* files list). The round-1 artifact link in the old notes (AEhzvbqbyTRxTQ73pURdzX)
+could not be opened from this account.
+Checks at hand-off: full `npm run solve` current (solved.json inputs match); checks/hammer-clearance.json: never within
+10 mm of his skin away from strikes; home-check.json identical (first = last = home reference).
+
 Round 1 was NOT approved. The user's ten round-1 points and what was done (the storyboard's "Round 2: your ten points"
 section is generated from the measured files by `node tools/round2.mjs` -> `checks/round2.json`):
 
@@ -28,11 +34,20 @@ section is generated from the measured files by `node tools/round2.mjs` -> `chec
 8. Hoffmann: his hand limp (wrist flexed ~28 degrees, fingers loosely curled, middle finger a little straighter); the
    examiner's left palm under his palm with relaxed curled fingers; camera at hand height from his thumb side. Thumb
    fallback: if the pinch thumb sinks into the nail, the thumb is opened until it rests.
-9. Hammer: never laid on him (checks/hammer-clearance.json).
+9. Hammer: never laid on him (checks/hammer-clearance.json: none closer than 10 mm). Two bugs fixed on the way: the
+   solve now tests which way each strike's hammer rises (`swingSign`, applied in update) and searches the biceps swing
+   plane so the raised hammer clears him; and the hammer stays in the striking hand on its lifted `up:S:` waypoint
+   (`isStrike`; before, on his left it jumped to the examiner's right hand, which holds his foot).
 10. Triceps: elbow 90 degrees (unchanged from the previous session).
 
-Biceps hand: the examiner's hand is turned on the skin (searched, `psi`) so his forearm rises from the wrist with a
-natural wrist (bent at most 50 degrees); the chosen turn has the fingers across the front of the arm.
+Biceps hand: the examiner's hand is turned on the skin (searched, `psi`, and slid across the arm, `ac`) so his forearm
+rises from the wrist with a natural wrist (bent at most 50 degrees) and nothing is in his arm or chest; chosen: turned
+-1.6 rad (fingers across the front of the arm), 3 cm across. Runtime camera overrides (outside SOLVE, after CAMS):
+biceps from his side a little above arm level; reinforcement aimed higher and further back (face and jaw below the
+caption); legsWide from his left.
+
+Known open (in the storyboard): knee clonus during the push, thumb 1.7 mm and index 2.6 mm off the moving skin (the
+skin and the hand move 8 mm but not exactly together): lock the hand to the moving skin in the build.
 
 ## Next (after the user's round-2 review)
 1. Apply the storyboard feedback.
@@ -45,7 +60,7 @@ natural wrist (bent at most 50 degrees); the chosen turn has the fingers across 
 - `?only=a,b` re-solves just those sections on top of solved.json:
   `node tools/lab.mjs script.js --solve --only kneeClonus,hoff [--saveSolved]`; section keys: arms, biceps, biceps2,
   sup, tri, reinf, knee, ankle, clonus, kneeClonus, hoff. `--saveSolved` writes a DEV solved.json: always finish with a
-  full `npm run solve` (~15 min here).
+  full `npm run solve` (~25-28 min here).
 - Testing a camera without re-solving: `window.CAM_OVERRIDE = {pos, target, focus, aperture, fov}` then `window.seek(t, n)`.
 
 ## Decisions taken (see the storyboard's "Assumptions")
@@ -58,7 +73,7 @@ natural wrist (bent at most 50 degrees); the chosen turn has the fingers across 
 ## Commands
 ```
 npm install
-npm run solve          # once, here (software): writes solved.json (~15 min)
+npm run solve          # once, here (software): writes solved.json (~25 min)
 node tools/hammercheck.mjs && node tools/homecheck.mjs
 node tools/storyboard.mjs --samples 16 --rsamples 6 && node tools/round2.mjs && node tools/storyboard-html.mjs
 npm run preview        # on the PC (GPU)
