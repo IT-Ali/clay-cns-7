@@ -71,10 +71,10 @@ const ASSUME = [
   'Every contact number is measured on the posed meshes (every vertex of the named part against the skin it touches), in the solve (solved.json, checks/solve-log.txt) and again on the rendered frame (the review panels).',
 ];
 const KNOWN = [
-  'Contacts that do not yet meet the rule (0 to 1.5 mm, never sinking), measured below and shown in red. Fix list for the next round: palm on the ball of the foot (the heel of the hand sinks ~6 mm where the sole curves: the hand must rest by its lowest point, not its centre); the outer ankle on the other shin (-5.5 mm: refit the hip and knee, not only the hip); the hooked Jendrassik fingers (-7 mm: the kit hook pose interpenetrates at every offset, the fingers need their own curls so they interleave); the knee-clonus thumb (-2.3 mm); Hoffmann (his palm on the examiner\'s palm -2 mm, the examiner\'s index 7.9 mm under the fingertip instead of touching); the biceps thumb (-1.1 mm into the crease).',
-  'Framing to improve: panel 18 (the examiner\'s hand on its way to his foot fills the leg shot), the clonus panels (the palm against the sole stands the hand upright, as the technique needs, but the shot should come from lower and more from the side), and the Hoffmann panels (seen from above, the pinch on the fingertip and his still thumb do not read; this needs the close-up from his side, a little below the hand, that you asked for).',
-  'Several close shots are steep (picked automatically for a clear line of sight past the examiner\'s arms); the biceps and supinator shots in particular read better from lower. I will soften the angles after your comments.',
-  'The left-side cameras are mirrors of the right-side ones; a few may need their own framing.',
+  'The close shots are now fixed camera directions that I tested frame by frame (the automatic clear-view search let the examiner\'s sleeve through: it counted a hit on the sleeve as seeing the hand; that is fixed too). Left-side shots mirror the right ones, except the left biceps, which comes in closer and higher: on his left the wall and the bedside table are close to the bed.',
+  'To keep the sleeves out of the side shots, the examiner\'s left forearm comes from above for the biceps jerk (he stands at the bedside), and for the reinforced biceps jerk both his forearms go off toward the feet; the hand and hammer contacts are unchanged.',
+  'Ankle jerk: the camera is low at the foot end, a little behind the heel (from his side, the other leg hides the Achilles tendon); the palm is on the ball of the foot, so it is large in the foreground.',
+  'In-between travel of the hands (between holds) is still the straight blend between the solved holds; I will check it in the transitions scan after you approve the poses.',
 ];
 
 const html = `<title>CNS Part 7 Storyboard</title>
