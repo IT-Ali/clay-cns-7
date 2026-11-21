@@ -716,6 +716,11 @@
           const ex = best.ex; applyEx('L', ex);
           if (CONTACT.minGap(handMeshes(hand), fld, null, 0, 0.15).gap < 0) liftClear('L', ex, nE, fld, 0.0003);      // nothing under the skin
           log('knee clonus search', ((performance.now() - tK) / 1000).toFixed(1), 's');
+          {   // the thumb tip settles onto the edge where it is (the edge curves; the index already rests on it)
+            const q0 = fld.query(hand.world('thumbTip'), 0.15);
+            if (q0.q && q0.d > 0.0012) { const to = CONTACT.thumbOn(hand, q0.q, q0.n, fld, 0.0006, axis); const sn = CONTACT.minGap(handMeshes(hand), fld, null, 0, 0.15).gap;
+              if (to.pad < q0.d && sn >= 0) { ex.thumbQ = to.tq.map((q) => q.clone()); } applyEx('L', ex); }
+          }
           log('knee clonus pinch: roll', best.r * 15, 'thumb side', best.sg, 'tips apart', mm(hand.world('indexTip').distanceTo(hand.world('thumbTip'))), 'mm');
           const th = { pad: CONTACT.minGap(CONTACT.handParts(hand).thumbTip, fld, null, 0, 0.15).gap };
           const parts = CONTACT.partGaps(hand, fld);
