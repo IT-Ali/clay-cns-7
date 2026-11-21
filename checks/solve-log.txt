@@ -24,13 +24,13 @@ Jendrassik pull 0 : closest point between his two hands 0.05 mm (negative = fing
 Jendrassik pull 1 : closest point between his two hands 0.05 mm (negative = fingers through each other)
 pickCam: no fully clear view for Jendrassik - best sees 2 of 3 at 0 deg
 ankle jerk leg {"hipFlex":33.7,"hipAbd":11.5,"hipRot":43.6,"knee":73.4,"ankle":8,"ankleInv":0,"bigToe":0,"toes":0,"fan":0,"error":0} | outer ankle on the other shin 0.06 mm (the inner thighs near the groin, inside the trousers: -5.45 mm)
-palm across the ball of the foot R (L hand): palm 0.05 mm, lowest point of the hand 0.03 mm
+palm across the ball of the foot R (L hand): palm 0.03 mm, lowest point of the hand 0.03 mm
 strike ankR gap 0.06 mm
 ankle clonus: palm under the calf 0.88 mm; hand above the mattress 33.19 mm
 palm across the ball of the foot R (R hand): palm 0.03 mm, lowest point of the hand 0.03 mm
 palm across the ball of the foot R (R hand): palm 0.03 mm, lowest point of the hand 0.03 mm
 knee clonus tilt -0.3 index 0.8 thumb -0.14
-knee clonus search 27.6 s
+knee clonus search 27.0 s
 knee clonus pinch: roll 345 thumb side -1 tips apart 15.02 mm
 knee clonus gaps (mm) {"indexTip":0.97,"thumbTip":0.02,"lowest":0.02}
 pickCam knee clonus R clear view at 0 deg from the preferred direction
