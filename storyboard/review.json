@@ -321,24 +321,6 @@
   "values": {}
  },
  {
-  "id": "b_reinfR_top",
-  "gaps": {},
-  "values": {}
- },
- {
-  "id": "b_reinfR_hit",
-  "gaps": {
-   "hammer head": 0.06,
-   "ex L palm": 0.06,
-   "ex L thumb": 0.02,
-   "ex L index": 0.13,
-   "ex L middle": null,
-   "ex L ring": null,
-   "ex L little": null
-  },
-  "values": {}
- },
- {
   "id": "b_ankR_top",
   "gaps": {},
   "values": {}
@@ -409,11 +391,6 @@
   }
  },
  {
-  "id": "d_jaw",
-  "gaps": {},
-  "values": {}
- },
- {
   "id": "f_ankle",
   "gaps": {
    "ex R palm": 0.95,
@@ -454,11 +431,11 @@
   "gaps": {
    "hammer head": 0.06,
    "ex L palm": 0.06,
-   "ex L thumb": 0.02,
-   "ex L index": 0.13,
+   "ex L thumb": 0.03,
+   "ex L index": 14.1,
    "ex L middle": null,
-   "ex L ring": null,
-   "ex L little": null
+   "ex L ring": 14.04,
+   "ex L little": 0.05
   },
   "values": {}
  },
@@ -472,11 +449,29 @@
   "gaps": {
    "hammer head": 0.06,
    "ex R palm": 0.06,
-   "ex R thumb": 0.02,
-   "ex R index": 0.13,
+   "ex R thumb": 0.03,
+   "ex R index": 14.1,
    "ex R middle": null,
-   "ex R ring": null,
-   "ex R little": null
+   "ex R ring": 14.04,
+   "ex R little": 0.05
+  },
+  "values": {}
+ },
+ {
+  "id": "b_reinfR_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_reinfR_hit",
+  "gaps": {
+   "hammer head": 0.06,
+   "ex L palm": 0.06,
+   "ex L thumb": 0.03,
+   "ex L index": 14.1,
+   "ex L middle": null,
+   "ex L ring": 14.04,
+   "ex L little": 0.05
   },
   "values": {}
  },
@@ -512,12 +507,17 @@
   "id": "x_biceps_thumb",
   "gaps": {
    "ex L palm": 0.06,
-   "ex L thumb": 0.02,
-   "ex L index": 0.13,
+   "ex L thumb": 0.03,
+   "ex L index": 14.1,
    "ex L middle": null,
-   "ex L ring": null,
-   "ex L little": null
+   "ex L ring": 14.04,
+   "ex L little": 0.05
   },
+  "values": {}
+ },
+ {
+  "id": "d_jaw",
+  "gaps": {},
   "values": {}
  }
 ]

@@ -1137,6 +1137,10 @@
           CAMS['bic' + sd] = { pos: tb.clone().addScaledVector(d, sd === 'R' ? 10 : 6.6).toArray(), target: tb.toArray(), focus: tb.toArray(), aperture: 0.02, fov: sd === 'R' ? 28 : 40 };
         }
       }
+      {   // reinforcement: aimed a little higher and further back, so his face and jaw sit below the caption with the elbow, thumb and hammer still in frame
+        const c = SOL.cams.reinf, t0 = V(...(c.target.isVector3 ? c.target.toArray() : c.target)), p0 = V(...(c.pos.isVector3 ? c.pos.toArray() : c.pos)), d = p0.clone().sub(t0).normalize(), t1 = t0.clone().add(V(0.4, 0.9, 0));
+        CAMS.reinf = { pos: t1.clone().addScaledVector(d, 17.5).toArray(), target: t1.toArray(), focus: t0.toArray(), aperture: 0.03, fov: 28 };
+      }
       const camVec = (c) => [...c.pos, ...c.target, ...(Array.isArray(c.focus) ? c.focus : c.target), c.fov || 28, c.aperture == null ? 0.02 : c.aperture];
       const camAt = (t) => CH.cam(t, (n) => camVec(CAMS[n]), (a, b, u) => a.map((v, i) => K.lerp(v, b[i], u)));
       const shoot = (v) => { K.look(S.camera, v.slice(0, 3), v.slice(3, 6), v[9]); K.focus(S.camera, v.slice(6, 9), v[10]); };
