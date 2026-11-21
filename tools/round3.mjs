@@ -1,0 +1,18 @@
+// tools/round3.mjs: the storyboard's "Round 3: your four points" list (beats 2-5), every number read from the measured
+// files (storyboard/review.json, solved.json). Writes checks/round3.json.
+import fs from 'node:fs'; import path from 'node:path'; import { fileURLToPath } from 'node:url';
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const rd = (f) => JSON.parse(fs.readFileSync(path.join(ROOT, f), 'utf8'));
+const review = Object.fromEntries(rd('storyboard/review.json').map((r) => [r.id, r]));
+const G = rd('solved.json').data.gaps;
+const v = (id, key) => { const r = review[id]; if (!r) return '?'; const x = (r.values || {})[key] ?? (r.gaps || {})[key]; return x == null ? '> 15' : x; };
+const gl = (id, re) => { const r = review[id]; if (!r || !r.gaps) return '?'; return Object.entries(r.gaps).filter(([k]) => re.test(k)).map(([k, x]) => `${k.replace(/^ex [LR] /, '')} ${x == null ? '> 15' : x} mm`).join(', '); };
+const ang = (b, p) => { const a = review[b], c = review[p]; if (!a || !c) return '?'; const x = a.values.elbow, y = c.values.elbow; return `${x}° before, ${y}° at the peak (${(y - x >= 0 ? '+' : '') + (y - x).toFixed(1)}°)`; };
+const out = [
+  { point: '1. Triceps (beat 4).', done: `His upper arm now rests on the mattress beside his trunk, abducted ${G.triArm.abduction}° (upper arm on the mattress: ${v('x_tri', 'his upper arm on the mattress')} mm right, ${v('x_triL', 'his upper arm on the mattress')} mm left). Elbow ${v('x_tri', 'elbow')}°. His forearm lies across his abdomen with his hand palm down toward his other side (his hand on his trunk: ${v('x_tri', 'his hand on his chest')} mm right, ${v('x_triL', 'his hand on his chest')} mm left), held at the wrist by the examiner's left hand. The olecranon points out to his side. The hammer comes from above and outside onto the triceps tendon ${v('x_tri', 'strike point to the olecranon (cm)')} cm above the olecranon (head ${v('b_triR_hit', 'hammer head')} mm right, ${v('b_triL_hit', 'hammer head')} mm left). The elbow extends: ${ang('c_triR_before', 'c_triR_peak')}. Camera from his side, a little from the head end.` },
+  { point: '2. Biceps (beat 2).', done: `The examiner's fingers are together and curled round the outside of his elbow, resting on the skin: right ${gl('b_bicR_hit', /index|middle|ring|little/)}; left ${gl('b_bicL_hit', /index|middle|ring|little/)}. Thumb pad on the tendon ${v('b_bicR_hit', 'ex L thumb')} mm (right), ${v('b_bicL_hit', 'ex R thumb')} mm (left); palm ${v('b_bicR_hit', 'ex L palm')} mm.` },
+  { point: '3. Supinator (beat 3).', done: `Index and middle straight and side by side along the radial border, ${G.supFing.aboveWrist} cm above the wrist; ring and little curled into the palm; the thumb alongside. Measured: ${gl('x_supfing', /./)}. The hammer lands on the back of the two fingers (head ${v('b_supR_hit', 'hammer head')} mm right, ${v('b_supL_hit', 'hammer head')} mm left).` },
+  { point: '4. Reinforcement (beat 5).', done: `A 1 s close insert of his face (35.6-36.6 s): the teeth clench and the masseter bulges, his face ${v('d_face', 'his face, chin to brow (px at 960x540)')} px from chin to brow at 960x540. Then a hard cut back for the tap, now framed tighter: his face ${v('d_jaw', 'his face, chin to brow (px at 960x540)')} px, with the elbow, the thumb and the hammer in frame.` },
+];
+fs.writeFileSync(path.join(ROOT, 'checks/round3.json'), JSON.stringify(out, null, 1));
+console.log(out.map((x) => x.point + ' ' + x.done).join('\n'));

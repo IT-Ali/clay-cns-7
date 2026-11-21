@@ -2,45 +2,46 @@ abd R elbow 105.8 deg; kit bicepsTendon -4.034, 8.232, 2.716 its normal is 84 de
 abd L elbow 105.8 deg; kit bicepsTendon -4.034, 8.232, -2.716 its normal is 84 deg from the inside of the bend; brachioradialisTendon normal 0.031, 0.971, 0.235
 biceps tendon R measured -3.793, 8.874, 2.594 normal 0.804, 0.17, -0.57 facing the inside of the bend 0.997
 biceps tendon L measured -3.793, 8.874, -2.594 normal 0.804, 0.171, 0.57 facing the inside of the bend 0.997
-biceps hand turn 0 across 0 thumb pad 0.09 lowest -14.94 mm, wrist to the forearm line 93 deg
-biceps hand turn 0 across 0.15 thumb pad 0.09 lowest -15 mm, wrist to the forearm line 94 deg
-biceps hand turn 0 across -0.15 thumb pad 0.09 lowest -14.99 mm, wrist to the forearm line 92 deg
-biceps hand turn 0 across 0.3 thumb pad 0.09 lowest -14.58 mm, wrist to the forearm line 96 deg
-biceps hand turn 0 across -0.3 thumb pad 0.09 lowest -15 mm, wrist to the forearm line 90 deg
-biceps hand turn -0.8 across 0 thumb pad 0.09 lowest -14.99 mm, wrist to the forearm line 49 deg
-biceps hand turn -0.8 across 0.15 thumb pad 0.09 lowest -14.94 mm, wrist to the forearm line 56 deg
-biceps hand turn -0.8 across -0.15 thumb pad 0.09 lowest -15 mm, wrist to the forearm line 46 deg
-biceps hand turn -0.8 across 0.3 thumb pad 0.09 lowest -14.99 mm, wrist to the forearm line 68 deg
-biceps hand turn -0.8 across -0.3 thumb pad 0.09 lowest -14.98 mm, wrist to the forearm line 48 deg
-biceps hand turn 0.8 across 0 thumb pad 0.09 lowest 0.04 mm, wrist to the forearm line 136 deg
-biceps hand turn 0.8 across 0.15 thumb pad 0.09 lowest 0.11 mm, wrist to the forearm line 131 deg
-biceps hand turn 0.8 across -0.15 thumb pad 0.09 lowest -14.98 mm, wrist to the forearm line 137 deg
-biceps hand turn 0.8 across 0.3 thumb pad 0.09 lowest 0.11 mm, wrist to the forearm line 119 deg
-biceps hand turn 0.8 across -0.3 thumb pad 0.09 lowest -5.84 mm, wrist to the forearm line 128 deg
-biceps hand turn -1.2 across 0 thumb pad 0.09 lowest -14.99 mm, wrist to the forearm line 29 deg
-biceps hand turn -1.2 across 0.15 thumb pad 0.09 lowest -15 mm, wrist to the forearm line 40 deg
-biceps hand turn -1.2 across -0.15 thumb pad 0.09 lowest -14.99 mm, wrist to the forearm line 23 deg
-biceps hand turn -1.2 across 0.3 thumb pad 0.09 lowest -14.98 mm, wrist to the forearm line 60 deg
-biceps hand turn -1.2 across -0.3 thumb pad 0.09 lowest -14.66 mm, wrist to the forearm line 29 deg
 biceps hand turn -1.6 across 0 thumb pad 0.09 lowest -5.01 mm, wrist to the forearm line 16 deg
-biceps hand turn -1.6 across 0.15 thumb pad 0.09 lowest -7.21 mm, wrist to the forearm line 33 deg
-biceps hand turn -1.6 across -0.15 thumb pad 0.09 lowest -5.67 mm, wrist to the forearm line 0 deg
-biceps hand turn -1.6 across 0.3 thumb pad 0.09 lowest -14.93 mm, wrist to the forearm line 61 deg
 biceps hand turn -1.6 across -0.3 thumb pad 0.09 lowest 0.07 mm, wrist to the forearm line 21 deg
+biceps hand turn -1.6 across 0.3 thumb pad 0.09 lowest -14.93 mm, wrist to the forearm line 61 deg
+biceps hand turn -0.8 across 0 thumb pad 0.09 lowest -14.99 mm, wrist to the forearm line 49 deg
+biceps hand turn -0.8 across -0.3 thumb pad 0.09 lowest -14.98 mm, wrist to the forearm line 48 deg
+biceps hand turn -0.8 across 0.3 thumb pad 0.09 lowest -14.99 mm, wrist to the forearm line 68 deg
+biceps hand turn 0.8 across 0 thumb pad 0.09 lowest 0.04 mm, wrist to the forearm line 136 deg
+biceps hand turn 0.8 across -0.3 thumb pad 0.09 lowest -5.84 mm, wrist to the forearm line 128 deg
+biceps hand turn 0.8 across 0.3 thumb pad 0.09 lowest 0.11 mm, wrist to the forearm line 119 deg
 biceps hand turn 1.6 across 0 thumb pad 0.09 lowest -6.24 mm, wrist to the forearm line 164 deg
-biceps hand turn 1.6 across 0.15 thumb pad 0.09 lowest 0.05 mm, wrist to the forearm line 146 deg
-biceps hand turn 1.6 across -0.15 thumb pad 0.09 lowest -14.4 mm, wrist to the forearm line 176 deg
-biceps hand turn 1.6 across 0.3 thumb pad 0.09 lowest 0.06 mm, wrist to the forearm line 121 deg
 biceps hand turn 1.6 across -0.3 thumb pad 0.09 lowest -14.73 mm, wrist to the forearm line 150 deg
+biceps hand turn 1.6 across 0.3 thumb pad 0.09 lowest 0.06 mm, wrist to the forearm line 121 deg
+biceps hand turn -1.6 across 0 thumb pad 0.09 lowest -5.01 mm, wrist to the forearm line 37 deg
+biceps hand turn -1.6 across -0.3 thumb pad 0.09 lowest 0.07 mm, wrist to the forearm line 40 deg
+biceps hand turn -1.6 across 0.3 thumb pad 0.09 lowest -14.93 mm, wrist to the forearm line 66 deg
+biceps hand turn -0.8 across 0 thumb pad 0.09 lowest -14.99 mm, wrist to the forearm line 82 deg
+biceps hand turn -0.8 across -0.3 thumb pad 0.09 lowest -14.98 mm, wrist to the forearm line 82 deg
+biceps hand turn -0.8 across 0.3 thumb pad 0.09 lowest -14.99 mm, wrist to the forearm line 95 deg
+biceps hand turn 0.8 across 0 thumb pad 0.09 lowest 0.04 mm, wrist to the forearm line 168 deg
+biceps hand turn 0.8 across -0.3 thumb pad 0.09 lowest -5.84 mm, wrist to the forearm line 153 deg
+biceps hand turn 0.8 across 0.3 thumb pad 0.09 lowest 0.11 mm, wrist to the forearm line 141 deg
+biceps hand turn 1.6 across 0 thumb pad 0.09 lowest -6.24 mm, wrist to the forearm line 139 deg
+biceps hand turn 1.6 across -0.3 thumb pad 0.09 lowest -14.73 mm, wrist to the forearm line 133 deg
+biceps hand turn 1.6 across 0.3 thumb pad 0.09 lowest 0.06 mm, wrist to the forearm line 114 deg
 biceps hand on the front of the arm: 8.2 cm above the tendon, reach 0.60 | thumb pad 0.09 mm, lowest thumb point 0.03 mm, deepest point in the arm capsules -1.63 mm
-biceps thumb gaps (mm) {"thumbPad":0.09,"palm":0.06,"index":14.1,"middle":null,"ring":14.04,"little":0.05,"min":0.03} parts {"palm":0.06,"index":14.1,"indexTip":14.1,"middle":null,"middleTip":null,"ring":14.04,"ringTip":14.04,"little":0.05,"littleTip":0.05,"thumb":0.03,"thumbTip":0.03}
-biceps strike: swing plane turned 60 deg; raised hammer to his skin 3 mm
-supinator fingers: turn 140 index 0.39 middle 0.03 mm; lowest of the hand vs his arm + trunk 0.03 mm; point 5.00 cm above the wrist
-supinator gaps {"index":0.39,"middle":0.03,"lowest":0.03,"aboveWrist":5,"strikeGap":0.06} hammer on the middle finger
-triceps: elbow opened from 53.4 to 90 deg; his hand to his chest Infinity mm
-triceps tendon measured -3.772, 11.099, 4.052 normal -0.57, -0.38, 0.728 ; kit tricepsTendon is 24 deg away; elbow 90 deg
+biceps thumb gaps (mm) {"thumbPad":0.09,"palm":0.06,"index":1.13,"middle":0.1,"ring":0.27,"little":0.05,"min":0.03} parts {"palm":0.06,"index":1.13,"indexTip":1.13,"middle":0.1,"middleTip":0.1,"ring":0.27,"ringTip":0.27,"little":0.05,"littleTip":0.05,"thumb":0.03,"thumbTip":0.03}
+biceps strike: swing plane turned 60 deg; raised hammer to his skin / the mattress 3 mm, gap at the strike 0.06 mm
+supinator fingers: turn 150 roll -0.5 index 1 middle 1.44 mm; lowest of the hand vs his arm + trunk 0.02 mm; point 5.00 cm above the wrist
+supinator strike: swing plane turned 0 deg; raised hammer to his skin / the mattress 3 mm, gap at the strike 0.06 mm
+supinator gaps {"index":0.02,"middle":1.44,"thumb":0.77,"ring":10.11,"little":null,"fingersApart":24.96,"lowest":0.02,"aboveWrist":5,"strikeGap":0.06} hammer on the middle finger
+triceps arm: elbow out 3.3 wrist height 1.153 elbow 90.1 deg, abduction 28.4 deg
+triceps arm: elbow out 3.55 wrist height 1.128 elbow 90.1 deg, abduction 34.1 deg
+triceps arm: elbow out 3.8 wrist height 1.006 elbow 92.4 deg, abduction 40.2 deg
+triceps arm: elbow out 4.05 wrist height 1.006 elbow 92.3 deg, abduction 44.2 deg
+triceps arm {"upperArmOnMattress":-0.02,"handOnChest":0.05,"elbow":90.1,"abduction":34}
+triceps tendon measured -4.129, 9.116, 3.7 normal 0.103, 0.61, 0.786 ; kit tricepsTendon is 11 deg away; elbow 90.1 deg
 wrist hold thumb pad 0.08 mm, lowest thumb point 0.06 mm
-wrist hold gaps (mm) {"palm":0.06,"index":0.66,"indexTip":0.66,"middle":0.41,"middleTip":0.41,"ring":1.09,"ringTip":1.09,"little":0.35,"littleTip":0.35,"thumb":0.06,"thumbTip":0.06}
+wrist hold gaps (mm) {"palm":0.03,"index":0.76,"indexTip":0.76,"middle":0.73,"middleTip":0.73,"ring":0.57,"ringTip":0.57,"little":0.79,"littleTip":0.79,"thumb":0.06,"thumbTip":0.06}
+triceps strike: swing plane turned 0 deg; raised hammer to his skin / the mattress 3 mm, gap at the strike 0.06 mm
+triceps strike point 2.96 cm above the olecranon
 triceps strike gap 0.06 mm
 knee support: forearm to right knee 0.06 mm, to left knee 0.52 mm; heels above the mattress R 16.11 L 16.11 mm
 strike kneeR gap 0.06 mm
@@ -58,7 +59,7 @@ ankle clonus: palm under the calf 0.88 mm; hand above the mattress 33.19 mm
 palm across the ball of the foot R (R hand): palm 0.03 mm, lowest point of the hand 0.03 mm
 palm across the ball of the foot R (R hand): palm 0.04 mm, lowest point of the hand 0.04 mm
 knee clonus tilt -0.3 index 0.8 thumb -0.14
-knee clonus search 31.9 s
+knee clonus search 28.9 s
 knee clonus pinch: roll 345 thumb side -1 tips apart 15.02 mm
 knee clonus gaps (mm) {"indexTip":0.97,"thumbTip":0.02,"lowest":0.02}
 Hoffmann support: turn 0.15 slide 0.05 palm on palm 0.03 mm, lowest vs his hand + arm 0.03 mm
@@ -66,4 +67,4 @@ Hoffmann pinch: roll 225 deg, index -2.47 thumb 0.12 lowest -1.67 mm
 Hoffmann gaps (mm) {"palmOnPalm":0.03,"indexUnderTip":0.06,"thumbOnNail":0.12,"thumbLowest":0.12}
 Hoffmann R his thumb side 0.961, 0, 0.278
 Hoffmann L his thumb side 0.961, 0, -0.278
-hammer swing direction per strike [sign, closest raised +, closest raised -] (mm): {"bicR":[1,3,-29.99],"bicL":[1,3,-29.99],"supR":[1,3,-15.05],"supL":[1,3,-15.05],"triR":[1,3,-29.86],"triL":[1,3,-29.89],"reinfR":[1,3,-29.99],"kneeR":[1,3,-29.99],"kneeL":[1,3,-30],"ankR":[1,3,-28.78],"ankL":[1,3,-28.78]}
+hammer swing direction per strike [sign, closest raised +, closest raised -] (mm): {"bicR":[1,3,-29.99],"bicL":[1,3,-29.99],"supR":[1,3,-16.61],"supL":[1,3,-16.62],"triR":[1,3,-29.99],"triL":[1,3,-29.99],"reinfR":[1,3,-29.99],"kneeR":[1,3,-29.99],"kneeL":[1,3,-30],"ankR":[1,3,-28.78],"ankL":[1,3,-28.78]}
