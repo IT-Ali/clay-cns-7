@@ -1129,6 +1129,12 @@
         const mid = SOL.strikes.kneeR.target.clone().lerp(SOL.strikes.kneeL.target, 0.5), d = V(0.75, 0.35, 0.55).normalize();
         CAMS.knees = { pos: mid.clone().addScaledVector(d, 9.5).toArray(), target: mid.clone().add(V(0, -0.2, 0)).toArray(), focus: mid.toArray(), aperture: 0.03, fov: 28 };
       }
+      {   // the biceps jerks: from his side, a little above arm level (the examiner's sleeves rise beside the shot, clear of the thumb and the hammer)
+        for (const sd of ['R', 'L']) {
+          const sz = sd === 'R' ? 1 : -1, tb = V(...(SOL.cams['bic' + sd].target.isVector3 ? SOL.cams['bic' + sd].target.toArray() : SOL.cams['bic' + sd].target)), d = V(-0.2, 0.5, sz).normalize();
+          CAMS['bic' + sd] = { pos: tb.clone().addScaledVector(d, sd === 'R' ? 10 : 6.6).toArray(), target: tb.toArray(), focus: tb.toArray(), aperture: 0.02, fov: sd === 'R' ? 28 : 40 };
+        }
+      }
       const camVec = (c) => [...c.pos, ...c.target, ...(Array.isArray(c.focus) ? c.focus : c.target), c.fov || 28, c.aperture == null ? 0.02 : c.aperture];
       const camAt = (t) => CH.cam(t, (n) => camVec(CAMS[n]), (a, b, u) => a.map((v, i) => K.lerp(v, b[i], u)));
       const shoot = (v) => { K.look(S.camera, v.slice(0, 3), v.slice(3, 6), v[9]); K.focus(S.camera, v.slice(6, 9), v[10]); };
@@ -1212,7 +1218,8 @@
           }
         }
         const holding = HAMMER.some(([a, b]) => p >= a && p < b);
-        if (!holding || (!CH.exR(p, (n) => ({ strike: n.startsWith('S:') }), (a, b) => b).strike && !CH.exL(p, (n) => ({ strike: n.startsWith('S:') }), (a, b) => b).strike)) {
+        const isStrike = (n) => ({ strike: n.startsWith('S:') || n.startsWith('up:S:') });   // a strike pose or its lifted waypoint: the hammer is in that hand
+        if (!holding || (!CH.exR(p, isStrike, (a, b) => b).strike && !CH.exL(p, isStrike, (a, b) => b).strike)) {
           hammer.group.visible = holding;
           if (holding) {                                                   // in the right hand on the way (parked / travelling): rigid as at the first strike
             const k = SOL.strikes.bicR, st = { wrist: EX.R.hand.group.position.clone(), quat: EX.R.hand.group.quaternion.clone() }, qa = st.quat.clone().multiply(k.ex.quat.clone().invert());

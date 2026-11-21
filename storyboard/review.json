@@ -5,42 +5,6 @@
   "values": {}
  },
  {
-  "id": "b_bicR_top",
-  "gaps": {},
-  "values": {}
- },
- {
-  "id": "b_bicR_hit",
-  "gaps": {
-   "hammer head": 0.06,
-   "ex L palm": -1.65,
-   "ex L thumb": 0.03,
-   "ex L index": null,
-   "ex L middle": null,
-   "ex L ring": null,
-   "ex L little": 0.55
-  },
-  "values": {}
- },
- {
-  "id": "b_bicL_top",
-  "gaps": {},
-  "values": {}
- },
- {
-  "id": "b_bicL_hit",
-  "gaps": {
-   "hammer head": 0.06,
-   "ex R palm": -0.49,
-   "ex R thumb": 0.03,
-   "ex R index": null,
-   "ex R middle": null,
-   "ex R ring": null,
-   "ex R little": 0.55
-  },
-  "values": {}
- },
- {
   "id": "b_supR_top",
   "gaps": {},
   "values": {}
@@ -101,24 +65,6 @@
   "values": {}
  },
  {
-  "id": "b_reinfR_top",
-  "gaps": {},
-  "values": {}
- },
- {
-  "id": "b_reinfR_hit",
-  "gaps": {
-   "hammer head": 0.06,
-   "ex L palm": -0.91,
-   "ex L thumb": 0.03,
-   "ex L index": null,
-   "ex L middle": null,
-   "ex L ring": null,
-   "ex L little": 0.55
-  },
-  "values": {}
- },
- {
   "id": "b_kneeR_top",
   "gaps": {},
   "values": {}
@@ -164,76 +110,6 @@
   },
   "values": {
    "hammer contact to patellarTendon_R (cm)": 0.08
-  }
- },
- {
-  "id": "b_ankR_top",
-  "gaps": {},
-  "values": {}
- },
- {
-  "id": "b_ankR_hit",
-  "gaps": {
-   "hammer head": 0.06,
-   "ex L palm": 0.03,
-   "ex L thumb": 1.35,
-   "ex L index": null,
-   "ex L middle": null,
-   "ex L ring": null,
-   "ex L little": null,
-   "his outer ankle on the other shin": 0.06
-  },
-  "values": {
-   "hammer contact to achillesStrike_R (cm)": 0.08
-  }
- },
- {
-  "id": "b_ankL_top",
-  "gaps": {},
-  "values": {}
- },
- {
-  "id": "b_ankL_hit",
-  "gaps": {
-   "hammer head": 0.06,
-   "ex R palm": 0.03,
-   "ex R thumb": 1.35,
-   "ex R index": null,
-   "ex R middle": null,
-   "ex R ring": null,
-   "ex R little": null,
-   "his outer ankle on the other shin": 0.06
-  },
-  "values": {
-   "hammer contact to achillesStrike_L (cm)": 0.08
-  }
- },
- {
-  "id": "c_bicR_before",
-  "gaps": {},
-  "values": {
-   "elbow": 105.8
-  }
- },
- {
-  "id": "c_bicR_peak",
-  "gaps": {},
-  "values": {
-   "elbow": 95.8
-  }
- },
- {
-  "id": "c_bicL_before",
-  "gaps": {},
-  "values": {
-   "elbow": 105.8
-  }
- },
- {
-  "id": "c_bicL_peak",
-  "gaps": {},
-  "values": {
-   "elbow": 95.8
   }
  },
  {
@@ -321,34 +197,6 @@
   }
  },
  {
-  "id": "c_ankR_before",
-  "gaps": {},
-  "values": {
-   "ankle": 8
-  }
- },
- {
-  "id": "c_ankR_peak",
-  "gaps": {},
-  "values": {
-   "ankle": -2
-  }
- },
- {
-  "id": "c_ankL_before",
-  "gaps": {},
-  "values": {
-   "ankle": 8
-  }
- },
- {
-  "id": "c_ankL_peak",
-  "gaps": {},
-  "values": {
-   "ankle": -2
-  }
- },
- {
   "id": "d_hooked",
   "gaps": {
    "his right palm on his left hand": 0.05,
@@ -358,11 +206,6 @@
    "his right ring on his left hand": null,
    "his right little on his left hand": null
   },
-  "values": {}
- },
- {
-  "id": "d_jaw",
-  "gaps": {},
   "values": {}
  },
  {
@@ -378,24 +221,6 @@
    "ex L little": null,
    "heel R on the mattress": 9.42,
    "heel L on the mattress": 9.34
-  },
-  "values": {}
- },
- {
-  "id": "f_ankle",
-  "gaps": {
-   "ex R palm": -14.87,
-   "ex R thumb": 0.36,
-   "ex R index": null,
-   "ex R middle": null,
-   "ex R ring": null,
-   "ex R little": null,
-   "ex L palm": 0.03,
-   "ex L thumb": 5.43,
-   "ex L index": null,
-   "ex L middle": null,
-   "ex L ring": null,
-   "ex L little": 1.41
   },
   "values": {}
  },
@@ -452,18 +277,6 @@
   }
  },
  {
-  "id": "x_biceps_thumb",
-  "gaps": {
-   "ex L palm": -1.61,
-   "ex L thumb": 0.03,
-   "ex L index": null,
-   "ex L middle": null,
-   "ex L ring": null,
-   "ex L little": 0.55
-  },
-  "values": {}
- },
- {
   "id": "x_sup",
   "gaps": {
    "ex L palm": null,
@@ -490,19 +303,6 @@
   "values": {}
  },
  {
-  "id": "x_foot",
-  "gaps": {
-   "ex L palm": 0.03,
-   "ex L thumb": 1.35,
-   "ex L index": null,
-   "ex L middle": null,
-   "ex L ring": null,
-   "ex L little": null,
-   "his outer ankle on the other shin": 0.06
-  },
-  "values": {}
- },
- {
   "id": "x_hoffL",
   "gaps": {
    "ex R (support) palm": 0.03,
@@ -517,6 +317,206 @@
    "ex L (pinch) middle": 6.97,
    "ex L (pinch) ring": null,
    "ex L (pinch) little": null
+  },
+  "values": {}
+ },
+ {
+  "id": "b_bicR_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_bicR_hit",
+  "gaps": {
+   "hammer head": 0.06,
+   "ex L palm": 0.06,
+   "ex L thumb": 0.02,
+   "ex L index": 0.13,
+   "ex L middle": null,
+   "ex L ring": null,
+   "ex L little": null
+  },
+  "values": {}
+ },
+ {
+  "id": "b_bicL_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_bicL_hit",
+  "gaps": {
+   "hammer head": 0.06,
+   "ex R palm": 0.06,
+   "ex R thumb": 0.02,
+   "ex R index": 0.13,
+   "ex R middle": null,
+   "ex R ring": null,
+   "ex R little": null
+  },
+  "values": {}
+ },
+ {
+  "id": "b_reinfR_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_reinfR_hit",
+  "gaps": {
+   "hammer head": 0.06,
+   "ex L palm": 0.06,
+   "ex L thumb": 0.02,
+   "ex L index": 0.13,
+   "ex L middle": null,
+   "ex L ring": null,
+   "ex L little": null
+  },
+  "values": {}
+ },
+ {
+  "id": "b_ankR_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_ankR_hit",
+  "gaps": {
+   "hammer head": 0.06,
+   "ex L palm": 0.03,
+   "ex L thumb": 1.35,
+   "ex L index": null,
+   "ex L middle": null,
+   "ex L ring": null,
+   "ex L little": null,
+   "his outer ankle on the other shin": 0.06
+  },
+  "values": {
+   "hammer contact to achillesStrike_R (cm)": 0.08
+  }
+ },
+ {
+  "id": "b_ankL_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_ankL_hit",
+  "gaps": {
+   "hammer head": 0.06,
+   "ex R palm": 0.03,
+   "ex R thumb": 1.35,
+   "ex R index": null,
+   "ex R middle": null,
+   "ex R ring": null,
+   "ex R little": null,
+   "his outer ankle on the other shin": 0.06
+  },
+  "values": {
+   "hammer contact to achillesStrike_L (cm)": 0.08
+  }
+ },
+ {
+  "id": "c_bicR_before",
+  "gaps": {},
+  "values": {
+   "elbow": 105.8
+  }
+ },
+ {
+  "id": "c_bicR_peak",
+  "gaps": {},
+  "values": {
+   "elbow": 95.8
+  }
+ },
+ {
+  "id": "c_bicL_before",
+  "gaps": {},
+  "values": {
+   "elbow": 105.8
+  }
+ },
+ {
+  "id": "c_bicL_peak",
+  "gaps": {},
+  "values": {
+   "elbow": 95.8
+  }
+ },
+ {
+  "id": "c_ankR_before",
+  "gaps": {},
+  "values": {
+   "ankle": 8
+  }
+ },
+ {
+  "id": "c_ankR_peak",
+  "gaps": {},
+  "values": {
+   "ankle": -2
+  }
+ },
+ {
+  "id": "c_ankL_before",
+  "gaps": {},
+  "values": {
+   "ankle": 8
+  }
+ },
+ {
+  "id": "c_ankL_peak",
+  "gaps": {},
+  "values": {
+   "ankle": -2
+  }
+ },
+ {
+  "id": "d_jaw",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "f_ankle",
+  "gaps": {
+   "ex R palm": 0.95,
+   "ex R thumb": null,
+   "ex R index": null,
+   "ex R middle": null,
+   "ex R ring": null,
+   "ex R little": null,
+   "ex L palm": 0.03,
+   "ex L thumb": 5.43,
+   "ex L index": null,
+   "ex L middle": null,
+   "ex L ring": null,
+   "ex L little": 1.41
+  },
+  "values": {}
+ },
+ {
+  "id": "x_biceps_thumb",
+  "gaps": {
+   "ex L palm": 0.06,
+   "ex L thumb": 0.02,
+   "ex L index": 0.13,
+   "ex L middle": null,
+   "ex L ring": null,
+   "ex L little": null
+  },
+  "values": {}
+ },
+ {
+  "id": "x_foot",
+  "gaps": {
+   "ex L palm": 0.03,
+   "ex L thumb": 1.35,
+   "ex L index": null,
+   "ex L middle": null,
+   "ex L ring": null,
+   "ex L little": null,
+   "his outer ankle on the other shin": 0.06
   },
   "values": {}
  }
