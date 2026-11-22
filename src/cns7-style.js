@@ -1264,12 +1264,12 @@
         const off = (st) => (PR.two && !st.strike ? Object.assign({}, open(st), { wrist: st.wrist.clone().addScaledVector(V(0, 1, 0).applyQuaternion(st.quat).normalize(), 0.25) }) : st);
         const A0 = off(a), B0 = off(b), A1 = tOut ? Object.assign({}, slid(a), { wrist: slid(a).wrist.add(A0.wrist.clone().sub(a.wrist)) }) : a, B1 = tIn ? Object.assign({}, slid(b), { wrist: slid(b).wrist.add(B0.wrist.clone().sub(b.wrist)) }) : b;
         // lift: [height, part]: the far end of a long slide rides up by 'height' (on the mattress, not in it), back on its own axis by 'part' of the way
-        const lifted = (o, far) => { if (PR.pivot) { const [pa, f0, f1] = PR.pivot, q = K.clamp((far - f0) / (f1 - f0)); o.back = o.back.clone().add(V(0, pa * q * q * (3 - 2 * q), 0)).normalize(); } if (!PR.lift) return o; const q = K.clamp(1 - (1 - far) / PR.lift[1]); o.wrist = o.wrist.clone().add(V(0, PR.lift[0] * q * q * (3 - 2 * q), 0)); return o; };   // pivot [amount, f0, f1]: the elbow end of the forearm rides higher (direction y + amount) at the far end of the slide (on the mattress, not in it), gone once only f0 of the slide is left
+        const lifted = (o, far) => { if (PR.pivot) { const [pa, f0, f1, yaw = 0] = PR.pivot, q = K.clamp((far - f0) / (f1 - f0)), sq = q * q * (3 - 2 * q); o.back = o.back.clone().add(V(yaw * sq, pa * sq, 0)).normalize(); } if (!PR.lift) return o; const q = K.clamp(1 - (1 - far) / PR.lift[1]); o.wrist = o.wrist.clone().add(V(0, PR.lift[0] * q * q * (3 - 2 * q), 0)); return o; };   // pivot [amount, f0, f1]: the elbow end of the forearm rides higher (direction y + amount) at the far end of the slide (on the mattress, not in it), gone once only f0 of the slide is left; yaw turns it along the bed (- = toward his head)
         if (tOut && s < tOut) { const k = s / tOut, w = A0 !== a ? 0.4 : 0; return k < w ? lerpEx(h, a, A0, e(k / w)) : lifted(lerpEx(h, A0, Object.assign({}, A1, { strike: a.strike, geo: a.geo }), eIn((k - w) / (1 - w))), eIn((k - w) / (1 - w))); }
         if (tIn && s > dur - tIn) { const k = (s - (dur - tIn)) / tIn, w = B0 !== b ? 0.6 : 1; return k < w ? lifted(lerpEx(h, B1, B0 !== b ? B0 : b, eOut(k / w)), 1 - eOut(k / w)) : lerpEx(h, B0, b, e((k - w) / (1 - w))); }
         const tr = dur - tOut - tIn, v = tr > 1e-6 ? (PR.soft ? (tIn && !tOut ? eIn : tOut && !tIn ? eOut : e) : e)(K.clamp((s - tOut) / tr)) : 1, o = lerpEx(h, A1, B1, v);
         if (PR.lift) o.wrist = o.wrist.clone().add(V(0, PR.lift[0], 0));   // the travel keeps the lifted height
-        if (PR.pivot) o.back = o.back.clone().add(V(0, PR.pivot[0], 0)).normalize();
+        if (PR.pivot) o.back = o.back.clone().add(V(PR.pivot[3] || 0, PR.pivot[0], 0)).normalize();
         if (PR.arc && A1.wrist.distanceTo(B1.wrist) > 1.0) o.wrist = o.wrist.clone().add(V(0, PR.arc * Math.sin(Math.PI * v), 0));   // the hand travels over him in an arc, never through him
         return o;
       };

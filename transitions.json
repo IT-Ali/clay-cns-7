@@ -1,5 +1,5 @@
 {
- "made": "2026-11-22T08:53:00.187Z",
+ "made": "2026-11-22T12:14:31.135Z",
  "note": "planned by tools/plan.mjs; worstMM = the deepest penetration left on any frame of the move (0 = clean)",
  "moves": {
   "L:7.400": {
@@ -78,14 +78,28 @@
    "t1": 40.3
   },
   "L:43.900": {
-   "dir": "up",
-   "dist": 2,
-   "arc": 2.5,
+   "dir": "tilt",
+   "tilt": 0.85,
+   "dist": 5.2,
+   "arc": 0,
    "open": true,
    "two": false,
-   "candidate": 3,
-   "worstMM": 5.99,
-   "mattressMM": 22.43,
+   "together": true,
+   "low": 0,
+   "pivot": [
+    0.6,
+    0.25,
+    0.75
+   ],
+   "lift": [
+    0.4,
+    0.3
+   ],
+   "tIn": 0.6,
+   "fixed": "slides in under the raised knees along its own axis",
+   "candidate": "fixed",
+   "worstMM": 0.83,
+   "mattressMM": 46.28,
    "otherArmMM": 0,
    "from": "home",
    "to": "kneeSupport",
@@ -93,15 +107,29 @@
    "t1": 44.9
   },
   "L:56.600": {
-   "dir": "up",
-   "dist": 2,
-   "arc": 2.5,
+   "dir": "tilt",
+   "tilt": 0.85,
+   "dist": 5.2,
+   "arc": 0,
    "open": true,
    "two": false,
-   "candidate": 3,
-   "worstMM": 5.97,
-   "mattressMM": 19.19,
-   "otherArmMM": 0,
+   "together": true,
+   "low": 0,
+   "pivot": [
+    0.6,
+    0.33,
+    0.6
+   ],
+   "lift": [
+    0.4,
+    0.3
+   ],
+   "tOut": 0.6666666666666666,
+   "fixed": "slides out from under the knees along its own axis",
+   "candidate": "fixed",
+   "worstMM": 1.33,
+   "mattressMM": 48.34,
+   "otherArmMM": 4.74,
    "from": "kneeSupport",
    "to": "home",
    "t0": 56.6,
@@ -166,21 +194,6 @@
    "to": "relFoot:clonRelL0:L",
    "t0": 77.1,
    "t1": 77.5
-  },
-  "L:85.800": {
-   "dir": "backUp",
-   "dist": 1.5,
-   "arc": 2,
-   "open": true,
-   "two": true,
-   "candidate": 5,
-   "worstMM": 3.9,
-   "mattressMM": 0,
-   "otherArmMM": 0,
-   "from": "home",
-   "to": "rel:hoffSupRel:handR",
-   "t0": 85.8,
-   "t1": 86.6
   },
   "R:1.400": {
    "dir": "back",
