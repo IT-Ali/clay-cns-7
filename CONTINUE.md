@@ -2,7 +2,32 @@
 
 Branch: `claude/sleepy-babbage-16xe65` (continues `claude/exciting-goldberg-6r9o3q`). Read this first in a new session.
 
-## Where we are: ROUND 3 storyboard published (beats 2-5 re-rendered), WAITING FOR THE USER'S REVIEW (no build yet)
+## Where we are: BUILD done (round 3 storyboard approved), WAITING FOR THE USER (stop after the build)
+
+The user approved round 3 and asked for the build with two small fixes. Done:
+1. Supinator: slight curl (joint by joint, searched) so both TIPS rest on the skin (index 0.77, middle 0.62 mm), the
+   two fingers side by side along the radial border 4.9 cm above the wrist (the line moved a little round the forearm,
+   where it is flatter); hammer on the back of the fingers.
+2. Triceps: the olecranon TIP is the elbow skin furthest along the upper arm; the strike point is placed so the hammer
+   HEAD's centre lands 3.22 cm proximal to the tip (r_x_tri / r_x_triL mark tip, strike point and head centre).
+Build pieces (same update(t), poses and cameras as the storyboard):
+- Cuts: every cut on the 1/15 s grid (30.1 -> 452/15, 60.9 -> 914/15); checks/transitions/cuts.json + strips.
+- Hands: each move of an examiner hand is planned once (tools/plan.mjs -> transitions.json): slide along the forearm
+  (or up, or along the back of the hand) with fingers straight, a last 2.5 cm straight off the skin for grips, an arc
+  over him; the hammer hand lifts straight up. Hands that hold his foot / calf / wrist are carried in the frame of his
+  foot / shin / hand (relFoot / relShin / rel); during an elbow reflex the hand on his forearm and the hammer ride with
+  it. Clonus R is set up at the 69.0 s cut (like the left side).
+- Solve additions: biceps hand searched with the fingers round the OUTSIDE of the elbow (never into the backrest
+  mattress), its forearm clear of his chest; every strike's swing checked every 0.05 rad and capped where it would
+  touch him (swingUp: biceps 0.35 rad).
+- Scan: tools/scan.mjs (3 parts, --merge) -> checks/report.json; remaining flags explained in it / below.
+- render.mjs: frame count as an output option (the encode failed before), two-pass loudnorm -15 LUFS, s16 stereo,
+  true-peak guard per MP4 (re-encodes audio only above -1.0 dBTP), check.json per file; preview default beats 4,8,
+  --beats all, --frames for a quick test (tested here on 3 frames: OK).
+
+### Round 3 notes (kept for reference)
+
+Round 3:: ROUND 3 storyboard published (beats 2-5 re-rendered), WAITING FOR THE USER'S REVIEW (no build yet)
 
 Storyboard: https://claude.ai/artifact/9opJSuaBL7tLuyZ52frfsx (version 2); director zip: cns7-part7-storyboard.zip.
 Round 2 review: 7 of 10 approved and KEPT (ankle jerk, Jendrassik, contacts, knee-clonus grip, Hoffmann's, hammer never

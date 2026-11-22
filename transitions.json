@@ -1,5 +1,5 @@
 {
- "made": "2026-11-22T03:46:34.173Z",
+ "made": "2026-11-22T05:55:35.892Z",
  "note": "planned by tools/plan.mjs; worstMM = the deepest penetration left on any frame of the move (0 = clean)",
  "moves": {
   "L:7.400": {
@@ -228,12 +228,12 @@
    "t1": 8.6
   },
   "R:25.400": {
-   "dir": "up",
+   "dir": "back",
    "dist": 1.2,
    "arc": 1.5,
-   "open": false,
-   "two": false,
-   "candidate": 2,
+   "open": true,
+   "two": true,
+   "candidate": 0,
    "worstMM": 0,
    "mattressMM": 0,
    "otherArmMM": 0,

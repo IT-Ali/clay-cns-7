@@ -1189,7 +1189,7 @@
         const up = (st, back, sleeve, sz) => Object.assign({}, st, { back: V(back[0], back[1], back[2] * sz).normalize(), sleeve: V(sleeve[0], sleeve[1], sleeve[2] * sz).normalize() });
         SOL.ex.calfR = up(SOL.ex.calfR, [0.15, 0.05, 1], [0.05, 0.45, 1], 1); SOL.ex.calfL = up(SOL.ex.calfL, [0.15, 0.05, 1], [0.05, 0.45, 1], -1);
         SOL.ex.calfRelR = withLeg('R', SOL.legs.clonusR0, () => relToF(SOL.ex.calfR, shinFrame('R'))); SOL.ex.calfRelL = withLeg('L', SOL.legs.clonusR0, () => relToF(SOL.ex.calfL, shinFrame('L')));
-        SOL.ex.kneeSupport = Object.assign({}, SOL.ex.kneeSupport, { sleeve: V(0.05, 0.45, 1).normalize() });
+        SOL.ex.kneeSupport = Object.assign({}, SOL.ex.kneeSupport, { sleeve: V(-0.6, 0.2, 1).normalize() });   // out of the mattress, toward his head (clear of the hammer hand above his knees)
         { const pr = P.leg('R'), pl = P.leg('L'); P.setLeg('R', SOL.legs.kneeJerk); P.setLeg('L', SOL.legs.kneeJerk); SOL.ex.supRel = relToF(SOL.ex.kneeSupport, kneesFrame()); P.setLeg('R', pr); P.setLeg('L', pl); }   // the support under the knees, carried as they bend and straighten
       }
       // how each move of the examiner's hands arrives and leaves (planned once by tools/plan.mjs, loaded here; defaults if absent)
@@ -1374,7 +1374,8 @@
         for (const k of reflexFor(p)) if (REFLEX[k.reflex].joint === 'elbow') arms[k.side] = flexElbow(k.side, arms[k.side], REFLEX[k.reflex].deg * bump(p, k.t));
         applyArm('R', arms.R); applyArm('L', arms.L);
         // Hoffmann: the flick bends the tip of his middle finger down a little and it springs back; his thumb stays still
-        for (const sd of ['R', 'L']) { const f = flickAt(p, FLICK[sd]); if (f > 0) { const dip = P.arms[sd].hand.fingers.middle.dip; dip.rotation.z -= 0.22 * f; dip.updateMatrixWorld(true); } }
+        const flickRot = {};
+        for (const sd of ['R', 'L']) { const f = flickAt(p, FLICK[sd]); if (f > 0) { const dip = P.arms[sd].hand.fingers.middle.dip; dip.updateMatrixWorld(true); const E = dip.getWorldPosition(V(0, 0, 0)), ax = V(0, 0, 1).transformDirection(dip.matrixWorld).normalize(); dip.rotation.z -= 0.22 * f; dip.updateMatrixWorld(true); flickRot[sd] = { E, q: new THREE.Quaternion().setFromAxisAngle(ax, -0.22 * f) }; } }   // (the examiner's pinch turns with his fingertip, below)
         // face and breathing
         const clench = K.seg(p, 35.5, 35.9, K.ease.out) * (1 - K.seg(p, 38.6, 39.0, K.ease.inOut));
         P.setFace(Object.assign({ pupilR: 3.5, pupilL: 3.5 }, clench > 0 ? { clench } : {}));
@@ -1397,7 +1398,8 @@
           // Hoffmann: the examiner's thumb flicks down over the nail
           if (/hoffPin/.test(KEYS['ex' + h].find((k, i, arr) => k[0] <= p && (!arr[i + 1] || arr[i + 1][0] > p))[1])) {
             const f = flickAt(p, FLICK[st.far ? 'L' : 'R']);
-            if (f > 0 && st.thumbQ) st = Object.assign({}, st, { thumbQ: [st.thumbQ[0], st.thumbQ[1].clone().multiply(new THREE.Quaternion().setFromAxisAngle(V(0, 0, 1), -0.35 * f)), st.thumbQ[2].clone().multiply(new THREE.Quaternion().setFromAxisAngle(V(0, 0, 1), -0.45 * f))] });
+            const fr = flickRot[st.far ? 'L' : 'R']; if (fr) st = Object.assign({}, st, { wrist: fr.E.clone().add(st.wrist.clone().sub(fr.E).applyQuaternion(fr.q)), quat: fr.q.clone().multiply(st.quat), back: st.back.clone().applyQuaternion(fr.q) });   // the pinch follows the dipping fingertip
+            if (f > 0 && st.thumbQ) st = Object.assign({}, st, { thumbQ: [st.thumbQ[0], st.thumbQ[1].clone().multiply(new THREE.Quaternion().setFromAxisAngle(V(0, 0, 1), 0.3 * f)), st.thumbQ[2].clone().multiply(new THREE.Quaternion().setFromAxisAngle(V(0, 0, 1), 0.4 * f))] });   // the thumb springs off the nail
           }
           if (st.strike) { const sk = STRIKES.find((x) => x.id === st.strike); if (sk && REFLEX[sk.reflex].joint === 'elbow' && lastRot[sk.side]) { const R0 = lastRot[sk.side]; st = Object.assign({}, st, { wrist: R0.E.clone().add(st.wrist.clone().sub(R0.E).applyQuaternion(R0.q)), quat: R0.q.clone().multiply(st.quat), back: st.back.clone().applyQuaternion(R0.q) }); } }   // the hammer rides with the reflexing forearm
           if (st.strike) { const kS = SOL.strikes[st.geo || st.strike], ts = S_[st.strike]; if (kS && ts != null) { const d = p - ts, out = d > 0 && d < 0.8 ? Math.sin(Math.PI * Math.min(1, d / 0.8)) : 0; if (out > 0 && TUNE.rebound) st = Object.assign({}, st, { wrist: st.wrist.clone().addScaledVector(kS.ex.wrist.clone().sub(kS.target).normalize(), TUNE.rebound * out) }); } }   // the hand rebounds off the strike, away from it (2.5 cm)

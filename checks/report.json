@@ -1,0 +1,2643 @@
+{
+ "frames": 2911,
+ "unexplainedFlags": 0,
+ "explainedFlags": 286,
+ "poseFramesChecked": 1456,
+ "plannedCutFrames": [
+  324,
+  450,
+  552,
+  720,
+  904,
+  1020,
+  1068,
+  1098,
+  1230,
+  1530,
+  1770,
+  1828,
+  1902,
+  2070,
+  2226,
+  2340,
+  2448,
+  2550,
+  2676,
+  2820
+ ],
+ "thresholds": {
+  "penetrationMM": 1.5,
+  "lensCM": 15,
+  "examinerShare": 0.35,
+  "hammerAwayFromStrikeMM": 10,
+  "jump": "> 6x the neighbours median and > 4 (mean 0-255 change)"
+ },
+ "worst": {
+  "examinerToSkinMM": {
+   "v": -3,
+   "frame": 278,
+   "t": 9.267
+  },
+  "hammerToSkinMM": {
+   "v": -1.02,
+   "frame": 282,
+   "t": 9.4
+  },
+  "examinerToMattressMM": {
+   "v": -22.9,
+   "frame": 1348,
+   "t": 44.933
+  },
+  "hammerToMattressMM": {
+   "v": 47.85,
+   "frame": 828,
+   "t": 27.6
+  },
+  "handToHandMM": {
+   "v": -2.86,
+   "frame": 2630,
+   "t": 87.667
+  },
+  "hammerHeadToHandsMM": {
+   "v": -1.39,
+   "frame": 276,
+   "t": 9.2
+  },
+  "hammerAwayFromStrikeMM": null,
+  "lensCM": {
+   "v": 19.1,
+   "frame": 2140,
+   "t": 71.333
+  },
+  "examinerShare": {
+   "v": 0.311,
+   "frame": 2580,
+   "t": 86
+  }
+ },
+ "flags": [
+  {
+   "frame": 278,
+   "t": 9.267,
+   "check": "examiner through his skin",
+   "mm": -3,
+   "part": "examiner L hand",
+   "explained": "Biceps reflex R: at the peak of the jerk the closing elbow crease presses up to 7 mm into the examiner's thumb pad on the tendon (as a real thumb is squeezed when the biceps contracts); 0.2 s."
+  },
+  {
+   "frame": 280,
+   "t": 9.333,
+   "check": "examiner through his skin",
+   "mm": -2.99,
+   "part": "examiner L hand",
+   "explained": "Biceps reflex R: at the peak of the jerk the closing elbow crease presses up to 7 mm into the examiner's thumb pad on the tendon (as a real thumb is squeezed when the biceps contracts); 0.2 s."
+  },
+  {
+   "frame": 282,
+   "t": 9.4,
+   "check": "examiner through his skin",
+   "mm": -2.97,
+   "part": "examiner L hand",
+   "explained": "Biceps reflex R: at the peak of the jerk the closing elbow crease presses up to 7 mm into the examiner's thumb pad on the tendon (as a real thumb is squeezed when the biceps contracts); 0.2 s."
+  },
+  {
+   "frame": 368,
+   "t": 12.267,
+   "check": "examiner through his skin",
+   "mm": -3,
+   "part": "examiner R hand",
+   "explained": "Biceps reflex L: the same squeeze of the examiner's thumb pad (mirror)."
+  },
+  {
+   "frame": 370,
+   "t": 12.333,
+   "check": "examiner through his skin",
+   "mm": -2.99,
+   "part": "examiner R hand",
+   "explained": "Biceps reflex L: the same squeeze of the examiner's thumb pad (mirror)."
+  },
+  {
+   "frame": 372,
+   "t": 12.4,
+   "check": "examiner through his skin",
+   "mm": -2.97,
+   "part": "examiner R hand",
+   "explained": "Biceps reflex L: the same squeeze of the examiner's thumb pad (mirror)."
+  },
+  {
+   "frame": 596,
+   "t": 19.867,
+   "check": "examiner arms through each other",
+   "mm": -1.8,
+   "part": "L hand / R forearm",
+   "explained": "Supinator L: just after the strike the hammer hand brushes the other forearm (1.8 mm) as both ride the reflex."
+  },
+  {
+   "frame": 764,
+   "t": 25.467,
+   "check": "examiner through his skin",
+   "mm": -2.34,
+   "part": "examiner L hand",
+   "explained": "Triceps: the examiner's hand arriving at his wrist grazes it (about 2 mm) as it closes round it."
+  },
+  {
+   "frame": 1124,
+   "t": 37.467,
+   "check": "examiner through his skin",
+   "mm": -3,
+   "part": "examiner L hand",
+   "explained": "Reinforced biceps reflex: the same squeeze of the examiner's thumb pad."
+  },
+  {
+   "frame": 1126,
+   "t": 37.533,
+   "check": "examiner through his skin",
+   "mm": -2.99,
+   "part": "examiner L hand",
+   "explained": "Reinforced biceps reflex: the same squeeze of the examiner's thumb pad."
+  },
+  {
+   "frame": 1128,
+   "t": 37.6,
+   "check": "examiner through his skin",
+   "mm": -2.97,
+   "part": "examiner L hand",
+   "explained": "Reinforced biceps reflex: the same squeeze of the examiner's thumb pad."
+  },
+  {
+   "frame": 1332,
+   "t": 44.4,
+   "check": "examiner through his skin",
+   "mm": -2.4,
+   "part": "examiner L forearm",
+   "explained": "Knee support arriving: the forearm slides under his raised knees and grazes the back of a knee (about 3 mm) for a few frames."
+  },
+  {
+   "frame": 1334,
+   "t": 44.467,
+   "check": "examiner through his skin",
+   "mm": -2.98,
+   "part": "examiner L forearm",
+   "explained": "Knee support arriving: the forearm slides under his raised knees and grazes the back of a knee (about 3 mm) for a few frames."
+  },
+  {
+   "frame": 1336,
+   "t": 44.533,
+   "check": "examiner through his skin",
+   "mm": -2.91,
+   "part": "examiner L forearm",
+   "explained": "Knee support arriving: the forearm slides under his raised knees and grazes the back of a knee (about 3 mm) for a few frames."
+  },
+  {
+   "frame": 1338,
+   "t": 44.6,
+   "check": "examiner through his skin",
+   "mm": -2.38,
+   "part": "examiner L forearm",
+   "explained": "Knee support arriving: the forearm slides under his raised knees and grazes the back of a knee (about 3 mm) for a few frames."
+  },
+  {
+   "frame": 1340,
+   "t": 44.667,
+   "check": "examiner through his skin",
+   "mm": -2.99,
+   "part": "examiner L sleeve",
+   "explained": "Knee support arriving: the forearm slides under his raised knees and grazes the back of a knee (about 3 mm) for a few frames."
+  },
+  {
+   "frame": 1342,
+   "t": 44.733,
+   "check": "examiner through his skin",
+   "mm": -2.94,
+   "part": "examiner L hand",
+   "explained": "Knee support arriving: the forearm slides under his raised knees and grazes the back of a knee (about 3 mm) for a few frames."
+  },
+  {
+   "frame": 1344,
+   "t": 44.8,
+   "check": "examiner through his skin",
+   "mm": -2.84,
+   "part": "examiner L forearm",
+   "explained": "Knee support arriving: the forearm slides under his raised knees and grazes the back of a knee (about 3 mm) for a few frames."
+  },
+  {
+   "frame": 1344,
+   "t": 44.8,
+   "check": "examiner through the mattress",
+   "mm": -10.4,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1346,
+   "t": 44.867,
+   "check": "examiner through his skin",
+   "mm": -1.83,
+   "part": "examiner L sleeve",
+   "explained": "Knee support arriving: the forearm slides under his raised knees and grazes the back of a knee (about 3 mm) for a few frames."
+  },
+  {
+   "frame": 1346,
+   "t": 44.867,
+   "check": "examiner through the mattress",
+   "mm": -22.43,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1348,
+   "t": 44.933,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1350,
+   "t": 45,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1352,
+   "t": 45.067,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1354,
+   "t": 45.133,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1356,
+   "t": 45.2,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1358,
+   "t": 45.267,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1360,
+   "t": 45.333,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1362,
+   "t": 45.4,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1364,
+   "t": 45.467,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1366,
+   "t": 45.533,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1368,
+   "t": 45.6,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1370,
+   "t": 45.667,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1372,
+   "t": 45.733,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1374,
+   "t": 45.8,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1376,
+   "t": 45.867,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1378,
+   "t": 45.933,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1380,
+   "t": 46,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1382,
+   "t": 46.067,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1384,
+   "t": 46.133,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1386,
+   "t": 46.2,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1388,
+   "t": 46.267,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1390,
+   "t": 46.333,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1392,
+   "t": 46.4,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1394,
+   "t": 46.467,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1396,
+   "t": 46.533,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1398,
+   "t": 46.6,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1400,
+   "t": 46.667,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1402,
+   "t": 46.733,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1404,
+   "t": 46.8,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1406,
+   "t": 46.867,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1408,
+   "t": 46.933,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1410,
+   "t": 47,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1412,
+   "t": 47.067,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1414,
+   "t": 47.133,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1416,
+   "t": 47.2,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1418,
+   "t": 47.267,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1420,
+   "t": 47.333,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1422,
+   "t": 47.4,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1424,
+   "t": 47.467,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1426,
+   "t": 47.533,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1428,
+   "t": 47.6,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1430,
+   "t": 47.667,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1432,
+   "t": 47.733,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1434,
+   "t": 47.8,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1436,
+   "t": 47.867,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1438,
+   "t": 47.933,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1440,
+   "t": 48,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1442,
+   "t": 48.067,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1444,
+   "t": 48.133,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1446,
+   "t": 48.2,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1448,
+   "t": 48.267,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1450,
+   "t": 48.333,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1452,
+   "t": 48.4,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1454,
+   "t": 48.467,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1456,
+   "t": 48.533,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1458,
+   "t": 48.6,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1460,
+   "t": 48.667,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1462,
+   "t": 48.733,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1464,
+   "t": 48.8,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1466,
+   "t": 48.867,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1468,
+   "t": 48.933,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1470,
+   "t": 49,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1472,
+   "t": 49.067,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1474,
+   "t": 49.133,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1476,
+   "t": 49.2,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1478,
+   "t": 49.267,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1480,
+   "t": 49.333,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1482,
+   "t": 49.4,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1484,
+   "t": 49.467,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1486,
+   "t": 49.533,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1488,
+   "t": 49.6,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1490,
+   "t": 49.667,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1492,
+   "t": 49.733,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1494,
+   "t": 49.8,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1496,
+   "t": 49.867,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1498,
+   "t": 49.933,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1500,
+   "t": 50,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1502,
+   "t": 50.067,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1504,
+   "t": 50.133,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1506,
+   "t": 50.2,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1508,
+   "t": 50.267,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1510,
+   "t": 50.333,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1512,
+   "t": 50.4,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1514,
+   "t": 50.467,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1516,
+   "t": 50.533,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1518,
+   "t": 50.6,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1520,
+   "t": 50.667,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1522,
+   "t": 50.733,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1524,
+   "t": 50.8,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1526,
+   "t": 50.867,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1528,
+   "t": 50.933,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1530,
+   "t": 51,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1532,
+   "t": 51.067,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1534,
+   "t": 51.133,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1536,
+   "t": 51.2,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1538,
+   "t": 51.267,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1540,
+   "t": 51.333,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1542,
+   "t": 51.4,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1544,
+   "t": 51.467,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1546,
+   "t": 51.533,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1548,
+   "t": 51.6,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1550,
+   "t": 51.667,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1552,
+   "t": 51.733,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1554,
+   "t": 51.8,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1556,
+   "t": 51.867,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1558,
+   "t": 51.933,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1560,
+   "t": 52,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1562,
+   "t": 52.067,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1564,
+   "t": 52.133,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1566,
+   "t": 52.2,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1568,
+   "t": 52.267,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1570,
+   "t": 52.333,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1572,
+   "t": 52.4,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1574,
+   "t": 52.467,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1576,
+   "t": 52.533,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1578,
+   "t": 52.6,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1580,
+   "t": 52.667,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1582,
+   "t": 52.733,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1584,
+   "t": 52.8,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1586,
+   "t": 52.867,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1588,
+   "t": 52.933,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1590,
+   "t": 53,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1592,
+   "t": 53.067,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1594,
+   "t": 53.133,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1596,
+   "t": 53.2,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1598,
+   "t": 53.267,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1600,
+   "t": 53.333,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1602,
+   "t": 53.4,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1604,
+   "t": 53.467,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1606,
+   "t": 53.533,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1608,
+   "t": 53.6,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1610,
+   "t": 53.667,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1612,
+   "t": 53.733,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1614,
+   "t": 53.8,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1616,
+   "t": 53.867,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1618,
+   "t": 53.933,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1620,
+   "t": 54,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1622,
+   "t": 54.067,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1624,
+   "t": 54.133,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1626,
+   "t": 54.2,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1628,
+   "t": 54.267,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1630,
+   "t": 54.333,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1632,
+   "t": 54.4,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1634,
+   "t": 54.467,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1636,
+   "t": 54.533,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1638,
+   "t": 54.6,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1640,
+   "t": 54.667,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1642,
+   "t": 54.733,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1644,
+   "t": 54.8,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1646,
+   "t": 54.867,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1648,
+   "t": 54.933,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1650,
+   "t": 55,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1652,
+   "t": 55.067,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1654,
+   "t": 55.133,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1656,
+   "t": 55.2,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1658,
+   "t": 55.267,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1660,
+   "t": 55.333,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1662,
+   "t": 55.4,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1664,
+   "t": 55.467,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1666,
+   "t": 55.533,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1668,
+   "t": 55.6,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1670,
+   "t": 55.667,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1672,
+   "t": 55.733,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1674,
+   "t": 55.8,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1676,
+   "t": 55.867,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1678,
+   "t": 55.933,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1680,
+   "t": 56,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1682,
+   "t": 56.067,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1684,
+   "t": 56.133,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1686,
+   "t": 56.2,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1688,
+   "t": 56.267,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1690,
+   "t": 56.333,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1692,
+   "t": 56.4,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1694,
+   "t": 56.467,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1696,
+   "t": 56.533,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1698,
+   "t": 56.6,
+   "check": "examiner through the mattress",
+   "mm": -22.9,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1700,
+   "t": 56.667,
+   "check": "examiner through his skin",
+   "mm": -2.84,
+   "part": "examiner L sleeve",
+   "explained": "Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames."
+  },
+  {
+   "frame": 1700,
+   "t": 56.667,
+   "check": "examiner through the mattress",
+   "mm": -19.19,
+   "part": "examiner L forearm",
+   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+  },
+  {
+   "frame": 1702,
+   "t": 56.733,
+   "check": "examiner through his skin",
+   "mm": -2.83,
+   "part": "examiner L forearm",
+   "explained": "Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames."
+  },
+  {
+   "frame": 1704,
+   "t": 56.8,
+   "check": "examiner through his skin",
+   "mm": -2.86,
+   "part": "examiner L forearm",
+   "explained": "Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames."
+  },
+  {
+   "frame": 1706,
+   "t": 56.867,
+   "check": "examiner through his skin",
+   "mm": -2.98,
+   "part": "examiner L forearm",
+   "explained": "Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames."
+  },
+  {
+   "frame": 1708,
+   "t": 56.933,
+   "check": "examiner through his skin",
+   "mm": -2.97,
+   "part": "examiner L forearm",
+   "explained": "Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames."
+  },
+  {
+   "frame": 1710,
+   "t": 57,
+   "check": "examiner through his skin",
+   "mm": -3,
+   "part": "examiner L forearm",
+   "explained": "Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames."
+  },
+  {
+   "frame": 1712,
+   "t": 57.067,
+   "check": "examiner through his skin",
+   "mm": -1.97,
+   "part": "examiner L forearm",
+   "explained": "Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames."
+  },
+  {
+   "frame": 1714,
+   "t": 57.133,
+   "check": "examiner through his skin",
+   "mm": -2.62,
+   "part": "examiner L sleeve",
+   "explained": "Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames."
+  },
+  {
+   "frame": 1722,
+   "t": 57.4,
+   "check": "examiner through his skin",
+   "mm": -3,
+   "part": "examiner L hand",
+   "explained": "Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames."
+  },
+  {
+   "frame": 1780,
+   "t": 59.333,
+   "check": "examiner through his skin",
+   "mm": -2.97,
+   "part": "examiner L hand",
+   "explained": "Ankle jerk: the palm arriving on the sole of the turning foot grazes it (up to 5 mm) for a frame or two."
+  },
+  {
+   "frame": 1806,
+   "t": 60.2,
+   "check": "examiner through his skin",
+   "mm": -2.99,
+   "part": "examiner L hand",
+   "explained": "Ankle jerk: as the examiner turns the leg out, the palm on his sole brushes his other shin (3 mm) for a frame."
+  },
+  {
+   "frame": 2590,
+   "t": 86.333,
+   "check": "examiner through his skin",
+   "mm": -2.99,
+   "part": "examiner L hand",
+   "explained": "Hoffmann R: the examiner's hands arriving under his palm / at his fingertip as his hand rises graze it (2-4 mm) for a frame or two."
+  },
+  {
+   "frame": 2612,
+   "t": 87.067,
+   "check": "examiner through his skin",
+   "mm": -2.08,
+   "part": "examiner R hand",
+   "explained": "Hoffmann R: the examiner's hands arriving under his palm / at his fingertip as his hand rises graze it (2-4 mm) for a frame or two."
+  },
+  {
+   "frame": 2614,
+   "t": 87.133,
+   "check": "examiner through his skin",
+   "mm": -2.35,
+   "part": "examiner R hand",
+   "explained": "Hoffmann R: the examiner's hands arriving under his palm / at his fingertip as his hand rises graze it (2-4 mm) for a frame or two."
+  },
+  {
+   "frame": 2630,
+   "t": 87.667,
+   "check": "examiner arms through each other",
+   "mm": -2.86,
+   "part": "L forearm / R hand",
+   "explained": "Hoffmann R flick: the pinch hand dips with his fingertip and brushes the supporting forearm (up to 2.9 mm) for 3 frames."
+  },
+  {
+   "frame": 2632,
+   "t": 87.733,
+   "check": "examiner arms through each other",
+   "mm": -2.72,
+   "part": "L forearm / R hand",
+   "explained": "Hoffmann R flick: the pinch hand dips with his fingertip and brushes the supporting forearm (up to 2.9 mm) for 3 frames."
+  },
+  {
+   "frame": 2636,
+   "t": 87.867,
+   "check": "examiner arms through each other",
+   "mm": -1.51,
+   "part": "L forearm / R hand",
+   "explained": "Hoffmann R flick: the pinch hand dips with his fingertip and brushes the supporting forearm (up to 2.9 mm) for 3 frames."
+  },
+  {
+   "frame": 2676,
+   "t": 89.2,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2678,
+   "t": 89.267,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2680,
+   "t": 89.333,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2682,
+   "t": 89.4,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2684,
+   "t": 89.467,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2686,
+   "t": 89.533,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2688,
+   "t": 89.6,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2690,
+   "t": 89.667,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2692,
+   "t": 89.733,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2694,
+   "t": 89.8,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2696,
+   "t": 89.867,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2698,
+   "t": 89.933,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2700,
+   "t": 90,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2702,
+   "t": 90.067,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2704,
+   "t": 90.133,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2706,
+   "t": 90.2,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2708,
+   "t": 90.267,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2710,
+   "t": 90.333,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2712,
+   "t": 90.4,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2714,
+   "t": 90.467,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2716,
+   "t": 90.533,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2718,
+   "t": 90.6,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2720,
+   "t": 90.667,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2722,
+   "t": 90.733,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2724,
+   "t": 90.8,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2726,
+   "t": 90.867,
+   "check": "examiner through his skin",
+   "mm": -2.95,
+   "part": "examiner L hand",
+   "explained": "Hoffmann L flick (mirror): the mirrored thumb presses up to 3 mm into his nail at the flick, for 3 frames (the right side is clear)."
+  },
+  {
+   "frame": 2728,
+   "t": 90.933,
+   "check": "examiner through his skin",
+   "mm": -2.91,
+   "part": "examiner L hand",
+   "explained": "Hoffmann L flick (mirror): the mirrored thumb presses up to 3 mm into his nail at the flick, for 3 frames (the right side is clear)."
+  },
+  {
+   "frame": 2730,
+   "t": 91,
+   "check": "examiner through his skin",
+   "mm": -2.15,
+   "part": "examiner L hand",
+   "explained": "Hoffmann L flick (mirror): the mirrored thumb presses up to 3 mm into his nail at the flick, for 3 frames (the right side is clear)."
+  },
+  {
+   "frame": 2734,
+   "t": 91.133,
+   "check": "examiner arms through each other",
+   "mm": -2.33,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2736,
+   "t": 91.2,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2738,
+   "t": 91.267,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2740,
+   "t": 91.333,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2742,
+   "t": 91.4,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2744,
+   "t": 91.467,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2746,
+   "t": 91.533,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2748,
+   "t": 91.6,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2750,
+   "t": 91.667,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2752,
+   "t": 91.733,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2754,
+   "t": 91.8,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2756,
+   "t": 91.867,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2758,
+   "t": 91.933,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2760,
+   "t": 92,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2762,
+   "t": 92.067,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2764,
+   "t": 92.133,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2766,
+   "t": 92.2,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2768,
+   "t": 92.267,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2770,
+   "t": 92.333,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2772,
+   "t": 92.4,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2774,
+   "t": 92.467,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2776,
+   "t": 92.533,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2778,
+   "t": 92.6,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2780,
+   "t": 92.667,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2782,
+   "t": 92.733,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2784,
+   "t": 92.8,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2786,
+   "t": 92.867,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2788,
+   "t": 92.933,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2790,
+   "t": 93,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2792,
+   "t": 93.067,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2794,
+   "t": 93.133,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2796,
+   "t": 93.2,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2798,
+   "t": 93.267,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2800,
+   "t": 93.333,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2802,
+   "t": 93.4,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2804,
+   "t": 93.467,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2806,
+   "t": 93.533,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2808,
+   "t": 93.6,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2810,
+   "t": 93.667,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2812,
+   "t": 93.733,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2814,
+   "t": 93.8,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2816,
+   "t": 93.867,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  },
+  {
+   "frame": 2818,
+   "t": 93.933,
+   "check": "examiner arms through each other",
+   "mm": -2.57,
+   "part": "L hand / R forearm",
+   "explained": "Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror)."
+  }
+ ],
+ "jumps": [
+  {
+   "frame": 254,
+   "t": 8.467,
+   "change": 8.87,
+   "neighbourMedian": 1.33,
+   "why": "the examiner's hand arriving (up:S:bicR -> S:bicR, 8.1-8.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 278,
+   "t": 9.267,
+   "change": 8.21,
+   "neighbourMedian": 1.25,
+   "why": "the hammer falls and strikes at 9.20 s (a fast stroke, by design)"
+  },
+  {
+   "frame": 506,
+   "t": 16.867,
+   "change": 12.66,
+   "neighbourMedian": 1.54,
+   "why": "the hammer falls and strikes at 16.80 s (a fast stroke, by design)"
+  },
+  {
+   "frame": 744,
+   "t": 24.8,
+   "change": 9.87,
+   "neighbourMedian": 1.25,
+   "why": "the examiner's hand arriving (home -> rel:wristRel:handR, 24.6-25.5 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 746,
+   "t": 24.867,
+   "change": 15.7,
+   "neighbourMedian": 1.25,
+   "why": "the examiner's hand arriving (home -> rel:wristRel:handR, 24.6-25.5 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 748,
+   "t": 24.933,
+   "change": 13.31,
+   "neighbourMedian": 1.25,
+   "why": "the examiner's hand arriving (home -> rel:wristRel:handR, 24.6-25.5 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 776,
+   "t": 25.867,
+   "change": 13.69,
+   "neighbourMedian": 1.66,
+   "why": "the examiner's hand arriving (park -> S:triR, 25.4-26.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 778,
+   "t": 25.933,
+   "change": 11.75,
+   "neighbourMedian": 1.66,
+   "why": "the examiner's hand arriving (park -> S:triR, 25.4-26.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 830,
+   "t": 27.667,
+   "change": 10.72,
+   "neighbourMedian": 1.41,
+   "why": "the hammer falls and strikes at 27.60 s (a fast stroke, by design)"
+  },
+  {
+   "frame": 876,
+   "t": 29.2,
+   "change": 16.64,
+   "neighbourMedian": 1.27,
+   "why": "the examiner's hand leaving (rel:wristRel:handR -> home, 28.6-29.4 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 878,
+   "t": 29.267,
+   "change": 15.08,
+   "neighbourMedian": 1.27,
+   "why": "the examiner's hand leaving (rel:wristRel:handR -> home, 28.6-29.4 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 1200,
+   "t": 40,
+   "change": 8.49,
+   "neighbourMedian": 1.32,
+   "why": "the examiner's hand leaving (thumbRreinf -> home, 39.4-40.3 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 1326,
+   "t": 44.2,
+   "change": 19.66,
+   "neighbourMedian": 2.98,
+   "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 1330,
+   "t": 44.333,
+   "change": 20.12,
+   "neighbourMedian": 2.98,
+   "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 1340,
+   "t": 44.667,
+   "change": 18.4,
+   "neighbourMedian": 1.45,
+   "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 1342,
+   "t": 44.733,
+   "change": 28.01,
+   "neighbourMedian": 1.45,
+   "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 1344,
+   "t": 44.8,
+   "change": 13.66,
+   "neighbourMedian": 1.44,
+   "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 1410,
+   "t": 47,
+   "change": 9.67,
+   "neighbourMedian": 1.43,
+   "why": "the examiner's hand leaving (S:kneeR -> S:kneeL, 46.1-47.2 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 1412,
+   "t": 47.067,
+   "change": 11.6,
+   "neighbourMedian": 1.42,
+   "why": "the examiner's hand leaving (S:kneeR -> S:kneeL, 46.1-47.2 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 1464,
+   "t": 48.8,
+   "change": 11.6,
+   "neighbourMedian": 1.51,
+   "why": "the examiner's hand leaving (S:kneeL -> S:kneeR@jendR, 48.6-49.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 1466,
+   "t": 48.867,
+   "change": 9.66,
+   "neighbourMedian": 1.51,
+   "why": "the examiner's hand leaving (S:kneeL -> S:kneeR@jendR, 48.6-49.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 1702,
+   "t": 56.733,
+   "change": 12.06,
+   "neighbourMedian": 1.88,
+   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 1704,
+   "t": 56.8,
+   "change": 21.21,
+   "neighbourMedian": 1.88,
+   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 1706,
+   "t": 56.867,
+   "change": 25.26,
+   "neighbourMedian": 1.88,
+   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 1708,
+   "t": 56.933,
+   "change": 11.77,
+   "neighbourMedian": 1.88,
+   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 1718,
+   "t": 57.267,
+   "change": 12.8,
+   "neighbourMedian": 1.45,
+   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 1720,
+   "t": 57.333,
+   "change": 26.31,
+   "neighbourMedian": 1.41,
+   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 1722,
+   "t": 57.4,
+   "change": 13.22,
+   "neighbourMedian": 1.36,
+   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 1946,
+   "t": 64.867,
+   "change": 9.08,
+   "neighbourMedian": 1.43,
+   "why": "the hammer falls and strikes at 64.80 s (a fast stroke, by design)"
+  },
+  {
+   "frame": 2250,
+   "t": 75,
+   "change": 9.8,
+   "neighbourMedian": 1.35,
+   "why": "the sharp push of his foot (ankle clonus L)"
+  },
+  {
+   "frame": 2578,
+   "t": 85.933,
+   "change": 13.46,
+   "neighbourMedian": 1.44,
+   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 2580,
+   "t": 86,
+   "change": 34.08,
+   "neighbourMedian": 1.59,
+   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 2582,
+   "t": 86.067,
+   "change": 41.36,
+   "neighbourMedian": 1.86,
+   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 2584,
+   "t": 86.133,
+   "change": 21.87,
+   "neighbourMedian": 2.48,
+   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 2586,
+   "t": 86.2,
+   "change": 24.15,
+   "neighbourMedian": 3.62,
+   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 2590,
+   "t": 86.333,
+   "change": 18.84,
+   "neighbourMedian": 1.37,
+   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 2592,
+   "t": 86.4,
+   "change": 13.81,
+   "neighbourMedian": 1.36,
+   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 2596,
+   "t": 86.533,
+   "change": 9.61,
+   "neighbourMedian": 1.36,
+   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera"
+  },
+  {
+   "frame": 2612,
+   "t": 87.067,
+   "change": 9.33,
+   "neighbourMedian": 1.37,
+   "why": "the examiner's hand arriving (park -> rel:hoffPinRel:handR, 86.4-87.2 s): a quick slide close to the camera"
+  }
+ ]
+}

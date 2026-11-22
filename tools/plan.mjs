@@ -13,6 +13,7 @@ const CANDS = [
   { dir: 'dorsum', dist: 1.2, arc: 1.5, open: false, two: false }, { dir: 'back', dist: 2.0, arc: 3.0, open: false, two: false },
   { dir: 'back', dist: 0.6, arc: 1.5, open: true, two: false }, { dir: 'up', dist: 0.8, arc: 2.0, open: true, two: true },
   { dir: 'back', dist: 1.2, arc: 1.5, open: true, two: false, low: 0.2 }, { dir: 'back', dist: 1.5, arc: 1.5, open: true, two: false, low: 0.35 },
+  { dir: 'back', dist: 0.8, arc: 0.3, open: true, two: false }, { dir: 'up', dist: 0.6, arc: 0.3, open: true, two: false },
 ];
 const { srv, url } = await serve(), { browser } = await launch();
 const t0 = Date.now();
@@ -39,8 +40,12 @@ try {
           const pf = cache.get(t), mine = meshesOf(W.EX[sg.h].hand.group).concat(W.EX[sg.h].fore.children.filter((m) => m.isMesh)), oh = sg.h === 'L' ? 'R' : 'L';
           const skin = C.minGap(mine, pf, null, 0, 0.06, 3).gap, bed = bedGap(mine.concat(W.EX[sg.h].upper.children.filter((m) => m.isMesh)));
           const of = C.field(meshesOf(W.EX[oh].hand.group).concat(W.EX[oh].fore.children.filter((m) => m.isMesh))), oth = C.minGap(mine, of, null, 0, 0.06, 4).gap;
+          // and the lens: nothing of the moving arm within 25 cm of the camera, inside the picture
+          const cam = W.S.camera; cam.updateMatrixWorld(true); const cp = cam.getWorldPosition(V(0, 0, 0)); let lens = Infinity; const w = V(0, 0, 0);
+          for (const m of mine.concat(W.EX[sg.h].upper.children.filter((x) => x.isMesh))) { const pa = m.geometry.attributes.position; for (let i = 0; i < pa.count; i += 4) { w.fromBufferAttribute(pa, i).applyMatrix4(m.matrixWorld); const nd = w.clone().project(cam); if (nd.z > 1 || Math.abs(nd.x) > 1 || Math.abs(nd.y) > 1) continue; lens = Math.min(lens, w.distanceTo(cp)); } }
+          const pl = Math.max(0, 2.5 - lens);
           const ps = Math.max(0, -(isFinite(skin) ? skin : 0)), pb = Math.max(0, -(isFinite(bed) ? bed : 0)), po = Math.max(0, -(isFinite(oth) ? oth : 0));
-          cost += 10 * ps + 5 * po + pb; worst = Math.max(worst, ps); wb = Math.max(wb, pb); wo = Math.max(wo, po);   // his skin and the other arm count far more than the soft mattress
+          cost += 10 * ps + 5 * po + pb + 0.05 * pl; worst = Math.max(worst, ps); wb = Math.max(wb, pb); wo = Math.max(wo, po);   // his skin and the other arm count far more than the soft mattress
         }
         if (!best || cost < best.cost - 1e-6) best = { ci, cost, worst, wb, wo };
       });

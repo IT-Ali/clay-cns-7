@@ -1,6 +1,8 @@
-{"i":252,"t":8.4,"flags":[{"check":"hammer within 10 mm of him away from a strike","mm":0.28}]}
-{"i":254,"t":8.467,"flags":[{"check":"hammer through his skin","mm":-2.71},{"check":"hammer within 10 mm of him away from a strike","mm":-2.71}]}
-{"i":278,"t":9.267,"flags":[{"check":"examiner through his skin","mm":-3,"part":"examiner L hand"},{"check":"hammer through his skin","mm":-2.99}]}
-{"i":280,"t":9.333,"flags":[{"check":"examiner through his skin","mm":-3,"part":"examiner L hand"},{"check":"hammer through his skin","mm":-3}]}
-{"i":282,"t":9.4,"flags":[{"check":"examiner through his skin","mm":-3,"part":"examiner L hand"},{"check":"hammer through his skin","mm":-2.97}]}
-{"i":284,"t":9.467,"flags":[{"check":"hammer through his skin","mm":-2.92}]}
+{"i":278,"t":9.267,"flags":[{"check":"examiner through his skin","mm":-3,"part":"examiner L hand"}]}
+{"i":280,"t":9.333,"flags":[{"check":"examiner through his skin","mm":-2.99,"part":"examiner L hand"}]}
+{"i":282,"t":9.4,"flags":[{"check":"examiner through his skin","mm":-2.97,"part":"examiner L hand"}]}
+{"i":368,"t":12.267,"flags":[{"check":"examiner through his skin","mm":-3,"part":"examiner R hand"}]}
+{"i":370,"t":12.333,"flags":[{"check":"examiner through his skin","mm":-2.99,"part":"examiner R hand"}]}
+{"i":372,"t":12.4,"flags":[{"check":"examiner through his skin","mm":-2.97,"part":"examiner R hand"}]}
+{"i":596,"t":19.867,"flags":[{"check":"examiner arms through each other","mm":-1.8,"part":"L hand / R forearm"}]}
+{"i":764,"t":25.467,"flags":[{"check":"examiner through his skin","mm":-2.34,"part":"examiner L hand"}]}
