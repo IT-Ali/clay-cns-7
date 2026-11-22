@@ -4,6 +4,10 @@ Branch: `claude/sleepy-babbage-16xe65` (continues `claude/exciting-goldberg-6r9o
 
 ## Where we are: BUILD done (round 3 storyboard approved), WAITING FOR THE USER (stop after the build)
 
+Storyboard (with a Build section: cuts, home check, scan summary): https://claude.ai/artifact/9opJSuaBL7tLuyZ52frfsx
+(version 3). Director zip: cns7-part7-build.zip (the whole render folder without node_modules, frames, out; with the
+storyboard panels and checks).
+
 The user approved round 3 and asked for the build with two small fixes. Done:
 1. Supinator: slight curl (joint by joint, searched) so both TIPS rest on the skin (index 0.77, middle 0.62 mm), the
    two fingers side by side along the radial border 4.9 cm above the wrist (the line moved a little round the forearm,
@@ -20,7 +24,12 @@ Build pieces (same update(t), poses and cameras as the storyboard):
 - Solve additions: biceps hand searched with the fingers round the OUTSIDE of the elbow (never into the backrest
   mattress), its forearm clear of his chest; every strike's swing checked every 0.05 rad and capped where it would
   touch him (swingUp: biceps 0.35 rad).
-- Scan: tools/scan.mjs (3 parts, --merge) -> checks/report.json; remaining flags explained in it / below.
+- Scan: tools/scan.mjs (3 parts in parallel, then --merge, then --strips) -> checks/report.json (each flag with its
+  explanation, the jump list with a reason and a 1/30 s strip each, checks/scan/jump_*.jpg). The explanations live in
+  EXPLAIN in tools/scan.mjs (time window + check). A re-scan of some frames (--from/--to, contiguous) replaces them.
+- Bugs found by the scan and fixed: contacts were measured against hidden meshes (old toes) and toenails (open shells),
+  and toes one pose late (their parent group was not refreshed); the clonus palm had been placed 3 cm off the sole.
+- story_vs_anim.png (tools/storyvsanim.mjs), home-check.json (identical), checks/transitions/cuts.json (allOk).
 - render.mjs: frame count as an output option (the encode failed before), two-pass loudnorm -15 LUFS, s16 stereo,
   true-peak guard per MP4 (re-encodes audio only above -1.0 dBTP), check.json per file; preview default beats 4,8,
   --beats all, --frames for a quick test (tested here on 3 frames: OK).
@@ -98,12 +107,12 @@ caption); legsWide from his left.
 Known open (in the storyboard): knee clonus during the push, thumb 1.7 mm and index 2.6 mm off the moving skin (the
 skin and the hand move 8 mm but not exactly together): lock the hand to the moving skin in the build.
 
-## Next (after the user's round-3 review)
-1. Apply the storyboard feedback.
-2. The in-between travel of the hands (no in-between pose held, nothing upright or through him mid-travel), especially
-   home -> foot at 58.6-59.4 s and the sleeves turning up / down at the cuts.
-3. story_vs_anim.png (beats 2, 4, 6, 8, 11), the transitions scan (checks/transitions/), home-check.json.
-4. Test `npm run preview` in software on 2-3 frames; write the PC folder zip (no node_modules, no frames).
+## Next (after the user's review of the build)
+1. On the PC: `npm run preview` (beats 4 and 8), then `npm start`; check out/<mode>/check.json (true peak, loudness).
+2. Apply the user's feedback. If a pose or key changes: `npm run solve` (if the SOLVE section changed), then
+   `node tools/plan.mjs`, then the scan (3 parts + --merge + --strips), cuts, story_vs_anim, homecheck.
+3. Open points kept and explained in checks/report.json: the biceps thumb squeeze at the reflex peak, the knee-support
+   forearm in the soft mattress (approved pose), a few 1-3 frame grazes on arrivals and the Hoffmann L mirror graze.
 
 ## Dev tools
 - `?only=a,b` re-solves just those sections on top of solved.json:

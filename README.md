@@ -80,4 +80,4 @@ solved once, here, with `npm run solve`, and only loaded on the PC).
 | `checks/transitions/cuts.json` | every hard cut on the 1/15 s pose grid, camera / patient / examiner on the same frame (strips beside it) |
 | `story_vs_anim.png` | the animation frame next to its storyboard panel, beats 2, 3, 4, 5, 8, 10, 11 |
 | `home-check.json` | first frame = last frame = the CNS home shot built as shared/README.md describes |
-| `checks/hammer-clearance.json` | the hammer against his skin every 0.1 s away from the strikes |
+| `checks/hammer-clearance.json` | round 2's hammer check (every 0.1 s); the build's per-frame scan (`checks/report.json`) supersedes it |

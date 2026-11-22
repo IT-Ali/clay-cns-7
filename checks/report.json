@@ -65,9 +65,9 @@
   },
   "hammerAwayFromStrikeMM": null,
   "lensCM": {
-   "v": 19.1,
-   "frame": 2140,
-   "t": 71.333
+   "v": 35.7,
+   "frame": 2580,
+   "t": 86
   },
   "examinerShare": {
    "v": 0.311,
@@ -1733,10 +1733,10 @@
    "explained": "Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames."
   },
   {
-   "frame": 1780,
-   "t": 59.333,
+   "frame": 1782,
+   "t": 59.4,
    "check": "examiner through his skin",
-   "mm": -2.97,
+   "mm": -2.99,
    "part": "examiner L hand",
    "explained": "Ankle jerk: the palm arriving on the sole of the turning foot grazes it (up to 5 mm) for a frame or two."
   },
@@ -2417,7 +2417,7 @@
   {
    "frame": 776,
    "t": 25.867,
-   "change": 13.69,
+   "change": 13.3,
    "neighbourMedian": 1.66,
    "why": "the examiner's hand arriving (park -> S:triR, 25.4-26.6 s): a quick slide close to the camera",
    "strip": "scan/jump_776.jpg"
@@ -2425,7 +2425,7 @@
   {
    "frame": 778,
    "t": 25.933,
-   "change": 11.75,
+   "change": 11.56,
    "neighbourMedian": 1.66,
    "why": "the examiner's hand arriving (park -> S:triR, 25.4-26.6 s): a quick slide close to the camera",
    "strip": "scan/jump_778.jpg"
@@ -2601,7 +2601,7 @@
   {
    "frame": 2250,
    "t": 75,
-   "change": 9.8,
+   "change": 9.31,
    "neighbourMedian": 1.35,
    "why": "the sharp push of his foot (ankle clonus L)",
    "strip": "scan/jump_2250.jpg"
