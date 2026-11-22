@@ -32,7 +32,8 @@ try {
       const frames = []; for (let k = Math.ceil(sg.t0 * 15 + 1e-6); k / 15 < sg.t1 - 1e-6; k++) frames.push(k / 15);
       if (!frames.length) continue;
       let best = null;
-      CANDS.forEach((cd, ci) => {
+      const FIX = window.CNS7_TIMELINE.TFIX && window.CNS7_TIMELINE.TFIX[sg.key];   // set by hand in the style: measured, kept
+      (FIX ? [FIX] : CANDS).forEach((cd, ci) => {
         window.TRANS_OVERRIDE = { [sg.key]: cd }; let cost = 0, worst = 0, wb = 0, wo = 0;
         for (const t of frames) {
           window.CNS7_UPDATE(t);
@@ -49,7 +50,7 @@ try {
         }
         if (!best || cost < best.cost - 1e-6) best = { ci, cost, worst, wb, wo };
       });
-      out[sg.key] = Object.assign({}, CANDS[best.ci], { candidate: best.ci, worstMM: +(best.worst * 100).toFixed(2), mattressMM: +(best.wb * 100).toFixed(2), otherArmMM: +(best.wo * 100).toFixed(2), from: sg.n0, to: sg.n1, t0: sg.t0, t1: sg.t1 });
+      out[sg.key] = Object.assign({}, FIX || CANDS[best.ci], { candidate: FIX ? 'fixed' : best.ci, worstMM: +(best.worst * 100).toFixed(2), mattressMM: +(best.wb * 100).toFixed(2), otherArmMM: +(best.wo * 100).toFixed(2), from: sg.n0, to: sg.n1, t0: sg.t0, t1: sg.t1 });
       cache.clear();
     }
     window.TRANS_OVERRIDE = null;

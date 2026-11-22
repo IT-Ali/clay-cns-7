@@ -45,7 +45,7 @@ npm rebuild ffmpeg-static
 npm run preview
 ```
 
-960x540, 30 fps, 8 samples, captions on, beats 4 and 8 by default, as `out\preview\preview.mp4` (each beat also as
+960x540, 30 fps, 8 samples, captions on, beats 4, 6, 7, 8 and 11 by default, as `out\preview\preview.mp4` (each beat also as
 `beatNN.mp4`), with `out\preview\check.json` (first vs last frame, true peak and loudness of every file, duration) and
 `out\preview\sheet.jpg` (a frame every 2 s). Frames are kept in `out\preview\frames*`: run it again after a stop and it
 carries on. Other beats, or all of them:

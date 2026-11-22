@@ -35,7 +35,7 @@ if (arg('merge')) {
     { from: 44.3, to: 44.95, check: /through his skin|arms through each other/, text: 'Knee support arriving: the forearm slides under his raised knees and grazes the back of a knee (about 3 mm) for a few frames.' },
     { from: 24.6, to: 25.6, check: /through his skin/, text: 'Triceps: the examiner\'s hand arriving at his wrist grazes it (about 2 mm) as it closes round it.' },
     { from: 59.0, to: 60.0, check: /through his skin/, text: 'Ankle jerk: the palm arriving on the sole of the turning foot grazes it (up to 5 mm) for a frame or two.' },
-    { from: 85.8, to: 87.25, check: /through his skin|arms through each other/, text: 'Hoffmann R: the examiner\'s hands arriving under his palm / at his fingertip as his hand rises graze it (2-4 mm) for a frame or two.' },
+    { from: 86.4, to: 87.25, check: /through his skin|arms through each other/, text: 'Hoffmann R: the examiner\'s right hand arriving at his fingertip (the support is already under his palm from the 85.0 s cut) grazes it (2-4 mm) for a frame or two.' },
     { from: 89.1, to: 94.0, check: /arms through each other/, text: 'Hoffmann L (the mirror of the right side): the mirrored pinch hand grazes the supporting forearm by 2.6 mm (the right side is clear; the left hand model is not an exact mirror).' },
     { from: 19.8, to: 20.0, check: /arms through each other/, text: 'Supinator L: just after the strike the hammer hand brushes the other forearm (1.8 mm) as both ride the reflex.' },
     { from: 56.55, to: 57.6, check: /through his skin/, text: 'Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames.' },
@@ -59,8 +59,16 @@ if (arg('merge')) {
     thresholds: { penetrationMM: 1.5, lensCM: 15, examinerShare: 0.35, hammerAwayFromStrikeMM: 10, jump: '> 6x the neighbours median and > 4 (mean 0-255 change)' },
     worst: { examinerToSkinMM: worst('exSkin'), hammerToSkinMM: worst('hamSkin'), examinerToMattressMM: worst('exBed'), hammerToMattressMM: worst('hamBed'), handToHandMM: worst('exEx'), hammerHeadToHandsMM: worst('hamEx'), hammerAwayFromStrikeMM: worst('hamAway'), lensCM: worst('lens'), examinerShare: most('share') },
     flags, jumps };
+  // the transition windows of the review (round r2): the largest picture change outside the planned cuts, the largest sleeve
+  // and examiner share, the closest the examiner comes to his skin and to the mattress
+  rep.windows = [[43.8, 45.0, 'knee support arriving'], [56.4, 57.8, 'knee support leaving'], [85.6, 86.8, 'Hoffmann R set-up'], [89.0, 90.0, 'Hoffmann L set-up']].map(([a, b, name]) => {
+    const fr = frames.filter((f) => f.i / 30 >= a - 1e-6 && f.i / 30 <= b + 1e-6), nc = fr.filter((f) => !cuts.has(f.i) && f.diff != null);
+    const mx = (arr, k) => arr.reduce((m, f) => (f[k] != null && (m == null || f[k] > m.v) ? { v: f[k], t: +(f.i / 30).toFixed(3) } : m), null), mn = (arr, k) => arr.reduce((m, f) => (f[k] != null && (m == null || f[k] < m.v) ? { v: f[k], t: +(f.i / 30).toFixed(3) } : m), null);
+    const ch = mx(nc, 'diff');
+    return { window: [a, b], name, frames: fr.length, maxChange: ch, jumpsOver12: nc.filter((f) => f.diff > 12).length, maxSleeveShare: mx(fr, 'sleeveShare'), maxExaminerShare: mx(fr, 'share'), minExaminerToSkinMM: mn(fr, 'exSkin'), minExaminerToMattressMM: mn(fr, 'exBed'), minLensCM: mn(fr, 'lens'), cutsInside: fr.filter((f) => cuts.has(f.i)).map((f) => +(f.i / 30).toFixed(3)) };
+  });
   fs.writeFileSync(path.join(ROOT, 'checks', 'report.json'), JSON.stringify(rep, null, 1));
-  console.log(JSON.stringify({ frames: rep.frames, flags: flags.length, jumps: jumps.length, worst: rep.worst }, null, 1));
+  console.log(JSON.stringify({ frames: rep.frames, flags: flags.length, unexplained: rep.unexplainedFlags, jumps: jumps.length, worst: rep.worst, windows: rep.windows }, null, 1));
   process.exit(0);
 }
 
@@ -114,8 +122,9 @@ try {
         const pa = m.geometry.attributes.position; for (let k = 0; k < pa.count; k += 2) { w.fromBufferAttribute(pa, k).applyMatrix4(m.matrixWorld); if (w.clone().sub(cp).dot(fwd) < 0) continue; const nd = w.clone().project(cam); if (Math.abs(nd.x) > 1 || Math.abs(nd.y) > 1) continue; const d = w.distanceTo(cp); if (d < lens) lens = d; } });   // in the picture only (in front of the lens, inside the frame)
       out.lens = isFinite(lens) ? +(lens * 10).toFixed(1) : null; if (lens < 1.5) out.flags.push({ check: 'within 15 cm of the lens', cm: out.lens });
       // the examiner's share of the frame: his triangles rasterised on a 96x54 grid (ignoring what hides them: an upper bound)
-      const GW = 96, GH = 54, grid = new Uint8Array(GW * GH), vp = V(0, 0, 0), M = new THREE.Matrix4();
-      for (const h of ['L', 'R']) for (const m of meshesOf(W.EX[h].group)) {
+      const GW = 96, GH = 54, M = new THREE.Matrix4();
+      const cover = (list) => { const grid = new Uint8Array(GW * GH);
+      for (const m of list) {
         M.multiplyMatrices(cam.projectionMatrix, cam.matrixWorldInverse).multiply(m.matrixWorld);
         const pa = m.geometry.attributes.position, idx = m.geometry.index, n = idx ? idx.count : pa.count, sx = new Float32Array(3), sy = new Float32Array(3); const e = M.elements;
         for (let k = 0; k < n; k += 3) {
@@ -130,7 +139,10 @@ try {
             if ((w0 >= 0 && w1 >= 0 && w2 >= 0) || (w0 <= 0 && w1 <= 0 && w2 <= 0)) grid[yy * GW + xx] = 1; }
         }
       }
-      let cov = 0; for (let k = 0; k < grid.length; k++) cov += grid[k]; out.share = +(cov / grid.length).toFixed(3); if (out.share > 0.35) out.flags.push({ check: 'examiner > 35 % of the frame', share: out.share });
+      let cov = 0; for (let k = 0; k < grid.length; k++) cov += grid[k]; return cov / grid.length; };
+      out.share = +cover(meshesOf(W.EX.L.group).concat(meshesOf(W.EX.R.group))).toFixed(3);
+      // the sleeves alone (forearm + upper sleeve, both arms): the dark cloth near the lens
+      out.sleeveShare = +cover(['L', 'R'].flatMap((h) => (W.EX[h].group.visible ? W.EX[h].fore.children.concat(W.EX[h].upper.children).filter((m) => m.isMesh && window.SHOWN(m)) : []))).toFixed(3); if (out.share > 0.35) out.flags.push({ check: 'examiner > 35 % of the frame', share: out.share });
       if (!pose) return out;
       // geometry (the pose of this frame)
       const pf = C.field(patient()), mm = (d) => (isFinite(d) ? +(d * 100).toFixed(2) : null);

@@ -1,5 +1,5 @@
 // tools/render.mjs: the two render commands for the PC (Windows, Chrome with the GPU).
-//   npm run preview  [-- --beats 2,6 | --beats all]   960x540, 30 fps, 8 samples, captions on (default: beats 4 and 8):
+//   npm run preview  [-- --beats 2,6 | --beats all]   960x540, 30 fps, 8 samples, captions on (default: beats 4, 6, 7, 8 and 11):
 //                                       out/preview/preview.mp4 (+ check.json, sheet.jpg); frames in out/preview/frames*
 //   npm run preview -- --frames 810,811,812   only those frames (a quick test), encoded as preview.mp4
 //   npm start                           1920x1080, 30 fps, 64 samples (SET.RENDER): the full part and every beat, both
@@ -48,7 +48,7 @@ try {
   const D = await page.evaluate(() => window.DURATION), BEATS = await page.evaluate(() => window.STYLE.content.BEATS);
   const N = Math.round(D * FPS);
   // which frames: all, or only the frames of the chosen beats (preview --beats 2,6)
-  const beatsArg = arg('beats', FINAL ? 'all' : '4,8'), chosen = String(beatsArg) === 'all' ? null : String(beatsArg).split(',').map(Number);
+  const beatsArg = arg('beats', FINAL ? 'all' : '4,6,7,8,11'), chosen = String(beatsArg) === 'all' ? null : String(beatsArg).split(',').map(Number);
   const framesArg = arg('frames', null), only = framesArg ? String(framesArg).split(',').map(Number) : null;
   const want = []; for (let i = 0; i < N; i++) { const t = i / FPS; if (only ? only.includes(i) : (!chosen || BEATS.some((b) => chosen.includes(b.n) && t >= b.t0 && t < b.t1))) want.push(i); }
   // the page renders the clean frame, then draws the caption over it (the stage's own overlay pass, done in 2D)
