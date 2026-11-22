@@ -7,17 +7,18 @@
 // Frames are kept (out/<mode>/frames...), so running the same command again carries on where it stopped.
 // solved.json (every contact pose, made once by npm run solve) is LOADED, never re-solved; the command stops if it is
 // missing or out of date. Paths come from fileURLToPath(import.meta.url) (works on Windows).
-import fs from 'node:fs'; import path from 'node:path'; import { spawnSync } from 'node:child_process';
+import fs from 'node:fs'; import path from 'node:path'; import { spawnSync } from 'node:child_process'; import { fileURLToPath } from 'node:url';
 import { serve, launch, openPage, ROOT, arg, ffmpegPath } from './common.mjs';
 import { solveInputs } from './solve.mjs';
 
 const FINAL = !!arg('final'), MODE = FINAL ? 'final' : 'preview';
 const W = FINAL ? 1920 : 960, H = FINAL ? 1080 : 540, FPS = 30, SAMPLES = +arg('samples', FINAL ? 64 : 8);
-const OUT = path.join(ROOT, 'out', MODE), FR = path.join(OUT, 'frames'), FRC = path.join(OUT, 'frames_captions');
+const HERE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');   // this folder, wherever it is unpacked (Windows paths too)
+const OUT = path.join(HERE, 'out', MODE), FR = path.join(OUT, 'frames'), FRC = path.join(OUT, 'frames_captions');
 fs.mkdirSync(FR, { recursive: true }); fs.mkdirSync(FRC, { recursive: true });
 
 // ---- solved.json must exist and match the solver's inputs
-const SJ = path.join(ROOT, 'solved.json');
+const SJ = path.join(HERE, 'solved.json');
 if (!fs.existsSync(SJ)) { console.error('STOP: solved.json is missing. It is made once on the solving machine (npm run solve) and shipped with this folder.'); process.exit(1); }
 const solved = JSON.parse(fs.readFileSync(SJ, 'utf8'));
 if (solved.inputs !== solveInputs()) { console.error('STOP: solved.json is out of date (src/contact.js, the SOLVE section of src/cns7-style.js or shared/ changed since it was made). Re-run npm run solve on the solving machine.'); process.exit(1); }

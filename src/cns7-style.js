@@ -439,7 +439,7 @@
           // The hand flat on the front of his upper arm just above the elbow, turned on the skin by psi from "fingers up his
           // arm" so that the examiner's forearm can rise from the wrist toward him with a natural wrist (bent back at most
           // 50 degrees, never sideways); the hand slides up the arm until the thumb's base is at 0.6 of its reach from the tendon.
-          let D = V(0.55, 0.65, 0.5).normalize(); const torF = CONTACT.field(torsoMeshes()), outside = V(0, -0.3, 1).normalize();   // outside / back of his right elbow                       // the examiner's forearm: up and toward his feet (he stands at the level of his hip)
+          let D = V(0.55, 0.65, 0.5).normalize(); const torF = CONTACT.field(torsoMeshes()), outside = V(0, 0.15, 1).normalize();   // the outside of his right elbow (its back lies on the backrest mattress)                       // the examiner's forearm: up and toward his feet (he stands at the level of his hip)
           const acr = V(0, 0, 0).crossVectors(n, b.u).normalize();
           const placeAt = (back, psi, ac = 0) => {
             const c = T.clone().addScaledVector(b.u, back).addScaledVector(acr, ac), hit = new THREE.Raycaster(c.clone().addScaledVector(n, 1.2), n.clone().negate()).intersectObject(rcm, false)[0];
@@ -458,7 +458,8 @@
             const th = CONTACT.thumbOn(hand, T, n, fld, 0.0009), sink = Math.min(CONTACT.minGap(handMeshes(hand), fld, null, 0, 0.15, 3).gap, CONTACT.minGap(handMeshes(hand), torF, null, 0, 0.15, 3).gap);
             const up = Math.max(0, 0.35 - e0.back.y);                      // the forearm must rise (never down toward the bed or across his body)
             const fdir = V(1, 0, 0).applyQuaternion(e0.quat), wrap = Math.max(0, 0.6 - fdir.dot(outside));   // the fingers point round the outside of the elbow
-            const sc = Math.abs((isFinite(th.pad) ? th.pad : 0.03) - 0.0006) + 4 * Math.max(0, -sink) + 0.004 * Math.max(0, e0.ang - 0.87) + 0.05 * up + 0.003 * wrap + 0.0003 * Math.abs(psi);
+            const mat = bedGap(handMeshes(hand)).gap;                         // nothing of the hand in the mattress (the fingers do not go behind his arm)
+            const sc = Math.abs((isFinite(th.pad) ? th.pad : 0.03) - 0.0006) + 4 * Math.max(0, -sink) + 4 * Math.max(0, 0.001 - mat) + 0.004 * Math.max(0, e0.ang - 0.87) + 0.05 * up + 0.003 * wrap + 0.0003 * Math.abs(psi);
             log('biceps hand turn', psi, 'across', ac, 'thumb pad', mm(th.pad), 'lowest', mm(sink), 'mm, wrist to the forearm line', (e0.ang * 180 / Math.PI).toFixed(0), 'deg');
             if (!bestB || sc < bestB.sc) bestB = { sc, m: (lo + hi) / 2, psi, ac, r, D: D.clone() };
           }
@@ -466,10 +467,10 @@
           ex.pose = CONTACT.curlToTouch(hand, ['index', 'middle', 'ring', 'little'], fld, FRONT_POSE, { gap: 0.0006, from: -0.2, to: 1.6 }); applyEx('L', ex);   // each finger curls round his elbow onto the skin (together: no spread)
           const uncurl = (hd, side, fl, fingers) => { const pr = CONTACT.handParts(hd); for (const k of fingers) for (let it = 0; it < 40; it++) { const g = CONTACT.minGap(pr[k], fl, null, 0, 0.15).gap; if (!isFinite(g) || g >= 0.0001) break; ex.pose.curl[k] = ex.pose.curl[k].map((v, j) => v - 0.02 * [0.55, 1, 0.7][j]); applyEx(side, ex); } };
           uncurl(hand, 'L', fld, ['index', 'middle', 'ring', 'little']);
-          {   // and none of them goes into the mattress (his elbow rests on it): a finger below the mattress surface un-curls
+          {   // and none of them goes into the mattress: a finger below the mattress surface un-curls
             const pr = CONTACT.handParts(hand);
-            for (const k of ['index', 'middle', 'ring', 'little']) for (let it = 0; it < 60; it++) { if (bedGap(pr[k]).gap >= 0.0005) break; ex.pose.curl[k] = ex.pose.curl[k].map((v, j) => v - 0.02 * [0.55, 1, 0.7][j]); applyEx('L', ex); }
-            log('biceps fingers above the mattress (mm):', JSON.stringify(Object.fromEntries(['index', 'middle', 'ring', 'little'].map((k) => [k, mm(bedGap(pr[k]).gap)]))));
+            for (const k of ['index', 'middle', 'ring', 'little']) for (let it = 0; it < 40; it++) { if (bedGap(pr[k]).gap >= 0.0005) break; ex.pose.curl[k] = ex.pose.curl[k].map((v, j) => v - 0.02 * [0.55, 1, 0.7][j]); applyEx('L', ex); }
+            log('biceps hand above the mattress (mm):', JSON.stringify(Object.fromEntries(['palm', 'thumb', 'index', 'middle', 'ring', 'little'].map((k) => [k, mm(bedGap(pr[k]).gap)]))));
           }
           const th = CONTACT.thumbOn(hand, T, n, fld, 0.0009); ex.thumbQ = th.tq; applyEx('L', ex);
           if (CONTACT.minGap(handMeshes(hand), fld, null, 0, 0.15).gap < 0) liftClear('L', ex, n, fld, 0.0003);

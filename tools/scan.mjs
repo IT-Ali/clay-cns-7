@@ -85,10 +85,14 @@ try {
       // geometry (the pose of this frame)
       const pf = C.field(patient()), mm = (d) => (isFinite(d) ? +(d * 100).toFixed(2) : null);
       const exM = { L: meshesOf(W.EX.L.group), R: meshesOf(W.EX.R.group) }, ham = W.hammer.group.visible ? meshesOf(W.hammer.group) : [], head = W.hammer.group.visible ? W.hammer.head.children.filter((m) => m.isMesh) : [];
-      const exAll = exM.L.concat(exM.R);
-      out.exSkin = mm(C.minGap(exAll, pf, null, 0, 0.03, 2).gap); if (out.exSkin != null && out.exSkin < -1.5) out.flags.push({ check: 'examiner through his skin', mm: out.exSkin });
-      out.exBed = mm(bedGap(exAll)); if (out.exBed != null && out.exBed < -1.5) out.flags.push({ check: 'examiner through the mattress', mm: out.exBed });
-      { const fR = C.field(exM.R.filter((m) => m.geometry.attributes.position.count > 60)); out.exEx = mm(C.minGap(exM.L, fR, null, 0, 0.03, 3).gap); if (out.exEx != null && out.exEx < -1.5) out.flags.push({ check: 'examiner hands through each other', mm: out.exEx }); }
+      const exAll = exM.L.concat(exM.R), partsOf = (h) => ({ hand: meshesOf(W.EX[h].hand.group), forearm: W.EX[h].fore.children.filter((m) => m.isMesh), sleeve: W.EX[h].upper.children.filter((m) => m.isMesh) });
+      let ws = { g: Infinity }, wb = { g: Infinity };
+      for (const h of ['L', 'R']) { if (!W.EX[h].group.visible) continue; for (const [pn, ms] of Object.entries(partsOf(h))) { const g = C.minGap(ms, pf, null, 0, 0.03, 2).gap; if (g < ws.g) ws = { g, who: `examiner ${h} ${pn}` }; const b = bedGap(ms); if (b < wb.g) wb = { g: b, who: `examiner ${h} ${pn}` }; } }
+      out.exSkin = mm(ws.g); if (out.exSkin != null && out.exSkin < -1.5) out.flags.push({ check: 'examiner through his skin', mm: out.exSkin, part: ws.who });
+      out.exBed = mm(wb.g); if (out.exBed != null && out.exBed < -1.5) out.flags.push({ check: 'examiner through the mattress', mm: out.exBed, part: wb.who });
+      { let we = { g: Infinity }; const pR = partsOf('R'), pL = partsOf('L');
+        for (const [nr, mr] of Object.entries(pR)) { const fR = C.field(mr.filter((m) => m.geometry.attributes.position.count > 60)); for (const [nl, ml] of Object.entries(pL)) { const g = C.minGap(ml, fR, null, 0, 0.03, 3).gap; if (g < we.g) we = { g, who: `L ${nl} / R ${nr}` }; } }
+        out.exEx = mm(we.g); if (out.exEx != null && out.exEx < -1.5) out.flags.push({ check: 'examiner arms through each other', mm: out.exEx, part: we.who }); }
       if (ham.length) {
         out.hamSkin = mm(C.minGap(ham, pf, null, 0, 0.03, 2).gap); if (out.hamSkin != null && out.hamSkin < -1.5) out.flags.push({ check: 'hammer through his skin', mm: out.hamSkin });
         out.hamBed = mm(bedGap(ham, 2)); if (out.hamBed != null && out.hamBed < -1.5) out.flags.push({ check: 'hammer through the mattress', mm: out.hamBed });
