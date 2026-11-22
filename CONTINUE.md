@@ -2,11 +2,37 @@
 
 Branch: `claude/sleepy-babbage-16xe65` (continues `claude/exciting-goldberg-6r9o3q`). Read this first in a new session.
 
-## Where we are: BUILD done (round 3 storyboard approved), WAITING FOR THE USER (stop after the build)
+## Where we are: BUILD r2 done (transitions only), WAITING FOR THE USER (stop after r2)
+
+The build was reviewed "nearly approved" (supinator tips, triceps panel, cuts, story_vs_anim, home check, scan: good).
+ONE fix round, transitions only (no solve change, no pose change, no storyboard). Done:
+1. Hoffmann R (85.8-86.6 s, the support swung in from the camera side): now a HARD CUT at 85.0 s (on the grid, the
+   existing camera cut into the Hoffmann shot) with his arm already in hoffR and the examiner's left hand already under
+   his palm (keys armR [85.0 hoffR cut], exL [85.0 rel:hoffSupRel:handR cut]): the same as the left side, which was
+   already set up at its 89.2 s cut. Window 85.6-86.8: largest change 1.6, sleeves <= 5.6 % of the frame; 89.0-90.0:
+   1.6, sleeves <= 8.2 %.
+2. Knee support arriving (43.9-44.9 s; before: over his thighs, then under them in one pose step): the forearm now
+   travels low along the near side and slides IN along its own long axis (85 % of its slope) under the raised knees,
+   0.6 s, from 44.3 s (the knees are up by 44.4), fingers straight and together, no arc. Its far end rides on the mattress
+   (lift) and its elbow end is tilted up early in the slide (pivot), so it does not plough into the mattress; the hand
+   stays in the gap the forearm will fill. Largest change 10.8, closest to his skin -1.4 mm (under the 1.5 mm flag).
+3. Knee support leaving (56.6-57.6 s; before: swung diagonally across the lens): slides OUT along its own axis, 0.67 s,
+   then a short low move to the bed edge; its elbow end turns headward (pivot yaw) to clear the hammer hand waiting at
+   the bed edge (it went 8 mm into that forearm). Largest change 8.8, skin -1.4 mm, nothing within 71 cm of the lens.
+   Both knee slides: the soft mattress gives under the elbow end up to 46-48 mm for 2-3 pose frames (explained).
+How: TFIX in src/cns7-style.js (moves set by hand; tools/plan.mjs measures and keeps them, candidate 'fixed'); new
+exMove options: dir 'axisFlat' / 'tilt' (+ tilt), tIn / tOut, together, lift [h, part], pivot [amount, f0, f1, yaw],
+soft (unused). checks/report.json: 2911 frames, 0 unexplained, 275 explained, 23 jumps (was 39), each with a strip;
+new per frame: sleeveShare; new section windows (the four review windows: largest change, jumps over 12 = 0 in all,
+sleeve / examiner share, skin, mattress, lens). 1/30 s strips of the four windows: checks/transitions/window_*.jpg
+(tools/windows.mjs). cuts.json allOk (20), home-check identical, story_vs_anim remade (unchanged panels).
+Preview default is now beats 4, 6, 7, 8, 11. Director zip: cns7-part7-build-r2.zip. Note: scan --to is exclusive
+(parts 0-800, 800-1850, 1850-2911).
+
+### Build notes (round 3 approved; kept for reference)
 
 Storyboard (with a Build section: cuts, home check, scan summary): https://claude.ai/artifact/9opJSuaBL7tLuyZ52frfsx
-(version 3). Director zip: cns7-part7-build.zip (the whole render folder without node_modules, frames, out; with the
-storyboard panels and checks).
+(version 3; not re-published in r2: no storyboard change). Director zip of the first build: cns7-part7-build.zip.
 
 The user approved round 3 and asked for the build with two small fixes. Done:
 1. Supinator: slight curl (joint by joint, searched) so both TIPS rest on the skin (index 0.77, middle 0.62 mm), the
@@ -31,7 +57,7 @@ Build pieces (same update(t), poses and cameras as the storyboard):
   and toes one pose late (their parent group was not refreshed); the clonus palm had been placed 3 cm off the sole.
 - story_vs_anim.png (tools/storyvsanim.mjs), home-check.json (identical), checks/transitions/cuts.json (allOk).
 - render.mjs: frame count as an output option (the encode failed before), two-pass loudnorm -15 LUFS, s16 stereo,
-  true-peak guard per MP4 (re-encodes audio only above -1.0 dBTP), check.json per file; preview default beats 4,8,
+  true-peak guard per MP4 (re-encodes audio only above -1.0 dBTP), check.json per file; preview default beats 4,8 (r2: 4,6,7,8,11),
   --beats all, --frames for a quick test (tested here on 3 frames: OK).
 
 ### Round 3 notes (kept for reference)
@@ -108,11 +134,11 @@ Known open (in the storyboard): knee clonus during the push, thumb 1.7 mm and in
 skin and the hand move 8 mm but not exactly together): lock the hand to the moving skin in the build.
 
 ## Next (after the user's review of the build)
-1. On the PC: `npm run preview` (beats 4 and 8), then `npm start`; check out/<mode>/check.json (true peak, loudness).
+1. On the PC: `npm run preview` (beats 4, 6, 7, 8, 11), then `npm start`; check out/<mode>/check.json (true peak, loudness).
 2. Apply the user's feedback. If a pose or key changes: `npm run solve` (if the SOLVE section changed), then
    `node tools/plan.mjs`, then the scan (3 parts + --merge + --strips), cuts, story_vs_anim, homecheck.
 3. Open points kept and explained in checks/report.json: the biceps thumb squeeze at the reflex peak, the knee-support
-   forearm in the soft mattress (approved pose), a few 1-3 frame grazes on arrivals and the Hoffmann L mirror graze.
+   forearm in the soft mattress (approved pose; up to 46-48 mm while it slides in / out), a few 1-3 frame grazes on arrivals and the Hoffmann L mirror graze.
 
 ## Dev tools
 - `?only=a,b` re-solves just those sections on top of solved.json:

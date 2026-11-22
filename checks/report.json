@@ -1,7 +1,7 @@
 {
  "frames": 2911,
  "unexplainedFlags": 0,
- "explainedFlags": 286,
+ "explainedFlags": 275,
  "poseFramesChecked": 1456,
  "plannedCutFrames": [
   324,
@@ -44,9 +44,9 @@
    "t": 9.4
   },
   "examinerToMattressMM": {
-   "v": -22.9,
-   "frame": 1348,
-   "t": 44.933
+   "v": -48.34,
+   "frame": 1706,
+   "t": 56.867
   },
   "hammerToMattressMM": {
    "v": 47.85,
@@ -65,14 +65,14 @@
   },
   "hammerAwayFromStrikeMM": null,
   "lensCM": {
-   "v": 35.7,
-   "frame": 2580,
-   "t": 86
+   "v": 46.5,
+   "frame": 2372,
+   "t": 79.067
   },
   "examinerShare": {
-   "v": 0.311,
-   "frame": 2580,
-   "t": 86
+   "v": 0.243,
+   "frame": 1412,
+   "t": 47.067
   }
  },
  "flags": [
@@ -165,84 +165,44 @@
    "explained": "Reinforced biceps reflex: the same squeeze of the examiner's thumb pad."
   },
   {
-   "frame": 1332,
-   "t": 44.4,
-   "check": "examiner through his skin",
-   "mm": -2.4,
-   "part": "examiner L forearm",
-   "explained": "Knee support arriving: the forearm slides under his raised knees and grazes the back of a knee (about 3 mm) for a few frames."
-  },
-  {
-   "frame": 1334,
-   "t": 44.467,
-   "check": "examiner through his skin",
-   "mm": -2.98,
-   "part": "examiner L forearm",
-   "explained": "Knee support arriving: the forearm slides under his raised knees and grazes the back of a knee (about 3 mm) for a few frames."
-  },
-  {
    "frame": 1336,
    "t": 44.533,
-   "check": "examiner through his skin",
-   "mm": -2.91,
-   "part": "examiner L forearm",
-   "explained": "Knee support arriving: the forearm slides under his raised knees and grazes the back of a knee (about 3 mm) for a few frames."
-  },
-  {
-   "frame": 1338,
-   "t": 44.6,
-   "check": "examiner through his skin",
-   "mm": -2.38,
-   "part": "examiner L forearm",
-   "explained": "Knee support arriving: the forearm slides under his raised knees and grazes the back of a knee (about 3 mm) for a few frames."
+   "check": "examiner through the mattress",
+   "mm": -7.43,
+   "part": "examiner L hand",
+   "explained": "Knee support arriving: the forearm slides in along its own axis, low, under his raised knees; the soft mattress gives under its elbow end (up to about 5 cm for 2-3 pose frames) before it settles at the approved 23 mm."
   },
   {
    "frame": 1340,
    "t": 44.667,
-   "check": "examiner through his skin",
-   "mm": -2.99,
-   "part": "examiner L sleeve",
-   "explained": "Knee support arriving: the forearm slides under his raised knees and grazes the back of a knee (about 3 mm) for a few frames."
+   "check": "examiner through the mattress",
+   "mm": -46.28,
+   "part": "examiner L forearm",
+   "explained": "Knee support arriving: the forearm slides in along its own axis, low, under his raised knees; the soft mattress gives under its elbow end (up to about 5 cm for 2-3 pose frames) before it settles at the approved 23 mm."
   },
   {
    "frame": 1342,
    "t": 44.733,
-   "check": "examiner through his skin",
-   "mm": -2.94,
-   "part": "examiner L hand",
-   "explained": "Knee support arriving: the forearm slides under his raised knees and grazes the back of a knee (about 3 mm) for a few frames."
-  },
-  {
-   "frame": 1344,
-   "t": 44.8,
-   "check": "examiner through his skin",
-   "mm": -2.84,
+   "check": "examiner through the mattress",
+   "mm": -31.42,
    "part": "examiner L forearm",
-   "explained": "Knee support arriving: the forearm slides under his raised knees and grazes the back of a knee (about 3 mm) for a few frames."
+   "explained": "Knee support arriving: the forearm slides in along its own axis, low, under his raised knees; the soft mattress gives under its elbow end (up to about 5 cm for 2-3 pose frames) before it settles at the approved 23 mm."
   },
   {
    "frame": 1344,
    "t": 44.8,
    "check": "examiner through the mattress",
-   "mm": -10.4,
+   "mm": -24.74,
    "part": "examiner L forearm",
-   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
-  },
-  {
-   "frame": 1346,
-   "t": 44.867,
-   "check": "examiner through his skin",
-   "mm": -1.83,
-   "part": "examiner L sleeve",
-   "explained": "Knee support arriving: the forearm slides under his raised knees and grazes the back of a knee (about 3 mm) for a few frames."
+   "explained": "Knee support arriving: the forearm slides in along its own axis, low, under his raised knees; the soft mattress gives under its elbow end (up to about 5 cm for 2-3 pose frames) before it settles at the approved 23 mm."
   },
   {
    "frame": 1346,
    "t": 44.867,
    "check": "examiner through the mattress",
-   "mm": -22.43,
+   "mm": -22.97,
    "part": "examiner L forearm",
-   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+   "explained": "Knee support arriving: the forearm slides in along its own axis, low, under his raised knees; the soft mattress gives under its elbow end (up to about 5 cm for 2-3 pose frames) before it settles at the approved 23 mm."
   },
   {
    "frame": 1348,
@@ -1655,82 +1615,42 @@
   {
    "frame": 1700,
    "t": 56.667,
-   "check": "examiner through his skin",
-   "mm": -2.84,
-   "part": "examiner L sleeve",
-   "explained": "Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames."
-  },
-  {
-   "frame": 1700,
-   "t": 56.667,
    "check": "examiner through the mattress",
-   "mm": -19.19,
+   "mm": -23.3,
    "part": "examiner L forearm",
-   "explained": "Knee support (approved pose since round 1): the elbow end of the examiner's forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees)."
+   "explained": "Knee support leaving: the forearm slides out along its own axis, low, under his raised knees; the soft mattress gives under its elbow end (up to about 5 cm for 2-3 pose frames) before it leaves the bed edge."
   },
   {
    "frame": 1702,
    "t": 56.733,
-   "check": "examiner through his skin",
-   "mm": -2.83,
+   "check": "examiner through the mattress",
+   "mm": -26.08,
    "part": "examiner L forearm",
-   "explained": "Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames."
+   "explained": "Knee support leaving: the forearm slides out along its own axis, low, under his raised knees; the soft mattress gives under its elbow end (up to about 5 cm for 2-3 pose frames) before it leaves the bed edge."
   },
   {
    "frame": 1704,
    "t": 56.8,
-   "check": "examiner through his skin",
-   "mm": -2.86,
+   "check": "examiner through the mattress",
+   "mm": -33.63,
    "part": "examiner L forearm",
-   "explained": "Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames."
+   "explained": "Knee support leaving: the forearm slides out along its own axis, low, under his raised knees; the soft mattress gives under its elbow end (up to about 5 cm for 2-3 pose frames) before it leaves the bed edge."
   },
   {
    "frame": 1706,
    "t": 56.867,
-   "check": "examiner through his skin",
-   "mm": -2.98,
+   "check": "examiner through the mattress",
+   "mm": -48.34,
    "part": "examiner L forearm",
-   "explained": "Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames."
-  },
-  {
-   "frame": 1708,
-   "t": 56.933,
-   "check": "examiner through his skin",
-   "mm": -2.97,
-   "part": "examiner L forearm",
-   "explained": "Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames."
+   "explained": "Knee support leaving: the forearm slides out along its own axis, low, under his raised knees; the soft mattress gives under its elbow end (up to about 5 cm for 2-3 pose frames) before it leaves the bed edge."
   },
   {
    "frame": 1710,
    "t": 57,
-   "check": "examiner through his skin",
-   "mm": -3,
-   "part": "examiner L forearm",
-   "explained": "Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames."
-  },
-  {
-   "frame": 1712,
-   "t": 57.067,
-   "check": "examiner through his skin",
-   "mm": -1.97,
-   "part": "examiner L forearm",
-   "explained": "Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames."
-  },
-  {
-   "frame": 1714,
-   "t": 57.133,
-   "check": "examiner through his skin",
-   "mm": -2.62,
-   "part": "examiner L sleeve",
-   "explained": "Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames."
-  },
-  {
-   "frame": 1722,
-   "t": 57.4,
-   "check": "examiner through his skin",
-   "mm": -3,
+   "check": "examiner through the mattress",
+   "mm": -7.83,
    "part": "examiner L hand",
-   "explained": "Knee support leaving: the forearm lifts out from under his knees and grazes the backs of the knees (up to 3 mm) for a few frames."
+   "explained": "Knee support leaving: the forearm slides out along its own axis, low, under his raised knees; the soft mattress gives under its elbow end (up to about 5 cm for 2-3 pose frames) before it leaves the bed edge."
   },
   {
    "frame": 1782,
@@ -1749,20 +1669,12 @@
    "explained": "Ankle jerk: as the examiner turns the leg out, the palm on his sole brushes his other shin (3 mm) for a frame."
   },
   {
-   "frame": 2590,
-   "t": 86.333,
-   "check": "examiner through his skin",
-   "mm": -2.99,
-   "part": "examiner L hand",
-   "explained": "Hoffmann R: the examiner's hands arriving under his palm / at his fingertip as his hand rises graze it (2-4 mm) for a frame or two."
-  },
-  {
    "frame": 2612,
    "t": 87.067,
    "check": "examiner through his skin",
    "mm": -2.08,
    "part": "examiner R hand",
-   "explained": "Hoffmann R: the examiner's hands arriving under his palm / at his fingertip as his hand rises graze it (2-4 mm) for a frame or two."
+   "explained": "Hoffmann R: the examiner's right hand arriving at his fingertip (the support is already under his palm from the 85.0 s cut) grazes it (2-4 mm) for a frame or two."
   },
   {
    "frame": 2614,
@@ -1770,7 +1682,7 @@
    "check": "examiner through his skin",
    "mm": -2.35,
    "part": "examiner R hand",
-   "explained": "Hoffmann R: the examiner's hands arriving under his palm / at his fingertip as his hand rises graze it (2-4 mm) for a frame or two."
+   "explained": "Hoffmann R: the examiner's right hand arriving at his fingertip (the support is already under his palm from the 85.0 s cut) grazes it (2-4 mm) for a frame or two."
   },
   {
    "frame": 2630,
@@ -2463,25 +2375,25 @@
    "strip": "scan/jump_1200.jpg"
   },
   {
-   "frame": 1326,
-   "t": 44.2,
-   "change": 19.66,
-   "neighbourMedian": 2.98,
+   "frame": 1318,
+   "t": 43.933,
+   "change": 10.59,
+   "neighbourMedian": 1.62,
    "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera",
-   "strip": "scan/jump_1326.jpg"
+   "strip": "scan/jump_1318.jpg"
   },
   {
-   "frame": 1330,
-   "t": 44.333,
-   "change": 20.12,
-   "neighbourMedian": 2.98,
+   "frame": 1338,
+   "t": 44.6,
+   "change": 10.41,
+   "neighbourMedian": 1.59,
    "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera",
-   "strip": "scan/jump_1330.jpg"
+   "strip": "scan/jump_1338.jpg"
   },
   {
    "frame": 1340,
    "t": 44.667,
-   "change": 18.4,
+   "change": 9.04,
    "neighbourMedian": 1.45,
    "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera",
    "strip": "scan/jump_1340.jpg"
@@ -2489,18 +2401,10 @@
   {
    "frame": 1342,
    "t": 44.733,
-   "change": 28.01,
+   "change": 9.78,
    "neighbourMedian": 1.45,
    "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera",
    "strip": "scan/jump_1342.jpg"
-  },
-  {
-   "frame": 1344,
-   "t": 44.8,
-   "change": 13.66,
-   "neighbourMedian": 1.44,
-   "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera",
-   "strip": "scan/jump_1344.jpg"
   },
   {
    "frame": 1410,
@@ -2535,62 +2439,6 @@
    "strip": "scan/jump_1466.jpg"
   },
   {
-   "frame": 1702,
-   "t": 56.733,
-   "change": 12.06,
-   "neighbourMedian": 1.88,
-   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera",
-   "strip": "scan/jump_1702.jpg"
-  },
-  {
-   "frame": 1704,
-   "t": 56.8,
-   "change": 21.21,
-   "neighbourMedian": 1.88,
-   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera",
-   "strip": "scan/jump_1704.jpg"
-  },
-  {
-   "frame": 1706,
-   "t": 56.867,
-   "change": 25.26,
-   "neighbourMedian": 1.88,
-   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera",
-   "strip": "scan/jump_1706.jpg"
-  },
-  {
-   "frame": 1708,
-   "t": 56.933,
-   "change": 11.77,
-   "neighbourMedian": 1.88,
-   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera",
-   "strip": "scan/jump_1708.jpg"
-  },
-  {
-   "frame": 1718,
-   "t": 57.267,
-   "change": 12.8,
-   "neighbourMedian": 1.45,
-   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera",
-   "strip": "scan/jump_1718.jpg"
-  },
-  {
-   "frame": 1720,
-   "t": 57.333,
-   "change": 26.31,
-   "neighbourMedian": 1.41,
-   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera",
-   "strip": "scan/jump_1720.jpg"
-  },
-  {
-   "frame": 1722,
-   "t": 57.4,
-   "change": 13.22,
-   "neighbourMedian": 1.36,
-   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera",
-   "strip": "scan/jump_1722.jpg"
-  },
-  {
    "frame": 1946,
    "t": 64.867,
    "change": 9.08,
@@ -2607,76 +2455,143 @@
    "strip": "scan/jump_2250.jpg"
   },
   {
-   "frame": 2578,
-   "t": 85.933,
-   "change": 13.46,
-   "neighbourMedian": 1.44,
-   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera",
-   "strip": "scan/jump_2578.jpg"
-  },
-  {
-   "frame": 2580,
-   "t": 86,
-   "change": 34.08,
-   "neighbourMedian": 1.59,
-   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera",
-   "strip": "scan/jump_2580.jpg"
-  },
-  {
-   "frame": 2582,
-   "t": 86.067,
-   "change": 41.36,
-   "neighbourMedian": 1.86,
-   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera",
-   "strip": "scan/jump_2582.jpg"
-  },
-  {
-   "frame": 2584,
-   "t": 86.133,
-   "change": 21.87,
-   "neighbourMedian": 2.48,
-   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera",
-   "strip": "scan/jump_2584.jpg"
-  },
-  {
-   "frame": 2586,
-   "t": 86.2,
-   "change": 24.15,
-   "neighbourMedian": 3.62,
-   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera",
-   "strip": "scan/jump_2586.jpg"
-  },
-  {
-   "frame": 2590,
-   "t": 86.333,
-   "change": 18.84,
-   "neighbourMedian": 1.37,
-   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera",
-   "strip": "scan/jump_2590.jpg"
-  },
-  {
-   "frame": 2592,
-   "t": 86.4,
-   "change": 13.81,
-   "neighbourMedian": 1.36,
-   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera",
-   "strip": "scan/jump_2592.jpg"
-  },
-  {
-   "frame": 2596,
-   "t": 86.533,
-   "change": 9.61,
-   "neighbourMedian": 1.36,
-   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera",
-   "strip": "scan/jump_2596.jpg"
-  },
-  {
    "frame": 2612,
    "t": 87.067,
    "change": 9.33,
    "neighbourMedian": 1.37,
    "why": "the examiner's hand arriving (park -> rel:hoffPinRel:handR, 86.4-87.2 s): a quick slide close to the camera",
    "strip": "scan/jump_2612.jpg"
+  }
+ ],
+ "windows": [
+  {
+   "window": [
+    43.8,
+    45
+   ],
+   "name": "knee support arriving",
+   "frames": 37,
+   "maxChange": {
+    "v": 10.83039351851852,
+    "t": 44.133
+   },
+   "jumpsOver12": 0,
+   "maxSleeveShare": {
+    "v": 0.155,
+    "t": 44.867
+   },
+   "maxExaminerShare": {
+    "v": 0.184,
+    "t": 44.8
+   },
+   "minExaminerToSkinMM": {
+    "v": -1.43,
+    "t": 44.867
+   },
+   "minExaminerToMattressMM": {
+    "v": -46.28,
+    "t": 44.667
+   },
+   "minLensCM": null,
+   "cutsInside": []
+  },
+  {
+   "window": [
+    56.4,
+    57.8
+   ],
+   "name": "knee support leaving",
+   "frames": 43,
+   "maxChange": {
+    "v": 8.769722222222223,
+    "t": 56.933
+   },
+   "jumpsOver12": 0,
+   "maxSleeveShare": {
+    "v": 0.13,
+    "t": 56.4
+   },
+   "maxExaminerShare": {
+    "v": 0.144,
+    "t": 56.4
+   },
+   "minExaminerToSkinMM": {
+    "v": -1.43,
+    "t": 56.4
+   },
+   "minExaminerToMattressMM": {
+    "v": -48.34,
+    "t": 56.867
+   },
+   "minLensCM": {
+    "v": 71,
+    "t": 57.133
+   },
+   "cutsInside": []
+  },
+  {
+   "window": [
+    85.6,
+    86.8
+   ],
+   "name": "Hoffmann R set-up",
+   "frames": 37,
+   "maxChange": {
+    "v": 1.6294675925925926,
+    "t": 86.733
+   },
+   "jumpsOver12": 0,
+   "maxSleeveShare": {
+    "v": 0.056,
+    "t": 85.6
+   },
+   "maxExaminerShare": {
+    "v": 0.109,
+    "t": 86.733
+   },
+   "minExaminerToSkinMM": {
+    "v": -0.96,
+    "t": 85.6
+   },
+   "minExaminerToMattressMM": {
+    "v": 132.51,
+    "t": 85.6
+   },
+   "minLensCM": null,
+   "cutsInside": []
+  },
+  {
+   "window": [
+    89,
+    90
+   ],
+   "name": "Hoffmann L set-up",
+   "frames": 31,
+   "maxChange": {
+    "v": 1.5595370370370372,
+    "t": 89.6
+   },
+   "jumpsOver12": 0,
+   "maxSleeveShare": {
+    "v": 0.082,
+    "t": 89
+   },
+   "maxExaminerShare": {
+    "v": 0.173,
+    "t": 89
+   },
+   "minExaminerToSkinMM": {
+    "v": -0.96,
+    "t": 89
+   },
+   "minExaminerToMattressMM": {
+    "v": 120.34,
+    "t": 89.2
+   },
+   "minLensCM": null,
+   "cutsInside": [
+    89.2
+   ]
   }
  ]
 }

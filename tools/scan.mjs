@@ -3,7 +3,7 @@
 // change from the previous frame (a jump list outside the planned cuts). Every pose frame (poses change on twos): the
 // examiner (hands, forearms, sleeves) or the hammer through his skin, through the mattress, or through each other
 // (> 1.5 mm), and the hammer within 10 mm of him away from a strike (0.35 s either side).
-//   node tools/scan.mjs [--from F --to F --part name]   (parts run in parallel, then: node tools/scan.mjs --merge)
+//   node tools/scan.mjs [--from F --to F --part name]   (--to is exclusive: 0-800, 800-1850, 1850-2911; then: node tools/scan.mjs --merge)
 import fs from 'node:fs'; import path from 'node:path';
 import { serve, launch, openPage, grab, ROOT, arg } from './common.mjs';
 const OUT = path.join(ROOT, 'checks', 'scan'); fs.mkdirSync(OUT, { recursive: true });
@@ -31,7 +31,7 @@ if (arg('merge')) {
     { from: 9.2, to: 9.5, check: /through his skin/, text: 'Biceps reflex R: at the peak of the jerk the closing elbow crease presses up to 7 mm into the examiner\'s thumb pad on the tendon (as a real thumb is squeezed when the biceps contracts); 0.2 s.' },
     { from: 12.2, to: 12.5, check: /through his skin/, text: 'Biceps reflex L: the same squeeze of the examiner\'s thumb pad (mirror).' },
     { from: 37.4, to: 37.7, check: /through his skin/, text: 'Reinforced biceps reflex: the same squeeze of the examiner\'s thumb pad.' },
-    { from: 44.3, to: 56.7, check: /through the mattress/, text: 'Knee support (approved pose since round 1): the elbow end of the examiner\'s forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees).' },
+    { from: 44.93, to: 56.6, check: /through the mattress/, text: 'Knee support (approved pose since round 1): the elbow end of the examiner\'s forearm presses up to 23 mm into the soft mattress beside his right knee while it holds both knees (level, it would pass 30 mm through his knees).' },
     { from: 44.3, to: 44.95, check: /through his skin|arms through each other/, text: 'Knee support arriving: the forearm slides in along its own axis under his raised knees (the gap it will fill) and grazes the back of a knee (under 3 mm) for a frame or two.' },
     { from: 44.25, to: 44.95, check: /through the mattress/, text: 'Knee support arriving: the forearm slides in along its own axis, low, under his raised knees; the soft mattress gives under its elbow end (up to about 5 cm for 2-3 pose frames) before it settles at the approved 23 mm.' },
     { from: 24.6, to: 25.6, check: /through his skin/, text: 'Triceps: the examiner\'s hand arriving at his wrist grazes it (about 2 mm) as it closes round it.' },
