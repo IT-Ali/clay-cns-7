@@ -316,40 +316,6 @@
   "values": {}
  },
  {
-  "id": "b_supR_top",
-  "gaps": {},
-  "values": {}
- },
- {
-  "id": "b_supL_top",
-  "gaps": {},
-  "values": {}
- },
- {
-  "id": "b_triR_top",
-  "gaps": {},
-  "values": {}
- },
- {
-  "id": "b_triR_hit",
-  "gaps": {
-   "hammer head": 0.06
-  },
-  "values": {}
- },
- {
-  "id": "b_triL_top",
-  "gaps": {},
-  "values": {}
- },
- {
-  "id": "b_triL_hit",
-  "gaps": {
-   "hammer head": 0.06
-  },
-  "values": {}
- },
- {
   "id": "b_reinfR_top",
   "gaps": {},
   "values": {}
@@ -394,6 +360,104 @@
   "values": {
    "elbow": 95.8
   }
+ },
+ {
+  "id": "x_biceps_thumb",
+  "gaps": {
+   "ex L palm": 0.06,
+   "ex L thumb": 0.03,
+   "ex L index": 1.13,
+   "ex L middle": 0.1,
+   "ex L ring": 0.27,
+   "ex L little": 0.05
+  },
+  "values": {}
+ },
+ {
+  "id": "x_wrist",
+  "gaps": {
+   "ex L palm": 0.03,
+   "ex L thumb": 0.06,
+   "ex L index": 0.76,
+   "ex L middle": 0.73,
+   "ex L ring": 0.57,
+   "ex L little": 0.79
+  },
+  "values": {}
+ },
+ {
+  "id": "d_face",
+  "gaps": {},
+  "values": {
+   "his face, chin to brow (px at 960x540)": 210
+  }
+ },
+ {
+  "id": "d_jaw",
+  "gaps": {},
+  "values": {
+   "his face, chin to brow (px at 960x540)": 85
+  }
+ },
+ {
+  "id": "b_supR_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_supR_hit",
+  "gaps": {
+   "hammer head": 0.06,
+   "ex L index (whole finger)": 0.77,
+   "ex L index tip": 0.77,
+   "ex L middle (whole finger)": 0.62,
+   "ex L middle tip": 0.62,
+   "ex L thumb": 0.03,
+   "ex L palm": null
+  },
+  "values": {}
+ },
+ {
+  "id": "b_supL_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_supL_hit",
+  "gaps": {
+   "hammer head": 0.06,
+   "ex R index (whole finger)": 0.77,
+   "ex R index tip": 0.77,
+   "ex R middle (whole finger)": 0.62,
+   "ex R middle tip": 0.62,
+   "ex R thumb": 0.03,
+   "ex R palm": null
+  },
+  "values": {}
+ },
+ {
+  "id": "b_triR_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_triR_hit",
+  "gaps": {
+   "hammer head": 0.06
+  },
+  "values": {}
+ },
+ {
+  "id": "b_triL_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_triL_hit",
+  "gaps": {
+   "hammer head": 0.06
+  },
+  "values": {}
  },
  {
   "id": "c_supR_before",
@@ -452,16 +516,18 @@
   }
  },
  {
-  "id": "x_biceps_thumb",
+  "id": "x_sup",
   "gaps": {
-   "ex L palm": 0.06,
+   "ex L index (whole finger)": 0.77,
+   "ex L index tip": 0.77,
+   "ex L middle (whole finger)": 0.62,
+   "ex L middle tip": 0.62,
    "ex L thumb": 0.03,
-   "ex L index": 1.13,
-   "ex L middle": 0.1,
-   "ex L ring": 0.27,
-   "ex L little": 0.05
+   "ex L palm": null
   },
-  "values": {}
+  "values": {
+   "supPoint_R to the wrist joint (cm)": 4.91
+  }
  },
  {
   "id": "x_tri",
@@ -470,7 +536,8 @@
    "his hand on his chest": 0.94
   },
   "values": {
-   "strike point to the olecranon (cm)": 2.96,
+   "hammer head centre to the olecranon tip, along the upper arm toward the shoulder (cm)": 3.22,
+   "strike point (head on the skin) to the olecranon tip, along the upper arm (cm)": 3.87,
    "elbow": 90.1
   }
  },
@@ -481,97 +548,32 @@
    "his hand on his chest": -0.34
   },
   "values": {
-   "strike point to the olecranon (cm)": 2.96,
+   "hammer head centre to the olecranon tip, along the upper arm toward the shoulder (cm)": 3.22,
+   "strike point (head on the skin) to the olecranon tip, along the upper arm (cm)": 3.87,
    "elbow": 90.1
-  }
- },
- {
-  "id": "x_wrist",
-  "gaps": {
-   "ex L palm": 0.03,
-   "ex L thumb": 0.06,
-   "ex L index": 0.76,
-   "ex L middle": 0.73,
-   "ex L ring": 0.57,
-   "ex L little": 0.79
-  },
-  "values": {}
- },
- {
-  "id": "b_supR_hit",
-  "gaps": {
-   "hammer head": 0.06,
-   "ex L index (whole finger)": 0.02,
-   "ex L index tip": 6.75,
-   "ex L middle (whole finger)": 1.44,
-   "ex L middle tip": 1.95,
-   "ex L thumb": 0.77,
-   "ex L palm": null
-  },
-  "values": {}
- },
- {
-  "id": "b_supL_hit",
-  "gaps": {
-   "hammer head": 0.06,
-   "ex R index (whole finger)": 0.02,
-   "ex R index tip": 6.75,
-   "ex R middle (whole finger)": 1.44,
-   "ex R middle tip": 1.95,
-   "ex R thumb": 0.77,
-   "ex R palm": null
-  },
-  "values": {}
- },
- {
-  "id": "x_sup",
-  "gaps": {
-   "ex L index (whole finger)": 0.02,
-   "ex L index tip": 6.75,
-   "ex L middle (whole finger)": 1.44,
-   "ex L middle tip": 1.95,
-   "ex L thumb": 0.77,
-   "ex L palm": null
-  },
-  "values": {
-   "supPoint_R to the wrist joint (cm)": 5
   }
  },
  {
   "id": "x_supfing",
   "gaps": {
-   "ex L index (whole finger)": 0.02,
-   "ex L index tip": 6.75,
-   "ex L middle (whole finger)": 1.44,
-   "ex L middle tip": 1.95,
-   "ex L thumb": 0.77,
+   "ex L index (whole finger)": 0.77,
+   "ex L index tip": 0.77,
+   "ex L middle (whole finger)": 0.62,
+   "ex L middle tip": 0.62,
+   "ex L thumb": 0.03,
    "ex L palm": null
   },
   "values": {
    "index": [
-    -1.939,
-    8.744,
-    1.636
+    -1.879,
+    8.886,
+    1.827
    ],
    "middle": [
-    -2.064,
-    8.839,
-    1.829
+    -1.979,
+    8.961,
+    2.036
    ]
-  }
- },
- {
-  "id": "d_face",
-  "gaps": {},
-  "values": {
-   "his face, chin to brow (px at 960x540)": 210
-  }
- },
- {
-  "id": "d_jaw",
-  "gaps": {},
-  "values": {
-   "his face, chin to brow (px at 960x540)": 85
   }
  }
 ]

@@ -98,12 +98,13 @@ try {
       return out;
     };
   });
-  const frames = [];
+  const frames = [], only = arg('frames', null) ? String(arg('frames')).split(',').map(Number) : null, live = path.join(OUT, `live-${part}.jsonl`); fs.writeFileSync(live, '');
   const start = Math.max(0, from - 1);    // one frame before, for the picture change
   for (let i = start; i < Math.min(to, 2911); i++) {
+    if (only && !only.includes(i)) continue;
     const pose = i % 2 === 0 && i >= from;   // poses change on twos
     const r = await page.evaluate(([i, pose]) => window.SCAN_FRAME(i, pose), [i, pose]);
-    if (i >= from) frames.push(r);
+    if (i >= from) { frames.push(r); if (r.flags.length) fs.appendFileSync(live, JSON.stringify({ i, t: +(i / 30).toFixed(3), flags: r.flags }) + '\n'); }
     if (i % 60 === 0) console.log(`${part}: frame ${i} (${((Date.now() - t0) / 1000).toFixed(0)} s) flags so far ${frames.reduce((a, f) => a + f.flags.length, 0)}`);
   }
   fs.writeFileSync(path.join(OUT, `part-${part}.json`), JSON.stringify({ from, to, frames }));

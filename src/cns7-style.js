@@ -77,19 +77,19 @@
       [85.6, 'home'], [86.6, 'hoffR'], [89.2, 'home', 'cut'], [D, 'home']],
     armL: [[0, 'home'], [6.5, 'home'], [7.6, 'abdL'], [452 / 15, 'chestL', 'cut'], [34.0, 'abdL', 'cut'], [42.5, 'abdL'], [43.4, 'home'], [52.5, 'home'], [53.6, 'jend0L'], [54.25, 'jend0L'], [54.4, 'jend1L'], [55.6, 'jend1L'], [56.1, 'jend0L'], [57.1, 'home'],
       [89.2, 'hoffL', 'cut'], [94.0, 'home', 'cut'], [D, 'home']],
-    legR: [[0, 'rest'], [43.5, 'rest'], [44.4, 'kneeJerk'], [57.3, 'kneeJerk'], [58.4, 'rest'], [59.4, 'rest'], [60.8, 'ankleJerkR'], [63.4, 'rest', 'cut'],
+    legR: [[0, 'rest'], [43.5, 'rest'], [44.4, 'kneeJerk'], [57.7, 'kneeJerk'], [58.6, 'rest'], [59.4, 'rest'], [60.8, 'ankleJerkR'], [63.4, 'rest', 'cut'],
       [69.3, 'rest'], [70.5, 'clonusR0'], [71.2, 'clonusR0'], [71.33, 'clonusR1'], [73.4, 'clonusR1'], [73.8, 'clonusR0'], [74.2, 'rest', 'cut'], [D, 'rest']],
-    legL: [[0, 'rest'], [43.5, 'rest'], [44.4, 'kneeJerk'], [57.3, 'kneeJerk'], [58.4, 'rest'], [63.4, 'ankleJerkR', 'cut'], [69.0, 'rest', 'cut'],
+    legL: [[0, 'rest'], [43.5, 'rest'], [44.4, 'kneeJerk'], [57.7, 'kneeJerk'], [58.6, 'rest'], [63.4, 'ankleJerkR', 'cut'], [69.0, 'rest', 'cut'],
       [74.2, 'clonusR0', 'cut'], [74.9, 'clonusR0'], [75.03, 'clonusR1'], [77.1, 'clonusR1'], [77.5, 'clonusR0'], [78.0, 'rest', 'cut'], [D, 'rest']],
     exL: [[0, 'home'], [7.4, 'home'], [8.3, 'thumbR'], [10.8, 'S:bicL', 'cut'], [15.0, 'supFingR', 'cut'], [18.4, 'S:supL', 'cut'], [24.0, 'home', 'cut'],
       [24.1, 'home'], [24.9, 'rel:wristRel:handR'], [29.3, 'rel:wristRel:handR'], [29.9, 'home'], [452 / 15, 'S:triL', 'cut'],
-      [34.0, 'home', 'cut'], [35.7, 'home'], [36.5, 'thumbRreinf'], [38.2, 'thumbRreinf'], [39.0, 'home'], [42.5, 'home'], [43.6, 'kneeSupport'], [57.2, 'kneeSupport'], [58.6, 'home'],
-      [59.4, 'relFoot:footRelR:R'], [60.8, 'relFoot:footRelR:R'], [914 / 15, 'footR'], [63.4, 'S:ankL', 'cut'], [65.02, 'S:ankL'], [65.6, 'up:S:ankL'], [69.0, 'home', 'cut'], [69.3, 'home'], [70.5, 'calfR'], [74.2, 'clonusFootL0', 'cut'], [74.9, 'clonusFootL0'], [75.03, 'clonusFootL1'], [77.1, 'clonusFootL1'], [77.5, 'clonusFootL0'],
+      [34.0, 'home', 'cut'], [36.6, 'home'], [37.1, 'thumbRreinf'], [38.2, 'thumbRreinf'], [39.0, 'home'], [43.9, 'home'], [44.9, 'kneeSupport'], [56.6, 'kneeSupport'], [57.6, 'home'], [58.6, 'home'],
+      [59.4, 'relFoot:footRelR:R'], [60.8, 'relFoot:footRelR:R'], [914 / 15, 'relFoot:footRelR:R'], [63.4, 'S:ankL', 'cut'], [65.02, 'S:ankL'], [65.6, 'up:S:ankL'], [69.0, 'home', 'cut'], [69.3, 'home'], [70.5, 'relShin:calfRelR:R'], [74.2, 'relFoot:clonRelL0:L', 'cut'], [74.9, 'relFoot:clonRelL0:L'], [75.03, 'relFoot:clonRelL1:L'], [77.1, 'relFoot:clonRelL1:L'], [77.5, 'relFoot:clonRelL0:L'],
       [78.0, 'kneeClonusR', 'cut'], [81.6, 'parkFar', 'cut'], [85.0, 'home', 'cut'], [85.6, 'rel:hoffSupRel:handR'], [89.2, 'hoffPinL', 'cut'], [94.0, 'home', 'cut'], [D, 'home']],
     exR: [[0, 'home'], [1.4, 'home'], [2.3, 'park'], [7.6, 'park'], [8.1, 'up:S:bicR'], [8.6, 'S:bicR'], [10.8, 'thumbL', 'cut'], [15.0, 'S:supR', 'cut'], [18.4, 'supFingL', 'cut'], [24.0, 'park', 'cut'],
       [25.4, 'park'], [26.6, 'S:triR'], [452 / 15, 'wristL', 'cut'], [34.0, 'S:reinfR@reinfR', 'cut'], [38.4, 'S:reinfR@reinfR'], [38.9, 'up:S:reinfR@reinfR'], [39.4, 'park'], [43.4, 'park'], [44.8, 'S:kneeR'], [46.1, 'S:kneeR'], [47.2, 'S:kneeL'], [48.6, 'S:kneeL'], [49.6, 'S:kneeR@jendR'],
-      [59.4, 'S:kneeR@jendR'], [59.9, 'up:S:kneeR@jendR'], [60.6, 'up:S:ankR'], [61.0, 'S:ankR'], [62.02, 'S:ankR'], [62.6, 'up:S:ankR'], [63.4, 'footL', 'cut'], [69.0, 'park', 'cut'], [69.6, 'park'], [70.6, 'clonusFootR0'], [71.2, 'clonusFootR0'], [71.33, 'clonusFootR1'], [73.4, 'clonusFootR1'], [73.8, 'clonusFootR0'],
-      [74.2, 'calfL', 'cut'], [78.0, 'park', 'cut'], [81.6, 'kneeClonusL', 'cut'], [85.0, 'park', 'cut'], [86.0, 'park'], [86.8, 'rel:hoffPinRel:handR'], [89.2, 'hoffSupL', 'cut'], [94.0, 'park', 'cut'], [94.6, 'park'], [95.6, 'home'], [D, 'home']],
+      [59.4, 'S:kneeR@jendR'], [59.9, 'up:S:kneeR@jendR'], [60.6, 'up:S:ankR'], [61.0, 'S:ankR'], [62.02, 'S:ankR'], [62.6, 'up:S:ankR'], [63.4, 'relFoot:footRelL:L', 'cut'], [69.0, 'park', 'cut'], [69.6, 'park'], [70.6, 'relFoot:clonRelR0:R'], [71.2, 'relFoot:clonRelR0:R'], [71.33, 'relFoot:clonRelR1:R'], [73.4, 'relFoot:clonRelR1:R'], [73.8, 'relFoot:clonRelR0:R'],
+      [74.2, 'relShin:calfRelL:L', 'cut'], [78.0, 'park', 'cut'], [81.6, 'kneeClonusL', 'cut'], [85.0, 'park', 'cut'], [86.0, 'park'], [86.8, 'rel:hoffPinRel:handR'], [89.2, 'hoffSupL', 'cut'], [94.0, 'park', 'cut'], [94.6, 'park'], [95.6, 'home'], [D, 'home']],
   };
 
   // ================================================================ the style
@@ -166,6 +166,11 @@
       const fromRelF = (st, f) => Object.assign({}, st, { wrist: st.wrist.clone().applyQuaternion(f.q).add(f.p), quat: f.q.clone().multiply(st.quat), back: st.back.clone().applyQuaternion(f.q) });
       const relTo = (st, obj) => relToF(st, frameOf(obj)), fromRel = (st, obj) => fromRelF(st, frameOf(obj));
       // the frame of his foot (from its landmarks): origin at the ball, X heel -> toe, Y lateral -> medial ankle bone
+      const shinFrame = (sd) => {                                          // his shin: origin at the calf, X knee -> ankle
+        const p = P.legPoint(sd, 'calf'), x = P.legPoint(sd, 'ankle').sub(P.legPoint(sd, 'knee')).normalize(), m = P.legPoint(sd, 'medialMalleolus').sub(P.legPoint(sd, 'lateralMalleolus'));
+        const y = m.addScaledVector(x, -m.dot(x)).normalize(), z = V(0, 0, 0).crossVectors(x, y);
+        return { p, q: new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(x, y, z)) };
+      };
       const footFrame = (sd) => {
         const p = P.legPoint(sd, 'ball'), x = P.legPoint(sd, 'toeTip').sub(P.legPoint(sd, 'heel')).normalize(), m = P.legPoint(sd, 'medialMalleolus').sub(P.legPoint(sd, 'lateralMalleolus'));
         const y = m.addScaledVector(x, -m.dot(x)).normalize(), z = V(0, 0, 0).crossVectors(x, y);
@@ -461,6 +466,11 @@
           ex.pose = CONTACT.curlToTouch(hand, ['index', 'middle', 'ring', 'little'], fld, FRONT_POSE, { gap: 0.0006, from: -0.2, to: 1.6 }); applyEx('L', ex);   // each finger curls round his elbow onto the skin (together: no spread)
           const uncurl = (hd, side, fl, fingers) => { const pr = CONTACT.handParts(hd); for (const k of fingers) for (let it = 0; it < 40; it++) { const g = CONTACT.minGap(pr[k], fl, null, 0, 0.15).gap; if (!isFinite(g) || g >= 0.0001) break; ex.pose.curl[k] = ex.pose.curl[k].map((v, j) => v - 0.02 * [0.55, 1, 0.7][j]); applyEx(side, ex); } };
           uncurl(hand, 'L', fld, ['index', 'middle', 'ring', 'little']);
+          {   // and none of them goes into the mattress (his elbow rests on it): a finger below the mattress surface un-curls
+            const pr = CONTACT.handParts(hand);
+            for (const k of ['index', 'middle', 'ring', 'little']) for (let it = 0; it < 60; it++) { if (bedGap(pr[k]).gap >= 0.0005) break; ex.pose.curl[k] = ex.pose.curl[k].map((v, j) => v - 0.02 * [0.55, 1, 0.7][j]); applyEx('L', ex); }
+            log('biceps fingers above the mattress (mm):', JSON.stringify(Object.fromEntries(['index', 'middle', 'ring', 'little'].map((k) => [k, mm(bedGap(pr[k]).gap)]))));
+          }
           const th = CONTACT.thumbOn(hand, T, n, fld, 0.0009); ex.thumbQ = th.tq; applyEx('L', ex);
           if (CONTACT.minGap(handMeshes(hand), fld, null, 0, 0.15).gap < 0) liftClear('L', ex, n, fld, 0.0003);
           { const tg = CONTACT.minGap(handMeshes(hand), torF, null, 0, 0.15).gap; if (tg < 0 && tg > -0.0012) { ex.wrist = ex.wrist.clone().addScaledVector(n, 0.0003 - tg); applyEx('L', ex); } }   // a touch clear of his chest (at most 1.2 mm up)
@@ -1159,6 +1169,18 @@
         if (raw.version !== style.SOLVE_VERSION) throw new Error('solved.json is out of date (version ' + raw.version + ', the style needs ' + style.SOLVE_VERSION + '): run "npm run solve"');
         SOL = dec(raw.data);
       }
+      {   // hands that hold his foot or calf are carried with it (the reflex, the push); their forearms and sleeves rise out of
+        // the bed. Expressed once here in the frame of his foot / shin, from the solved poses (nothing is solved again).
+        const withLeg = (sd, st, fn) => { const prev = P.leg(sd); P.setLeg(sd, st || {}); const r = fn(); P.setLeg(sd, prev); return r; };
+        SOL.ex.footRelL = withLeg('L', SOL.legs.ankleJerkR, () => relToF(SOL.ex.footL, footFrame('L')));
+        SOL.ex.footRelR = withLeg('R', SOL.legs.ankleJerkR, () => relToF(SOL.ex.footR, footFrame('R')));
+        SOL.ex.clonRelR0 = withLeg('R', SOL.legs.clonusR0, () => relToF(SOL.ex.clonusFootR0, footFrame('R'))); SOL.ex.clonRelR1 = withLeg('R', SOL.legs.clonusR1, () => relToF(SOL.ex.clonusFootR1, footFrame('R')));
+        SOL.ex.clonRelL0 = withLeg('L', SOL.legs.clonusR0, () => relToF(SOL.ex.clonusFootL0, footFrame('L'))); SOL.ex.clonRelL1 = withLeg('L', SOL.legs.clonusR1, () => relToF(SOL.ex.clonusFootL1, footFrame('L')));
+        const up = (st, back, sleeve, sz) => Object.assign({}, st, { back: V(back[0], back[1], back[2] * sz).normalize(), sleeve: V(sleeve[0], sleeve[1], sleeve[2] * sz).normalize() });
+        SOL.ex.calfR = up(SOL.ex.calfR, [0.15, 0.05, 1], [0.05, 0.45, 1], 1); SOL.ex.calfL = up(SOL.ex.calfL, [0.15, 0.05, 1], [0.05, 0.45, 1], -1);
+        SOL.ex.calfRelR = withLeg('R', SOL.legs.clonusR0, () => relToF(SOL.ex.calfR, shinFrame('R'))); SOL.ex.calfRelL = withLeg('L', SOL.legs.clonusR0, () => relToF(SOL.ex.calfL, shinFrame('L')));
+        SOL.ex.kneeSupport = Object.assign({}, SOL.ex.kneeSupport, { sleeve: V(0.05, 0.45, 1).normalize() });
+      }
       root.W = Object.assign(root.W_TEST || {}, { S, L, bed, table, P, SH, EX, hammer, SOL, applyArm, applyEx, applyStrike, HOME_ARM, HOME_EX, enc, dec });
 
       // ================================================================ THE TIMELINE
@@ -1178,7 +1200,7 @@
       const thumbQOf = (hand, pose) => { hand.pose(pose); return [hand.thumb.meta.quaternion.clone(), hand.thumb.mcp.quaternion.clone(), hand.thumb.ip.quaternion.clone()]; };
       // ---- the states by name
       const other = (h) => (h === 'R' ? 'L' : 'R');
-      const park = (st, far) => Object.assign({}, st, { wrist: V(st.wrist.x, Dm.Ym - 3.0, (far ? -1 : 1) * 7.5), back: V(0, -0.3, far ? -1 : 1).normalize(), far: !!far });
+      const park = (st, far) => Object.assign({}, st, { wrist: V(st.wrist.x, Dm.Ym - 3.0, (far ? -1 : 1) * 9.5), back: V(0, -0.3, far ? -1 : 1).normalize(), far: !!far });   // well clear of the bed (the hammer in this hand too)
       const exState = (h, name, t) => {
         if (name === 'home') return Object.assign({ hand: h }, HOME_EX[h]);
         if (name === 'homeFar') return mirEx(Object.assign({ hand: other(h) }, HOME_EX[other(h)]));
@@ -1186,6 +1208,7 @@
         if (name === 'parkFar') return park(mirEx(Object.assign({ hand: other(h) }, HOME_EX[other(h)])), true);
         if (name.startsWith('up:')) { const b = exState(h, name.slice(3), t); return Object.assign({}, b, { wrist: b.wrist.clone().add(V(0, 3.0, b.far ? -1.0 : 1.0)) }); }   // a waypoint: lifted 30 cm, toward the examiner (the hammer clears him)
         if (name.startsWith('S:')) { const [geo, when] = name.slice(2).split('@'); const k = SOL.strikes[geo]; return Object.assign({}, k.ex, { strike: when || geo, geo }); }   // 'S:bicR@reinfR' = the bicR pose, struck at the reinfR time
+        if (name.startsWith('relShin:')) { const [, nm, sd] = name.split(':'); return fromRelF(SOL.ex[nm], shinFrame(sd)); }
         if (name.startsWith('relFoot:')) { const [, nm, sd] = name.split(':'); return fromRelF(SOL.ex[nm], footFrame(sd)); }
         if (name.startsWith('rel:')) { const [, nm, obj] = name.split(':'); const o = obj === 'handR' ? P.arms.R.hand.group : P.arms.L.hand.group; return fromRel(SOL.ex[nm], o); }
         const st = SOL.ex[name]; if (!st) throw new Error('no examiner state ' + name); return st;
@@ -1200,20 +1223,26 @@
       // the contact it is going to (8 cm, 0.4 s): no hand flies sideways onto him or across the lens, and its fingers are
       // already in their contact pose while it slides in. Rest / parked / lifted states are not contacts. Small moves (a push
       // of the foot, a hold carried with his hand) keep the plain blend.
-      const FREE = /^(home|homeFar|park|parkFar|up:)/, SLIDE = 0.8, SLIDE_T = 0.4;
+      const FREE = /^(home|homeFar|park|parkFar|up:)/, SLIDE = 1.2, SLIDE_T = 0.4;
       const exMove = (h, a, b, u, info) => {
         if (!info || a.wrist.distanceTo(b.wrist) < 0.6) return lerpEx(h, a, b, u);
         const dur = info.t1 - info.t0, s = info.t - info.t0;
         let tOut = FREE.test(info.n0) ? 0 : SLIDE_T, tIn = FREE.test(info.n1) ? 0 : SLIDE_T;
         if (tOut + tIn > dur - 0.15) { const k = Math.max(0, dur - 0.15) / (tOut + tIn); tOut *= k; tIn *= k; }   // always some travel between the two slides
-        const A1 = tOut ? Object.assign({}, a, { wrist: a.wrist.clone().addScaledVector(a.back, SLIDE) }) : a, B1 = tIn ? Object.assign({}, b, { wrist: b.wrist.clone().addScaledVector(b.back, SLIDE) }) : b;
+        let A1 = tOut ? Object.assign({}, a, { wrist: a.wrist.clone().addScaledVector(a.back, SLIDE) }) : a, B1 = tIn ? Object.assign({}, b, { wrist: b.wrist.clone().addScaledVector(b.back, SLIDE) }) : b;
         const e = K.ease.inOut;
+        // the fingers open a little as the hand leaves a grip and close round the contact as it arrives (a wrapping grip never drags through him)
+        const open = (st) => { const o = JSON.parse(JSON.stringify(st.pose)); const c = (k) => (o.curl && o.curl[k]) || o.all || [0.12, 0.18, 0.1]; o.curl = Object.fromEntries(PK.map((k) => [k, c(k).map((v) => v * 0.35)])); delete o.all; return Object.assign({}, st, { pose: o, thumbQ: undefined }); };
+        if (A1 !== a) A1 = open(A1); if (B1 !== b) B1 = open(B1);
         if (tOut && s < tOut) return lerpEx(h, a, Object.assign({}, A1, { strike: a.strike, geo: a.geo }), e(s / tOut));
         if (tIn && s > dur - tIn) return lerpEx(h, B1, b, e((s - (dur - tIn)) / tIn));
-        const tr = dur - tOut - tIn; return lerpEx(h, A1, B1, tr > 1e-6 ? e(K.clamp((s - tOut) / tr)) : 1);
+        const tr = dur - tOut - tIn, v = tr > 1e-6 ? e(K.clamp((s - tOut) / tr)) : 1, o = lerpEx(h, A1, B1, v);
+        if (A1.wrist.distanceTo(B1.wrist) > 1.0) o.wrist = o.wrist.clone().add(V(0, 1.5 * Math.sin(Math.PI * v), 0));   // the hand travels over him in an arc (15 cm up), never through him
+        return o;
       };
       const armState = (side, name) => (name === 'home' ? HOME_ARM[side] : SOL.arms[name]);
-      const lerpArm = (a, b, u) => ({ wrist: a.wrist.clone().lerp(b.wrist, u), quat: a.quat.clone().slerp(b.quat, u), pose: blendPose(a.pose, b.pose, u), pole: a.pole.clone().lerp(b.pole, u).normalize() });
+      // a carried arm lifts off him on the way (6 cm up at the middle of the move)
+      const lerpArm = (a, b, u) => ({ wrist: a.wrist.clone().lerp(b.wrist, u).add(V(0, a.wrist.distanceTo(b.wrist) > 0.5 ? 0.6 * Math.sin(Math.PI * u) : 0, 0)), quat: a.quat.clone().slerp(b.quat, u), pose: blendPose(a.pose, b.pose, u), pole: a.pole.clone().lerp(b.pole, u).normalize() });
       const legState = (name) => (name === 'rest' ? {} : SOL.legs[name]);
       const LEGK = ['hipFlex', 'hipAbd', 'hipRot', 'knee', 'ankle', 'ankleInv', 'bigToe', 'toes', 'fan'];
       const lerpLeg = (a, b, u) => Object.fromEntries(LEGK.map((k) => [k, K.lerp(a[k] || 0, b[k] || 0, u)]));
@@ -1280,11 +1309,13 @@
       const bump = (t, ts) => { const d = t - ts - REFLEX.delay; if (d < 0 || d > REFLEX.rise + REFLEX.back) return 0; return d < REFLEX.rise ? K.ease.out(d / REFLEX.rise) : 1 - K.ease.inOut((d - REFLEX.rise) / REFLEX.back); };
       const firmAt = (t, ts) => { const d = t - ts - REFLEX.delay; if (d < 0 || d > REFLEX.firm) return 0; return Math.sin(Math.PI * d / REFLEX.firm); };
       // ---- the reflexes: the elbow bends (or straightens) about its own axis, the knee / ankle move; the muscle firms
+      const lastRot = {};
       const flexElbow = (side, st, deg) => {
         if (!deg) return st;
         applyArm(side, st); const a = P.arms[side]; a.group.updateMatrixWorld(true);
         const Sh = a.up.getWorldPosition(V(0, 0, 0)), E = a.fore.getWorldPosition(V(0, 0, 0)), u = Sh.clone().sub(E).normalize(), f = st.wrist.clone().sub(E).normalize();
         const ax = V(0, 0, 0).crossVectors(u, f).normalize(), r = new THREE.Quaternion().setFromAxisAngle(ax, -deg * Math.PI / 180);   // + = toward the upper arm (flexion: the elbow angle gets smaller)
+        lastRot[side] = { E: E.clone(), q: r.clone() };
         return Object.assign({}, st, { wrist: E.clone().add(st.wrist.clone().sub(E).applyQuaternion(r)), quat: r.clone().multiply(st.quat) });
       };
       const firmed = [];                                                   // [attribute, index, original x, y, z] to undo next frame
@@ -1305,6 +1336,7 @@
       const pushKneeAt = (t, t0, t1) => K.seg(t, t0, t0 + 0.1, K.ease.out) * (1 - K.seg(t, t1, t1 + 0.35, K.ease.inOut));
       const KNEE_PUSH = { R: [79.0, 81.0], L: [82.3, 84.3] }, FLICK = { R: snap(87.6), L: snap(90.8) };
       const flickAt = (t, tf) => { const d = t - tf; return d < 0 || d > 0.4 ? 0 : d < 0.07 ? d / 0.07 : 1 - K.ease.inOut((d - 0.07) / 0.33); };
+      const CARRY = { thumbR: ['R', 0.5], thumbRreinf: ['R', 0.5], thumbL: ['L', 0.5], supFingR: ['R', 1], supFingL: ['L', 1], wristL: ['L', 1] };
       const homeLock = (t) => t <= HOME_HOLD + 1e-6 || t >= D - 1.0 - 1e-6;
 
       const update = (t) => {
@@ -1318,6 +1350,7 @@
         P.setLeg('R', legs.R); P.setLeg('L', legs.L);
         // arms (and the elbow reflexes)
         const arms = { R: CH.armR(p, (n) => armState('R', n), lerpArm), L: CH.armL(p, (n) => armState('L', n), lerpArm) };
+        for (const sd of ['R', 'L']) delete lastRot[sd];
         for (const k of reflexFor(p)) if (REFLEX[k.reflex].joint === 'elbow') arms[k.side] = flexElbow(k.side, arms[k.side], REFLEX[k.reflex].deg * bump(p, k.t));
         applyArm('R', arms.R); applyArm('L', arms.L);
         // Hoffmann: the flick bends the tip of his middle finger down a little and it springs back; his thumb stays still
@@ -1330,6 +1363,10 @@
         for (const h of ['R', 'L']) {
           let st = CH['ex' + h](p, (n) => exState(h, n, p), (a, b, u, info) => exMove(h, a, b, u, info));
           if (st.strike) { const a = swingAt(st.strike, p) * ((SOL.strikes[st.geo || st.strike] || {}).swingSign || 1); if (a) { const axis = V(0, 0, 1).applyQuaternion(st.quat).normalize(); st = Object.assign({}, st, { quat: new THREE.Quaternion().setFromAxisAngle(axis, a).multiply(st.quat) }); } }
+          // an elbow reflex: the examiner's hand on his forearm rides with it (on the elbow crease, half of it)
+          { const ks = KEYS['ex' + h], i = ks.findIndex((k, j) => k[0] <= p && (!ks[j + 1] || ks[j + 1][0] > p)), nm = ks[i][1], hold = !ks[i + 1] || ks[i + 1][2] === 'cut' || ks[i + 1][1] === nm, c = CARRY[nm];
+            if (c && hold && lastRot[c[0]]) { const R0 = lastRot[c[0]], q = new THREE.Quaternion().slerpQuaternions(new THREE.Quaternion(), R0.q, c[1]);
+              st = Object.assign({}, st, { wrist: R0.E.clone().add(st.wrist.clone().sub(R0.E).applyQuaternion(q)), quat: q.clone().multiply(st.quat), back: st.back.clone().applyQuaternion(q) }); } }
           // knee clonus: the hand moves 8 mm toward his foot with the kneecap
           if (/kneeClonus/.test(KEYS['ex' + h].find((k, i, arr) => k[0] <= p && (!arr[i + 1] || arr[i + 1][0] > p))[1])) {
             const sd = st.far ? 'L' : 'R', u = pushKneeAt(p, KNEE_PUSH[sd][0], KNEE_PUSH[sd][1]);
