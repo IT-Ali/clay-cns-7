@@ -1150,7 +1150,10 @@
             const k = SOL.strikes[id]; pose(id); const f = CONTACT.field(patientMeshes());
             const clear = (sg) => { let g = Infinity; for (const a of [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.62]) { applyStrike(k, sg * a); const x = CONTACT.minGap(hmAll, f, null, 0, 0.3, 2).gap; g = Math.min(g, isFinite(x) ? x : 0.03); } return g; };
             const gp = clear(1), gm = clear(-1);
-            k.swingSign = gp >= 0.008 || gp >= gm ? 1 : -1; res[id] = [k.swingSign, mm(gp), mm(gm)];
+            k.swingSign = gp >= 0.008 || gp >= gm ? 1 : -1;
+            // how high the hammer may rise this way and stay 8 mm clear of him and the mattress all the way up (the swing is capped there)
+            let up = 0.62; for (const a of [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.62]) { applyStrike(k, k.swingSign * a); const x = Math.min(CONTACT.minGap(hmAll, f, null, 0, 0.3, 2).gap, bedGap(hmAll).gap); if ((isFinite(x) ? x : 0.03) < 0.008) { up = Math.max(0.25, a - 0.05); break; } }
+            k.swingUp = up; res[id] = [k.swingSign, mm(gp), mm(gm), 'rises to ' + up.toFixed(2) + ' rad'];
           }
           for (const sd of ['R', 'L']) { applyArm(sd, HOME_ARM[sd]); P.setLeg(sd, {}); } applyEx('R', HOME_EX.R); applyEx('L', HOME_EX.L); hammer.group.visible = false;
           log('hammer swing direction per strike [sign, closest raised +, closest raised -] (mm):', JSON.stringify(res));
@@ -1364,7 +1367,7 @@
         // the examiner's hands and the hammer
         for (const h of ['R', 'L']) {
           let st = CH['ex' + h](p, (n) => exState(h, n, p), (a, b, u, info) => exMove(h, a, b, u, info));
-          if (st.strike) { const a = swingAt(st.strike, p) * ((SOL.strikes[st.geo || st.strike] || {}).swingSign || 1); if (a) { const axis = V(0, 0, 1).applyQuaternion(st.quat).normalize(); st = Object.assign({}, st, { quat: new THREE.Quaternion().setFromAxisAngle(axis, a).multiply(st.quat) }); } }
+          if (st.strike) { const kS = SOL.strikes[st.geo || st.strike] || {}, a = swingAt(st.strike, p) * (kS.swingSign || 1) * (kS.swingUp || SWING.up) / SWING.up;  if (a) { const axis = V(0, 0, 1).applyQuaternion(st.quat).normalize(); st = Object.assign({}, st, { quat: new THREE.Quaternion().setFromAxisAngle(axis, a).multiply(st.quat) }); } }
           // an elbow reflex: the examiner's hand on his forearm rides with it (on the elbow crease, half of it)
           { const ks = KEYS['ex' + h], i = ks.findIndex((k, j) => k[0] <= p && (!ks[j + 1] || ks[j + 1][0] > p)), nm = ks[i][1], hold = !ks[i + 1] || ks[i + 1][2] === 'cut' || ks[i + 1][1] === nm, c = CARRY[nm];
             if (c && hold && lastRot[c[0]]) { const R0 = lastRot[c[0]], q = new THREE.Quaternion().slerpQuaternions(new THREE.Quaternion(), R0.q, c[1]);
