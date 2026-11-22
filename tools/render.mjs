@@ -81,12 +81,14 @@ try {
       let bin = ''; const u8 = new Uint8Array(buf); for (let i = 0; i < u8.length; i += 0x8000) bin += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000)); return btoa(bin);
     }, D);
     fs.writeFileSync(wav, Buffer.from(b64, 'base64'));
-    ff(['-i', wav, '-af', 'loudnorm=I=-15:TP=-1.5:LRA=11,aresample=48000,aformat=sample_fmts=s16:channel_layouts=stereo', wavN]);   // about -15 LUFS; ends with aformat s16 stereo
+    // loudnorm in two passes (measured, then applied linearly): about -15 LUFS, true peak under -1.5 dBTP; ends with aformat s16 stereo
+    const m1 = ffm(['-i', wav, '-af', 'loudnorm=I=-15:TP=-1.5:LRA=11:print_format=json', '-f', 'null', '-']), js = JSON.parse(m1.slice(m1.lastIndexOf('{'), m1.lastIndexOf('}') + 1));
+    ff(['-i', wav, '-af', `loudnorm=I=-15:TP=-1.5:LRA=11:measured_I=${js.input_i}:measured_TP=${js.input_tp}:measured_LRA=${js.input_lra}:measured_thresh=${js.input_thresh}:offset=${js.target_offset}:linear=true,aresample=48000,aformat=sample_fmts=s16:channel_layouts=stereo`, wavN]);
   }
   // ---- encode
   const enc = (dir, from, count, t0s, dur, outFile) => {
-    ff(['-framerate', String(FPS), '-start_number', String(from), '-i', path.join(dir, '%05d.jpg'), '-frames:v', String(count), '-ss', t0s.toFixed(3), '-t', dur.toFixed(3), '-i', wavN,
-      '-map', '0:v', '-map', '1:a', '-c:v', 'libx264', '-preset', FINAL ? 'slow' : 'medium', '-crf', FINAL ? '16' : '20', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k', '-shortest', '-movflags', '+faststart', outFile]);
+    ff(['-framerate', String(FPS), '-start_number', String(from), '-i', path.join(dir, '%05d.jpg'), '-ss', t0s.toFixed(3), '-t', dur.toFixed(3), '-i', wavN,
+      '-map', '0:v', '-map', '1:a', '-frames:v', String(count), '-c:v', 'libx264', '-preset', FINAL ? 'slow' : 'medium', '-crf', FINAL ? '16' : '20', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k', '-shortest', '-movflags', '+faststart', outFile]);
   };
   if (only) {   // a quick test: the chosen (consecutive) frames
     enc(FRC, want[0], want.length, want[0] / FPS, want.length / FPS, path.join(OUT, 'preview.mp4')); guard(path.join(OUT, 'preview.mp4'));

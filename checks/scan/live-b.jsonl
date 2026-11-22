@@ -1,0 +1,60 @@
+{"i":1068,"t":35.6,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1069,"t":35.633,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1070,"t":35.667,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1071,"t":35.7,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1072,"t":35.733,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1073,"t":35.767,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1074,"t":35.8,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1075,"t":35.833,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1076,"t":35.867,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1077,"t":35.9,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1078,"t":35.933,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1079,"t":35.967,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1080,"t":36,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1081,"t":36.033,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1082,"t":36.067,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1083,"t":36.1,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1084,"t":36.133,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1085,"t":36.167,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1086,"t":36.2,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1087,"t":36.233,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1088,"t":36.267,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1089,"t":36.3,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1090,"t":36.333,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1091,"t":36.367,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1092,"t":36.4,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1093,"t":36.433,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1094,"t":36.467,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1095,"t":36.5,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1096,"t":36.533,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1097,"t":36.567,"flags":[{"check":"within 15 cm of the lens","cm":14.5}]}
+{"i":1102,"t":36.733,"flags":[{"check":"examiner through his skin","mm":-2.88,"part":"examiner L hand"}]}
+{"i":1104,"t":36.8,"flags":[{"check":"examiner through his skin","mm":-2.97,"part":"examiner L hand"}]}
+{"i":1106,"t":36.867,"flags":[{"check":"examiner through his skin","mm":-2.97,"part":"examiner L hand"}]}
+{"i":1108,"t":36.933,"flags":[{"check":"examiner through his skin","mm":-2.66,"part":"examiner L forearm"}]}
+{"i":1110,"t":37,"flags":[{"check":"examiner through his skin","mm":-2.35,"part":"examiner L forearm"}]}
+{"i":1112,"t":37.067,"flags":[{"check":"examiner through his skin","mm":-2.64,"part":"examiner L forearm"}]}
+{"i":1114,"t":37.133,"flags":[{"check":"examiner through his skin","mm":-2.72,"part":"examiner L forearm"}]}
+{"i":1116,"t":37.2,"flags":[{"check":"examiner through his skin","mm":-2.67,"part":"examiner L forearm"}]}
+{"i":1118,"t":37.267,"flags":[{"check":"examiner through his skin","mm":-2.62,"part":"examiner L forearm"},{"check":"hammer through his skin","mm":-2.99}]}
+{"i":1120,"t":37.333,"flags":[{"check":"examiner through his skin","mm":-2.59,"part":"examiner L forearm"}]}
+{"i":1122,"t":37.4,"flags":[{"check":"examiner through his skin","mm":-2.56,"part":"examiner L forearm"},{"check":"hammer head through a hand","mm":-2.98}]}
+{"i":1124,"t":37.467,"flags":[{"check":"examiner through his skin","mm":-2.97,"part":"examiner L forearm"},{"check":"hammer through his skin","mm":-2.91}]}
+{"i":1126,"t":37.533,"flags":[{"check":"examiner through his skin","mm":-2.99,"part":"examiner L hand"},{"check":"hammer through his skin","mm":-2.98}]}
+{"i":1128,"t":37.6,"flags":[{"check":"examiner through his skin","mm":-2.98,"part":"examiner L hand"},{"check":"hammer through his skin","mm":-2.94}]}
+{"i":1130,"t":37.667,"flags":[{"check":"examiner through his skin","mm":-2.81,"part":"examiner L forearm"}]}
+{"i":1132,"t":37.733,"flags":[{"check":"examiner through his skin","mm":-2.63,"part":"examiner L forearm"}]}
+{"i":1134,"t":37.8,"flags":[{"check":"examiner through his skin","mm":-2.67,"part":"examiner L forearm"}]}
+{"i":1136,"t":37.867,"flags":[{"check":"examiner through his skin","mm":-2.72,"part":"examiner L forearm"},{"check":"hammer through his skin","mm":-2.82},{"check":"hammer within 10 mm of him away from a strike","mm":-2.82}]}
+{"i":1138,"t":37.933,"flags":[{"check":"examiner through his skin","mm":-2.79,"part":"examiner L forearm"},{"check":"hammer within 10 mm of him away from a strike","mm":1.67}]}
+{"i":1140,"t":38,"flags":[{"check":"examiner through his skin","mm":-2.86,"part":"examiner L forearm"}]}
+{"i":1142,"t":38.067,"flags":[{"check":"examiner through his skin","mm":-2.95,"part":"examiner L forearm"}]}
+{"i":1144,"t":38.133,"flags":[{"check":"examiner through his skin","mm":-2.51,"part":"examiner L forearm"}]}
+{"i":1146,"t":38.2,"flags":[{"check":"examiner through his skin","mm":-2.6,"part":"examiner L forearm"}]}
+{"i":1148,"t":38.267,"flags":[{"check":"examiner through his skin","mm":-2.45,"part":"examiner L forearm"}]}
+{"i":1150,"t":38.333,"flags":[{"check":"examiner through his skin","mm":-2.74,"part":"examiner L forearm"}]}
+{"i":1152,"t":38.4,"flags":[{"check":"examiner through his skin","mm":-2.3,"part":"examiner L forearm"}]}
+{"i":1154,"t":38.467,"flags":[{"check":"examiner through his skin","mm":-2.99,"part":"examiner L hand"}]}
+{"i":1156,"t":38.533,"flags":[{"check":"examiner through his skin","mm":-2.98,"part":"examiner L hand"}]}
+{"i":1158,"t":38.6,"flags":[{"check":"examiner through his skin","mm":-2.98,"part":"examiner L hand"}]}
+{"i":1162,"t":38.733,"flags":[{"check":"examiner arms through each other","mm":-2.92,"part":"L sleeve / R sleeve"}]}
