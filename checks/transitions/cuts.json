@@ -18,7 +18,7 @@
     "exL": {
      "jumps": [
       0,
-      7.53,
+      7.978,
       0
      ],
      "jumpsOnCutFrame": true
@@ -26,7 +26,7 @@
     "exR": {
      "jumps": [
       0,
-      7.53,
+      7.978,
       0
      ],
      "jumpsOnCutFrame": true
@@ -44,7 +44,7 @@
     "cam": {
      "jumps": [
       0,
-      25.026,
+      25.083,
       0
      ],
      "jumpsOnCutFrame": true
@@ -52,7 +52,7 @@
     "exL": {
      "jumps": [
       0,
-      7.666,
+      7.361,
       0
      ],
      "jumpsOnCutFrame": true
@@ -60,7 +60,7 @@
     "exR": {
      "jumps": [
       0,
-      7.847,
+      8.108,
       0
      ],
      "jumpsOnCutFrame": true
@@ -78,7 +78,7 @@
     "cam": {
      "jumps": [
       0,
-      24.862,
+      24.961,
       0
      ],
      "jumpsOnCutFrame": true
@@ -86,7 +86,7 @@
     "exL": {
      "jumps": [
       0,
-      6.764,
+      7.027,
       0
      ],
      "jumpsOnCutFrame": true
@@ -94,7 +94,7 @@
     "exR": {
      "jumps": [
       0,
-      6.764,
+      7.027,
       0
      ],
      "jumpsOnCutFrame": true
@@ -112,7 +112,7 @@
     "cam": {
      "jumps": [
       0,
-      25.52,
+      25.727,
       0
      ],
      "jumpsOnCutFrame": true
@@ -120,7 +120,7 @@
     "exL": {
      "jumps": [
       0,
-      9.546,
+      9.733,
       0
      ],
      "jumpsOnCutFrame": true
@@ -128,7 +128,7 @@
     "exR": {
      "jumps": [
       0,
-      11.964,
+      13.611,
       0
      ],
      "jumpsOnCutFrame": true
@@ -146,7 +146,7 @@
     "cam": {
      "jumps": [
       0,
-      24.621,
+      25.046,
       0
      ],
      "jumpsOnCutFrame": true
@@ -162,7 +162,7 @@
     "exL": {
      "jumps": [
       0,
-      10.815,
+      10.912,
       0
      ],
      "jumpsOnCutFrame": true
@@ -170,7 +170,7 @@
     "exR": {
      "jumps": [
       0,
-      7.256,
+      7.596,
       0
      ],
      "jumpsOnCutFrame": true
@@ -188,7 +188,7 @@
     "cam": {
      "jumps": [
       0,
-      27.091,
+      27.338,
       0
      ],
      "jumpsOnCutFrame": true
@@ -204,7 +204,7 @@
     "exL": {
      "jumps": [
       0,
-      10.815,
+      10.912,
       0
      ],
      "jumpsOnCutFrame": true
@@ -212,7 +212,7 @@
     "exR": {
      "jumps": [
       0,
-      8.459,
+      8.49,
       0
      ],
      "jumpsOnCutFrame": true
@@ -393,6 +393,14 @@
      ],
      "jumpsOnCutFrame": true
     },
+    "legR": {
+     "jumps": [
+      0,
+      32.311,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
     "legL": {
      "jumps": [
       0,
@@ -404,7 +412,7 @@
     "exL": {
      "jumps": [
       0,
-      9.008,
+      7.398,
       0
      ],
      "jumpsOnCutFrame": true
@@ -412,7 +420,7 @@
     "exR": {
      "jumps": [
       0,
-      8.519,
+      1.338,
       0
      ],
      "jumpsOnCutFrame": true
@@ -504,7 +512,7 @@
     "exR": {
      "jumps": [
       0,
-      9.568,
+      11.447,
       0
      ],
      "jumpsOnCutFrame": true
@@ -530,7 +538,7 @@
     "exL": {
      "jumps": [
       0,
-      9.98,
+      11.673,
       0
      ],
      "jumpsOnCutFrame": true
@@ -538,7 +546,7 @@
     "exR": {
      "jumps": [
       0,
-      9.98,
+      11.673,
       0
      ],
      "jumpsOnCutFrame": true
@@ -564,7 +572,7 @@
     "exL": {
      "jumps": [
       0,
-      12.49,
+      14.374,
       0
      ],
      "jumpsOnCutFrame": true
@@ -572,7 +580,7 @@
     "exR": {
      "jumps": [
       0,
-      9.98,
+      11.673,
       0
      ],
      "jumpsOnCutFrame": true
@@ -664,7 +672,7 @@
     "exR": {
      "jumps": [
       0,
-      13.071,
+      14.83,
       0
      ],
      "jumpsOnCutFrame": true

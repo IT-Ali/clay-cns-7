@@ -2371,273 +2371,312 @@
    "t": 8.467,
    "change": 8.87,
    "neighbourMedian": 1.33,
-   "why": "the examiner's hand arriving (up:S:bicR -> S:bicR, 8.1-8.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (up:S:bicR -> S:bicR, 8.1-8.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_254.jpg"
   },
   {
    "frame": 278,
    "t": 9.267,
    "change": 8.21,
    "neighbourMedian": 1.25,
-   "why": "the hammer falls and strikes at 9.20 s (a fast stroke, by design)"
+   "why": "the hammer falls and strikes at 9.20 s (a fast stroke, by design)",
+   "strip": "scan/jump_278.jpg"
   },
   {
    "frame": 506,
    "t": 16.867,
    "change": 12.66,
    "neighbourMedian": 1.54,
-   "why": "the hammer falls and strikes at 16.80 s (a fast stroke, by design)"
+   "why": "the hammer falls and strikes at 16.80 s (a fast stroke, by design)",
+   "strip": "scan/jump_506.jpg"
   },
   {
    "frame": 744,
    "t": 24.8,
    "change": 9.87,
    "neighbourMedian": 1.25,
-   "why": "the examiner's hand arriving (home -> rel:wristRel:handR, 24.6-25.5 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (home -> rel:wristRel:handR, 24.6-25.5 s): a quick slide close to the camera",
+   "strip": "scan/jump_744.jpg"
   },
   {
    "frame": 746,
    "t": 24.867,
    "change": 15.7,
    "neighbourMedian": 1.25,
-   "why": "the examiner's hand arriving (home -> rel:wristRel:handR, 24.6-25.5 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (home -> rel:wristRel:handR, 24.6-25.5 s): a quick slide close to the camera",
+   "strip": "scan/jump_746.jpg"
   },
   {
    "frame": 748,
    "t": 24.933,
    "change": 13.31,
    "neighbourMedian": 1.25,
-   "why": "the examiner's hand arriving (home -> rel:wristRel:handR, 24.6-25.5 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (home -> rel:wristRel:handR, 24.6-25.5 s): a quick slide close to the camera",
+   "strip": "scan/jump_748.jpg"
   },
   {
    "frame": 776,
    "t": 25.867,
    "change": 13.69,
    "neighbourMedian": 1.66,
-   "why": "the examiner's hand arriving (park -> S:triR, 25.4-26.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (park -> S:triR, 25.4-26.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_776.jpg"
   },
   {
    "frame": 778,
    "t": 25.933,
    "change": 11.75,
    "neighbourMedian": 1.66,
-   "why": "the examiner's hand arriving (park -> S:triR, 25.4-26.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (park -> S:triR, 25.4-26.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_778.jpg"
   },
   {
    "frame": 830,
    "t": 27.667,
    "change": 10.72,
    "neighbourMedian": 1.41,
-   "why": "the hammer falls and strikes at 27.60 s (a fast stroke, by design)"
+   "why": "the hammer falls and strikes at 27.60 s (a fast stroke, by design)",
+   "strip": "scan/jump_830.jpg"
   },
   {
    "frame": 876,
    "t": 29.2,
    "change": 16.64,
    "neighbourMedian": 1.27,
-   "why": "the examiner's hand leaving (rel:wristRel:handR -> home, 28.6-29.4 s): a quick slide close to the camera"
+   "why": "the examiner's hand leaving (rel:wristRel:handR -> home, 28.6-29.4 s): a quick slide close to the camera",
+   "strip": "scan/jump_876.jpg"
   },
   {
    "frame": 878,
    "t": 29.267,
    "change": 15.08,
    "neighbourMedian": 1.27,
-   "why": "the examiner's hand leaving (rel:wristRel:handR -> home, 28.6-29.4 s): a quick slide close to the camera"
+   "why": "the examiner's hand leaving (rel:wristRel:handR -> home, 28.6-29.4 s): a quick slide close to the camera",
+   "strip": "scan/jump_878.jpg"
   },
   {
    "frame": 1200,
    "t": 40,
    "change": 8.49,
    "neighbourMedian": 1.32,
-   "why": "the examiner's hand leaving (thumbRreinf -> home, 39.4-40.3 s): a quick slide close to the camera"
+   "why": "the examiner's hand leaving (thumbRreinf -> home, 39.4-40.3 s): a quick slide close to the camera",
+   "strip": "scan/jump_1200.jpg"
   },
   {
    "frame": 1326,
    "t": 44.2,
    "change": 19.66,
    "neighbourMedian": 2.98,
-   "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera",
+   "strip": "scan/jump_1326.jpg"
   },
   {
    "frame": 1330,
    "t": 44.333,
    "change": 20.12,
    "neighbourMedian": 2.98,
-   "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera",
+   "strip": "scan/jump_1330.jpg"
   },
   {
    "frame": 1340,
    "t": 44.667,
    "change": 18.4,
    "neighbourMedian": 1.45,
-   "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera",
+   "strip": "scan/jump_1340.jpg"
   },
   {
    "frame": 1342,
    "t": 44.733,
    "change": 28.01,
    "neighbourMedian": 1.45,
-   "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera",
+   "strip": "scan/jump_1342.jpg"
   },
   {
    "frame": 1344,
    "t": 44.8,
    "change": 13.66,
    "neighbourMedian": 1.44,
-   "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (home -> kneeSupport, 43.9-44.9 s): a quick slide close to the camera",
+   "strip": "scan/jump_1344.jpg"
   },
   {
    "frame": 1410,
    "t": 47,
    "change": 9.67,
    "neighbourMedian": 1.43,
-   "why": "the examiner's hand leaving (S:kneeR -> S:kneeL, 46.1-47.2 s): a quick slide close to the camera"
+   "why": "the examiner's hand leaving (S:kneeR -> S:kneeL, 46.1-47.2 s): a quick slide close to the camera",
+   "strip": "scan/jump_1410.jpg"
   },
   {
    "frame": 1412,
    "t": 47.067,
    "change": 11.6,
    "neighbourMedian": 1.42,
-   "why": "the examiner's hand leaving (S:kneeR -> S:kneeL, 46.1-47.2 s): a quick slide close to the camera"
+   "why": "the examiner's hand leaving (S:kneeR -> S:kneeL, 46.1-47.2 s): a quick slide close to the camera",
+   "strip": "scan/jump_1412.jpg"
   },
   {
    "frame": 1464,
    "t": 48.8,
    "change": 11.6,
    "neighbourMedian": 1.51,
-   "why": "the examiner's hand leaving (S:kneeL -> S:kneeR@jendR, 48.6-49.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand leaving (S:kneeL -> S:kneeR@jendR, 48.6-49.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_1464.jpg"
   },
   {
    "frame": 1466,
    "t": 48.867,
    "change": 9.66,
    "neighbourMedian": 1.51,
-   "why": "the examiner's hand leaving (S:kneeL -> S:kneeR@jendR, 48.6-49.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand leaving (S:kneeL -> S:kneeR@jendR, 48.6-49.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_1466.jpg"
   },
   {
    "frame": 1702,
    "t": 56.733,
    "change": 12.06,
    "neighbourMedian": 1.88,
-   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_1702.jpg"
   },
   {
    "frame": 1704,
    "t": 56.8,
    "change": 21.21,
    "neighbourMedian": 1.88,
-   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_1704.jpg"
   },
   {
    "frame": 1706,
    "t": 56.867,
    "change": 25.26,
    "neighbourMedian": 1.88,
-   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_1706.jpg"
   },
   {
    "frame": 1708,
    "t": 56.933,
    "change": 11.77,
    "neighbourMedian": 1.88,
-   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_1708.jpg"
   },
   {
    "frame": 1718,
    "t": 57.267,
    "change": 12.8,
    "neighbourMedian": 1.45,
-   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_1718.jpg"
   },
   {
    "frame": 1720,
    "t": 57.333,
    "change": 26.31,
    "neighbourMedian": 1.41,
-   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_1720.jpg"
   },
   {
    "frame": 1722,
    "t": 57.4,
    "change": 13.22,
    "neighbourMedian": 1.36,
-   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand leaving (kneeSupport -> home, 56.6-57.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_1722.jpg"
   },
   {
    "frame": 1946,
    "t": 64.867,
    "change": 9.08,
    "neighbourMedian": 1.43,
-   "why": "the hammer falls and strikes at 64.80 s (a fast stroke, by design)"
+   "why": "the hammer falls and strikes at 64.80 s (a fast stroke, by design)",
+   "strip": "scan/jump_1946.jpg"
   },
   {
    "frame": 2250,
    "t": 75,
    "change": 9.8,
    "neighbourMedian": 1.35,
-   "why": "the sharp push of his foot (ankle clonus L)"
+   "why": "the sharp push of his foot (ankle clonus L)",
+   "strip": "scan/jump_2250.jpg"
   },
   {
    "frame": 2578,
    "t": 85.933,
    "change": 13.46,
    "neighbourMedian": 1.44,
-   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_2578.jpg"
   },
   {
    "frame": 2580,
    "t": 86,
    "change": 34.08,
    "neighbourMedian": 1.59,
-   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_2580.jpg"
   },
   {
    "frame": 2582,
    "t": 86.067,
    "change": 41.36,
    "neighbourMedian": 1.86,
-   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_2582.jpg"
   },
   {
    "frame": 2584,
    "t": 86.133,
    "change": 21.87,
    "neighbourMedian": 2.48,
-   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_2584.jpg"
   },
   {
    "frame": 2586,
    "t": 86.2,
    "change": 24.15,
    "neighbourMedian": 3.62,
-   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_2586.jpg"
   },
   {
    "frame": 2590,
    "t": 86.333,
    "change": 18.84,
    "neighbourMedian": 1.37,
-   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_2590.jpg"
   },
   {
    "frame": 2592,
    "t": 86.4,
    "change": 13.81,
    "neighbourMedian": 1.36,
-   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_2592.jpg"
   },
   {
    "frame": 2596,
    "t": 86.533,
    "change": 9.61,
    "neighbourMedian": 1.36,
-   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (home -> rel:hoffSupRel:handR, 85.8-86.6 s): a quick slide close to the camera",
+   "strip": "scan/jump_2596.jpg"
   },
   {
    "frame": 2612,
    "t": 87.067,
    "change": 9.33,
    "neighbourMedian": 1.37,
-   "why": "the examiner's hand arriving (park -> rel:hoffPinRel:handR, 86.4-87.2 s): a quick slide close to the camera"
+   "why": "the examiner's hand arriving (park -> rel:hoffPinRel:handR, 86.4-87.2 s): a quick slide close to the camera",
+   "strip": "scan/jump_2612.jpg"
   }
  ]
 }

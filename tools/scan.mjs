@@ -94,8 +94,8 @@ try {
   await page.evaluate(() => {
     const W = window.W, C = window.CONTACT, P = W.P, V = (x, y, z) => new THREE.Vector3(x, y, z), STR = window.STYLE.content.STRIKES;
     const Dm = window.BED.DIM;
-    const meshesOf = (o) => { const a = []; o.traverse((m) => { if (m.isMesh && m.visible) a.push(m); }); return a; };
-    const patient = () => { const a = []; P.group.traverse((m) => { if (m.isMesh && m.visible && m.geometry && m.geometry.attributes.position.count > 200) a.push(m); }); return a; };
+    const meshesOf = (o) => { const a = []; o.traverse((m) => { if (m.isMesh && window.SHOWN(m)) a.push(m); }); return a; };
+    const patient = () => { const a = []; P.group.traverse((m) => { if (m.isMesh && window.SHOWN(m) && m.geometry && m.geometry.attributes.position.count > 200) a.push(m); }); return a; };
     // the mattress as a height field, only over the bed
     const bedGap = (ms, step = 3) => { let g = Infinity; const w = V(0, 0, 0); for (const m of ms) { m.updateMatrixWorld(true); const pa = m.geometry.attributes.position; for (let i = 0; i < pa.count; i += step) { w.fromBufferAttribute(pa, i).applyMatrix4(m.matrixWorld); if (Math.abs(w.z) > Dm.half - 0.1 || w.x < -9.3 || w.x > Dm.xEnd - 0.1) continue; const d = w.y - W.SH.heightAt(w.x, w.z); if (d < g) g = d; } } return g; };
     const prevPx = { a: null };

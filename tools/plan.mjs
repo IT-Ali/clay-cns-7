@@ -24,8 +24,8 @@ try {
     const W = window.W, C = window.CONTACT, P = W.P, K = window.CNS7_TIMELINE.KEYS, Dm = window.BED.DIM, V = (x, y, z) => new THREE.Vector3(x, y, z);
     const segs = [];
     for (const h of ['L', 'R']) { const ks = K['ex' + h]; for (let i = 0; i < ks.length - 1; i++) { const [a, n0] = ks[i], [b, n1, cut] = ks[i + 1]; if (cut || n0 === n1 || b - a < 1e-6) continue; segs.push({ h, t0: a, t1: b, n0, n1, key: h + ':' + a.toFixed(3) }); } }
-    const meshesOf = (o) => { const a = []; o.traverse((m) => { if (m.isMesh && m.visible) a.push(m); }); return a; };
-    const patient = () => { const a = []; P.group.traverse((m) => { if (m.isMesh && m.visible && m.geometry && m.geometry.attributes.position.count > 200) a.push(m); }); return a; };
+    const meshesOf = (o) => { const a = []; o.traverse((m) => { if (m.isMesh && window.SHOWN(m)) a.push(m); }); return a; };
+    const patient = () => { const a = []; P.group.traverse((m) => { if (m.isMesh && window.SHOWN(m) && m.geometry && m.geometry.attributes.position.count > 200) a.push(m); }); return a; };
     const bedGap = (ms) => { let g = Infinity; const w = V(0, 0, 0); for (const m of ms) { m.updateMatrixWorld(true); const pa = m.geometry.attributes.position; for (let i = 0; i < pa.count; i += 3) { w.fromBufferAttribute(pa, i).applyMatrix4(m.matrixWorld); if (Math.abs(w.z) > Dm.half - 0.1 || w.x < -9.3 || w.x > Dm.xEnd - 0.1) continue; const d = w.y - W.SH.heightAt(w.x, w.z); if (d < g) g = d; } } return g; };
     const out = {}, cache = new Map();
     for (const sg of segs) {

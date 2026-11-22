@@ -8,7 +8,7 @@ try {
   const page = await openPage(browser, url, { w: 320, h: 180, samples: 1 });
   const res = await page.evaluate(() => {
     const W = window.W, C = window.CONTACT, STR = window.STYLE.content.STRIKES, out = [];
-    const ms = []; W.P.group.traverse((m) => { if (m.isMesh && m.visible && m.geometry && m.geometry.attributes.position.count > 200) ms.push(m); });
+    const ms = []; W.P.group.traverse((m) => { if (m.isMesh && window.SHOWN(m) && m.geometry && m.geometry.attributes.position.count > 200) ms.push(m); });
     let worst = { gap: Infinity, t: null };
     for (let t = 0; t <= window.DURATION + 1e-6; t += 0.1) {
       if (STR.some((k) => Math.abs(t - k.t) < 0.35)) continue;

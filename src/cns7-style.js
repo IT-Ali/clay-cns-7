@@ -140,9 +140,11 @@
 
       // ------------------------------------------------------------ the frames of his trunk
       const trunk = () => { P.torso.updateMatrixWorld(true); const m = P.torso.matrixWorld; return { left: V(1, 0, 0).transformDirection(m), up: V(0, 1, 0).transformDirection(m), front: V(0, 0, 1).transformDirection(m) }; };
-      const armMeshes = (side) => { const a = P.arms[side], out = [a.armMesh]; a.hand.group.traverse((m) => { if (m.isMesh && m.visible) out.push(m); }); return out; };
+      // shown: the mesh and every parent visible (his leg group keeps hidden old toes: they are never contacts)
+      const SHOWN = (m) => { if (!m.visible) return false; let v = true; m.traverseAncestors((a) => { if (a.visible === false) v = false; }); return v; };
+      const armMeshes = (side) => { const a = P.arms[side], out = [a.armMesh]; a.hand.group.traverse((m) => { if (m.isMesh && SHOWN(m)) out.push(m); }); return out; };
       const torsoMeshes = () => [P.torsoMesh, P.group.getObjectByName('pyjama-pants')].filter(Boolean);
-      const handMeshes = (hand) => { const out = []; hand.group.traverse((m) => { if (m.isMesh && m.visible) out.push(m); }); return out; };
+      const handMeshes = (hand) => { const out = []; hand.group.traverse((m) => { if (m.isMesh && SHOWN(m)) out.push(m); }); return out; };
       // the mattress (and the folded sheet) as a height field: the gap of a set of meshes above it
       const bedGap = (meshes) => { let g = Infinity, at = null; const w = V(0, 0, 0); for (const m of meshes) { m.updateMatrixWorld(true); const p = m.geometry.attributes.position; for (let i = 0; i < p.count; i += 2) { w.fromBufferAttribute(p, i).applyMatrix4(m.matrixWorld); const d = w.y - hs(w.x, w.z); if (d < g) { g = d; at = w.clone(); } } } return { gap: g, at }; };
       const mattressNormal = (x) => (x < Dm.Xh ? BED.normal.clone() : V(0, 1, 0));
@@ -196,10 +198,10 @@
         // A camera with a clear view: candidates on a cone round `prefer` at `dist` from `target`; each point in `see` must be
         // visible (the first thing a ray from the camera hits lies within 1.2 cm of it), the camera must be outside the bed,
         // the table and every arm. Picks the candidate closest to `prefer`. -> cam
-        const sceneMeshes = () => { const out = []; S.scene.traverse((m) => { if (m.isMesh && m.visible && m.name !== 'sweep' && m.geometry && m.geometry.attributes.position) { let v = true; m.traverseAncestors((a) => { if (a.visible === false) v = false; }); if (v) out.push(m); } }); return out; };
+        const sceneMeshes = () => { const out = []; S.scene.traverse((m) => { if (m.isMesh && SHOWN(m) && m.name !== 'sweep' && m.geometry && m.geometry.attributes.position) { let v = true; m.traverseAncestors((a) => { if (a.visible === false) v = false; }); if (v) out.push(m); } }); return out; };
         const pickCam = (target, prefer, dist, see, o = {}) => {
           const ms = sceneMeshes(), rc3 = new THREE.Raycaster(); let best = null, part = null;
-          const exPts = []; for (const h of ['L', 'R']) EX[h].group.traverse((m) => { if (m.isMesh && m.visible) { m.updateMatrixWorld(true); const pa = m.geometry.attributes.position; for (let i = 0; i < pa.count; i += 8) exPts.push(V(0, 0, 0).fromBufferAttribute(pa, i).applyMatrix4(m.matrixWorld)); } });
+          const exPts = []; for (const h of ['L', 'R']) EX[h].group.traverse((m) => { if (m.isMesh && SHOWN(m)) { m.updateMatrixWorld(true); const pa = m.geometry.attributes.position; for (let i = 0; i < pa.count; i += 8) exPts.push(V(0, 0, 0).fromBufferAttribute(pa, i).applyMatrix4(m.matrixWorld)); } });
           const pf = prefer.clone().normalize(), e1 = V(0, 0, 0).crossVectors(pf, Math.abs(pf.y) < 0.9 ? V(0, 1, 0) : V(1, 0, 0)).normalize(), e2 = V(0, 0, 0).crossVectors(pf, e1);
           for (const cone of [0, 5, 10, 15, 20, 25, 30, 40, 50, 60].filter((c) => c <= (o.maxCone == null ? 60 : o.maxCone))) for (let k = 0; k < (cone ? 12 : 1); k++) {
             const a = k / 12 * Math.PI * 2, c = Math.cos(cone * Math.PI / 180), sn = Math.sin(cone * Math.PI / 180);
@@ -233,7 +235,7 @@
           applyEx(handSide, ex); return ex;
         };
         // all of his skin (and the pyjama), for checks
-        const patientMeshes = () => { const out = []; P.group.traverse((m) => { if (m.isMesh && m.visible && m.geometry && m.geometry.attributes.position.count > 200) out.push(m); }); return out; };
+        const patientMeshes = () => { const out = []; P.group.traverse((m) => { if (m.isMesh && SHOWN(m) && m.geometry && m.geometry.attributes.position.count > 200) out.push(m); }); return out; };
         // the examiner's palm FLAT across the ball of his foot: palm against the sole, fingers together across the sole, the
         // thumb on the inner (medial) side; the hand rests by its lowest point (nothing sinks)
         const palmOnBall = (side, handSide) => {
@@ -738,7 +740,7 @@
           P.setFace({ pupilR: 3.5, pupilL: 3.5 });
         }
         // ============================================================ THE LEGS
-        const legMeshes = (sides = ['R', 'L']) => { const out = []; for (const sd of sides) { out.push(P.legMeshes[sd]); P.legs[sd].traverse((m) => { if (m.isMesh && m.visible && m !== P.legMeshes[sd]) out.push(m); }); } return out; };
+        const legMeshes = (sides = ['R', 'L']) => { const out = []; for (const sd of sides) { out.push(P.legMeshes[sd]); P.legs[sd].traverse((m) => { if (m.isMesh && SHOWN(m) && m !== P.legMeshes[sd]) out.push(m); }); } return out; };
         const legField = (sides) => CONTACT.field(legMeshes(sides));
         const strikeLeg = (name, side, lm, dirHint, sides) => {
           const k = NEURO.points(P), T = k[lm + '_' + side], n = k.normals[lm + '_' + side];
@@ -1443,7 +1445,7 @@
         S.R.grain = still ? 0 : SET.RENDER.grain;                         // the grain is seeded by the frame number: off on the still home frames so the first and last frames are identical
       };
       root.CNS7_TIMELINE = { KEYS, CAMS, STRIKES, camAt, swingAt, CARRY, TUNE };
-      root.CNS7_UPDATE = update;                                           // the frame's scene without rendering it (tools/scan.mjs, tools/cuts.mjs)
+      root.CNS7_UPDATE = update; root.SHOWN = SHOWN;                                           // the frame's scene without rendering it (tools/scan.mjs, tools/cuts.mjs)
       // the CNS home shot exactly as shared/README.md builds it (for home-check.json)
       root.HOME_REFERENCE = () => {
         HOME.apply(P, EX, SH, 'cns'); P.setFace({ pupilR: 3.5, pupilL: 3.5 }); P.breathe(0); hammer.group.visible = false;
@@ -1471,10 +1473,10 @@
         legR: () => CONTACT.field([P.legMeshes.R]), legL: () => CONTACT.field([P.legMeshes.L]), legs: () => CONTACT.field([P.legMeshes.R, P.legMeshes.L]),
         handR: () => CONTACT.field(handMeshes(P.arms.R.hand)), handL: () => CONTACT.field(handMeshes(P.arms.L.hand)),
         midR: () => CONTACT.field(P.arms.R.hand.fingers.middle.dip.children.filter((m) => m.isMesh)), midL: () => CONTACT.field(P.arms.L.hand.fingers.middle.dip.children.filter((m) => m.isMesh)),
-        patient: () => { const ms = []; P.group.traverse((m) => { if (m.isMesh && m.visible && m.geometry && m.geometry.attributes.position.count > 200) ms.push(m); }); return CONTACT.field(ms); },
+        patient: () => { const ms = []; P.group.traverse((m) => { if (m.isMesh && SHOWN(m) && m.geometry && m.geometry.attributes.position.count > 200) ms.push(m); }); return CONTACT.field(ms); },
         thumbNailR: () => CONTACT.field(EX.R.hand.thumb.ip.children.filter((m) => m.isMesh)), thumbNailL: () => CONTACT.field(EX.L.hand.thumb.ip.children.filter((m) => m.isMesh)),
         torso: () => CONTACT.field(torsoMeshes()),
-        legsAll: () => { const a = [P.legMeshes.R, P.legMeshes.L]; for (const sd of ['R', 'L']) P.legs[sd].traverse((m) => { if (m.isMesh && m.visible && m !== P.legMeshes[sd]) { let v = true; m.traverseAncestors((x) => { if (x.visible === false) v = false; }); if (v) a.push(m); } }); return CONTACT.field(a); },   // his legs with the toes
+        legsAll: () => { const a = [P.legMeshes.R, P.legMeshes.L]; for (const sd of ['R', 'L']) P.legs[sd].traverse((m) => { if (m.isMesh && SHOWN(m) && m !== P.legMeshes[sd]) { let v = true; m.traverseAncestors((x) => { if (x.visible === false) v = false; }); if (v) a.push(m); } }); return CONTACT.field(a); },   // his legs with the toes
         exFingR: () => { const pr = CONTACT.handParts(EX.R.hand); return CONTACT.field(pr.index.concat(pr.middle)); }, exFingL: () => { const pr = CONTACT.handParts(EX.L.hand); return CONTACT.field(pr.index.concat(pr.middle)); },
       };
       const partMeshes = (h, part) => {
