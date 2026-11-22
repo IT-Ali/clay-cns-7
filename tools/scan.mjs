@@ -10,8 +10,10 @@ const OUT = path.join(ROOT, 'checks', 'scan'); fs.mkdirSync(OUT, { recursive: tr
 const CUTS = () => JSON.parse(fs.readFileSync(path.join(OUT, 'cuts-frames.json'), 'utf8'));
 
 if (arg('merge')) {
-  const parts = fs.readdirSync(OUT).filter((f) => /^part-.*\.json$/.test(f)).map((f) => JSON.parse(fs.readFileSync(path.join(OUT, f), 'utf8')));
-  const frames = parts.flatMap((p) => p.frames).sort((a, b) => a.i - b.i), cuts = new Set(CUTS().frames);
+  // the parts, oldest first: a later re-scan of some frames replaces them (one entry per frame)
+  const parts = fs.readdirSync(OUT).filter((f) => /^part-.*\.json$/.test(f)).sort((a, b) => fs.statSync(path.join(OUT, a)).mtimeMs - fs.statSync(path.join(OUT, b)).mtimeMs).map((f) => JSON.parse(fs.readFileSync(path.join(OUT, f), 'utf8')));
+  const byI = new Map(); for (const p of parts) for (const f of p.frames) { const o = byI.get(f.i); byI.set(f.i, o && f.diff == null && o.diff != null ? Object.assign({}, f, { diff: o.diff }) : f); }
+  const frames = [...byI.values()].sort((a, b) => a.i - b.i), cuts = new Set(CUTS().frames);
   const flags = [];
   for (const f of frames) for (const fl of f.flags) flags.push(Object.assign({ frame: f.i, t: +(f.i / 30).toFixed(3) }, fl));
   // the jump list: a frame whose picture changes far more than its neighbours' (median of the 10 frames either side),

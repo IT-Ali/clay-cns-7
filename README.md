@@ -14,8 +14,9 @@ ending on the CNS home shot so it joins parts 6 and 8 end to end. Built with thr
 | `src/contact.js` | contacts measured on the real meshes (gaps, thumb and finger settling, the hammer strike) |
 | `src/cns7-style.js` | the style: content, the SOLVE section, the timeline `update(t)`, captions, sound |
 | `solved.json` | every contact pose and camera, solved ONCE (`npm run solve`); the renders only load it |
+| `transitions.json` | how each move of the examiner's hands arrives and leaves, planned ONCE (`node tools/plan.mjs`); loaded |
 | `storyboard/` | the storyboard (stills are frames of the animation itself) and the review panels |
-| `tools/` | `solve.mjs`, `render.mjs` (preview / final), `storyboard*.mjs`, `lab.mjs` |
+| `tools/` | `solve.mjs`, `plan.mjs`, `render.mjs` (preview / final), `scan.mjs`, `cuts.mjs`, `storyvsanim.mjs`, `homecheck.mjs`, `storyboard*.mjs`, `lab.mjs` |
 
 ## Captions switch
 

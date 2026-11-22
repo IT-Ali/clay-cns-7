@@ -1250,7 +1250,7 @@
         const e = K.ease.inOut;
         // the fingers straighten (together) while the hand slides, if planned so; they close round the contact as it arrives
         const open = (st) => { if (!PR.open) return st; const o = JSON.parse(JSON.stringify(st.pose)); const c = (k) => (o.curl && o.curl[k]) || o.all || [0.12, 0.18, 0.1]; o.curl = Object.fromEntries(PK.map((k) => [k, c(k).map(() => 0)])); delete o.all; return Object.assign({}, st, { pose: o, thumbQ: undefined }); };
-        const slid = (st) => Object.assign({}, open(st), { wrist: st.wrist.clone().addScaledVector(dirOf(st, PR.dir), PR.dist).add(V(0, -(PR.low || 0), 0)) });   // (low: slides in a little below, then rises into place)
+        const slid = (st) => Object.assign({}, open(st), { wrist: st.wrist.clone().addScaledVector(dirOf(st, st.strike ? 'up' : PR.dir), PR.dist).add(V(0, st.strike ? 0 : -(PR.low || 0), 0)) });   // a hand holding the hammer lifts straight up   // (low: slides in a little below, then rises into place)
         const off = (st) => (PR.two && !st.strike ? Object.assign({}, open(st), { wrist: st.wrist.clone().addScaledVector(V(0, 1, 0).applyQuaternion(st.quat).normalize(), 0.25) }) : st);
         const A0 = off(a), B0 = off(b), A1 = tOut ? Object.assign({}, slid(a), { wrist: slid(a).wrist.add(A0.wrist.clone().sub(a.wrist)) }) : a, B1 = tIn ? Object.assign({}, slid(b), { wrist: slid(b).wrist.add(B0.wrist.clone().sub(b.wrist)) }) : b;
         if (tOut && s < tOut) { const k = s / tOut, w = A0 !== a ? 0.4 : 0; return k < w ? lerpEx(h, a, A0, e(k / w)) : lerpEx(h, A0, Object.assign({}, A1, { strike: a.strike, geo: a.geo }), e((k - w) / (1 - w))); }
@@ -1355,6 +1355,7 @@
       const pushKneeAt = (t, t0, t1) => K.seg(t, t0, t0 + 0.1, K.ease.out) * (1 - K.seg(t, t1, t1 + 0.35, K.ease.inOut));
       const KNEE_PUSH = { R: [79.0, 81.0], L: [82.3, 84.3] }, FLICK = { R: snap(87.6), L: snap(90.8) };
       const flickAt = (t, tf) => { const d = t - tf; return d < 0 || d > 0.4 ? 0 : d < 0.07 ? d / 0.07 : 1 - K.ease.inOut((d - 0.07) / 0.33); };
+      const TUNE = { yield: 0.08, rebound: 0 };   // (the hammer does not rebound sideways: it hovers over the thumbnail, clear of him)
       const CARRY = { thumbR: ['R', 0], thumbRreinf: ['R', 0], thumbL: ['L', 0], supFingR: ['R', 1], supFingL: ['L', 1], wristL: ['L', 1] };
       const homeLock = (t) => t <= HOME_HOLD + 1e-6 || t >= D - 1.0 - 1e-6;
 
@@ -1386,8 +1387,8 @@
           { const ks = KEYS['ex' + h], i = ks.findIndex((k, j) => k[0] <= p && (!ks[j + 1] || ks[j + 1][0] > p)), nm = ks[i][1], hold = !ks[i + 1] || ks[i + 1][2] === 'cut' || ks[i + 1][1] === nm, c = CARRY[nm];
             if (c && hold && lastRot[c[0]]) { const R0 = lastRot[c[0]], q = new THREE.Quaternion().slerpQuaternions(new THREE.Quaternion(), R0.q, c[1]);
               st = Object.assign({}, st, { wrist: R0.E.clone().add(st.wrist.clone().sub(R0.E).applyQuaternion(q)), quat: q.clone().multiply(st.quat), back: st.back.clone().applyQuaternion(q) });
-              if (c[1] === 0) { const sd = c[0], kk = STRIKES.find((x) => x.side === sd && x.reflex === 'biceps' && p > x.t && p < x.t + 0.6), bmp = kk ? bump(p, kk.t) : 0, nT = SOL.lm['bicepsTendon_' + sd].normal;   // the biceps thumb yields as the forearm comes up (up to 8 mm)
-                if (bmp > 0) st = Object.assign({}, st, { wrist: st.wrist.clone().addScaledVector(nT, 0.08 * bmp) }); } } }
+              if (c[1] === 0) { const sd = c[0], kk = STRIKES.find((x) => x.side === sd && x.reflex === 'biceps' && p > x.t && p < x.t + 0.6), bmp = kk ? bump(p, kk.t) : 0, nT = SOL.lm['bicepsTendon_' + sd].normal;   // the biceps thumb yields as the forearm comes up (up to 8 mm), the fingers easing off
+                if (bmp > 0) { const ps = JSON.parse(JSON.stringify(st.pose)); for (const k of PK) if (ps.curl && ps.curl[k]) ps.curl[k] = ps.curl[k].map((v) => v * (1 - 0.8 * bmp)); st = Object.assign({}, st, { pose: ps, wrist: st.wrist.clone().addScaledVector(nT, TUNE.yield * bmp) }); } } } }
           // knee clonus: the hand moves 8 mm toward his foot with the kneecap
           if (/kneeClonus/.test(KEYS['ex' + h].find((k, i, arr) => k[0] <= p && (!arr[i + 1] || arr[i + 1][0] > p))[1])) {
             const sd = st.far ? 'L' : 'R', u = pushKneeAt(p, KNEE_PUSH[sd][0], KNEE_PUSH[sd][1]);
@@ -1398,7 +1399,8 @@
             const f = flickAt(p, FLICK[st.far ? 'L' : 'R']);
             if (f > 0 && st.thumbQ) st = Object.assign({}, st, { thumbQ: [st.thumbQ[0], st.thumbQ[1].clone().multiply(new THREE.Quaternion().setFromAxisAngle(V(0, 0, 1), -0.35 * f)), st.thumbQ[2].clone().multiply(new THREE.Quaternion().setFromAxisAngle(V(0, 0, 1), -0.45 * f))] });
           }
-          if (st.strike) { const kS = SOL.strikes[st.geo || st.strike], ts = S_[st.strike]; if (kS && ts != null) { const d = p - ts, out = d > 0 && d < 0.8 ? Math.sin(Math.PI * Math.min(1, d / 0.8)) : 0; if (out > 0) st = Object.assign({}, st, { wrist: st.wrist.clone().addScaledVector(kS.ex.wrist.clone().sub(kS.target).normalize(), 0.25 * out) }); } }   // the hand rebounds off the strike, away from it (2.5 cm)
+          if (st.strike) { const sk = STRIKES.find((x) => x.id === st.strike); if (sk && REFLEX[sk.reflex].joint === 'elbow' && lastRot[sk.side]) { const R0 = lastRot[sk.side]; st = Object.assign({}, st, { wrist: R0.E.clone().add(st.wrist.clone().sub(R0.E).applyQuaternion(R0.q)), quat: R0.q.clone().multiply(st.quat), back: st.back.clone().applyQuaternion(R0.q) }); } }   // the hammer rides with the reflexing forearm
+          if (st.strike) { const kS = SOL.strikes[st.geo || st.strike], ts = S_[st.strike]; if (kS && ts != null) { const d = p - ts, out = d > 0 && d < 0.8 ? Math.sin(Math.PI * Math.min(1, d / 0.8)) : 0; if (out > 0 && TUNE.rebound) st = Object.assign({}, st, { wrist: st.wrist.clone().addScaledVector(kS.ex.wrist.clone().sub(kS.target).normalize(), TUNE.rebound * out) }); } }   // the hand rebounds off the strike, away from it (2.5 cm)
           applyEx(h, st);
           if (st.strike) {                                                  // the hammer, rigid in this hand
             const k = SOL.strikes[st.geo || st.strike], hg = EX[h].hand.group, qa = st.quat.clone().multiply(k.ex.quat.clone().invert());
@@ -1438,7 +1440,7 @@
         if (still) L.lamp.intensity = SET.LAMP.power;                      // no flicker on the home shot (it must match the other parts)
         S.R.grain = still ? 0 : SET.RENDER.grain;                         // the grain is seeded by the frame number: off on the still home frames so the first and last frames are identical
       };
-      root.CNS7_TIMELINE = { KEYS, CAMS, STRIKES, camAt, swingAt, CARRY };
+      root.CNS7_TIMELINE = { KEYS, CAMS, STRIKES, camAt, swingAt, CARRY, TUNE };
       root.CNS7_UPDATE = update;                                           // the frame's scene without rendering it (tools/scan.mjs, tools/cuts.mjs)
       // the CNS home shot exactly as shared/README.md builds it (for home-check.json)
       root.HOME_REFERENCE = () => {
@@ -1470,6 +1472,7 @@
         patient: () => { const ms = []; P.group.traverse((m) => { if (m.isMesh && m.visible && m.geometry && m.geometry.attributes.position.count > 200) ms.push(m); }); return CONTACT.field(ms); },
         thumbNailR: () => CONTACT.field(EX.R.hand.thumb.ip.children.filter((m) => m.isMesh)), thumbNailL: () => CONTACT.field(EX.L.hand.thumb.ip.children.filter((m) => m.isMesh)),
         torso: () => CONTACT.field(torsoMeshes()),
+        legsAll: () => { const a = [P.legMeshes.R, P.legMeshes.L]; for (const sd of ['R', 'L']) P.legs[sd].traverse((m) => { if (m.isMesh && m.visible && m !== P.legMeshes[sd]) { let v = true; m.traverseAncestors((x) => { if (x.visible === false) v = false; }); if (v) a.push(m); } }); return CONTACT.field(a); },   // his legs with the toes
         exFingR: () => { const pr = CONTACT.handParts(EX.R.hand); return CONTACT.field(pr.index.concat(pr.middle)); }, exFingL: () => { const pr = CONTACT.handParts(EX.L.hand); return CONTACT.field(pr.index.concat(pr.middle)); },
       };
       const partMeshes = (h, part) => {
