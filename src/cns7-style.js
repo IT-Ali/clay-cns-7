@@ -235,7 +235,7 @@
           applyEx(handSide, ex); return ex;
         };
         // all of his skin (and the pyjama), for checks
-        const patientMeshes = () => { const out = []; P.group.traverse((m) => { if (m.isMesh && SHOWN(m) && m.geometry && m.geometry.attributes.position.count > 200) out.push(m); }); return out; };
+        const patientMeshes = () => { P.group.updateMatrixWorld(true); const out = []; P.group.traverse((m) => { if (m.isMesh && SHOWN(m) && m.geometry && m.geometry.attributes.position.count > 200) out.push(m); }); return out; };
         // the examiner's palm FLAT across the ball of his foot: palm against the sole, fingers together across the sole, the
         // thumb on the inner (medial) side; the hand rests by its lowest point (nothing sinks)
         const palmOnBall = (side, handSide) => {
@@ -740,7 +740,7 @@
           P.setFace({ pupilR: 3.5, pupilL: 3.5 });
         }
         // ============================================================ THE LEGS
-        const legMeshes = (sides = ['R', 'L']) => { const out = []; for (const sd of sides) { out.push(P.legMeshes[sd]); P.legs[sd].traverse((m) => { if (m.isMesh && SHOWN(m) && m !== P.legMeshes[sd]) out.push(m); }); } return out; };
+        const legMeshes = (sides = ['R', 'L']) => { P.group.updateMatrixWorld(true); const out = []; for (const sd of sides) { out.push(P.legMeshes[sd]); P.legs[sd].traverse((m) => { if (m.isMesh && SHOWN(m) && m !== P.legMeshes[sd]) out.push(m); }); } return out; };
         const legField = (sides) => CONTACT.field(legMeshes(sides));
         const strikeLeg = (name, side, lm, dirHint, sides) => {
           const k = NEURO.points(P), T = k[lm + '_' + side], n = k.normals[lm + '_' + side];
@@ -1438,6 +1438,7 @@
           for (let i = 0; i < pa.count; i++) { q.fromBufferAttribute(pa, i); const d = q.distanceTo(cl); if (d > 0.45) continue; const k = 0.08 * u * Math.pow(Math.cos(Math.PI / 2 * d / 0.45), 2); firmed.push([pa, i, q.x, q.y, q.z]); pa.setXYZ(i, q.x + al.x * k, q.y + al.y * k, q.z + al.z * k); }
           pa.needsUpdate = true; mesh.geometry.computeVertexNormals();
         }
+        P.group.updateMatrixWorld(true); hammer.group.updateMatrixWorld(true);   // everything placed this frame, toes included (the checks read it without rendering)
         // camera (real time) and lights
         shoot(root.CAM_OVERRIDE ? camVec(root.CAM_OVERRIDE) : camAt(t));
         L.set(still ? 0 : p, {});
@@ -1473,10 +1474,10 @@
         legR: () => CONTACT.field([P.legMeshes.R]), legL: () => CONTACT.field([P.legMeshes.L]), legs: () => CONTACT.field([P.legMeshes.R, P.legMeshes.L]),
         handR: () => CONTACT.field(handMeshes(P.arms.R.hand)), handL: () => CONTACT.field(handMeshes(P.arms.L.hand)),
         midR: () => CONTACT.field(P.arms.R.hand.fingers.middle.dip.children.filter((m) => m.isMesh)), midL: () => CONTACT.field(P.arms.L.hand.fingers.middle.dip.children.filter((m) => m.isMesh)),
-        patient: () => { const ms = []; P.group.traverse((m) => { if (m.isMesh && SHOWN(m) && m.geometry && m.geometry.attributes.position.count > 200) ms.push(m); }); return CONTACT.field(ms); },
+        patient: () => { P.group.updateMatrixWorld(true); const ms = []; P.group.traverse((m) => { if (m.isMesh && SHOWN(m) && m.geometry && m.geometry.attributes.position.count > 200) ms.push(m); }); return CONTACT.field(ms); },
         thumbNailR: () => CONTACT.field(EX.R.hand.thumb.ip.children.filter((m) => m.isMesh)), thumbNailL: () => CONTACT.field(EX.L.hand.thumb.ip.children.filter((m) => m.isMesh)),
         torso: () => CONTACT.field(torsoMeshes()),
-        legsAll: () => { const a = [P.legMeshes.R, P.legMeshes.L]; for (const sd of ['R', 'L']) P.legs[sd].traverse((m) => { if (m.isMesh && SHOWN(m) && m !== P.legMeshes[sd]) { let v = true; m.traverseAncestors((x) => { if (x.visible === false) v = false; }); if (v) a.push(m); } }); return CONTACT.field(a); },   // his legs with the toes
+        legsAll: () => { P.group.updateMatrixWorld(true); const a = [P.legMeshes.R, P.legMeshes.L]; for (const sd of ['R', 'L']) P.legs[sd].traverse((m) => { if (m.isMesh && SHOWN(m) && m !== P.legMeshes[sd]) { let v = true; m.traverseAncestors((x) => { if (x.visible === false) v = false; }); if (v) a.push(m); } }); return CONTACT.field(a); },   // his legs with the toes
         exFingR: () => { const pr = CONTACT.handParts(EX.R.hand); return CONTACT.field(pr.index.concat(pr.middle)); }, exFingL: () => { const pr = CONTACT.handParts(EX.L.hand); return CONTACT.field(pr.index.concat(pr.middle)); },
       };
       const partMeshes = (h, part) => {
