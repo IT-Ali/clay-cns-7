@@ -1,5 +1,5 @@
 {
- "made": "2026-11-22T12:14:31.135Z",
+ "made": "2026-11-22T12:30:25.720Z",
  "note": "planned by tools/plan.mjs; worstMM = the deepest penetration left on any frame of the move (0 = clean)",
  "moves": {
   "L:7.400": {
@@ -118,7 +118,8 @@
    "pivot": [
     0.6,
     0.33,
-    0.6
+    0.6,
+    -0.3
    ],
    "lift": [
     0.4,
@@ -129,7 +130,7 @@
    "candidate": "fixed",
    "worstMM": 1.33,
    "mattressMM": 48.34,
-   "otherArmMM": 4.74,
+   "otherArmMM": 0,
    "from": "kneeSupport",
    "to": "home",
    "t0": 56.6,

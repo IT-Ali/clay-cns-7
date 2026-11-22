@@ -569,10 +569,18 @@
      ],
      "jumpsOnCutFrame": true
     },
+    "armR": {
+     "jumps": [
+      0,
+      2.176,
+      0
+     ],
+     "jumpsOnCutFrame": true
+    },
     "exL": {
      "jumps": [
       0,
-      14.374,
+      14.83,
       0
      ],
      "jumpsOnCutFrame": true
