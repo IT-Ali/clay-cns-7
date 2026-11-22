@@ -1,5 +1,5 @@
 {
- "made": "2026-11-22T05:55:35.892Z",
+ "made": "2026-11-22T07:12:23.137Z",
  "note": "planned by tools/plan.mjs; worstMM = the deepest penetration left on any frame of the move (0 = clean)",
  "moves": {
   "L:7.400": {

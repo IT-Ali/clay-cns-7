@@ -141,7 +141,7 @@
       // ------------------------------------------------------------ the frames of his trunk
       const trunk = () => { P.torso.updateMatrixWorld(true); const m = P.torso.matrixWorld; return { left: V(1, 0, 0).transformDirection(m), up: V(0, 1, 0).transformDirection(m), front: V(0, 0, 1).transformDirection(m) }; };
       // shown: the mesh and every parent visible (his leg group keeps hidden old toes: they are never contacts)
-      const SHOWN = (m) => { if (!m.visible) return false; let v = true; m.traverseAncestors((a) => { if (a.visible === false) v = false; }); return v; };
+      const SHOWN = (m) => { if (!m.visible || (m.parent && m.parent.isMesh && /toe/.test(m.parent.name || ''))) return false; let v = true; m.traverseAncestors((x) => { if (x.visible === false) v = false; }); return v; };   // shown, and not a toenail (a thin open shell: its inside / outside means nothing)
       const armMeshes = (side) => { const a = P.arms[side], out = [a.armMesh]; a.hand.group.traverse((m) => { if (m.isMesh && SHOWN(m)) out.push(m); }); return out; };
       const torsoMeshes = () => [P.torsoMesh, P.group.getObjectByName('pyjama-pants')].filter(Boolean);
       const handMeshes = (hand) => { const out = []; hand.group.traverse((m) => { if (m.isMesh && SHOWN(m)) out.push(m); }); return out; };
