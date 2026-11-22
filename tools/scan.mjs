@@ -58,10 +58,10 @@ try {
       prevPx.a = px;
       const cam = W.S.camera; cam.updateMatrixWorld(true); const cp = cam.getWorldPosition(V(0, 0, 0));
       // anything within 15 cm of the lens (all visible meshes but the paper sweep)
-      let lens = Infinity; const w = V(0, 0, 0);
+      let lens = Infinity; const w = V(0, 0, 0), fwd = V(0, 0, -1).transformDirection(cam.matrixWorld);
       W.S.scene.traverse((m) => { if (!m.isMesh || !m.visible || m.name === 'sweep' || !m.geometry || !m.geometry.attributes.position) return; let v = true; m.traverseAncestors((a) => { if (a.visible === false) v = false; }); if (!v) return;
         if (!m.geometry.boundingSphere) m.geometry.computeBoundingSphere(); const bs = m.geometry.boundingSphere.clone().applyMatrix4(m.matrixWorld); if (bs.center.distanceTo(cp) - bs.radius > 1.5) return;
-        const pa = m.geometry.attributes.position; for (let k = 0; k < pa.count; k += 2) { w.fromBufferAttribute(pa, k).applyMatrix4(m.matrixWorld); const d = w.distanceTo(cp); if (d < lens) lens = d; } });
+        const pa = m.geometry.attributes.position; for (let k = 0; k < pa.count; k += 2) { w.fromBufferAttribute(pa, k).applyMatrix4(m.matrixWorld); if (w.clone().sub(cp).dot(fwd) < 0) continue; const d = w.distanceTo(cp); if (d < lens) lens = d; } });   // in front of the lens only
       out.lens = isFinite(lens) ? +(lens * 10).toFixed(1) : null; if (lens < 1.5) out.flags.push({ check: 'within 15 cm of the lens', cm: out.lens });
       // the examiner's share of the frame: his triangles rasterised on a 96x54 grid (ignoring what hides them: an upper bound)
       const GW = 96, GH = 54, grid = new Uint8Array(GW * GH), vp = V(0, 0, 0), M = new THREE.Matrix4();

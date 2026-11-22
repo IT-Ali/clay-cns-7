@@ -83,12 +83,12 @@
       [74.2, 'clonusR0', 'cut'], [74.9, 'clonusR0'], [75.03, 'clonusR1'], [77.1, 'clonusR1'], [77.5, 'clonusR0'], [78.0, 'rest', 'cut'], [D, 'rest']],
     exL: [[0, 'home'], [7.4, 'home'], [8.3, 'thumbR'], [10.8, 'S:bicL', 'cut'], [15.0, 'supFingR', 'cut'], [18.4, 'S:supL', 'cut'], [24.0, 'home', 'cut'],
       [24.1, 'home'], [24.9, 'rel:wristRel:handR'], [29.3, 'rel:wristRel:handR'], [29.9, 'home'], [452 / 15, 'S:triL', 'cut'],
-      [34.0, 'home', 'cut'], [36.6, 'home'], [37.1, 'thumbRreinf'], [38.2, 'thumbRreinf'], [39.0, 'home'], [43.9, 'home'], [44.9, 'kneeSupport'], [56.6, 'kneeSupport'], [57.6, 'home'], [58.6, 'home'],
-      [59.4, 'relFoot:footRelR:R'], [60.8, 'relFoot:footRelR:R'], [914 / 15, 'relFoot:footRelR:R'], [63.4, 'S:ankL', 'cut'], [65.02, 'S:ankL'], [65.6, 'up:S:ankL'], [69.0, 'home', 'cut'], [69.3, 'home'], [70.5, 'relShin:calfRelR:R'], [74.2, 'relFoot:clonRelL0:L', 'cut'], [74.9, 'relFoot:clonRelL0:L'], [75.03, 'relFoot:clonRelL1:L'], [77.1, 'relFoot:clonRelL1:L'], [77.5, 'relFoot:clonRelL0:L'],
+      [34.0, 'home', 'cut'], [36.6, 'home'], [37.1, 'thumbRreinf'], [39.4, 'thumbRreinf'], [40.3, 'home'], [43.9, 'home'], [44.9, 'kneeSupport'], [56.6, 'kneeSupport'], [57.6, 'home'], [58.6, 'home'],
+      [59.4, 'relFoot:footRelR:R'], [60.8, 'relFoot:footRelR:R'], [914 / 15, 'relFoot:footRelR:R'], [63.4, 'S:ankL', 'cut'], [65.02, 'S:ankL'], [65.6, 'up:S:ankL'], [69.0, 'home', 'cut'], [70.1, 'home'], [70.95, 'relShin:calfRelR:R'], [74.2, 'relFoot:clonRelL0:L', 'cut'], [74.9, 'relFoot:clonRelL0:L'], [75.03, 'relFoot:clonRelL1:L'], [77.1, 'relFoot:clonRelL1:L'], [77.5, 'relFoot:clonRelL0:L'],
       [78.0, 'kneeClonusR', 'cut'], [81.6, 'parkFar', 'cut'], [85.0, 'home', 'cut'], [85.6, 'rel:hoffSupRel:handR'], [89.2, 'hoffPinL', 'cut'], [94.0, 'home', 'cut'], [D, 'home']],
     exR: [[0, 'home'], [1.4, 'home'], [2.3, 'park'], [7.6, 'park'], [8.1, 'up:S:bicR'], [8.6, 'S:bicR'], [10.8, 'thumbL', 'cut'], [15.0, 'S:supR', 'cut'], [18.4, 'supFingL', 'cut'], [24.0, 'park', 'cut'],
       [25.4, 'park'], [26.6, 'S:triR'], [452 / 15, 'wristL', 'cut'], [34.0, 'S:reinfR@reinfR', 'cut'], [38.4, 'S:reinfR@reinfR'], [38.9, 'up:S:reinfR@reinfR'], [39.4, 'park'], [43.4, 'park'], [44.8, 'S:kneeR'], [46.1, 'S:kneeR'], [47.2, 'S:kneeL'], [48.6, 'S:kneeL'], [49.6, 'S:kneeR@jendR'],
-      [59.4, 'S:kneeR@jendR'], [59.9, 'up:S:kneeR@jendR'], [60.6, 'up:S:ankR'], [61.0, 'S:ankR'], [62.02, 'S:ankR'], [62.6, 'up:S:ankR'], [63.4, 'relFoot:footRelL:L', 'cut'], [69.0, 'park', 'cut'], [69.6, 'park'], [70.6, 'relFoot:clonRelR0:R'], [71.2, 'relFoot:clonRelR0:R'], [71.33, 'relFoot:clonRelR1:R'], [73.4, 'relFoot:clonRelR1:R'], [73.8, 'relFoot:clonRelR0:R'],
+      [59.4, 'S:kneeR@jendR'], [59.9, 'up:S:kneeR@jendR'], [60.6, 'up:S:ankR'], [61.0, 'S:ankR'], [62.02, 'S:ankR'], [62.6, 'up:S:ankR'], [63.4, 'relFoot:footRelL:L', 'cut'], [69.0, 'park', 'cut'], [70.4, 'park'], [71.15, 'relFoot:clonRelR0:R'], [71.2, 'relFoot:clonRelR0:R'], [71.33, 'relFoot:clonRelR1:R'], [73.4, 'relFoot:clonRelR1:R'], [73.8, 'relFoot:clonRelR0:R'],
       [74.2, 'relShin:calfRelL:L', 'cut'], [78.0, 'park', 'cut'], [81.6, 'kneeClonusL', 'cut'], [85.0, 'park', 'cut'], [86.0, 'park'], [86.8, 'rel:hoffPinRel:handR'], [89.2, 'hoffSupL', 'cut'], [94.0, 'park', 'cut'], [94.6, 'park'], [95.6, 'home'], [D, 'home']],
   };
 
@@ -291,9 +291,9 @@
           const handle = hmAll.filter((m) => !hammer.head.children.includes(m)), pf = CONTACT.field(patientMeshes()); let bk = null;
           for (let ang = 0; ang < 360; ang += 30) {
             const k2 = solveStrike(T, n, dirBase.clone().applyAxisAngle(n, ang * Math.PI / 180), fld);
-            let g = -Infinity; for (const sg of [1, -1]) { let gs = Infinity; for (const a of [0.12, 0.3, 0.62]) { applyStrike(k2, sg * a); const x = CONTACT.minGap(hmAll, pf, null, 0, 0.3, 2).gap; gs = Math.min(gs, isFinite(x) ? x : 0.03, bedGap(hmAll).gap); } g = Math.max(g, gs); }
+            let g = -Infinity; for (const sg of [1, -1]) { let gs = Infinity; for (const a of [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.62]) {   // the whole swing, every 0.05 rad applyStrike(k2, sg * a); const x = CONTACT.minGap(hmAll, pf, null, 0, 0.3, 2).gap; gs = Math.min(gs, isFinite(x) ? x : 0.03, bedGap(hmAll).gap); } g = Math.max(g, gs); }
             applyStrike(k2, 0); const hx = CONTACT.minGap(handle, pf, null, 0, 0.3, 2).gap, bg = bedGap(hmAll).gap;
-            const sc = 10 * Math.max(0, 0.008 - g) + 10 * Math.max(0, 0.003 - (isFinite(hx) ? hx : 0.03)) + 10 * Math.max(0, 0.002 - bg) - 0.001 * k2.ex.wrist.y + 0.0002 * Math.min(ang, 360 - ang) / 30;
+            const sc = 10 * Math.max(0, 0.012 - g) + 10 * Math.max(0, 0.003 - (isFinite(hx) ? hx : 0.03)) + 10 * Math.max(0, 0.002 - bg) - 0.001 * k2.ex.wrist.y + 0.0002 * Math.min(ang, 360 - ang) / 30;
             if (!bk || sc < bk.sc) bk = { sc, k2, ang, g };
           }
           log(name, 'strike: swing plane turned', bk.ang, 'deg; raised hammer to his skin / the mattress', mm(bk.g), 'mm, gap at the strike', mm(bk.k2.gap), 'mm');
@@ -459,7 +459,8 @@
             const up = Math.max(0, 0.35 - e0.back.y);                      // the forearm must rise (never down toward the bed or across his body)
             const fdir = V(1, 0, 0).applyQuaternion(e0.quat), wrap = Math.max(0, 0.6 - fdir.dot(outside));   // the fingers point round the outside of the elbow
             const mat = bedGap(handMeshes(hand)).gap;                         // nothing of the hand in the mattress (the fingers do not go behind his arm)
-            const sc = Math.abs((isFinite(th.pad) ? th.pad : 0.03) - 0.0006) + 4 * Math.max(0, -sink) + 4 * Math.max(0, 0.001 - mat) + 0.004 * Math.max(0, e0.ang - 0.87) + 0.05 * up + 0.003 * wrap + 0.0003 * Math.abs(psi);
+            const foreG = Math.min(CONTACT.minGap(EX.L.fore.children.filter((m) => m.isMesh), torF, null, 0, 0.15, 3).gap, CONTACT.minGap(EX.L.fore.children.filter((m) => m.isMesh), fld, null, 0, 0.15, 3).gap);   // nor the examiner's forearm in his chest or arm
+            const sc = Math.abs((isFinite(th.pad) ? th.pad : 0.03) - 0.0006) + 4 * Math.max(0, -sink) + 4 * Math.max(0, 0.001 - mat) + 4 * Math.max(0, 0.003 - (isFinite(foreG) ? foreG : 0.03)) + 0.004 * Math.max(0, e0.ang - 0.87) + 0.05 * up + 0.003 * wrap + 0.0003 * Math.abs(psi);
             log('biceps hand turn', psi, 'across', ac, 'thumb pad', mm(th.pad), 'lowest', mm(sink), 'mm, wrist to the forearm line', (e0.ang * 180 / Math.PI).toFixed(0), 'deg');
             if (!bestB || sc < bestB.sc) bestB = { sc, m: (lo + hi) / 2, psi, ac, r, D: D.clone() };
           }
@@ -1147,9 +1148,9 @@
           const res = {};
           for (const id of Object.keys(SOL.strikes)) {
             const k = SOL.strikes[id]; pose(id); const f = CONTACT.field(patientMeshes());
-            const clear = (sg) => { let g = Infinity; for (const a of [0.12, 0.3, 0.62]) { applyStrike(k, sg * a); const x = CONTACT.minGap(hmAll, f, null, 0, 0.3, 2).gap; g = Math.min(g, isFinite(x) ? x : 0.03); } return g; };
+            const clear = (sg) => { let g = Infinity; for (const a of [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.62]) { applyStrike(k, sg * a); const x = CONTACT.minGap(hmAll, f, null, 0, 0.3, 2).gap; g = Math.min(g, isFinite(x) ? x : 0.03); } return g; };
             const gp = clear(1), gm = clear(-1);
-            k.swingSign = gp >= 0.01 || gp >= gm ? 1 : -1; res[id] = [k.swingSign, mm(gp), mm(gm)];
+            k.swingSign = gp >= 0.008 || gp >= gm ? 1 : -1; res[id] = [k.swingSign, mm(gp), mm(gm)];
           }
           for (const sd of ['R', 'L']) { applyArm(sd, HOME_ARM[sd]); P.setLeg(sd, {}); } applyEx('R', HOME_EX.R); applyEx('L', HOME_EX.L); hammer.group.visible = false;
           log('hammer swing direction per strike [sign, closest raised +, closest raised -] (mm):', JSON.stringify(res));
