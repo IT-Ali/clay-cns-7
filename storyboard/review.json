@@ -5,54 +5,6 @@
   "values": {}
  },
  {
-  "id": "b_kneeR_top",
-  "gaps": {},
-  "values": {}
- },
- {
-  "id": "b_kneeR_hit",
-  "gaps": {
-   "hammer head": 0.06,
-   "heel R on the mattress": 9.42,
-   "heel L on the mattress": 9.34
-  },
-  "values": {
-   "hammer contact to patellarTendon_R (cm)": 0.08
-  }
- },
- {
-  "id": "b_kneeL_top",
-  "gaps": {},
-  "values": {}
- },
- {
-  "id": "b_kneeL_hit",
-  "gaps": {
-   "hammer head": 0.06,
-   "heel R on the mattress": 9.42,
-   "heel L on the mattress": 9.34
-  },
-  "values": {
-   "hammer contact to patellarTendon_L (cm)": 0.08
-  }
- },
- {
-  "id": "b_jendR_top",
-  "gaps": {},
-  "values": {}
- },
- {
-  "id": "b_jendR_hit",
-  "gaps": {
-   "hammer head": 0.06,
-   "heel R on the mattress": 9.42,
-   "heel L on the mattress": 9.34
-  },
-  "values": {
-   "hammer contact to patellarTendon_R (cm)": 0.08
-  }
- },
- {
   "id": "c_kneeR_before",
   "gaps": {},
   "values": {
@@ -89,22 +41,6 @@
    "his right middle on his left hand": null,
    "his right ring on his left hand": null,
    "his right little on his left hand": null
-  },
-  "values": {}
- },
- {
-  "id": "e_support",
-  "gaps": {
-   "forearm-right knee": 0.06,
-   "forearm-left knee": 0.52,
-   "ex L palm": null,
-   "ex L thumb": null,
-   "ex L index": null,
-   "ex L middle": null,
-   "ex L ring": null,
-   "ex L little": null,
-   "heel R on the mattress": 9.42,
-   "heel L on the mattress": 9.34
   },
   "values": {}
  },
@@ -249,24 +185,6 @@
   }
  },
  {
-  "id": "f_ankle",
-  "gaps": {
-   "ex R palm": 0.95,
-   "ex R thumb": null,
-   "ex R index": null,
-   "ex R middle": null,
-   "ex R ring": null,
-   "ex R little": null,
-   "ex L palm": 0.03,
-   "ex L thumb": 5.43,
-   "ex L index": null,
-   "ex L middle": null,
-   "ex L ring": null,
-   "ex L little": 1.41
-  },
-  "values": {}
- },
- {
   "id": "x_foot",
   "gaps": {
    "ex L palm": 0.03,
@@ -280,6 +198,13 @@
   "values": {}
  },
  {
+  "id": "d_face",
+  "gaps": {},
+  "values": {
+   "his face, chin to brow (px at 960x540)": 210
+  }
+ },
+ {
   "id": "b_bicR_top",
   "gaps": {},
   "values": {}
@@ -289,11 +214,11 @@
   "gaps": {
    "hammer head": 0.06,
    "ex L palm": 0.06,
-   "ex L thumb": 0.03,
-   "ex L index": 1.13,
-   "ex L middle": 0.1,
-   "ex L ring": 0.27,
-   "ex L little": 0.05
+   "ex L thumb": 0.09,
+   "ex L index": 1.08,
+   "ex L middle": 0.33,
+   "ex L ring": 1,
+   "ex L little": 0.11
   },
   "values": {}
  },
@@ -307,97 +232,13 @@
   "gaps": {
    "hammer head": 0.06,
    "ex R palm": 0.06,
-   "ex R thumb": 0.03,
-   "ex R index": 1.13,
-   "ex R middle": 0.09,
-   "ex R ring": 0.27,
-   "ex R little": 0.05
+   "ex R thumb": 0.09,
+   "ex R index": 1.08,
+   "ex R middle": 0.33,
+   "ex R ring": 1,
+   "ex R little": 0.11
   },
   "values": {}
- },
- {
-  "id": "b_reinfR_top",
-  "gaps": {},
-  "values": {}
- },
- {
-  "id": "b_reinfR_hit",
-  "gaps": {
-   "hammer head": 0.06,
-   "ex L palm": 0.06,
-   "ex L thumb": 0.03,
-   "ex L index": 1.13,
-   "ex L middle": 0.1,
-   "ex L ring": 0.27,
-   "ex L little": 0.05
-  },
-  "values": {}
- },
- {
-  "id": "c_bicR_before",
-  "gaps": {},
-  "values": {
-   "elbow": 105.8
-  }
- },
- {
-  "id": "c_bicR_peak",
-  "gaps": {},
-  "values": {
-   "elbow": 95.8
-  }
- },
- {
-  "id": "c_bicL_before",
-  "gaps": {},
-  "values": {
-   "elbow": 105.8
-  }
- },
- {
-  "id": "c_bicL_peak",
-  "gaps": {},
-  "values": {
-   "elbow": 95.8
-  }
- },
- {
-  "id": "x_biceps_thumb",
-  "gaps": {
-   "ex L palm": 0.06,
-   "ex L thumb": 0.03,
-   "ex L index": 1.13,
-   "ex L middle": 0.1,
-   "ex L ring": 0.27,
-   "ex L little": 0.05
-  },
-  "values": {}
- },
- {
-  "id": "x_wrist",
-  "gaps": {
-   "ex L palm": 0.03,
-   "ex L thumb": 0.06,
-   "ex L index": 0.76,
-   "ex L middle": 0.73,
-   "ex L ring": 0.57,
-   "ex L little": 0.79
-  },
-  "values": {}
- },
- {
-  "id": "d_face",
-  "gaps": {},
-  "values": {
-   "his face, chin to brow (px at 960x540)": 210
-  }
- },
- {
-  "id": "d_jaw",
-  "gaps": {},
-  "values": {
-   "his face, chin to brow (px at 960x540)": 85
-  }
  },
  {
   "id": "b_supR_top",
@@ -460,6 +301,100 @@
   "values": {}
  },
  {
+  "id": "b_reinfR_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_reinfR_hit",
+  "gaps": {
+   "hammer head": 0.06,
+   "ex L palm": 0.06,
+   "ex L thumb": 0.09,
+   "ex L index": 1.08,
+   "ex L middle": 0.33,
+   "ex L ring": 1,
+   "ex L little": 0.11
+  },
+  "values": {}
+ },
+ {
+  "id": "b_kneeR_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_kneeR_hit",
+  "gaps": {
+   "hammer head": 0.06,
+   "heel R on the mattress": 9.42,
+   "heel L on the mattress": 9.34
+  },
+  "values": {
+   "hammer contact to patellarTendon_R (cm)": 0.08
+  }
+ },
+ {
+  "id": "b_kneeL_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_kneeL_hit",
+  "gaps": {
+   "hammer head": 0.06,
+   "heel R on the mattress": 9.42,
+   "heel L on the mattress": 9.34
+  },
+  "values": {
+   "hammer contact to patellarTendon_L (cm)": 0.08
+  }
+ },
+ {
+  "id": "b_jendR_top",
+  "gaps": {},
+  "values": {}
+ },
+ {
+  "id": "b_jendR_hit",
+  "gaps": {
+   "hammer head": 0.06,
+   "heel R on the mattress": 9.42,
+   "heel L on the mattress": 9.34
+  },
+  "values": {
+   "hammer contact to patellarTendon_R (cm)": 0.08
+  }
+ },
+ {
+  "id": "c_bicR_before",
+  "gaps": {},
+  "values": {
+   "elbow": 105.8
+  }
+ },
+ {
+  "id": "c_bicR_peak",
+  "gaps": {},
+  "values": {
+   "elbow": 95.8
+  }
+ },
+ {
+  "id": "c_bicL_before",
+  "gaps": {},
+  "values": {
+   "elbow": 105.8
+  }
+ },
+ {
+  "id": "c_bicL_peak",
+  "gaps": {},
+  "values": {
+   "elbow": 95.8
+  }
+ },
+ {
   "id": "c_supR_before",
   "gaps": {},
   "values": {
@@ -514,6 +449,59 @@
   "values": {
    "elbow": 100.1
   }
+ },
+ {
+  "id": "d_jaw",
+  "gaps": {},
+  "values": {
+   "his face, chin to brow (px at 960x540)": 335
+  }
+ },
+ {
+  "id": "e_support",
+  "gaps": {
+   "forearm-right knee": 0.06,
+   "forearm-left knee": 0.52,
+   "ex L palm": null,
+   "ex L thumb": null,
+   "ex L index": null,
+   "ex L middle": null,
+   "ex L ring": null,
+   "ex L little": null,
+   "heel R on the mattress": 9.42,
+   "heel L on the mattress": 9.34
+  },
+  "values": {}
+ },
+ {
+  "id": "f_ankle",
+  "gaps": {
+   "ex R palm": null,
+   "ex R thumb": null,
+   "ex R index": null,
+   "ex R middle": null,
+   "ex R ring": null,
+   "ex R little": null,
+   "ex L palm": -0.1,
+   "ex L thumb": 6.24,
+   "ex L index": null,
+   "ex L middle": null,
+   "ex L ring": null,
+   "ex L little": 2.85
+  },
+  "values": {}
+ },
+ {
+  "id": "x_biceps_thumb",
+  "gaps": {
+   "ex L palm": 0.06,
+   "ex L thumb": 0.09,
+   "ex L index": 1.08,
+   "ex L middle": 0.33,
+   "ex L ring": 1,
+   "ex L little": 0.11
+  },
+  "values": {}
  },
  {
   "id": "x_sup",
@@ -575,5 +563,17 @@
     2.036
    ]
   }
+ },
+ {
+  "id": "x_wrist",
+  "gaps": {
+   "ex L palm": 0.03,
+   "ex L thumb": 0.06,
+   "ex L index": 0.76,
+   "ex L middle": 0.73,
+   "ex L ring": 0.57,
+   "ex L little": 0.79
+  },
+  "values": {}
  }
 ]

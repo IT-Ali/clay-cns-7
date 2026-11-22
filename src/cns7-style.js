@@ -78,18 +78,18 @@
     armL: [[0, 'home'], [6.5, 'home'], [7.6, 'abdL'], [452 / 15, 'chestL', 'cut'], [34.0, 'abdL', 'cut'], [42.5, 'abdL'], [43.4, 'home'], [52.5, 'home'], [53.6, 'jend0L'], [54.25, 'jend0L'], [54.4, 'jend1L'], [55.6, 'jend1L'], [56.1, 'jend0L'], [57.1, 'home'],
       [89.2, 'hoffL', 'cut'], [94.0, 'home', 'cut'], [D, 'home']],
     legR: [[0, 'rest'], [43.5, 'rest'], [44.4, 'kneeJerk'], [57.7, 'kneeJerk'], [58.6, 'rest'], [59.4, 'rest'], [60.8, 'ankleJerkR'], [63.4, 'rest', 'cut'],
-      [69.3, 'rest'], [70.5, 'clonusR0'], [71.2, 'clonusR0'], [71.33, 'clonusR1'], [73.4, 'clonusR1'], [73.8, 'clonusR0'], [74.2, 'rest', 'cut'], [D, 'rest']],
+      [69.0, 'clonusR0', 'cut'], [71.2, 'clonusR0'], [71.33, 'clonusR1'], [73.4, 'clonusR1'], [73.8, 'clonusR0'], [74.2, 'rest', 'cut'], [D, 'rest']],
     legL: [[0, 'rest'], [43.5, 'rest'], [44.4, 'kneeJerk'], [57.7, 'kneeJerk'], [58.6, 'rest'], [63.4, 'ankleJerkR', 'cut'], [69.0, 'rest', 'cut'],
       [74.2, 'clonusR0', 'cut'], [74.9, 'clonusR0'], [75.03, 'clonusR1'], [77.1, 'clonusR1'], [77.5, 'clonusR0'], [78.0, 'rest', 'cut'], [D, 'rest']],
     exL: [[0, 'home'], [7.4, 'home'], [8.3, 'thumbR'], [10.8, 'S:bicL', 'cut'], [15.0, 'supFingR', 'cut'], [18.4, 'S:supL', 'cut'], [24.0, 'home', 'cut'],
-      [24.1, 'home'], [24.9, 'rel:wristRel:handR'], [29.3, 'rel:wristRel:handR'], [29.9, 'home'], [452 / 15, 'S:triL', 'cut'],
-      [34.0, 'home', 'cut'], [36.6, 'home'], [37.1, 'thumbRreinf'], [39.4, 'thumbRreinf'], [40.3, 'home'], [43.9, 'home'], [44.9, 'kneeSupport'], [56.6, 'kneeSupport'], [57.6, 'home'], [58.6, 'home'],
-      [59.4, 'relFoot:footRelR:R'], [60.8, 'relFoot:footRelR:R'], [914 / 15, 'relFoot:footRelR:R'], [63.4, 'S:ankL', 'cut'], [65.02, 'S:ankL'], [65.6, 'up:S:ankL'], [69.0, 'home', 'cut'], [70.1, 'home'], [70.95, 'relShin:calfRelR:R'], [74.2, 'relFoot:clonRelL0:L', 'cut'], [74.9, 'relFoot:clonRelL0:L'], [75.03, 'relFoot:clonRelL1:L'], [77.1, 'relFoot:clonRelL1:L'], [77.5, 'relFoot:clonRelL0:L'],
-      [78.0, 'kneeClonusR', 'cut'], [81.6, 'parkFar', 'cut'], [85.0, 'home', 'cut'], [85.6, 'rel:hoffSupRel:handR'], [89.2, 'hoffPinL', 'cut'], [94.0, 'home', 'cut'], [D, 'home']],
+      [24.6, 'home'], [25.5, 'rel:wristRel:handR'], [28.6, 'rel:wristRel:handR'], [29.4, 'home'], [452 / 15, 'S:triL', 'cut'],
+      [34.0, 'home', 'cut'], [36.6, 'home'], [37.1, 'thumbRreinf'], [39.4, 'thumbRreinf'], [40.3, 'home'], [43.9, 'home'], [44.9, 'kneeSupport'], [56.6, 'kneeSupport'], [57.6, 'home'], [58.6, 'home'], [59.0, 'home'],
+      [59.9, 'relFoot:footRelR:R'], [60.8, 'relFoot:footRelR:R'], [914 / 15, 'relFoot:footRelR:R'], [63.4, 'S:ankL', 'cut'], [65.02, 'S:ankL'], [65.6, 'up:S:ankL'], [69.0, 'relShin:calfRelR:R', 'cut'], [74.2, 'relFoot:clonRelL0:L', 'cut'], [74.9, 'relFoot:clonRelL0:L'], [75.03, 'relFoot:clonRelL1:L'], [77.1, 'relFoot:clonRelL1:L'], [77.5, 'relFoot:clonRelL0:L'],
+      [78.0, 'kneeClonusR', 'cut'], [81.6, 'parkFar', 'cut'], [85.0, 'home', 'cut'], [85.8, 'home'], [86.6, 'rel:hoffSupRel:handR'], [89.2, 'hoffPinL', 'cut'], [94.0, 'home', 'cut'], [D, 'home']],
     exR: [[0, 'home'], [1.4, 'home'], [2.3, 'park'], [7.6, 'park'], [8.1, 'up:S:bicR'], [8.6, 'S:bicR'], [10.8, 'thumbL', 'cut'], [15.0, 'S:supR', 'cut'], [18.4, 'supFingL', 'cut'], [24.0, 'park', 'cut'],
-      [25.4, 'park'], [26.6, 'S:triR'], [452 / 15, 'wristL', 'cut'], [34.0, 'S:reinfR@reinfR', 'cut'], [38.4, 'S:reinfR@reinfR'], [38.9, 'up:S:reinfR@reinfR'], [39.4, 'park'], [43.4, 'park'], [44.8, 'S:kneeR'], [46.1, 'S:kneeR'], [47.2, 'S:kneeL'], [48.6, 'S:kneeL'], [49.6, 'S:kneeR@jendR'],
-      [59.4, 'S:kneeR@jendR'], [59.9, 'up:S:kneeR@jendR'], [60.6, 'up:S:ankR'], [61.0, 'S:ankR'], [62.02, 'S:ankR'], [62.6, 'up:S:ankR'], [63.4, 'relFoot:footRelL:L', 'cut'], [69.0, 'park', 'cut'], [70.4, 'park'], [71.15, 'relFoot:clonRelR0:R'], [71.2, 'relFoot:clonRelR0:R'], [71.33, 'relFoot:clonRelR1:R'], [73.4, 'relFoot:clonRelR1:R'], [73.8, 'relFoot:clonRelR0:R'],
-      [74.2, 'relShin:calfRelL:L', 'cut'], [78.0, 'park', 'cut'], [81.6, 'kneeClonusL', 'cut'], [85.0, 'park', 'cut'], [86.0, 'park'], [86.8, 'rel:hoffPinRel:handR'], [89.2, 'hoffSupL', 'cut'], [94.0, 'park', 'cut'], [94.6, 'park'], [95.6, 'home'], [D, 'home']],
+      [25.4, 'park'], [26.6, 'S:triR'], [452 / 15, 'wristL', 'cut'], [34.0, 'S:reinfR@reinfR', 'cut'], [35.6, 'S:reinfR@reinfR'], [36.1, 'up:S:reinfR@reinfR'], [36.95, 'up:S:reinfR@reinfR'], [37.12, 'S:reinfR@reinfR'], [38.4, 'S:reinfR@reinfR'], [38.9, 'up:S:reinfR@reinfR'], [39.4, 'park'], [43.4, 'park'], [44.8, 'S:kneeR'], [46.1, 'S:kneeR'], [47.2, 'S:kneeL'], [48.6, 'S:kneeL'], [49.6, 'S:kneeR@jendR'],
+      [59.4, 'S:kneeR@jendR'], [59.9, 'up:S:kneeR@jendR'], [60.6, 'up:S:ankR'], [61.0, 'S:ankR'], [62.02, 'S:ankR'], [62.6, 'up:S:ankR'], [63.4, 'relFoot:footRelL:L', 'cut'], [69.0, 'relFoot:clonRelR0:R', 'cut'], [71.2, 'relFoot:clonRelR0:R'], [71.33, 'relFoot:clonRelR1:R'], [73.4, 'relFoot:clonRelR1:R'], [73.8, 'relFoot:clonRelR0:R'],
+      [74.2, 'relShin:calfRelL:L', 'cut'], [78.0, 'park', 'cut'], [81.6, 'kneeClonusL', 'cut'], [85.0, 'park', 'cut'], [86.4, 'park'], [87.2, 'rel:hoffPinRel:handR'], [89.2, 'hoffSupL', 'cut'], [94.0, 'park', 'cut'], [94.6, 'park'], [95.6, 'home'], [D, 'home']],
   };
 
   // ================================================================ the style
@@ -166,6 +166,10 @@
       const fromRelF = (st, f) => Object.assign({}, st, { wrist: st.wrist.clone().applyQuaternion(f.q).add(f.p), quat: f.q.clone().multiply(st.quat), back: st.back.clone().applyQuaternion(f.q) });
       const relTo = (st, obj) => relToF(st, frameOf(obj)), fromRel = (st, obj) => fromRelF(st, frameOf(obj));
       // the frame of his foot (from its landmarks): origin at the ball, X heel -> toe, Y lateral -> medial ankle bone
+      const kneesFrame = () => {                                           // both knees: origin between them, X across (right -> left knee), Y up
+        const a = P.legPoint('R', 'knee'), b = P.legPoint('L', 'knee'), x = b.clone().sub(a).normalize(), y = V(0, 1, 0).addScaledVector(x, -x.y).normalize(), z = V(0, 0, 0).crossVectors(x, y);
+        return { p: a.clone().lerp(b, 0.5), q: new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(x, y, z)) };
+      };
       const shinFrame = (sd) => {                                          // his shin: origin at the calf, X knee -> ankle
         const p = P.legPoint(sd, 'calf'), x = P.legPoint(sd, 'ankle').sub(P.legPoint(sd, 'knee')).normalize(), m = P.legPoint(sd, 'medialMalleolus').sub(P.legPoint(sd, 'lateralMalleolus'));
         const y = m.addScaledVector(x, -m.dot(x)).normalize(), z = V(0, 0, 0).crossVectors(x, y);
@@ -1179,13 +1183,18 @@
         const withLeg = (sd, st, fn) => { const prev = P.leg(sd); P.setLeg(sd, st || {}); const r = fn(); P.setLeg(sd, prev); return r; };
         SOL.ex.footRelL = withLeg('L', SOL.legs.ankleJerkR, () => relToF(SOL.ex.footL, footFrame('L')));
         SOL.ex.footRelR = withLeg('R', SOL.legs.ankleJerkR, () => relToF(SOL.ex.footR, footFrame('R')));
+        for (const nm of ['clonusFootR0', 'clonusFootR1', 'clonusFootL0', 'clonusFootL1']) SOL.ex[nm] = Object.assign({}, SOL.ex[nm], { back: SOL.ex[nm].back.clone().add(V(0, 0.25, 0)).normalize() });   // the forearm clear of his shin
         SOL.ex.clonRelR0 = withLeg('R', SOL.legs.clonusR0, () => relToF(SOL.ex.clonusFootR0, footFrame('R'))); SOL.ex.clonRelR1 = withLeg('R', SOL.legs.clonusR1, () => relToF(SOL.ex.clonusFootR1, footFrame('R')));
         SOL.ex.clonRelL0 = withLeg('L', SOL.legs.clonusR0, () => relToF(SOL.ex.clonusFootL0, footFrame('L'))); SOL.ex.clonRelL1 = withLeg('L', SOL.legs.clonusR1, () => relToF(SOL.ex.clonusFootL1, footFrame('L')));
         const up = (st, back, sleeve, sz) => Object.assign({}, st, { back: V(back[0], back[1], back[2] * sz).normalize(), sleeve: V(sleeve[0], sleeve[1], sleeve[2] * sz).normalize() });
         SOL.ex.calfR = up(SOL.ex.calfR, [0.15, 0.05, 1], [0.05, 0.45, 1], 1); SOL.ex.calfL = up(SOL.ex.calfL, [0.15, 0.05, 1], [0.05, 0.45, 1], -1);
         SOL.ex.calfRelR = withLeg('R', SOL.legs.clonusR0, () => relToF(SOL.ex.calfR, shinFrame('R'))); SOL.ex.calfRelL = withLeg('L', SOL.legs.clonusR0, () => relToF(SOL.ex.calfL, shinFrame('L')));
         SOL.ex.kneeSupport = Object.assign({}, SOL.ex.kneeSupport, { sleeve: V(0.05, 0.45, 1).normalize() });
+        { const pr = P.leg('R'), pl = P.leg('L'); P.setLeg('R', SOL.legs.kneeJerk); P.setLeg('L', SOL.legs.kneeJerk); SOL.ex.supRel = relToF(SOL.ex.kneeSupport, kneesFrame()); P.setLeg('R', pr); P.setLeg('L', pl); }   // the support under the knees, carried as they bend and straighten
       }
+      // how each move of the examiner's hands arrives and leaves (planned once by tools/plan.mjs, loaded here; defaults if absent)
+      let TRANS = {};
+      if (!root.SOLVE_MODE) { try { const r = await fetch('transitions.json', { cache: 'no-store' }); if (r.ok) TRANS = (await r.json()).moves || {}; } catch (e) {} }
       root.W = Object.assign(root.W_TEST || {}, { S, L, bed, table, P, SH, EX, hammer, SOL, applyArm, applyEx, applyStrike, HOME_ARM, HOME_EX, enc, dec });
 
       // ================================================================ THE TIMELINE
@@ -1213,6 +1222,7 @@
         if (name === 'parkFar') return park(mirEx(Object.assign({ hand: other(h) }, HOME_EX[other(h)])), true);
         if (name.startsWith('up:')) { const b = exState(h, name.slice(3), t); return Object.assign({}, b, { wrist: b.wrist.clone().add(V(0, 3.0, b.far ? -1.0 : 1.0)) }); }   // a waypoint: lifted 30 cm, toward the examiner (the hammer clears him)
         if (name.startsWith('S:')) { const [geo, when] = name.slice(2).split('@'); const k = SOL.strikes[geo]; return Object.assign({}, k.ex, { strike: when || geo, geo }); }   // 'S:bicR@reinfR' = the bicR pose, struck at the reinfR time
+        if (name.startsWith('relKnees:')) { const [, nm] = name.split(':'); return fromRelF(SOL.ex[nm], kneesFrame()); }
         if (name.startsWith('relShin:')) { const [, nm, sd] = name.split(':'); return fromRelF(SOL.ex[nm], shinFrame(sd)); }
         if (name.startsWith('relFoot:')) { const [, nm, sd] = name.split(':'); return fromRelF(SOL.ex[nm], footFrame(sd)); }
         if (name.startsWith('rel:')) { const [, nm, obj] = name.split(':'); const o = obj === 'handR' ? P.arms.R.hand.group : P.arms.L.hand.group; return fromRel(SOL.ex[nm], o); }
@@ -1229,20 +1239,24 @@
       // already in their contact pose while it slides in. Rest / parked / lifted states are not contacts. Small moves (a push
       // of the foot, a hold carried with his hand) keep the plain blend.
       const FREE = /^(home|homeFar|park|parkFar|up:)/, SLIDE = 1.2, SLIDE_T = 0.4;
+      const TDEF = { dir: 'back', dist: 1.2, arc: 1.5, open: true, two: true };
+      const dirOf = (st, d) => (d === 'up' ? V(0, 1, 0) : d === 'dorsum' ? V(0, 1, 0).applyQuaternion(st.quat).normalize() : d === 'backUp' ? st.back.clone().add(V(0, 1.5, 0)).normalize() : st.back.clone());
       const exMove = (h, a, b, u, info) => {
         if (!info || a.wrist.distanceTo(b.wrist) < 0.6) return lerpEx(h, a, b, u);
+        const key = h + ':' + info.t0.toFixed(3), PR = Object.assign({}, TDEF, TRANS[key], root.TRANS_OVERRIDE && root.TRANS_OVERRIDE[key]);
         const dur = info.t1 - info.t0, s = info.t - info.t0;
         let tOut = FREE.test(info.n0) ? 0 : SLIDE_T, tIn = FREE.test(info.n1) ? 0 : SLIDE_T;
         if (tOut + tIn > dur - 0.15) { const k = Math.max(0, dur - 0.15) / (tOut + tIn); tOut *= k; tIn *= k; }   // always some travel between the two slides
-        let A1 = tOut ? Object.assign({}, a, { wrist: a.wrist.clone().addScaledVector(a.back, SLIDE) }) : a, B1 = tIn ? Object.assign({}, b, { wrist: b.wrist.clone().addScaledVector(b.back, SLIDE) }) : b;
         const e = K.ease.inOut;
-        // the fingers open a little as the hand leaves a grip and close round the contact as it arrives (a wrapping grip never drags through him)
-        const open = (st) => { const o = JSON.parse(JSON.stringify(st.pose)); const c = (k) => (o.curl && o.curl[k]) || o.all || [0.12, 0.18, 0.1]; o.curl = Object.fromEntries(PK.map((k) => [k, c(k).map((v) => v * 0.35)])); delete o.all; return Object.assign({}, st, { pose: o, thumbQ: undefined }); };
-        if (A1 !== a) A1 = open(A1); if (B1 !== b) B1 = open(B1);
-        if (tOut && s < tOut) return lerpEx(h, a, Object.assign({}, A1, { strike: a.strike, geo: a.geo }), e(s / tOut));
-        if (tIn && s > dur - tIn) return lerpEx(h, B1, b, e((s - (dur - tIn)) / tIn));
+        // the fingers straighten (together) while the hand slides, if planned so; they close round the contact as it arrives
+        const open = (st) => { if (!PR.open) return st; const o = JSON.parse(JSON.stringify(st.pose)); const c = (k) => (o.curl && o.curl[k]) || o.all || [0.12, 0.18, 0.1]; o.curl = Object.fromEntries(PK.map((k) => [k, c(k).map(() => 0)])); delete o.all; return Object.assign({}, st, { pose: o, thumbQ: undefined }); };
+        const slid = (st) => Object.assign({}, open(st), { wrist: st.wrist.clone().addScaledVector(dirOf(st, PR.dir), PR.dist).add(V(0, -(PR.low || 0), 0)) });   // (low: slides in a little below, then rises into place)
+        const off = (st) => (PR.two && !st.strike ? Object.assign({}, open(st), { wrist: st.wrist.clone().addScaledVector(V(0, 1, 0).applyQuaternion(st.quat).normalize(), 0.25) }) : st);
+        const A0 = off(a), B0 = off(b), A1 = tOut ? Object.assign({}, slid(a), { wrist: slid(a).wrist.add(A0.wrist.clone().sub(a.wrist)) }) : a, B1 = tIn ? Object.assign({}, slid(b), { wrist: slid(b).wrist.add(B0.wrist.clone().sub(b.wrist)) }) : b;
+        if (tOut && s < tOut) { const k = s / tOut, w = A0 !== a ? 0.4 : 0; return k < w ? lerpEx(h, a, A0, e(k / w)) : lerpEx(h, A0, Object.assign({}, A1, { strike: a.strike, geo: a.geo }), e((k - w) / (1 - w))); }
+        if (tIn && s > dur - tIn) { const k = (s - (dur - tIn)) / tIn, w = B0 !== b ? 0.6 : 1; return k < w ? lerpEx(h, B1, B0 !== b ? B0 : b, e(k / w)) : lerpEx(h, B0, b, e((k - w) / (1 - w))); }
         const tr = dur - tOut - tIn, v = tr > 1e-6 ? e(K.clamp((s - tOut) / tr)) : 1, o = lerpEx(h, A1, B1, v);
-        if (A1.wrist.distanceTo(B1.wrist) > 1.0) o.wrist = o.wrist.clone().add(V(0, 1.5 * Math.sin(Math.PI * v), 0));   // the hand travels over him in an arc (15 cm up), never through him
+        if (A1.wrist.distanceTo(B1.wrist) > 1.0) o.wrist = o.wrist.clone().add(V(0, PR.arc * Math.sin(Math.PI * v), 0));   // the hand travels over him in an arc, never through him
         return o;
       };
       const armState = (side, name) => (name === 'home' ? HOME_ARM[side] : SOL.arms[name]);
@@ -1302,14 +1316,14 @@
       const camAt = (t) => CH.cam(t, (n) => camVec(CAMS[n]), (a, b, u) => a.map((v, i) => K.lerp(v, b[i], u)));
       const shoot = (v) => { K.look(S.camera, v.slice(0, 3), v.slice(3, 6), v[9]); K.focus(S.camera, v.slice(6, 9), v[10]); };
       // ---- the strikes: the hammer hand's swing (radians, + = raised) at time t for a strike state
-      const swingAt = (id, t) => {
-        const ts = S_[id]; if (ts == null) return SWING.up;
+      const swingAt = (id, t, top = SWING.up) => {
+        const ts = S_[id]; if (ts == null) return top;
         const d = t - ts;
-        if (d < -SWING.fall) return SWING.up;
-        if (d < 0) { const u = (d + SWING.fall) / SWING.fall; return SWING.up * (1 - u * u); }       // falls by its own weight, faster and faster
+        if (d < -SWING.fall) return top;
+        if (d < 0) { const u = (d + SWING.fall) / SWING.fall; return top * (1 - u * u); }             // falls by its own weight, faster and faster
         if (d < SWING.bounce) return SWING.bounceUp * Math.sin(Math.PI * d / SWING.bounce * 0.5);     // bounces straight off
         if (/^ank/.test(id)) return SWING.bounceUp;                                                    // ankle: the head stays off the leg while the hand lifts away
-        return K.lerp(SWING.bounceUp, SWING.up, K.ease.inOut(K.clamp((d - SWING.bounce) / 0.5)));
+        return K.lerp(SWING.bounceUp, Math.max(top, SWING.bounceUp), K.ease.inOut(K.clamp((d - SWING.bounce) / 0.5)));
       };
       const bump = (t, ts) => { const d = t - ts - REFLEX.delay; if (d < 0 || d > REFLEX.rise + REFLEX.back) return 0; return d < REFLEX.rise ? K.ease.out(d / REFLEX.rise) : 1 - K.ease.inOut((d - REFLEX.rise) / REFLEX.back); };
       const firmAt = (t, ts) => { const d = t - ts - REFLEX.delay; if (d < 0 || d > REFLEX.firm) return 0; return Math.sin(Math.PI * d / REFLEX.firm); };
@@ -1341,7 +1355,7 @@
       const pushKneeAt = (t, t0, t1) => K.seg(t, t0, t0 + 0.1, K.ease.out) * (1 - K.seg(t, t1, t1 + 0.35, K.ease.inOut));
       const KNEE_PUSH = { R: [79.0, 81.0], L: [82.3, 84.3] }, FLICK = { R: snap(87.6), L: snap(90.8) };
       const flickAt = (t, tf) => { const d = t - tf; return d < 0 || d > 0.4 ? 0 : d < 0.07 ? d / 0.07 : 1 - K.ease.inOut((d - 0.07) / 0.33); };
-      const CARRY = { thumbR: ['R', 0.5], thumbRreinf: ['R', 0.5], thumbL: ['L', 0.5], supFingR: ['R', 1], supFingL: ['L', 1], wristL: ['L', 1] };
+      const CARRY = { thumbR: ['R', 0], thumbRreinf: ['R', 0], thumbL: ['L', 0], supFingR: ['R', 1], supFingL: ['L', 1], wristL: ['L', 1] };
       const homeLock = (t) => t <= HOME_HOLD + 1e-6 || t >= D - 1.0 - 1e-6;
 
       const update = (t) => {
@@ -1367,11 +1381,13 @@
         // the examiner's hands and the hammer
         for (const h of ['R', 'L']) {
           let st = CH['ex' + h](p, (n) => exState(h, n, p), (a, b, u, info) => exMove(h, a, b, u, info));
-          if (st.strike) { const kS = SOL.strikes[st.geo || st.strike] || {}, a = swingAt(st.strike, p) * (kS.swingSign || 1) * (kS.swingUp || SWING.up) / SWING.up;  if (a) { const axis = V(0, 0, 1).applyQuaternion(st.quat).normalize(); st = Object.assign({}, st, { quat: new THREE.Quaternion().setFromAxisAngle(axis, a).multiply(st.quat) }); } }
+          if (st.strike) { const kS = SOL.strikes[st.geo || st.strike] || {}, a = swingAt(st.strike, p, kS.swingUp || SWING.up) * (kS.swingSign || 1);  if (a) { const axis = V(0, 0, 1).applyQuaternion(st.quat).normalize(); st = Object.assign({}, st, { quat: new THREE.Quaternion().setFromAxisAngle(axis, a).multiply(st.quat) }); } }
           // an elbow reflex: the examiner's hand on his forearm rides with it (on the elbow crease, half of it)
           { const ks = KEYS['ex' + h], i = ks.findIndex((k, j) => k[0] <= p && (!ks[j + 1] || ks[j + 1][0] > p)), nm = ks[i][1], hold = !ks[i + 1] || ks[i + 1][2] === 'cut' || ks[i + 1][1] === nm, c = CARRY[nm];
             if (c && hold && lastRot[c[0]]) { const R0 = lastRot[c[0]], q = new THREE.Quaternion().slerpQuaternions(new THREE.Quaternion(), R0.q, c[1]);
-              st = Object.assign({}, st, { wrist: R0.E.clone().add(st.wrist.clone().sub(R0.E).applyQuaternion(q)), quat: q.clone().multiply(st.quat), back: st.back.clone().applyQuaternion(q) }); } }
+              st = Object.assign({}, st, { wrist: R0.E.clone().add(st.wrist.clone().sub(R0.E).applyQuaternion(q)), quat: q.clone().multiply(st.quat), back: st.back.clone().applyQuaternion(q) });
+              if (c[1] === 0) { const sd = c[0], kk = STRIKES.find((x) => x.side === sd && x.reflex === 'biceps' && p > x.t && p < x.t + 0.6), bmp = kk ? bump(p, kk.t) : 0, nT = SOL.lm['bicepsTendon_' + sd].normal;   // the biceps thumb yields as the forearm comes up (up to 8 mm)
+                if (bmp > 0) st = Object.assign({}, st, { wrist: st.wrist.clone().addScaledVector(nT, 0.08 * bmp) }); } } }
           // knee clonus: the hand moves 8 mm toward his foot with the kneecap
           if (/kneeClonus/.test(KEYS['ex' + h].find((k, i, arr) => k[0] <= p && (!arr[i + 1] || arr[i + 1][0] > p))[1])) {
             const sd = st.far ? 'L' : 'R', u = pushKneeAt(p, KNEE_PUSH[sd][0], KNEE_PUSH[sd][1]);
@@ -1382,6 +1398,7 @@
             const f = flickAt(p, FLICK[st.far ? 'L' : 'R']);
             if (f > 0 && st.thumbQ) st = Object.assign({}, st, { thumbQ: [st.thumbQ[0], st.thumbQ[1].clone().multiply(new THREE.Quaternion().setFromAxisAngle(V(0, 0, 1), -0.35 * f)), st.thumbQ[2].clone().multiply(new THREE.Quaternion().setFromAxisAngle(V(0, 0, 1), -0.45 * f))] });
           }
+          if (st.strike) { const kS = SOL.strikes[st.geo || st.strike], ts = S_[st.strike]; if (kS && ts != null) { const d = p - ts, out = d > 0 && d < 0.8 ? Math.sin(Math.PI * Math.min(1, d / 0.8)) : 0; if (out > 0) st = Object.assign({}, st, { wrist: st.wrist.clone().addScaledVector(kS.ex.wrist.clone().sub(kS.target).normalize(), 0.25 * out) }); } }   // the hand rebounds off the strike, away from it (2.5 cm)
           applyEx(h, st);
           if (st.strike) {                                                  // the hammer, rigid in this hand
             const k = SOL.strikes[st.geo || st.strike], hg = EX[h].hand.group, qa = st.quat.clone().multiply(k.ex.quat.clone().invert());
@@ -1421,7 +1438,7 @@
         if (still) L.lamp.intensity = SET.LAMP.power;                      // no flicker on the home shot (it must match the other parts)
         S.R.grain = still ? 0 : SET.RENDER.grain;                         // the grain is seeded by the frame number: off on the still home frames so the first and last frames are identical
       };
-      root.CNS7_TIMELINE = { KEYS, CAMS, STRIKES, camAt, swingAt };
+      root.CNS7_TIMELINE = { KEYS, CAMS, STRIKES, camAt, swingAt, CARRY };
       root.CNS7_UPDATE = update;                                           // the frame's scene without rendering it (tools/scan.mjs, tools/cuts.mjs)
       // the CNS home shot exactly as shared/README.md builds it (for home-check.json)
       root.HOME_REFERENCE = () => {
