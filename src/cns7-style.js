@@ -1243,11 +1243,11 @@
       const FREE = /^(home|homeFar|park|parkFar|up:)/, SLIDE = 1.2, SLIDE_T = 0.4;
       const TDEF = { dir: 'back', dist: 1.2, arc: 1.5, open: true, two: true };
       // Moves set by hand (the planner keeps them): the forearm under the knees slides in / out along its own long axis (85 % of
-      // its slope), from / to the near side, under his raised knees the whole way (the knees are up before it moves), 0.7 s, no
+      // its slope), from / to the near side, under his raised knees the whole way (the knees are up before it moves), 0.6 s, no
       // arc, fingers straight and together. Its far end rides on the mattress (lift) and its elbow end is tilted up at the start
       // of the slide (pivot) so it does not plough into the mattress; the hand stays in the gap the forearm will fill.
       const TFIX = {
-        'L:43.900': { dir: 'tilt', tilt: 0.85, dist: 5.2, arc: 0, open: true, two: false, together: true, low: 0, pivot: [0.6, 0.33, 0.6], lift: [0.4, 0.3], tIn: 0.7, fixed: 'slides in under the raised knees along its own axis' },
+        'L:43.900': { dir: 'tilt', tilt: 0.85, dist: 5.2, arc: 0, open: true, two: false, together: true, low: 0, pivot: [0.6, 0.25, 0.75], lift: [0.4, 0.3], tIn: 0.6, fixed: 'slides in under the raised knees along its own axis' },
         'L:56.600': { dir: 'tilt', tilt: 0.85, dist: 5.2, arc: 0, open: true, two: false, together: true, low: 0, pivot: [0.6, 0.33, 0.6], lift: [0.4, 0.3], tOut: 0.7, fixed: 'slides out from under the knees along its own axis' },
       };
       const dirOf = (st, d, tl) => (d === 'axisFlat' ? V(st.back.x, 0, st.back.z).normalize() : d === 'tilt' ? V(st.back.x, st.back.y * (tl == null ? 0.5 : tl), st.back.z).normalize() : d === 'up' ? V(0, 1, 0) : d === 'dorsum' ? V(0, 1, 0).applyQuaternion(st.quat).normalize() : d === 'backUp' ? st.back.clone().add(V(0, 1.5, 0)).normalize() : st.back.clone());
