@@ -291,7 +291,7 @@
           const handle = hmAll.filter((m) => !hammer.head.children.includes(m)), pf = CONTACT.field(patientMeshes()); let bk = null;
           for (let ang = 0; ang < 360; ang += 30) {
             const k2 = solveStrike(T, n, dirBase.clone().applyAxisAngle(n, ang * Math.PI / 180), fld);
-            let g = -Infinity; for (const sg of [1, -1]) { let gs = Infinity; for (const a of [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.62]) {   // the whole swing, every 0.05 rad applyStrike(k2, sg * a); const x = CONTACT.minGap(hmAll, pf, null, 0, 0.3, 2).gap; gs = Math.min(gs, isFinite(x) ? x : 0.03, bedGap(hmAll).gap); } g = Math.max(g, gs); }
+            let g = -Infinity; for (const sg of [1, -1]) { let gs = Infinity; for (const a of [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.62]) { applyStrike(k2, sg * a); const x = CONTACT.minGap(hmAll, pf, null, 0, 0.3, 2).gap; gs = Math.min(gs, isFinite(x) ? x : 0.03, bedGap(hmAll).gap); } g = Math.max(g, gs); }
             applyStrike(k2, 0); const hx = CONTACT.minGap(handle, pf, null, 0, 0.3, 2).gap, bg = bedGap(hmAll).gap;
             const sc = 10 * Math.max(0, 0.012 - g) + 10 * Math.max(0, 0.003 - (isFinite(hx) ? hx : 0.03)) + 10 * Math.max(0, 0.002 - bg) - 0.001 * k2.ex.wrist.y + 0.0002 * Math.min(ang, 360 - ang) / 30;
             if (!bk || sc < bk.sc) bk = { sc, k2, ang, g };
